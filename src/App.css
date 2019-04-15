@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  height: 62px;
+  width: 100%;
+  background-color: #252e38;
+  box-shadow: 0 0 25px 0 #131c25;
+}
+#navigation .navigation_nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+#navigation .navigation_nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+.navigation-logo {
+  margin: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: opacity,.2s;
+  /* background-image: url(https://static.codingame.com/assets/spritesheets/navigation.6e3a4d9e.png); */
+  width: 138px;
+  height: 18px;
+  width: 142px;
+}
+.navigation-auth {
+  display: flex;
+  margin: 0 15px;
+  flex-basis: 310px;
+}
+.navigation-auth .navigation-auth_login-button {
+  text-align: center;
+  background-color: hsla(0,0%,100%,.08);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  height: 52px;
+  line-height: 52px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  min-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background .2s;
+  height: 42px;
+  line-height: 42px;
+  width: 50%;
+  max-width: 150px;
+  margin: 0 5px;
+  min-width: 0;
+}
+.navigation-auth .navigation-auth_signup-button {
+  text-align: center;
+  background-color: #f2bb13;
+  color: #454c55;
+  font-size: 14px;
+  font-weight: 600;
+  height: 52px;
+  line-height: 52px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  min-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background .2s;
+  height: 42px;
+  line-height: 42px;
+  width: 50%;
+  max-width: 150px;
+  margin: 0 5px;
+  min-width: 0;
+}
