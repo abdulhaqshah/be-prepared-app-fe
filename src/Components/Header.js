@@ -9,10 +9,12 @@ class Header extends Component{
                     <a className="navigation-logo" href="/Home">Nav Bar</a>
                     <div className="navigation-auth"> 
                         <button ng-click="login()" className="navigation-auth_login-button" translate="navigation.connect.login">Log In</button> 
-                        <button ng-click="signup()" className="navigation-auth_signup-button" translate="navigation.connect.signup">Sign Up</button> 
+                        {/* <button ng-click="signup()" className="navigation-auth_signup-button" translate="navigation.connect.signup">Sign Up</button>  */}
                     </div>
                 </div>
-             </nav>
+            </nav>
+            
+            
         )
                 
     }
