@@ -1,24 +1,32 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-class Header extends Component{
-    render() {
-        return (
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.onClickLoginBtn = this.onClickLoginBtn.bind(this);
+  }
+  onClickLoginBtn(e) {
+    this.props.history.push("/login");
+    e.preventDefault();
+  }
+  render() {
+    return (
+      <nav id="navigation" className="navigation-nav-container">
+        <a className="navigation-logo" href="/Home">
+          Be Prepared
+        </a>
 
-            <nav id="navigation" className="navigation_nav-container">
-                <li className="navigation_nav-container">
-                    <a className="navigation-logo" href="/Home">Be Prepared</a>
-                    <div className="navigation-auth" align="right"> 
-                        <button ng-click="login()" className="navigation-auth_login-button" translate="navigation.connect.login">Log In</button> 
-                        {/* <button ng-click="signup()" className="navigation-auth_signup-button" translate="navigation.connect.signup">Sign Up</button>  */}
-                    </div>
-                </li>
-            </nav>
-            
-            
-        )
-                
-    }
-
+        <div className="navigation-auth">
+          <button
+            className="navigation-auth-login-button"
+            onClick={this.onClickLoginBtn}
+          >
+            Log In
+          </button>
+        </div>
+      </nav>
+    );
+  }
 }
 
-export default Header
+export default Header;
