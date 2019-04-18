@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "./SignUp.css";
 import Header from "./Header";
 import Footer from "./Footer";
-// import 'font-awesome/css/font-awesome.min.css';
-// import './App.css';
-// import './myOwn.css';
 
 class SignUp extends Component {
   constructor(props) {
@@ -19,6 +16,7 @@ class SignUp extends Component {
     this.setSignUpEmail = this.setSignUpEmail.bind(this);
     this.setSignUpPassword = this.setSignUpPassword.bind(this);
     this.setSignUpConfirmPass = this.setSignUpConfirmPass.bind(this);
+    this.signUpValidation = this.signUpValidation.bind(this);
   }
   setSignUpUserName(event) {
     this.setState({ signUpUserName: event.target.value });
@@ -32,7 +30,19 @@ class SignUp extends Component {
   setSignUpConfirmPass(event) {
     this.setState({ signUpConfirmPass: event.target.value });
   }
-  validation() {}
+  signUpValidation(e) {
+     e.preventDefault();
+    if (
+      this.state.signUpUserName === "" ||
+      this.state.signUpEmail === "" ||
+      this.state.signUpPass === "" ||
+      this.state.signUpConfirmPass === ""
+    ) {
+      alert("All Feilds Required");
+    } else {
+      this.props.history.push("/Login");
+    }
+  }
   render() {
     return (
       <div>
@@ -84,15 +94,15 @@ class SignUp extends Component {
               onChange={this.setSignUpConfirmPass}
             />
             <br />
-            {/* Accept terms and conditions
-        <br/>
-        <input name="signUpCheckBox" type="checkbox"/>
-        <br/> */}
+            <label className="labels">Accept terms and conditions</label>
+            <br />
+            <input name="signUpCheckBox" type="checkbox" />
+            <br />
             <button
               className="button"
               name="signUpBtn"
               type="submit"
-              onClick={this.validation}
+              onClick={this.signUpValidation}
             >
               SignUp
             </button>
