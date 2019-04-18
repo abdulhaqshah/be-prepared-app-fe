@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
+import Header from "./Header";
+import Footer from "./Footer";
 // import 'font-awesome/css/font-awesome.min.css';
 // import './App.css';
 // import './myOwn.css';
@@ -13,6 +15,10 @@ class SignUp extends Component {
       signUpPass: "",
       signUpConfirmPass: ""
     };
+    this.setSignUpUserName = this.setSignUpUserName.bind(this);
+    this.setSignUpEmail = this.setSignUpEmail.bind(this);
+    this.setSignUpPassword = this.setSignUpPassword.bind(this);
+    this.setSignUpConfirmPass = this.setSignUpConfirmPass.bind(this);
   }
   setSignUpUserName(event) {
     this.setState({ signUpUserName: event.target.value });
@@ -26,61 +32,73 @@ class SignUp extends Component {
   setSignUpConfirmPass(event) {
     this.setState({ signUpConfirmPass: event.target.value });
   }
-  onSignUpBtn() {}
+  validation() {}
   render() {
     return (
-      <div className="outer-container">
-        <div className="container">
-          <h1 className="labels" align="center">
-            Sign Up
-          </h1>
-          <label className="labels">UserName</label>
-          <br />
-          <input
-            name="signUpUserName"
-            type="text"
-            onChange={this.setSignUpUserName}
-          />
-          <br />
-          <label className="labels">Email</label>
-          <br />
-          <input
-            name="signUpEmail"
-            type="text"
-            onChange={this.setSignUpEmail}
-          />
-          <br />
+      <div>
+        <Header />
+        <div className="outer-container">
+          <div className="container">
+            <h1 className="heading" align="center">
+              Sign Up
+            </h1>
+            <label className="labels">UserName</label>
+            <br />
+            <input
+              className="field"
+              name="signUpUserName"
+              type="text"
+              placeholder="UserName"
+              onChange={this.setSignUpUserName}
+            />
+            <br />
+            <label className="labels">Email</label>
+            <br />
+            <input
+              className="field"
+              name="signUpEmail"
+              type="text"
+              placeholder="Email"
+              onChange={this.setSignUpEmail}
+            />
+            <br />
 
-          <label className="labels">Password</label>
-          <br />
-          <input
-            name="signUpPassword"
-            type="password"
-            onChange={this.setSignUpPassword}
-          />
-          <br />
+            <label className="labels">Password</label>
+            <br />
+            <input
+              className="field"
+              name="signUpPassword"
+              type="password"
+              placeholder="Password"
+              onChange={this.setSignUpPassword}
+            />
+            <br />
 
-          <label className="labels">Confirm Password</label>
-          <br />
-          <input
-            name="signUpConfirmPass"
-            type="password"
-            onChange={this.setSignUpConfirmPass}
-          />
-          <br />
-          {/* Accept terms and conditions
+            <label className="labels">Confirm Password</label>
+            <br />
+            <input
+              className="field"
+              name="signUpConfirmPass"
+              type="password"
+              placeholder="Confirm Password"
+              onChange={this.setSignUpConfirmPass}
+            />
+            <br />
+            {/* Accept terms and conditions
         <br/>
         <input name="signUpCheckBox" type="checkbox"/>
         <br/> */}
-          <button
-            className="button"
-            name="signUpBtn"
-            type="submit"
-            onClick={this.onSignUpBtn}
-          >
-            SignUp
-          </button>
+            <button
+              className="button"
+              name="signUpBtn"
+              type="submit"
+              onClick={this.validation}
+            >
+              SignUp
+            </button>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
