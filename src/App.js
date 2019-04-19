@@ -7,6 +7,7 @@ import "font-awesome/css/font-awesome.min.css";
 import "./App.css";
 import "./myOwn.css";
 
+
 class App extends Component {
   render() {
     return (
@@ -21,8 +22,13 @@ class App extends Component {
           </nav> */}
           {/* <hr /> */}
           <Switch>
+<<<<<<< HEAD
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
+=======
+              <Route exact path='/' component={Home} />
+              <Route path='/SignUp' component={SignUp} />
+>>>>>>> forgot to add App.js
           </Switch>
         </div>
       </Router>
