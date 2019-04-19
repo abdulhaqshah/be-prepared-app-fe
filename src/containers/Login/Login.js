@@ -33,6 +33,7 @@ class Login extends Component {
       <div>
         <Header />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="login-outer-container">
           <div className="login-container">
             <h1 className="login-heading" align="center">
@@ -47,20 +48,30 @@ class Login extends Component {
         <div className="outer-container">
           <div className="container">
             <h1 className="heading" align="center">
+=======
+        <div className="login-outer-container">
+          <div className="login-container">
+            <h1 className="login-heading" align="center">
+>>>>>>> a little bit  Modification has made in login page
               Login
             </h1>{" "}
             <br />
-            <label className="labels">UserName</label>
+            <label className="login-labels">UserName</label>
             <br />
             <input
+<<<<<<< HEAD
               className="field"
 >>>>>>> Final login form
+=======
+              className="login-field"
+>>>>>>> a little bit  Modification has made in login page
               name="loginUserName"
               type="text"
               placeholder="UserName"
               onChange={this.setLoginUserName}
             />
             <br /> <br />
+<<<<<<< HEAD
 <<<<<<< HEAD
             <label className="login-labels">Password</label>
             <br />
@@ -72,11 +83,18 @@ class Login extends Component {
             <input
               className="field"
 >>>>>>> Final login form
+=======
+            <label className="login-labels">Password</label>
+            <br />
+            <input
+              className="login-field"
+>>>>>>> a little bit  Modification has made in login page
               name="loginPassword"
               type="password"
               placeholder="Password"
               onChange={this.setLoginPassword}
             />
+<<<<<<< HEAD
 <<<<<<< HEAD
             <br /> <br /> 
             <button
@@ -86,6 +104,11 @@ class Login extends Component {
             <button
               className="button"
 >>>>>>> Final login form
+=======
+            <br /> <br /> 
+            <button
+              className="login-button"
+>>>>>>> a little bit  Modification has made in login page
               name="loginBtn"
               type="submit"
               onClick={this.loginValidation}
