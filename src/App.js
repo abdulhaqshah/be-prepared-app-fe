@@ -6,6 +6,9 @@ import Login from './containers/Login/Login';
 =======
 import Home from './Components/Home';
 import SignUp from './Components/SignUp';
+<<<<<<< HEAD
+>>>>>>> forgot to add App.js
+=======
 >>>>>>> forgot to add App.js
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
