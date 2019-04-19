@@ -31,34 +31,34 @@ class Login extends Component {
     return (
       <div>
         <Header />
-        <div className="outer-container">
-          <div className="container">
-            <h1 className="heading" align="center">
+        <div className="login-outer-container">
+          <div className="login-container">
+            <h1 className="login-heading" align="center">
               Login
             </h1>{" "}
             <br />
-            <label className="labels">UserName</label>
+            <label className="login-labels">UserName</label>
             <br />
             <input
-              className="field"
+              className="login-field"
               name="loginUserName"
               type="text"
               placeholder="UserName"
               onChange={this.setLoginUserName}
             />
             <br /> <br />
-            <label className="labels">Password</label>
+            <label className="login-labels">Password</label>
             <br />
             <input
-              className="field"
+              className="login-field"
               name="loginPassword"
               type="password"
               placeholder="Password"
               onChange={this.setLoginPassword}
             />
-            <br /> <br /> <br />
+            <br /> <br /> 
             <button
-              className="button"
+              className="login-button"
               name="loginBtn"
               type="submit"
               onClick={this.loginValidation}
