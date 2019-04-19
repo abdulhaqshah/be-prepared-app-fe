@@ -45,8 +45,6 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
-
-
   render() {
     return (
       <div>
