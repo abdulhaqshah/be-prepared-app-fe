@@ -10,12 +10,14 @@ class SignUp extends Component {
       signUpUserName: "",
       signUpEmail: "",
       signUpPass: "",
-      signUpConfirmPass: ""
-    };
+      signUpConfirmPass: "",
+      isCheckBox:""
+        };
     this.setSignUpUserName = this.setSignUpUserName.bind(this);
     this.setSignUpEmail = this.setSignUpEmail.bind(this);
     this.setSignUpPassword = this.setSignUpPassword.bind(this);
     this.setSignUpConfirmPass = this.setSignUpConfirmPass.bind(this);
+    this.setCheckBox = this.setCheckBox.bind(this);
     this.signUpValidation = this.signUpValidation.bind(this);
   }
   setSignUpUserName(event) {
@@ -30,13 +32,17 @@ class SignUp extends Component {
   setSignUpConfirmPass(event) {
     this.setState({ signUpConfirmPass: event.target.value });
   }
+  setCheckBox(event){
+    this.setState({ isCheckBox: event.target.value });
+  }
   signUpValidation(e) {
      e.preventDefault();
     if (
       this.state.signUpUserName === "" ||
       this.state.signUpEmail === "" ||
       this.state.signUpPass === "" ||
-      this.state.signUpConfirmPass === ""
+      this.state.signUpConfirmPass === ""||
+      this.state.isCheckBox === ""
     ) {
       alert("All Feilds Required");
     } else {
@@ -96,7 +102,7 @@ class SignUp extends Component {
             <br />
             <label className="labels">Accept terms and conditions</label>
             <br />
-            <input name="signUpCheckBox" type="checkbox" />
+            <input name="signUpCheckBox" type="checkbox" onChange={this.setCheckBox} />
             <br />
             <button
               className="button"
