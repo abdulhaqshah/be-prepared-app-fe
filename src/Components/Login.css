@@ -60,10 +60,8 @@
 .outer-container {
 >>>>>>> Final SignUp form
   padding-top: 100px;
-  /* background-image:url("../Projects/be-prepared-app-fe/public/10.jpg"); */
 }
 .container {
-  /* background-image:url("../Projects/be-prepared-app-fe/public/10.jpg"); */
   background:#131c25;
   padding-top: 4px;
   width: 30%;
@@ -100,6 +98,7 @@
   font-family: cursive;
   font-size: 35px;
   align-items: center;
+  padding-top: 15px;
 }
 .field {
   width: 100%;
