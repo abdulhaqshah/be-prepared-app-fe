@@ -104,7 +104,6 @@ class Login extends Component {
               <a 
               href="/forgetPassword">Forget Password</a>
               </div>
-            
             </form>
           </div>
         </div>
