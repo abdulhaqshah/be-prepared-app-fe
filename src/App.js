@@ -6,9 +6,6 @@ import Login from "./containers/Login/Login";
 import Login from "./containers/SignUp/SignUp";
 import "font-awesome/css/font-awesome.min.css";
 import "./App.css";
-import "./myOwn.css";
-
-
 class App extends Component {
   render() {
     return (
