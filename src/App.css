@@ -1,13 +1,11 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -18,11 +16,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -31,7 +27,6 @@
     transform: rotate(360deg);
   }
 }
-
 #navigation {
   position: fixed;
   top: 0;
@@ -42,59 +37,67 @@
   background-color: #252e38;
   box-shadow: 0 0 25px 0 #131c25;
 }
-#navigation .navigation_nav-container {
+#navigation .navigation-nav-container {
+  float: right;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   padding: 0 20px;
 }
-#navigation .navigation_nav-container {
+#navigation .navigation-nav-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100%;
   padding: 0 20px;
 }
 .navigation-logo {
-  margin: 0 10px;
+  margin: 10px 10px;
   height: 100%;
-  display: flex;
   align-items: center;
-  transition: opacity,.2s;
-  /* background-image: url(https://static.codingame.com/assets/spritesheets/navigation.6e3a4d9e.png); */
-  width: 138px;
+  transition: opacity, 0.2s;
   height: 18px;
   width: 142px;
+  padding-top: 30px;
+  font-size: 250%;
+  color: white;
+  font-display: bold;
+  font-family: fantasy;
 }
 .navigation-auth {
   display: flex;
-  margin: 0 15px;
+  margin: 6px 15px;
   flex-basis: 310px;
+  float: right;
+  padding: 4px;
+  width:170px
 }
-.navigation-auth .navigation-auth_login-button {
+.navigation-auth .navigation-auth-login-button {
   text-align: center;
-  background-color: hsla(0,0%,100%,.08);
+  background-color: hsla(0, 0%, 100%, 0.08);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  height: 52px;
-  line-height: 52px;
   text-transform: uppercase;
-  border: none;
+  border: black;
   cursor: pointer;
-  padding: 0 5px;
-  min-width: 200px;
+  padding: 1px 5px;
+  min-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background .2s;
+  transition: background 0.2s;
   height: 42px;
   line-height: 42px;
-  width: 50%;
+  width: 70%;
   max-width: 150px;
   margin: 0 5px;
   min-width: 0;
+  float: right;
+  flex: 1;
+  padding-bottom: 4px;
+  font-family: fantasy;
+  padding-left: 5px;
 }
 .navigation-auth_signup-button {
   text-align: center;
@@ -112,11 +115,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background .2s;
+  transition: background 0.2s;
   height: 42px;
   line-height: 42px;
   width: 50%;
   max-width: 150px;
   margin: 0 5px;
   min-width: 0;
+  font-family: fantasy;
 }
