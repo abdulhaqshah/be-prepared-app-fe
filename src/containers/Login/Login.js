@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -31,33 +32,34 @@ class Login extends Component {
     return (
       <div>
         <Header />
-        <div className="login-outer-container">
-          <div className="login-container">
-            <h1 className="login-heading" align="center">
+        <div className="outer-container">
+          <div className="container">
+            <h1 className="heading" align="center">
               Login
             </h1>{" "}
             <br />
-            <label className="login-labels">UserName</label>
+            <label className="labels">UserName</label>
             <br />
             <input
-              className="login-field"
+              className="field"
               name="loginUserName"
               type="text"
               placeholder="UserName"
               onChange={this.setLoginUserName}
             />
+            <br /> <br />
             <label className="labels">Password</label>
-
             <br />
             <input
-              className="login-field"
+              className="field"
               name="loginPassword"
               type="password"
               placeholder="Password"
               onChange={this.setLoginPassword}
             />
+            <br /> <br /> <br />
             <button
-              className="login-button"
+              className="button"
               name="loginBtn"
               type="submit"
               onClick={this.loginValidation}
