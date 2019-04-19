@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <nav id="navigation" className="navigation-nav-container">
