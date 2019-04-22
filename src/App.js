@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import logo from './logo.svg';
 import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
+import Login from "./containers/SignUp/SignUp";
 import "font-awesome/css/font-awesome.min.css";
 import "./App.css";
 import "./myOwn.css";
@@ -22,13 +23,9 @@ class App extends Component {
           </nav> */}
           {/* <hr /> */}
           <Switch>
-<<<<<<< HEAD
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-=======
-              <Route exact path='/' component={Home} />
-              <Route path='/SignUp' component={SignUp} />
->>>>>>> forgot to add App.js
+              <Route path='/signup' component={SignUp} />
           </Switch>
         </div>
       </Router>
