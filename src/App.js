@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 // import logo from './logo.svg';
-<<<<<<< HEAD
 import Login from './containers/Login/Login';
-=======
-import Home from './Components/Home';
-import SignUp from './Components/SignUp';
-<<<<<<< HEAD
->>>>>>> forgot to add App.js
-=======
->>>>>>> forgot to add App.js
+import Home from './containers/Home';
+// import Login from './Components/Login';
+import SignUp from './containers/SignUp/SignUp';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import './myOwn.css';
@@ -29,7 +24,7 @@ class App extends Component {
           {/* <hr /> */}
           <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/SignUp' component={SignUp} />
+              <Route path='/signup' component={SignUp} />
           </Switch>
         </div>
       </Router>
