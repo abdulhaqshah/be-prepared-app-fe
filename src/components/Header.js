@@ -6,12 +6,11 @@ class Header extends Component {
     return (
       <nav id="navigation" className="navigation-nav-container">
         <a className="navigation-logo" href="/Home">Be Prepared</a>
-
-        <div className="navigation-auth">
-          <Link to={LOGIN}>
+        <Link to={LOGIN}>
+          <div className="navigation-auth">
             <button className="navigation-auth-login-button">Log In</button>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </nav>
     );
   }
