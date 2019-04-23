@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom';
+import {LOGIN} from '../constants';
 class Header extends Component {
   render() {
     return (
@@ -7,7 +8,9 @@ class Header extends Component {
         <a className="navigation-logo" href="/Home">Be Prepared</a>
 
         <div className="navigation-auth">
-          <button className="navigation-auth-login-button">Log In</button>
+          <Link to={LOGIN}>
+            <button className="navigation-auth-login-button">Log In</button>
+          </Link>
         </div>
       </nav>
     );
