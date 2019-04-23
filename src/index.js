@@ -5,9 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'redux';
 import {createStore} from 'react-redux';
-import Reducer from './store/Reducer'
 
-const store = createStore(Reducer);
+const store = createStore();
 //allow us to inject the global store 
 ReactDOM.render(<Provider><App /></Provider>, document.getElementById('root'));
 
