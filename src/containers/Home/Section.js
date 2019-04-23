@@ -1,12 +1,12 @@
 
-import React, {Component, fragment} from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {SINGUP} from '../../constants';
 
 class Section extends Component{
     render() {
         return (
-            <fragment>
+            <div>
                 <section id="intro" className="mainPage_topBar">
                     <h1>Mock interview with engineers</h1>
                     <p>We provide the same experience as real interviews and you'll get real feedback in the end.</p>
@@ -68,7 +68,7 @@ class Section extends Component{
                         </div>
                     </div>
                 </section>
-            </fragment>
+            </div>
         )
                 
     }
