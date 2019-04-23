@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SignUp.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 class SignUp extends Component {
   constructor(props) {
