@@ -53,69 +53,66 @@ class SignUp extends Component {
     return (
       <div>
         <Header />
-        <div className="outer-container">
-          <div className="inner-container">
-            <h1 className="heading" align="center">
-              Sign Up
-            </h1>
-            <label className="labels">UserName</label>
-            <br />
-            <input
-              className="field"
-              name="signUpUserName"
-              type="text"
-              placeholder="UserName"
-              onChange={this.setSignUpUserName}
-            />
-            <br />
-            <label className="labels">Email</label>
-            <br />
-            <input
-              className="field"
-              name="signUpEmail"
-              type="text"
-              placeholder="Email"
-              onChange={this.setSignUpEmail}
-            />
-            <br />
+        <div>
+          <div className="signup-container">
+            <div className="inner-container">
+              <h1 className="heading" align="center">
+                Sign Up
+              </h1>
+              <label className="labels vertical-spacing">Your name <span class="required-indicator">*</span></label>
+              <br />
+              <input
+                className="field"
+                name="signUpUserName"
+                type="text"
+                onChange={this.setSignUpUserName}
+              />
+              <br />
+              <label className="labels vertical-spacing">Email <span class="required-indicator">*</span></label>
+              <br />
+              <input
+                className="field"
+                name="signUpEmail"
+                type="text"
+                onChange={this.setSignUpEmail}
+              />
+              <br />
 
-            <label className="labels">Password</label>
-            <br />
-            <input
-              className="field"
-              name="signUpPassword"
-              type="password"
-              placeholder="Password"
-              onChange={this.setSignUpPassword}
-            />
-            <br />
-
-            <label className="labels">Confirm Password</label>
-            <br />
-            <input
-              className="field"
-              name="signUpConfirmPass"
-              type="password"
-              placeholder="Confirm Password"
-              onChange={this.setSignUpConfirmPass}
-            />
-            <br />
-            <label className="labels">Accept terms and conditions</label>
-            <br />
-            <input
-              name="signUpCheckBox"
-              type="checkbox"
-              onChange={this.setCheckBox}
-            />
-            <br />
-            <button
-              className="button"
-              name="signUpBtn"
-              type="submit"
-              onClick={this.signUpValidation}
-            >
-              SignUp
-            </button>
+              <label className="labels vertical-spacing">Password <span class="required-indicator">*</span></label>
+              <br />
+              <input
+                className="field"
+                name="signUpPassword"
+                type="password"
+                onChange={this.setSignUpPassword}
+              />
+              <br />
+              <label className="labels vertical-spacing">Confirm Password <span class="required-indicator">*</span></label>
+              <br />
+              <input
+                className="field"
+                name="signUpConfirmPass"
+                type="password"
+                onChange={this.setSignUpConfirmPass}
+              />
+              <br />
+              <br />
+              <input
+                name="signUpCheckBox"
+                type="checkbox"
+                onChange={this.setCheckBox}
+              />
+              <label className="labels vertical-spacing"> Accept terms and conditions</label>
+              <br />
+              <button
+                className="button"
+                name="signUpBtn"
+                type="submit"
+                onClick={this.signUpValidation}
+              >
+                Create Account
+              </button>
+            </div>
           </div>
         </div>
         <Footer />
