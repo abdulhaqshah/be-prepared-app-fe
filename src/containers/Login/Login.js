@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 class Login extends Component {
   constructor(props) {
     super(props);
