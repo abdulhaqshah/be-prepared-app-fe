@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Routes from './routes/index'
+import Routes from './routes'
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import './myOwn.css';
