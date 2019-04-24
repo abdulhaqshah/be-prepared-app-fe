@@ -23,7 +23,6 @@ class SignUp extends Component {
   }
  
   handleUserInput(e) {
-    debugger
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
@@ -31,12 +30,10 @@ class SignUp extends Component {
   }
 
   submitForm(e) {
-    debugger
     e.preventDefault();
   }
 
   validateField(fieldName, value) {
-    debugger
     let emailValid = this.state.emailValid;
     let passwordValid = this.state.passwordValid;
   
@@ -65,7 +62,6 @@ class SignUp extends Component {
   }
 
   showValidationError(field) {
-    debugger
     switch (field) {
       case "email":
       return ( !this.state.emailValid ? <label>{this.state.emailErrorMessage}</label> : null)
