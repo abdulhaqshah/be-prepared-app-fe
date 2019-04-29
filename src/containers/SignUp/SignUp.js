@@ -13,11 +13,8 @@ class SignUp extends Component {
         cp: {  // name the rule
           message: 'The :attribute does not match.',
           rule: (val, params, validator) => {
-            debugger
             return Boolean(val) ? val === params[0] : null;
-            // return validator.helpers.testRegex(val,/^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/i) && params.indexOf(val) === -1
           },
-          //messageReplace: (message, params) => message.replace(':values', this.helpers.toSentence(params)),  // optional
           required: true  // optional
         }
       }
@@ -36,18 +33,6 @@ class SignUp extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
-    this.checkValidation();
-  }
-
-  checkValidation() {
-    debugger
-    if (this.validator.allValid()) {
-      alert('You submitted the form and stuff!');
-    } else {
-      this.validator.showMessages();
-      // rerender to show messages for the first time
-      this.forceUpdate();
-    }
   }
 
   submitForm(e) {
@@ -90,7 +75,7 @@ class SignUp extends Component {
                 <label className="labels vertical-spacing">Confirm Password <span className="required-indicator">*</span></label>
                 <br />
                 <input className="field" name="confirmPassword" type="password" onChange={this.handleUserInput}/>
-                {this.validator.message('confirmPassword', this.state.confirmPassword, 'required|min:6|max:20|cp:'+this.state.password)}
+                {this.validator.message('confirmPassword', this.state.confirmPassword, 'requried|cp:'+this.state.password)}
               </div>
               <div className="term-conditions">
                 By clicking 'Create account', you agree to our Terms and
