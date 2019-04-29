@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import logo from './logo.svg';
-import Home from './containers/Home/Home';
-import Login from './containers/Login/Login';
-import 'font-awesome/css/font-awesome.min.css';
-import './App.css';
-import './myOwn.css';
+import Home from "./containers/Home/Home";
+import Login from "./containers/Login/Login";
+import "font-awesome/css/font-awesome.min.css";
+import "./App.css";
+import "./myOwn.css";
 
 class App extends Component {
   render() {
@@ -21,8 +21,8 @@ class App extends Component {
           </nav> */}
           {/* <hr /> */}
           <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/login' component={Login} />
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
           </Switch>
         </div>
       </Router>
