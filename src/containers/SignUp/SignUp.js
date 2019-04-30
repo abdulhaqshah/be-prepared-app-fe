@@ -3,6 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import "./SignUp.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import postUserData from "../../api";
 // import axios from "axios";
 
 class SignUp extends Component {
@@ -26,8 +27,6 @@ class SignUp extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-      loading: false,
-      message: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -45,42 +44,12 @@ class SignUp extends Component {
     const name = this.state.name;
     const email = this.state.email;
     const password = this.state.password;
-    this.setState({
-      loading: true
-    });
     const data = {
       name,
       email,
       password
     };
-    fetch("http://localhost:8000/user/register", {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      },
-    }).then(res => {
-      return res.json();
-    }).then(json => {
-      console.log('res json', json);
-    });
-
-    
-    // axios
-    //   .post("localhost:8000/user/register", data)
-    //   .then(Response => {
-    //     console.log(Response);
-    //     this.setState({
-    //       loading: false,
-    //       message: Response.data
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     this.setState({
-    //       loading: false
-    //     });
-    //   });
+  postUserData(data);
   }
   submitForm(e) {
     e.preventDefault();
