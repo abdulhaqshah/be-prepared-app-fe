@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import Reducer from './store/reducers/Reducer';
 
-
 const store = createStore(Reducer);//store should b at high level so index.js is at higher level
 //allow us to inject the global store 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

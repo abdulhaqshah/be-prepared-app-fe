@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import "./SignUp.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import axios from "axios";
+// import axios from "axios";
 
 class SignUp extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.loadOrShowMsg = this.loadOrShowMsg.bind(this);
     this.postData = this.postData.bind(this);
   }
 
@@ -41,43 +40,47 @@ class SignUp extends Component {
     this.setState({ [name]: value });
   }
   postData(event) {
+    // debugger;
     event.preventDefault();
     const name = this.state.name;
     const email = this.state.email;
-    const pass = this.state.password;
-    const confirmPass = this.confirmPassword;
+    const password = this.state.password;
     this.setState({
       loading: true
     });
     const data = {
       name,
       email,
-      pass,
-      confirmPass
+      password
     };
-    axios
-      .post("localhost:8000/user/register", data)
-      .then(Response => {
-        console.log(Response);
-        this.setState({
-          loading: false,
-          message: Response.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          loading: false
-        });
-      });
-  }
+    fetch("http://localhost:8000/user/register", {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(res => {
+      return res.json();
+    }).then(json => {
+      console.log('res json', json);
+    });
 
-  loadOrShowMsg() {
-    if (this.state.loading) {
-      return <p>Loading....</p>;
-    } else {
-      return <p>{this.state.message}</p>;
-    }
+    
+    // axios
+    //   .post("localhost:8000/user/register", data)
+    //   .then(Response => {
+    //     console.log(Response);
+    //     this.setState({
+    //       loading: false,
+    //       message: Response.data
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     this.setState({
+    //       loading: false
+    //     });
+    //   });
   }
   submitForm(e) {
     e.preventDefault();
@@ -176,7 +179,6 @@ class SignUp extends Component {
                   Create Account
                 </button>
               </div>
-              {this.loadOrShowMsg}
             </form>
           </div>
         </div>
