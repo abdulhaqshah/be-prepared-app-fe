@@ -1,20 +1,14 @@
-import { API_HOST, USER_URL } from "./constants";
-const USER_PATH = "http://" + API_HOST + USER_URL;
+import { USER_URL, METHODS } from "./constants";
+import GlobalAPISvc from "./globalApi";
 
 const postUserData = data => {
-  fetch(USER_PATH, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
+  GlobalAPISvc(USER_URL, METHODS.POST, data)
+  .then(res => {
+    debugger
   })
-    .then(res => {
-      return res.json();
-    })
-    .then(json => {
-      console.log("res json", json);
-    });
+  .catch(res => {
+    debugger
+  });
 };
 
 export default postUserData;
