@@ -140,7 +140,6 @@ class SignUp extends Component {
                   className="button"
                   name="signUpBtn"
                   type="submit"
-                  onClick={this.postData}
                 >
                   Create Account
                 </button>
