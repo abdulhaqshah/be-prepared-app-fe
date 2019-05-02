@@ -4,7 +4,6 @@ import "./SignUp.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import postUserData from "../../api";
-// import axios from "axios";
 
 class SignUp extends Component {
   constructor(props) {
@@ -30,26 +29,12 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.postData = this.postData.bind(this);
   }
 
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
-  }
-  postData(event) {
-    // debugger;
-    event.preventDefault();
-    const name = this.state.name;
-    const email = this.state.email;
-    const password = this.state.password;
-    const data = {
-      name,
-      email,
-      password
-    };
-  postUserData(data);
   }
   submitForm(e) {
     e.preventDefault();
@@ -60,6 +45,15 @@ class SignUp extends Component {
       // rerender to show messages for the first time
       this.forceUpdate();
     }
+    const name = this.state.name;
+    const email = this.state.email;
+    const password = this.state.password;
+    const data = {
+      name,
+      email,
+      password
+    };
+  postUserData(data);
   }
 
   render() {
