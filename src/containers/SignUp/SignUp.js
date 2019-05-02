@@ -29,6 +29,8 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.formRef = null;
+
   }
 
   handleUserInput(e) {
@@ -52,6 +54,9 @@ class SignUp extends Component {
       password
     };
   postUserData(data);
+  //Form reset
+  this.formRef.reset();
+
  }
 
   render() {
@@ -63,7 +68,7 @@ class SignUp extends Component {
             <h1 className="heading" align="center">
               Sign Up
             </h1>
-            <form onSubmit={this.submitForm} >
+            <form onSubmit={this.submitForm} ref={(ref) => this.formRef = ref} >
               <div>
                 <label className="labels vertical-spacing"> Your name </label>
                 <br />
