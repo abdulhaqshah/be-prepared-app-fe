@@ -45,16 +45,14 @@ class SignUp extends Component {
       // rerender to show messages for the first time
       this.forceUpdate();
     }
-    const name = this.state.name;
-    const email = this.state.email;
-    const password = this.state.password;
+    var{name,email,password} = this.state;
     const data = {
       name,
       email,
       password
     };
   postUserData(data);
-  }
+ }
 
   render() {
     return (
@@ -65,7 +63,7 @@ class SignUp extends Component {
             <h1 className="heading" align="center">
               Sign Up
             </h1>
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={this.submitForm} >
               <div>
                 <label className="labels vertical-spacing"> Your name </label>
                 <br />
