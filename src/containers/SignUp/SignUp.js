@@ -40,6 +40,7 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
+      alert("Successfully Signup");
       //post data
       var { name, email, password } = this.state;
       const data = {
@@ -48,7 +49,7 @@ class SignUp extends Component {
         password
       };
       postUserData(data);
-      alert("You submitted the form and stuff!");
+      
       //Form reset
       this.formRef.reset();
     } else {
@@ -77,11 +78,13 @@ class SignUp extends Component {
                   type="text"
                   onChange={this.handleUserInput}
                 />
-                {this.validator.message(
-                  "name",
-                  this.state.email,
-                  "required|name"
-                )}
+                <div className="error-msg">
+                  {this.validator.message(
+                    "name",
+                    this.state.name,
+                    "required|name"
+                  )}
+                </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -94,11 +97,13 @@ class SignUp extends Component {
                   type="email"
                   onChange={this.handleUserInput}
                 />
-                {this.validator.message(
-                  "email",
-                  this.state.email,
-                  "required|email"
-                )}
+                <div className="error-msg">
+                  {this.validator.message(
+                    "email",
+                    this.state.email,
+                    "required|email"
+                  )}
+                </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -111,11 +116,13 @@ class SignUp extends Component {
                   type="password"
                   onChange={this.handleUserInput}
                 />
-                {this.validator.message(
-                  "password",
-                  this.state.password,
-                  "required|min:6|max:20"
-                )}
+                <div className="error-msg">
+                  {this.validator.message(
+                    "password",
+                    this.state.password,
+                    "required|min:6|max:20"
+                  )}
+                </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -128,22 +135,26 @@ class SignUp extends Component {
                   type="password"
                   onChange={this.handleUserInput}
                 />
-                {this.validator.message(
-                  "confirmPassword",
-                  this.state.confirmPassword,
-                  "requried|cp:" + this.state.password
-                )}
+                <div className="error-msg">
+                  {this.validator.message(
+                    "confirmPassword",
+                    this.state.confirmPassword,
+                    "requried|cp:" + this.state.password
+                  )}
+                </div>
               </div>
               <div className="term-conditions">
                 By clicking 'Create account', you agree to our Terms and
                 Conditions and acknowledge that you have read our Privacy Policy
                 and Disclosure Guidelines.
               </div>
-              <div>
-                <button className="button" name="signUpBtn" type="submit">
-                  Create Account
-                </button>
-              </div>
+              {/* <Link to={LOGIN}> */}
+                <div>
+                  <button className="button" name="signUpBtn" type="submit">
+                    Create Account
+                  </button>
+                </div>
+              {/* </Link> */}
             </form>
           </div>
         </div>
