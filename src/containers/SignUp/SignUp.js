@@ -4,6 +4,7 @@ import "./SignUp.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import postUserData from "../../api";
+import { LOGIN } from "../../constants";
 
 class SignUp extends Component {
   constructor(props) {
@@ -49,9 +50,10 @@ class SignUp extends Component {
         password
       };
       postUserData(data);
-      
+
       //Form reset
       this.formRef.reset();
+      this.props.history.push(LOGIN);
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
@@ -148,13 +150,11 @@ class SignUp extends Component {
                 Conditions and acknowledge that you have read our Privacy Policy
                 and Disclosure Guidelines.
               </div>
-              {/* <Link to={LOGIN}> */}
-                <div>
-                  <button className="button" name="signUpBtn" type="submit">
-                    Create Account
-                  </button>
-                </div>
-              {/* </Link> */}
+              <div>
+                <button className="button" name="signUpBtn" type="submit">
+                  Create Account
+                </button>
+              </div>
             </form>
           </div>
         </div>
