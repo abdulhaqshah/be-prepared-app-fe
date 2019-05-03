@@ -2,7 +2,7 @@ import { API_HOST } from "./constants";
 
 const GlobalAPISvc = (endPoint, method, data) => {
   return new Promise((resolve, reject) => {
-    fetch(API_HOST + endPoint, {
+    fetch(`${API_HOST}${endPoint}`, {
       method: method,
       body: JSON.stringify(data),
       headers: {
@@ -19,7 +19,6 @@ const GlobalAPISvc = (endPoint, method, data) => {
     return err;
   })
 };
-
 function handleErrors(response) {
   if (!response.ok) {
     throw Error(response.json());

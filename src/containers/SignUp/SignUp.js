@@ -25,12 +25,11 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      confirmPassword: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
-
   }
 
   handleUserInput(e) {
@@ -41,23 +40,23 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
+      //post data
+      var { name, email, password } = this.state;
+      const data = {
+        name,
+        email,
+        password
+      };
+      postUserData(data);
       alert("You submitted the form and stuff!");
+      //Form reset
+      this.formRef.reset();
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
       this.forceUpdate();
     }
-    var{name,email,password} = this.state;
-    const data = {
-      name,
-      email,
-      password
-    };
-  postUserData(data);
-  //Form reset
-  this.formRef.reset();
-
- }
+  }
 
   render() {
     return (
@@ -68,7 +67,7 @@ class SignUp extends Component {
             <h1 className="heading" align="center">
               Sign Up
             </h1>
-            <form onSubmit={this.submitForm} ref={(ref) => this.formRef = ref} >
+            <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
               <div>
                 <label className="labels vertical-spacing"> Your name </label>
                 <br />
@@ -78,6 +77,11 @@ class SignUp extends Component {
                   type="text"
                   onChange={this.handleUserInput}
                 />
+                {this.validator.message(
+                  "name",
+                  this.state.email,
+                  "required|name"
+                )}
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -136,11 +140,7 @@ class SignUp extends Component {
                 and Disclosure Guidelines.
               </div>
               <div>
-                <button
-                  className="button"
-                  name="signUpBtn"
-                  type="submit"
-                >
+                <button className="button" name="signUpBtn" type="submit">
                   Create Account
                 </button>
               </div>
