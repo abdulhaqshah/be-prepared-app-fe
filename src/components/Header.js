@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {LOGIN, HOME} from '../constants';
+
 class Header extends Component {
   render() {
     return (

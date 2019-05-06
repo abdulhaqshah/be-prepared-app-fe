@@ -7,3 +7,4 @@ export const METHODS = {
 }
 export const USER_URL = '/user/register';
 
+
