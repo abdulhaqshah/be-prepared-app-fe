@@ -24,3 +24,4 @@ const GlobalAPISvc = (endPoint, method, data) => {
 };
 
 export default GlobalAPISvc;
+
