@@ -1,20 +1,22 @@
-.login-outer-container {
-  padding-top: 100px;
-  padding-left: 480px;
+.login-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 370px;
 }
-.login-container{
-  background:#131c25;
+.inner-container {
+  background: #fffdfd;
   padding-top: 4px;
-  width: 40%;
   border: 2px solid black;
   border-radius: 15px;
-  height: 448px;
-  padding-left: 9px;
-  padding-right: 9px;
+  height: 400px;
+  width: 350px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 80px;
 }
-.login-button {
-  background-color: rgb(101, 119, 18);
+.button {
   color: white;
+  background-color: rgb(101, 119, 18);
   padding: 14px 20px;
   margin: 15px 0;
   border: none;
@@ -23,23 +25,19 @@
   font: bold;
   font-family: cursive;
   font-size: 25px;
-  border-radius: 15px;
+  border-radius: 8px;
 }
-.login-labels {
-  color:white;
+.labels {
+  margin-top: 6px;
+}
+.heading {
+  padding-top: 10px;
   font: bold;
   font-family: cursive;
-  font-size: 20px;
-}
-.login-heading {
-  color: white;
-  font: bold;
-  font-family: cursive;
-  font-size: 35px;
+  font-size: 38px;
   align-items: center;
-  padding-top: 15px;
 }
-.login-field {
+.field {
   width: 100%;
   height: 40px;
   border-radius: 4px;
@@ -47,8 +45,15 @@
   background-color: rgba(255, 255, 255, 0.3);
   transition: 0.3s all;
 }
-.login-field:hover {
-  color:white;
+.field:hover {
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+.required-indicator {
+  color: red;
+  font-size: 19px;
+  float: right;
+}
+.error-msg {
+  color: red;
 }

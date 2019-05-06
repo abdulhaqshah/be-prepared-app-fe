@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import SimpleReactValidator from "simple-react-validator";
 import "./Login.css";
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import postUserData from "../../api";
+// import { HOME } from "../../constants";
 
 class Login extends Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props);
     this.state = {
@@ -121,5 +125,104 @@ class Login extends Component {
       </div>
     );
   }
+=======
+constructor(props) {
+super(props);
+this.validator = new SimpleReactValidator({
+});
+this.state = {
+name: "",
+password: ""
+};
+this.handleUserInput = this.handleUserInput.bind(this);
+this.submitForm = this.submitForm.bind(this);
+this.formRef = null;
+>>>>>>> design login form according to signup form
+}
+
+handleUserInput(e) {
+const name = e.target.name;
+const value = e.target.value;
+this.setState({ [name]: value });
+}
+submitForm(e) {
+e.preventDefault();
+if (this.validator.allValid()) {
+alert("Successfully Login");
+//post data
+var { name, password } = this.state;
+const data = {
+name,
+password
+};
+postUserData(data)
+//Form reset
+this.formRef.reset();
+this.props.history.push('/home');
+} else {
+this.validator.showMessages();
+// rerender to show messages for the first time
+this.forceUpdate();
+}
+}
+
+render() {
+return (
+<div>
+<Header />
+<div className="login-container">
+<div className="inner-container">
+<h1 className="heading" align="center">
+Login
+</h1>
+<form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
+<div>
+<label className="labels vertical-spacing"> Your name </label>
+<br />
+<input
+className="field"
+name="name"
+type="text"
+onChange={this.handleUserInput}
+/>
+<div className="error-msg">
+{this.validator.message(
+"name",
+this.state.name,
+"required|name"
+)}
+</div>
+</div>
+<div>
+<label className="labels vertical-spacing">
+Password <span className="required-indicator">*</span>
+</label>
+<br />
+<input
+className="field"
+name="password"
+type="password"
+onChange={this.handleUserInput}
+/>
+<div className="error-msg">
+{this.validator.message(
+"password",
+this.state.password,
+"required|password"
+)}
+</div>
+</div>
+<div>
+<button className="button" name="loginBtn" type="submit">
+LOGIN
+</button>
+</div>
+</form>
+</div>
+</div>
+<Footer />
+</div>
+);
+}
 }
 export default Login;
