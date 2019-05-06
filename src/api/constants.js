@@ -6,5 +6,3 @@ export const METHODS = {
     DELETE : "DELETE"
 }
 export const USER_URL = '/user/register';
-
-

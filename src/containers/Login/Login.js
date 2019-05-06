@@ -6,7 +6,6 @@ import Footer from "../../components/Footer";
 import postUserData from "../../api";
 import { HOME } from "../../constants";
 import Home from "../Home/Home";
-
 class Login extends Component {
   constructor(props) {
     super(props);
