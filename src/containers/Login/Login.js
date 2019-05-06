@@ -63,8 +63,7 @@ class Login extends Component {
                 <input
                   className="field"
                   name="email"
-
-                  type="text"
+                  type="email"
                   onChange={this.handleUserInput}
                 />
                 <div className="error-msg">
