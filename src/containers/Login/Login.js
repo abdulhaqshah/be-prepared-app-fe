@@ -44,6 +44,7 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
+
   render() {
     return (
       <div>
@@ -62,7 +63,8 @@ class Login extends Component {
                 <input
                   className="field"
                   name="email"
-                  type="email"
+
+                  type="text"
                   onChange={this.handleUserInput}
                 />
                 <div className="error-msg">
