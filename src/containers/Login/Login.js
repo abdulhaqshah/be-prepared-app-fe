@@ -57,18 +57,20 @@ class Login extends Component {
             </h1>
             <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
               <div>
-                <label className="labels vertical-spacing"> Email </label>
+                <label className="labels vertical-spacing">
+                  Email <span className="required-indicator">*</span>
+                </label>
                 <br />
                 <input
                   className="field"
                   name="email"
-                  type="text"
+                  type="email"
                   onChange={this.handleUserInput}
                 />
                 <div className="error-msg">
                   {this.validator.message(
                     "email",
-                    this.state.name,
+                    this.state.email,
                     "required|email"
                   )}
                 </div>
@@ -97,6 +99,11 @@ class Login extends Component {
                   LOGIN
                 </button>
               </div>
+              <div align="center">
+              <a 
+              href="/forgetPassword">Forget Password</a>
+              </div>
+            
             </form>
           </div>
         </div>
