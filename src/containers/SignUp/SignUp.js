@@ -86,13 +86,6 @@ class SignUp extends Component {
                   type="text"
                   onChange={this.handleUserInput}
                 />
-                <div className="error-msg">
-                  {this.validator.message(
-                    "name",
-                    this.state.name,
-                    "required"
-                  )}
-                </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -109,7 +102,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "email",
                     this.state.email,
-                    "required"
+                    "required|email"
                   )}
                 </div>
               </div>
