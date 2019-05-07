@@ -9,21 +9,23 @@ const GlobalAPISvc = (endPoint, method, data) => {
         "Content-Type": "application/json"
       }
     })
-    .then(handleErrors)
+    .then(res => {
+      return res.json()
+    })
     .then(json => {
-      resolve(JSON.stringify(json));
-    }).catch(function(error) {
+      resolve(json);
+    }).catch((error) => {
       reject(error);
     });
-  }).catch ( err => {
-    return err;
+  }).catch (error => {
+    return error;
   })
 };
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.json());
-  }
-  return response.json();
-}
+// function handleErrors(response) {
+//   if (!response.ok) {
+//     throw Error(response.json());
+//   }
+//   return response.json();
+// }
 
 export default GlobalAPISvc;

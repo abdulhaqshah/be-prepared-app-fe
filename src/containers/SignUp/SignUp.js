@@ -41,19 +41,25 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      alert("Successfully Signup");
+      // alert("Successfully Signup");
       //post data
-      var { name, email, password } = this.state;
+      let { name, email, password } = this.state;
       const data = {
         name,
         email,
         password
       };
-      postUserData(data);
-
+      const thisContext = this.props;
+      postUserData(data, function(result) {
+        if (result.status === "201") {
+          alert(result.message);
+          thisContext.history.push(LOGIN);
+        } else if (result.status === "400") {
+          alert(result.message);
+        }
+      });
       //Form reset
       this.formRef.reset();
-      this.props.history.push(LOGIN);
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
