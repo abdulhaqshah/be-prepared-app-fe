@@ -90,7 +90,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "name",
                     this.state.name,
-                    "required|name"
+                    "required"
                   )}
                 </div>
               </div>
@@ -109,7 +109,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "email",
                     this.state.email,
-                    "required|email"
+                    "required"
                   )}
                 </div>
               </div>
@@ -147,7 +147,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "confirmPassword",
                     this.state.confirmPassword,
-                    "requried|cp:" + this.state.password
+                    "cp:" + this.state.password
                   )}
                 </div>
               </div>
