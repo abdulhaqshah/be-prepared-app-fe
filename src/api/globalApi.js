@@ -21,11 +21,5 @@ const GlobalAPISvc = (endPoint, method, data) => {
     return error;
   })
 };
-// function handleErrors(response) {
-//   if (!response.ok) {
-//     throw Error(response.json());
-//   }
-//   return response.json();
-// }
 
 export default GlobalAPISvc;
