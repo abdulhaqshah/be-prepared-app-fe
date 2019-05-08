@@ -66,6 +66,8 @@ class SignUp extends Component {
       };
       postUserData(data, result => {
         if (result.status === "201") {
+          //Form reset
+          this.formRef.reset();
           this.addNotification("Success", "success", result.message);
           this.props.history.push(LOGIN);
         } else if (result.status === "400") {
@@ -76,8 +78,6 @@ class SignUp extends Component {
       }).catch = error => {
         console.log(error);
       };
-      //Form reset
-      this.formRef.reset();
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
@@ -107,7 +107,7 @@ class SignUp extends Component {
                   type="text"
                   onChange={this.handleUserInput}
                 />
-                 <div className="error-msg">
+                <div className="error-msg">
                   {this.validator.message(
                     "name",
                     this.state.name,
@@ -130,7 +130,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "email",
                     this.state.email,
-                    "required|email"
+                    "required|email|max:30"
                   )}
                 </div>
               </div>
