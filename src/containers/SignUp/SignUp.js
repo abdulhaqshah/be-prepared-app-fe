@@ -28,7 +28,8 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      redirect: false
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -64,14 +65,14 @@ class SignUp extends Component {
         email,
         password
       };
-
-      // const thisContext = this.props;
       postUserData(data, result => {
         if (result.status === "201") {
           this.addNotification("Success", "success", result.message);
-          // thisContext.history.push(LOGIN);
+          this.props.history.push(LOGIN);
         } else if (result.status === "400") {
           this.addNotification("Error", "danger", result.message);
+        } else {
+          this.addNotification("Error", "warning", "Somthing went wrong");
         }
       }).catch = error => {
         console.log(error);
