@@ -8,12 +8,9 @@ import { LOGIN } from "../../constants";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
-
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.addNotification = this.addNotification.bind(this);
-    this.notificationDOMRef = React.createRef();
     this.validator = new SimpleReactValidator({
       //This rule is for confirm password
       validators: {
@@ -35,9 +32,23 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
-
+  addNotification(title ,msg) {
+    this.notificationDOMRef.current.addNotification({
+      title: title,
+      message: msg,
+      type: "success",
+      insert: "top",
+      container: "top-center",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 3000 },
+      dismissable: { click: true }
+    });
+  }
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -46,7 +57,6 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      // alert("Successfully Signup");
       //post data
       let { name, email, password } = this.state;
       const data = {
@@ -54,15 +64,18 @@ class SignUp extends Component {
         email,
         password
       };
+
       const thisContext = this.props;
-      postUserData(data, function(result) {
+      postUserData(data, result => {
         if (result.status === "201") {
-          alert(result.message);
-          thisContext.history.push(LOGIN);
+          this.addNotification("Success",result.message);
+          // thisContext.history.push(LOGIN);
         } else if (result.status === "400") {
-          alert(result.message);
-        }
-      });
+          this.addNotification("Error",result.message);
+         }
+      }).catch = error => {
+        console.log(error);
+      };
       //Form reset
       this.formRef.reset();
     } else {
@@ -76,6 +89,9 @@ class SignUp extends Component {
     return (
       <div>
         <Header />
+        <div>
+          <ReactNotification ref={this.notificationDOMRef} />
+        </div>
         <div className="signup-container">
           <div className="inner-container">
             <h1 className="heading" align="center">
