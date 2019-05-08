@@ -5,10 +5,15 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import postUserData from "../../api";
 import { LOGIN } from "../../constants";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
     this.validator = new SimpleReactValidator({
       //This rule is for confirm password
       validators: {
