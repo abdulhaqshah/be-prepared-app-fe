@@ -28,8 +28,7 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
-      redirect: false
+      confirmPassword: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -108,6 +107,13 @@ class SignUp extends Component {
                   type="text"
                   onChange={this.handleUserInput}
                 />
+                 <div className="error-msg">
+                  {this.validator.message(
+                    "name",
+                    this.state.name,
+                    "min:3|max:25"
+                  )}
+                </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
@@ -117,7 +123,7 @@ class SignUp extends Component {
                 <input
                   className="field"
                   name="email"
-                  type="email"
+                  // type="email"
                   onChange={this.handleUserInput}
                 />
                 <div className="error-msg">
