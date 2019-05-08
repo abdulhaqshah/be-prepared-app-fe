@@ -36,11 +36,11 @@ class SignUp extends Component {
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
-  addNotification(title ,msg) {
+  addNotification(title, type, msg) {
     this.notificationDOMRef.current.addNotification({
       title: title,
       message: msg,
-      type: "success",
+      type: type,
       insert: "top",
       container: "top-center",
       animationIn: ["animated", "fadeIn"],
@@ -65,14 +65,14 @@ class SignUp extends Component {
         password
       };
 
-      const thisContext = this.props;
+      // const thisContext = this.props;
       postUserData(data, result => {
         if (result.status === "201") {
-          this.addNotification("Success",result.message);
+          this.addNotification("Success", "success", result.message);
           // thisContext.history.push(LOGIN);
         } else if (result.status === "400") {
-          this.addNotification("Error",result.message);
-         }
+          this.addNotification("Error", "danger", result.message);
+        }
       }).catch = error => {
         console.log(error);
       };
