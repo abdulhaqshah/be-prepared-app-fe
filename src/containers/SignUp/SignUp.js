@@ -57,6 +57,14 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
+      if (
+        this.state.name === "" ||
+        this.state.email === "" ||
+        this.state.password === "" ||
+        this.state.confirmPassword === ""
+      ) {
+        this.addNotification("Error", "warning", "All feilds required");
+      }
       //post data
       let { name, email, password } = this.state;
       const data = {
@@ -72,8 +80,6 @@ class SignUp extends Component {
           this.props.history.push(LOGIN);
         } else if (result.status === "400") {
           this.addNotification("Error", "danger", result.message);
-        } else {
-          this.addNotification("Error", "warning", "Somthing went wrong");
         }
       }).catch = error => {
         console.log(error);
@@ -123,7 +129,6 @@ class SignUp extends Component {
                 <input
                   className="field"
                   name="email"
-                  // type="email"
                   onChange={this.handleUserInput}
                 />
                 <div className="error-msg">
@@ -178,7 +183,12 @@ class SignUp extends Component {
                 and Disclosure Guidelines.
               </div>
               <div>
-                <button className="button" name="signUpBtn" type="submit">
+                <button
+                  className="button"
+                  name="signUpBtn"
+                  type="submit"
+                
+                >
                   Create Account
                 </button>
               </div>
