@@ -45,7 +45,7 @@ class SignUp extends Component {
       container: "top-center",
       animationIn: ["animated", "fadeIn"],
       animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 3000 },
+      dismiss: { duration: 300 },
       dismissable: { click: true }
     });
   }
@@ -57,33 +57,37 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      if (
-        this.state.name === "" ||
-        this.state.email === "" ||
-        this.state.password === "" ||
-        this.state.confirmPassword === ""
-      ) {
-        this.addNotification("Error", "warning", "All feilds required");
-      }
-      //post data
-      let { name, email, password } = this.state;
-      const data = {
-        name,
-        email,
-        password
-      };
-      postUserData(data, result => {
-        if (result.status === "201") {
-          //Form reset
-          this.formRef.reset();
-          this.addNotification("Success", "success", result.message);
-          this.props.history.push(LOGIN);
-        } else if (result.status === "400") {
-          this.addNotification("Error", "danger", result.message);
-        }
-      }).catch = error => {
-        console.log(error);
-      };
+      // if (
+      //   this.state.name === "" ||
+      //   this.state.email === "" ||
+      //   this.state.password === "" ||
+      //   this.state.confirmPassword === ""
+      // ){
+      //   this.addNotification("Error", "warning", "All feilds required");
+
+        //post data
+        let { name, email, password } = this.state;
+        const data = {
+          name,
+          email,
+          password
+        };
+        postUserData(data, result => {
+          if (result.status === "201") {
+            //Form reset
+            this.formRef.reset();
+            this.addNotification("Success", "success", result.message);
+            this.props.history.push(LOGIN);
+          } else if (result.status === "400") {
+            this.addNotification("Error", "danger", result.message);
+          } else if (result.status === "403") {
+            this.addNotification("Error", "danger", result.message);
+          }
+        }).catch = error => {
+          console.log(error);
+        };
+      
+     
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
@@ -173,7 +177,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "confirmPassword",
                     this.state.confirmPassword,
-                    "cp:" + this.state.password
+                    "required|cp:" + this.state.password
                   )}
                 </div>
               </div>
