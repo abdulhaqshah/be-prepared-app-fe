@@ -1,14 +1,18 @@
 
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
+import {SINGUP} from '../../constants';
 
 class Section extends Component{
     render() {
         return (
-            <div>
+            <Fragment>
                 <section id="intro" className="mainPage_topBar">
                     <h1>Mock interview with engineers</h1>
                     <p>We provide the same experience as real interviews and you'll get real feedback in the end.</p>
-                    <button ng-click="signup()" className="navigation-auth_signup-button" >Sign Up</button>
+                    <Link to={SINGUP}>
+                        <button className="navigation-auth_signup-button" >Sign Up</button>
+                    </Link>
                 </section>
 
                 <section id="about">
@@ -64,7 +68,7 @@ class Section extends Component{
                         </div>
                     </div>
                 </section>
-            </div>
+            </Fragment>
         )
                 
     }
