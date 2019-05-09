@@ -57,15 +57,6 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      // if (
-      //   this.state.name === "" ||
-      //   this.state.email === "" ||
-      //   this.state.password === "" ||
-      //   this.state.confirmPassword === ""
-      // ){
-      //   this.addNotification("Error", "warning", "All feilds required");
-
-        //post data
         let { name, email, password } = this.state;
         const data = {
           name,
