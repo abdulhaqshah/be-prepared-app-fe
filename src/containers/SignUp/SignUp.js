@@ -36,17 +36,11 @@ class SignUp extends Component {
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
-
-  addNotification(title, type, msg) {
-    const obj = {
-      title,
-      type,
-      msg
-    };
+  addNotification(title, type, message) {
     this.notificationDOMRef.current.addNotification({
-      title: obj.title,
-      message: obj.msg,
-      type: obj.type,
+      title,
+      message,
+      type,
       insert: "top",
       container: "top-center",
       animationIn: ["animated", "fadeIn"],
