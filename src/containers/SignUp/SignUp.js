@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import "./SignUp.css";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import postUserData from "../../api";
-import { LOGIN } from "../../constants";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import { LOGIN } from "../../constants";
+import postUserData from "../../api";
+import "./SignUp.css";
 
 class SignUp extends Component {
   constructor(props) {
