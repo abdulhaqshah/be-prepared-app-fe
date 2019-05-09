@@ -57,33 +57,30 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-
-        let { name, email, password } = this.state;
-        const data = {
-          name,
-          email,
-          password
-        };
-        postUserData(data, result => {
-          if (result.status === "201") {
-            //Form reset
-            this.formRef.reset();
-            this.addNotification("Success", "success", result.message);
-            this.props.history.push(LOGIN);
-          } else if (result.status === "400") {
-            this.addNotification("Error", "danger", result.message);
-          } else if (result.status === "403") {
-            this.addNotification("Error", "danger", result.message);
-          }else if (result.status === "500") {
-            this.addNotification("Error", "danger", result.message);
-          }else{
-            this.addNotification("Error", "warning", "Somthing went wrong");
-          }
-        }).catch = error => {
-          this.addNotification("Error", "warning", error);
-        };
-      
-     
+      let { name, email, password } = this.state;
+      const data = {
+        name,
+        email,
+        password
+      };
+      postUserData(data, result => {
+        if (result.status === "201") {
+          //Form reset
+          this.formRef.reset();
+          this.addNotification("Success", "success", result.message);
+          this.props.history.push(LOGIN);
+        } else if (
+          result.status === "400" ||
+          result.status === "403" ||
+          result.status === "500"
+        ) {
+          this.addNotification("Error", "danger", result.message);
+        } else {
+          this.addNotification("Error", "warning", "Somthing went wrong");
+        }
+      }).catch = error => {
+        this.addNotification("Error", "warning", error);
+      };
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
@@ -183,12 +180,7 @@ class SignUp extends Component {
                 and Disclosure Guidelines.
               </div>
               <div>
-                <button
-                  className="button"
-                  name="signUpBtn"
-                  type="submit"
-                
-                >
+                <button className="button" name="signUpBtn" type="submit">
                   Create Account
                 </button>
               </div>
