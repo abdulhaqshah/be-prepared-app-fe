@@ -57,6 +57,7 @@ class SignUp extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
+
         let { name, email, password } = this.state;
         const data = {
           name,
@@ -79,7 +80,7 @@ class SignUp extends Component {
             this.addNotification("Error", "warning", "Somthing went wrong");
           }
         }).catch = error => {
-          console.log(error);
+          this.addNotification("Error", "warning", error);
         };
       
      
