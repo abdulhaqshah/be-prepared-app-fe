@@ -82,6 +82,10 @@ class SignUp extends Component {
             this.addNotification("Error", "danger", result.message);
           } else if (result.status === "403") {
             this.addNotification("Error", "danger", result.message);
+          }else if (result.status === "500") {
+            this.addNotification("Error", "danger", result.message);
+          }else{
+            this.addNotification("Error", "warning", "Somthing went wrong");
           }
         }).catch = error => {
           console.log(error);
