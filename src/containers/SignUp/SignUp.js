@@ -63,7 +63,6 @@ class SignUp extends Component {
         email,
         password
       };
-      // debugger;
       API.postUserData(data, result => {
         if (result.status === "201") {
           //Form reset

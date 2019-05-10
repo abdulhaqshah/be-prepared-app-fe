@@ -48,7 +48,6 @@ class Login extends Component {
         email,
         password
       };
-      // debugger;
       API.userLogin(data, result => {
         if (result.status === "200") {
           //Form reset
@@ -57,6 +56,8 @@ class Login extends Component {
           // this.props.history.push(HOME);
         }else if(result.status === "404"){
           this.addNotification("Error", "danger", result.message);
+        }else{
+          this.addNotification("Error", "warning", "Somgthing went wrong");
         }
       }).catch = error => {
         this.addNotification("Error", "warning", error);
