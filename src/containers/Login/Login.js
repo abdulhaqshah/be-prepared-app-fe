@@ -16,10 +16,24 @@ class Login extends Component {
       password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
-
+  addNotification(title, type, message) {
+    this.notificationDOMRef.current.addNotification({
+      title,
+      message,
+      type,
+      insert: "top",
+      container: "top-center",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 300 },
+      dismissable: { click: true }
+    });
+  }
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -35,10 +49,16 @@ class Login extends Component {
         email,
         password
       };
-      postUserData(data);
-      //Form reset
-      this.formRef.reset();
-      this.props.history.push(HOME);
+      postUserData(data, result => {
+        if (result.status === "200") {
+          //Form reset
+          this.formRef.reset();
+          this.addNotification("Success", "success", result.message);
+          this.props.history.push(HOME);
+        }
+      }).catch = error => {
+        this.addNotification("Error", "warning", error);
+      };
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
@@ -50,6 +70,9 @@ class Login extends Component {
     return (
       <div>
         <Header />
+        <div>
+          <ReactNotification ref={this.notificationDOMRef} />
+        </div>
         <div className="login-container">
           <div className="login-inner-container">
             <h1 className="heading" align="center">
@@ -100,8 +123,7 @@ class Login extends Component {
                 </button>
               </div>
               <div align="center">
-              <a 
-              href="/forgetPassword">Forget Password</a>
+                <a href="/forgetPassword">Forget Password</a>
               </div>
             </form>
           </div>
