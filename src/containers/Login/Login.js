@@ -4,8 +4,8 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { HOME } from "../../constants";
-import postUserData from "../../api";
+// import { HOME } from "../../constants";
+import API from "../../api";
 import "./Login.css";
 class Login extends Component {
   constructor(props) {
@@ -42,19 +42,21 @@ class Login extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      alert("Successfully Login");
       //post data
       var { email, password } = this.state;
       const data = {
         email,
         password
       };
-      postUserData(data, result => {
+      // debugger;
+      API.userLogin(data, result => {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
           this.addNotification("Success", "success", result.message);
-          this.props.history.push(HOME);
+          // this.props.history.push(HOME);
+        }else if(result.status === "404"){
+          this.addNotification("Error", "danger", result.message);
         }
       }).catch = error => {
         this.addNotification("Error", "warning", error);

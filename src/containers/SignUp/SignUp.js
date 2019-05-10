@@ -5,7 +5,7 @@ import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { LOGIN } from "../../constants";
-import postUserData from "../../api";
+import API from "../../api";
 import "./SignUp.css";
 
 class SignUp extends Component {
@@ -63,7 +63,8 @@ class SignUp extends Component {
         email,
         password
       };
-      postUserData(data, result => {
+      // debugger;
+      API.postUserData(data, result => {
         if (result.status === "201") {
           //Form reset
           this.formRef.reset();
