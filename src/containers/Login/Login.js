@@ -50,23 +50,23 @@ class Login extends Component {
       <div>
         <Header />
         <div className="login-container">
-          <div className="inner-container">
+          <div className="login-inner-container">
             <h1 className="heading" align="center">
               Login
             </h1>
             <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
               <div>
                 <label className="labels vertical-spacing">
-                  Email <span className="required-indicator">*</span>
+                  Email <span className="login-required-indicator">*</span>
                 </label>
                 <br />
                 <input
-                  className="field"
+                  className="login-field"
                   name="email"
                   type="email"
                   onChange={this.handleUserInput}
                 />
-                <div className="error-msg">
+                <div className="login-error-msg">
                   {this.validator.message(
                     "email",
                     this.state.email,
@@ -76,16 +76,16 @@ class Login extends Component {
               </div>
               <div>
                 <label className="labels vertical-spacing">
-                  Password <span className="required-indicator">*</span>
+                  Password <span className="login-required-indicator">*</span>
                 </label>
                 <br />
                 <input
-                  className="field"
+                  className="login-field"
                   name="password"
                   type="password"
                   onChange={this.handleUserInput}
                 />
-                <div className="error-msg">
+                <div className="login-error-msg">
                   {this.validator.message(
                     "password",
                     this.state.password,
@@ -94,7 +94,7 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button className="button" name="loginBtn" type="submit">
+                <button className="login-button" name="loginBtn" type="submit">
                   LOGIN
                 </button>
               </div>
