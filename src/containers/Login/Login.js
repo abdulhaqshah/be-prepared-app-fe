@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import "./Login.css";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import postUserData from "../../api";
 import { HOME } from "../../constants";
-import Home from "../Home/Home";
+import postUserData from "../../api";
+import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ class Login extends Component {
       postUserData(data);
       //Form reset
       this.formRef.reset();
-      this.props.history.push(Home);
+      this.props.history.push(HOME);
     } else {
       this.validator.showMessages();
       // rerender to show messages for the first time
