@@ -70,7 +70,7 @@ class Login extends Component {
                   {this.validator.message(
                     "email",
                     this.state.email,
-                    "required|email"
+                    "required"
                   )}
                 </div>
               </div>
@@ -89,7 +89,7 @@ class Login extends Component {
                   {this.validator.message(
                     "password",
                     this.state.password,
-                    "required|password"
+                    "required"
                   )}
                 </div>
               </div>
