@@ -25,7 +25,6 @@ class SignUp extends Component {
         }
       }
     });
-    // debugger;
     this.state = {
       name: "",
       email: "",
