@@ -1,5 +1,5 @@
- const addNotification = (title, type, message) => {
-  this.notificationDOMRef.current.addNotification({
+const addNotification = (notificationDOMRef, title, type, message) => {
+  notificationDOMRef.current.addNotification({
     title,
     message,
     type,
@@ -7,7 +7,7 @@
     container: "top-center",
     animationIn: ["animated", "fadeIn"],
     animationOut: ["animated", "fadeOut"],
-    dismiss: { duration: 300 },
+    dismiss: { duration: 1000 },
     dismissable: { click: true }
   });
 };
