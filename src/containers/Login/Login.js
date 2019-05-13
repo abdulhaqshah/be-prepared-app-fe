@@ -4,35 +4,34 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-// import { HOME } from "../../constants";
+import addNotification from "../../utilities";
+import { HOME } from "../../constants";
 import API from "../../api";
 import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
+
     this.validator = new SimpleReactValidator();
     this.state = {
       email: "",
       password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.addNotification = this.addNotification.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
-  addNotification(title, type, message) {
-    this.notificationDOMRef.current.addNotification({
-      title,
-      message,
-      type,
-      insert: "top",
-      container: "top-center",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 300 },
-      dismissable: { click: true }
-    });
+  componentDidMount() {
+    const flag = this.props.location.state;
+    if (flag === true) {
+      addNotification(
+        this.notificationDOMRef,
+        "Success",
+        "success",
+        "User has been created Successfuly"
+      );
+    }
   }
   handleUserInput(e) {
     const name = e.target.name;
@@ -52,15 +51,30 @@ class Login extends Component {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
-          this.addNotification("Success", "success", result.message);
-          // this.props.history.push(HOME);
-        }else if(result.status === "404"){
-          this.addNotification("Error", "danger", result.message);
-        }else{
-          this.addNotification("Error", "warning", "Somgthing went wrong");
+          addNotification(
+            this.notificationDOMRef,
+            "Success",
+            "success",
+            result.message
+          );
+          this.props.history.push(HOME);
+        } else if (result.status === "404" || result.status === "403") {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
+        } else {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "warning",
+            "Somgthing went wrong"
+          );
         }
       }).catch = error => {
-        this.addNotification("Error", "warning", error);
+        addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
