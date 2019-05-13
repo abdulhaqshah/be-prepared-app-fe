@@ -5,7 +5,7 @@ import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
-import { HOME } from "../../constants";
+import { HOME ,SINGUP} from "../../constants";
 import API from "../../api";
 import "./Login.css";
 class Login extends Component {
@@ -90,7 +90,7 @@ class Login extends Component {
     return (
       <div>
         <Header
-         btnName ="SignUp" />
+         btnName ="SignUp" redirectTo={SINGUP} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>

@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <nav id="navigation" className="navigation-nav-container">
         <Link className="navigation-logo" to={HOME}>Be Prepared</Link>
-        <Link to={LOGIN}>
+        <Link to={this.props.redirectTo}>
           <div className="navigation-auth">
             <button className="navigation-auth-login-button">{this.props.btnName}</button>
           </div>
