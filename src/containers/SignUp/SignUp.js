@@ -4,8 +4,9 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import addNotification from "../../utilities";
 import { LOGIN } from "../../constants";
-import postUserData from "../../api";
+import API from "../../api";
 import "./SignUp.css";
 
 class SignUp extends Component {
@@ -28,26 +29,13 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      param: true
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.addNotification = this.addNotification.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
-  }
-  addNotification(title, type, message) {
-    this.notificationDOMRef.current.addNotification({
-      title,
-      message,
-      type,
-      insert: "top",
-      container: "top-center",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 300 },
-      dismissable: { click: true }
-    });
   }
   handleUserInput(e) {
     const name = e.target.name;
@@ -63,23 +51,32 @@ class SignUp extends Component {
         email,
         password
       };
-      postUserData(data, result => {
+      API.postUserData(data, result => {
         if (result.status === "201") {
           //Form reset
           this.formRef.reset();
-          this.addNotification("Success", "success", result.message);
-          this.props.history.push(LOGIN);
+          this.props.history.push(LOGIN, this.state.param);
         } else if (
           result.status === "400" ||
           result.status === "403" ||
           result.status === "500"
         ) {
-          this.addNotification("Error", "danger", result.message);
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
         } else {
-          this.addNotification("Error", "warning", "Somthing went wrong");
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "warning",
+            "Somthing went wrong"
+          );
         }
       }).catch = error => {
-        this.addNotification("Error", "warning", error);
+        addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -91,7 +88,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header btnName="Log In" redirectTo={LOGIN} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
