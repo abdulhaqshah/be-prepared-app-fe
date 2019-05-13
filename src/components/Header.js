@@ -9,7 +9,7 @@ class Header extends Component {
         <Link className="navigation-logo" to={HOME}>Be Prepared</Link>
         <Link to={LOGIN}>
           <div className="navigation-auth">
-            <button className="navigation-auth-login-button">Log In</button>
+            <button className="navigation-auth-login-button">{this.props.btnName}</button>
           </div>
         </Link>
       </nav>

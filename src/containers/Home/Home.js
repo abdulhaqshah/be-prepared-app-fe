@@ -8,7 +8,7 @@ class Home extends Component{
     render() {
         return (
             <div className="page-landing">
-                <Header />
+                <Header btnName="Log In" />
                 <Section />
                 <Footer />
             </div>

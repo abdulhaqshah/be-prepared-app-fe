@@ -88,7 +88,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header btnName="Log In" />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
