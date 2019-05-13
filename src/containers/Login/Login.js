@@ -41,7 +41,6 @@ class Login extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      //post data
       var { email, password } = this.state;
       const data = {
         email,
