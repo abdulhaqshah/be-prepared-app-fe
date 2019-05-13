@@ -57,7 +57,11 @@ class Login extends Component {
             result.message
           );
           this.props.history.push(HOME);
-        } else if (result.status === "404" || result.status === "403") {
+        } else if (
+          result.status === "404" ||
+          result.status === "403" ||
+          result.status === "500"
+        ) {
           addNotification(
             this.notificationDOMRef,
             "Error",
