@@ -7,6 +7,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-notifications-component": "^1.1.1",
