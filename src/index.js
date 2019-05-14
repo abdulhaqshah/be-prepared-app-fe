@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import Reducer from './store/reducers/Reducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import $ from 'jquery';
+import Popper from 'popper.js';
 
 const store = createStore(Reducer);//store should b at high level so index.js is at higher level
 //allow us to inject the global store 
