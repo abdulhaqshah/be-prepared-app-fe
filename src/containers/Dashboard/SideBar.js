@@ -11,7 +11,6 @@ class SideBar extends Component {
           <h3>SideBar</h3>
         </div>
         <ul class="list-unstyled components">
-          <p>Dummy Heading</p>
           <li>
             <a href="/home">
               <i className="fa fa-book" /> Courses
@@ -29,7 +28,7 @@ class SideBar extends Component {
           </li>
           <li>
             <a href="/home">
-              <i className="fa  fa-question" /> Analytical Questions
+              <i className="fa  fa-file-text-o" /> Analytical Questions
             </a>
           </li>
           <li>

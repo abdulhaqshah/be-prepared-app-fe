@@ -1,36 +1,30 @@
 .sidenav {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 50;
-    background-color: #252e38;
-    overflow-x: hidden;
-    padding-top: 30px;
-    a{
-      padding: 6px 8px 6px 16px;
-      text-decoration: none;
-      font-size: 20px;
-      color: #cce5fa;
-      display: block;
-    }
-    a:hover {
-      color: #f1f1f1;
-    }
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 50;
+  background-color: #252e38;
+  overflow-x: hidden;
+  padding-top: 30px;
+  align-items: stretch;
+  a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #cce5fa;
+    display: block;
   }
-  .fa-book {
-    color: white !important;
+  a:hover {
+    color: #f1f1f1;
   }
-  .fa-question{
-    color: white !important;
-  }
-  .fa-language{
-    color: white !important;
-  }
-  .fa-file{
-    color: white !important;
-  }
-  .fa-lightbulb-o{
-    color: white !important;
-  }
-
+}
+.fa-book,
+.fa-question,
+.fa-language,
+.fa-file,
+.fa-lightbulb-o,
+.fa-file-text-o,
+.fa-bars {
+  color: white !important;
+}

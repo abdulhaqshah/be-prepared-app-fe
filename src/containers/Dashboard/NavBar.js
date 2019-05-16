@@ -8,15 +8,11 @@ class NavBar extends Component {
     return (
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
         <button
-          class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          id="sidebarCollapse"
+          class="btn"
         >
-          <span class="navbar-toggler-icon" />
+          <i class="fa fa-bars" />
         </button>
         <div>
           <Link className="navigation-logo" to={HOME}>
@@ -27,7 +23,7 @@ class NavBar extends Component {
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item ">
               <a class="nav-link" href={HOME}>
-                Blog 
+                Blog
               </a>
             </li>
             <li class="nav-item">
@@ -37,9 +33,9 @@ class NavBar extends Component {
             </li>
           </ul>
           <Link to={HOME}>
-          <button type="button" class="btn btn-secondary btn-lg">
-            Logout
-          </button>
+            <button type="button" class="btn btn-secondary btn-lg">
+              Logout
+            </button>
           </Link>
         </div>
       </nav>
