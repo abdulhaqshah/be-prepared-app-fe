@@ -3,11 +3,10 @@
     width: 250px;
     position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: 50;
     background-color: #252e38;
     overflow-x: hidden;
-    padding-top: 40px;
+    padding-top: 30px;
     a{
       padding: 6px 8px 6px 16px;
       text-decoration: none;
@@ -19,3 +18,19 @@
       color: #f1f1f1;
     }
   }
+  .fa-book {
+    color: white !important;
+  }
+  .fa-question{
+    color: white !important;
+  }
+  .fa-language{
+    color: white !important;
+  }
+  .fa-file{
+    color: white !important;
+  }
+  .fa-lightbulb-o{
+    color: white !important;
+  }
+
