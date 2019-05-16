@@ -6,32 +6,42 @@ import "./Sidebar.scss";
 class SideBar extends Component {
   render() {
     return (
-        <nav class="sidenav">
+      <nav class="sidenav">
         <div class="sidebar-header">
-        <h3>SideBar</h3>
+          <h3>SideBar</h3>
         </div>
         <ul class="list-unstyled components">
-    <p>
-      Dummy Heading
-    </p>
-    <li>
-      <a href="/home">Courses</a>
-    </li>
-    <li>
-      <a href="/home">Languages</a>
-    </li>
-    <li>
-      <a href="/home">Genral Questions</a>
-    </li>
-    <li>
-      <a href="/home">Analytical Questions</a>
-    </li>
-    <li>
-      <a href="/home">CV Templates</a>
-    </li>
-    <li>
-      <a href="/home">Interview Tips</a>
-    </li>
+          <p>Dummy Heading</p>
+          <li>
+            <a href="/home">
+              <i className="fa fa-book" /> Courses
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <i className="fa fa-language" /> Languages
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <i className="fa  fa-question" /> Genral Questions
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <i className="fa  fa-question" /> Analytical Questions
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <i className="fa  fa-file" /> CV Templates
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <i className="fa fa-lightbulb-o" /> Interview Tips
+            </a>
+          </li>
         </ul>
       </nav>
     );
@@ -39,4 +49,3 @@ class SideBar extends Component {
 }
 
 export default SideBar;
-
