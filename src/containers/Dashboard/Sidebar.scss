@@ -1,22 +1,29 @@
+.sidebar-container {
+  padding-top: 70px;
+}
 .sidenav {
   height: 100%;
   width: 250px;
   position: fixed;
   z-index: 1;
-  top: 50;
+  top: 80;
+  left: 0;
   background-color: #252e38;
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 80px;
   align-items: stretch;
+  border-color: #cce5fa;
+  border: ridge;
+  border-width: 1px;
   a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
     color: #cce5fa;
     display: block;
-  }
-  a:hover {
-    color: #f1f1f1;
+    &:hover {
+      color: #f1f1f1;
+    }
   }
 }
 .fa-book,
@@ -27,4 +34,7 @@
 .fa-file-text-o,
 .fa-bars {
   color: white !important;
+}
+.fa-question{
+ size: 2px;
 }
