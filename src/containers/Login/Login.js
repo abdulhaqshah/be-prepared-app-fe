@@ -5,7 +5,7 @@ import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
-import { HOME ,SINGUP} from "../../constants";
+import { SINGUP, DASHBOARD} from "../../constants";
 import API from "../../api";
 import "./Login.css";
 class Login extends Component {
@@ -56,7 +56,7 @@ class Login extends Component {
             "success",
             result.message
           );
-          this.props.history.push(HOME);
+          this.props.history.push(DASHBOARD);
         } else if (
           result.status === "404" ||
           result.status === "403" ||
