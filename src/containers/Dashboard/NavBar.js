@@ -5,26 +5,31 @@ import "./Navbar.scss";
 import SideBar from "./SideBar";
 
 class NavBar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-
+    this.state = {
+      show: false
+    };
+    this.toggle = this.toggle.bind(this);
+  }
+  toggle = () =>{
+    this.setState({
+      show: !this.state.show
+    })
   }
   render() {
     return (
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <button
-          type="button"
-          data-toggle="collapse"
-          id="sidebarCollapse"
           class="btn"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-          href="#collapseExample"
+          onClick={this.toggle}
         >
           <i class="fa fa-bars fa-2x" />
         </button>
-        <div class="collapse" id="collapseExample">
-        <SideBar/>
+        <div>
+          {
+            this.state.show && ( <SideBar />)
+          } 
         </div>
         <div>
           <Link className="navigation-logo" to={HOME}>
