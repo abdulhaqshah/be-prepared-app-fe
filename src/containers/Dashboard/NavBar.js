@@ -5,9 +5,13 @@ import "./Navbar.scss";
 import SideBar from "./SideBar";
 
 class NavBar extends Component {
+  constructor(props){
+    super(props);
+
+  }
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <button
           type="button"
           data-toggle="collapse"
