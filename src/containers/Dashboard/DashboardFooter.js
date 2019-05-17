@@ -5,7 +5,7 @@ class DashboardFooter extends Component {
   render() {
     return (
       <div class="jumbotron">
-        <div class="jumborton" className="container text-center">
+        <div className="container text-center">
           Made with&nbsp;
           <i className="fa fa-heart pulse" />
           <span className="gainlo">&nbsp;by Gsquad Team</span>
@@ -51,7 +51,7 @@ class DashboardFooter extends Component {
         <div>
           <hr />
         </div>
-        <div class="container text-muted">
+        <div class="text-muted">
           <div>
             <span>
               copyright <i className="fa fa-copyright mr-1 " /> 2019 BePrepared

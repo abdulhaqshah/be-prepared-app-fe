@@ -36,14 +36,14 @@ class NavBar extends Component {
             Be Prepared
           </Link>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto mt-2 navbar-right">
-            <li class="nav-item ">
-              <a class="nav-link" href={HOME}>
+        <div class=" navbar-collapse">
+          <ul class="navbar-nav mr-auto mt-2 ml-3">
+            <li class="nav-item">
+              <a class="nav-link " href={HOME}>
                 Blog
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <a class="nav-link" href={HOME}>
                 FAQ
               </a>
