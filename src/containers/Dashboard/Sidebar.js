@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Sidebar.scss";
 
-class SideBar extends Component {
+class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar-container">
           <nav class="sidenav">
-        <div class="sidebar-header mr-4">
+        <div class="sidebar-header">
           <h3 align="center">SideBar</h3>
         </div>
         <ul class="list-unstyled components">
@@ -48,4 +48,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default Sidebar;

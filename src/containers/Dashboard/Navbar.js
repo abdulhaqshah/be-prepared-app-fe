@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { HOME } from "../../constants";
 import "./Navbar.scss";
-import SideBar from "./SideBar";
-
-class NavBar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
@@ -37,4 +35,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default Navbar;
