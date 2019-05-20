@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import NavBar from "../Dashboard/NavBar";
+import Navbar from "./Navbar";
 import DashboardFooter from "../Dashboard/DashboardFooter";
 import ContentContainer from "../Dashboard/ContentContainer";
+import Sidebar from "./Sidebar";
 
-class DashBoard extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div>
-        <NavBar />
-        <ContentContainer/>
-        <DashboardFooter/>
-       
+        <Navbar />
+        <Sidebar />
+        <ContentContainer />
+        <DashboardFooter />
       </div>
     );
   }
 }
 
-export default DashBoard;
+export default Dashboard;
