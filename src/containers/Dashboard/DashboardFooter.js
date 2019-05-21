@@ -27,11 +27,6 @@ class DashboardFooter extends Component {
           <i className="fa fa-amazon pl-5 fa-5x" />
           <i className="fa fa-pinterest-square pl-5 fa-5x" />
         </div>
-        <div className="icon-div" align="center">
-          <i className="fa fa-youtube pl-5 fa-5x" />
-          <i className="fa fa-linkedin-square pl-5 fa-5x" />
-          <i className="fa fa-snapchat pl-5 fa-5x" />
-        </div>
         <div className="hr-div">
           <hr class="style14" />
         </div>

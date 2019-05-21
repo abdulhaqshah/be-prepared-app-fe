@@ -10,11 +10,22 @@
   left: 0;
   background-color: #252e38;
   overflow-x: hidden;
-  padding-top: 80px;
+  padding-top: 10px;
   align-items: stretch;
   border-color: #cce5fa;
   border: ridge;
   border-width: 1px;
+  .btn-div {
+    padding-left: 200px;
+    padding-bottom: 10px;
+    width: 40px;
+    .btn {
+      color: #252e38;
+      .fa-angle-double-left {
+        color: white !important;
+      }
+    }
+  }
   a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -29,7 +40,8 @@
     .fa-language,
     .fa-file,
     .fa-lightbulb-o,
-    .fa-file-text-o {
+    .fa-file-text-o,
+    .fa-bars {
       color: white !important;
     }
   }

@@ -12,6 +12,7 @@ class Dashboard extends Component {
         <Sidebar />
         <ContentContainer />
         <DashboardFooter />
+   
       </div>
     );
   }

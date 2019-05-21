@@ -17,6 +17,8 @@ class ContentContainer extends Component {
     return (
       <div className="content-container">
         <p>This is main content container</p>
+        <div className="well well-lg">Large Well</div>
+
         <Container>
           <Button
             tooltip="Take Quiz!"
