@@ -10,10 +10,10 @@ class ContentContainer extends Component {
     return (
       <div className="content-container">
         <header>
-          <div className="prac-div ml-5 font-weight-bold">
+          <div className="ml-5 font-weight-bold">
             <span>practice</span>
           </div>
-          <div className="dashboard-heading-div ml-5 font-weight-bold">
+          <div className="ml-5 font-weight-bold">
             <h5 className="heading">Dashboard</h5>
           </div>
         </header>
