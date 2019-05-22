@@ -62,7 +62,7 @@ class ContentContainer extends Component {
             </div>
           </div>
 
-          <div className="interview3-card-div shadow-lg">
+          <div className="interview-card3 shadow-lg">
             <div
               className="card-div"
               className="card"
@@ -93,9 +93,10 @@ class ContentContainer extends Component {
           <div className="heading-div">
             <h5 className="text-muted">Explore BePrepared Skills</h5>
           </div>
-          <div className="courses">
-          </div>
+        <div className="container">
+        <div className="courses">
           <Card title="POBLEM SOLVING"/>
+          </div>
           <div className="languages">
           <Card title="LANGUAGES"/>
           </div> 
@@ -103,6 +104,8 @@ class ContentContainer extends Component {
           <Card title="SPECIALIZED SKILLS "/>
           </div> 
         </div>
+        
+          </div>
       </div>
     );
   }
