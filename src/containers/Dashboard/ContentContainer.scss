@@ -1,4 +1,45 @@
 .content-container {
-    margin-top: 70px;
-    margin-left: 250px;
+  margin-top: 90px;
+  .dashboard-heading-div,
+  .prac-div {
+    font-family: fantasy;
+    padding-left: 50px;
+  }
+  .main-container {
+    background-color: rgb(230, 226, 218);
+    padding-left: 50px;
+    padding-top: 50px;
+    .interview-card1 {
+      display: inline-block;
+      float: left;
+      padding-right: 50px;
+      p {
+        font-family: fantasy;
+      }
+    }
+    h5,
+    h2 {
+      font-weight: bold;
+      font-family: fantasy;
+    }
+    .interview3-card-div {
+      padding-top: 60px;
+      .progress-div {
+        padding-bottom: 30px;
+      }
+    }
+ 
+    .courses{
+      display: inline-block;
+      float: left;
+      padding-right: 50px;
+    }
+    .languages{
+      float: right;
+    }
+  }
+  .heading-div{
+    padding-top:40px;
+    padding-bottom:40px; 
+  }
 }
