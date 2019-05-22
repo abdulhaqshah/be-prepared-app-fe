@@ -15,12 +15,22 @@ class Navbar extends Component {
           <ul class="navbar-nav mr-auto mt-2 ml-3">
             <li class="nav-item">
               <a class="nav-link " href={HOME}>
-                Blog
+                PRACTICE
               </a>
             </li>
-            <li class="nav-item ml-3">
+            <li class="nav-item ml-1">
               <a class="nav-link" href={HOME}>
-                FAQ
+                COMPETE
+              </a>
+            </li>
+            <li class="nav-item ml-1">
+              <a class="nav-link" href={HOME}>
+                JOBS
+              </a>
+            </li>
+            <li class="nav-item ml-1">
+              <a class="nav-link" href={HOME}>
+                LEADERBOARD
               </a>
             </li>
           </ul>
