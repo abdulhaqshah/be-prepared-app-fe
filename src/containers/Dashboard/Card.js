@@ -6,7 +6,7 @@ class Card extends Component {
   }
   render() {
     return (
-      <div className="courses-card-div ">
+      <div className="courses-card">
         <div
           className="card-div shadow-lg"
           className="card"

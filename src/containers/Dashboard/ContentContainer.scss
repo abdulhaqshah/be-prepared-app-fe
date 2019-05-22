@@ -7,9 +7,10 @@
   }
   .main-container {
     background-color: rgb(230, 226, 218);
-    padding-left: 50px;
+    // padding-left: 50px;
     padding-top: 50px;
     .interview-card1 {
+      padding-left: 50px;
       display: inline-block;
       float: left;
       padding-right: 50px;
@@ -17,29 +18,40 @@
         font-family: fantasy;
       }
     }
-    h5,
-    h2 {
+    h5 {
+      padding-left: 50px;
       font-weight: bold;
       font-family: fantasy;
     }
-    .interview3-card-div {
+    .interview-card3 {
+      padding-left: 50px;
       padding-top: 60px;
       .progress-div {
         padding-bottom: 30px;
       }
     }
- 
-    .courses{
-      display: inline-block;
-      float: left;
-      padding-right: 50px;
+    .container{
+      padding-left: 0px;
     }
-    .languages{
+    .container .courses,
+    .container .languages,
+    .container .specialized-skills {
+      display: inline-block;
+    }
+
+    .container .courses {
+      float: left;
+      // padding-right: 20px;
+    }
+    .container .languages {
+      margin: 0 auto;
+    }
+    .container .specialized-skills {
       float: right;
     }
   }
-  .heading-div{
-    padding-top:40px;
-    padding-bottom:40px; 
+  .heading-div {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
