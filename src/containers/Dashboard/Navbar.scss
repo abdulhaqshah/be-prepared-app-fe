@@ -10,22 +10,17 @@
     font-size: 14px !important;
     color: #cce5fa !important;
     font-family: fantasy !important;
-    &:hover {
-      color: white;
-    }
   }
-  .btn-secondary {
-    background-color: hsla(0, 0%, 100%, 0.08) !important;
-    border: #000000 !important;
-    border-radius: 0% !important;
-    font-weight: 600 !important;
-    font-family: fantasy !important;
-    padding-left: 45px !important;
-    padding-right: 45px !important;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    font-size: 24px !important;
-    font-weight: 600 !important;
-    float: right !important;
+  .fa-search{
+    color: white !important;
+  }
+  .form-control-sm{
+    background-color:#252e38 !important;
+  }
+  a:hover{
+    color: white;
+  }
+  input:hover{
+    color: white;
   }
 }
