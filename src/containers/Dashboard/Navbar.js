@@ -13,7 +13,7 @@ class Navbar extends Component {
         </div>
         <div class=" navbar-collapse">
           <ul class="navbar-nav mr-auto mt-2 ml-3">
-            <li class="nav-item">
+            <li class="active" class="nav-item">
               <a class="nav-link " href={HOME}>
                 PRACTICE
               </a>
@@ -34,11 +34,35 @@ class Navbar extends Component {
               </a>
             </li>
           </ul>
-          <Link to={HOME}>
-            <button type="button" class="btn btn-secondary btn-lg">
-              Logout
-            </button>
-          </Link>
+          <ul class="navbar-nav  mt-2 ml-5">
+            <li class="nav-item">
+              <form class="form-inline md-form form-sm mt-0">
+                <i class="fa fa-search" />
+                <input
+                  class=" form-control-sm ml-3 w-75"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </form>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href={HOME}>
+                <i className="fa fa-bell-o fa-lg" />
+              </a>
+            </li>
+            <li class="nav-item ml-1">
+              <a class="nav-link" href={HOME}>
+                <i className="fa fa-comment-o fa-lg" />
+              </a>
+            </li>
+            <li class="nav-item ml-1">
+              <a class="nav-link" href={HOME}>
+                <i className="fa fa-user-o fa-lg" /> Humna Aleem{" "}
+                <i class="fa fa-angle-down" />
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     );
