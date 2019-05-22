@@ -10,26 +10,6 @@ class DashboardFooter extends Component {
           <i className="fa fa-heart pulse" />
           <span className="gainlo">&nbsp;by Gsquad Team</span>
         </div>
-        <div align="center">
-          <p class="lead text-center col-9 text-muted">
-            <span>
-              At BePrepared, our mission is to help you improve yourself and
-              land your dream job. We have a sizeable repository of interview
-              resources for many companies.In the past few years, our users have
-              landed jobs at top companies around world.
-            </span>
-          </p>
-        </div>
-        <div className="icon-div" align="center">
-          <i className="fa fa-facebook-official pl-5 fa-5x" />
-          <i className="fa fa-apple pl-5 fa-5x" />
-          <i className="fa fa-google pl-5 fa-5x" />
-          <i className="fa fa-amazon pl-5 fa-5x" />
-          <i className="fa fa-pinterest-square pl-5 fa-5x" />
-        </div>
-        <div className="hr-div">
-          <hr class="style14" />
-        </div>
         <div className="hr-div" align="center">
           <p class="lead text-center pl-5 col-6 text-muted">
             <span>
