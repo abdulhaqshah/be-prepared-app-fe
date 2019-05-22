@@ -10,19 +10,6 @@ class DashboardFooter extends Component {
           <i className="fa fa-heart pulse" />
           <span className="gainlo">&nbsp;by Gsquad Team</span>
         </div>
-        <div className="hr-div" align="center">
-          <p class="lead text-center pl-5 col-6 text-muted">
-            <span>
-              If you are passionate about tackling some of the most interesting
-              problems around,We would love to hear from you.
-            </span>
-          </p>
-        </div>
-        <div align="center">
-          <a href="/home">
-            Visit BePrepared <i className="fa fa-angle-double-right " />
-          </a>
-        </div>
         <div>
           <hr />
         </div>
