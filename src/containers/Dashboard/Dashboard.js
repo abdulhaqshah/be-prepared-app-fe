@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
-import DashboardFooter from "../Dashboard/DashboardFooter";
 import ContentContainer from "../Dashboard/ContentContainer";
 
 class Dashboard extends Component {
@@ -8,9 +7,7 @@ class Dashboard extends Component {
     return (
       <div>
         <Navbar />
-        <ContentContainer />
-        <DashboardFooter />
-   
+        <ContentContainer />   
       </div>
     );
   }

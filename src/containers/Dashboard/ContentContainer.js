@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./ContentContainer.scss";
 import Card from "./Card";
+import Footer from '../../components/Footer'
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -85,17 +86,18 @@ class ContentContainer extends Component {
           </h5>
 
           <div className="container">
-            <div className="courses shadow-lg ml-0 mr-5">
+            <div className="courses shadow-lg ml-0 mr-5 mb-5">
               <Card title="POBLEM SOLVING" />
             </div>
-            <div className="languages shadow-lg ml-4">
+            <div className="languages shadow-lg ml-4 mb-5">
               <Card title="LANGUAGES" />
             </div>
-            <div className="specialized-skills shadow-lg ml-3">
+            <div className="specialized-skills shadow-lg ml-3 mb-5">
               <Card title="SPECIALIZED SKILLS " />
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }
