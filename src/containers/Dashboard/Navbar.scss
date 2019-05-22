@@ -1,6 +1,6 @@
 .navbar {
   height: 70px;
-  &.navbar-dark.bg-dark {
+  &.navbar-dark.bg-dark,.form-control-sm{
     background-color: #252e38 !important;
   }
   &.shadow-lg {
@@ -10,17 +10,15 @@
     font-size: 14px !important;
     color: #cce5fa !important;
     font-family: fantasy !important;
+    &a:hover{
+      color:white;
+    }
   }
-  .fa-search{
+  .fa-search,input:hover{
     color: white !important;
-  }
-  .form-control-sm{
-    background-color:#252e38 !important;
   }
   a:hover{
     color: white;
   }
-  input:hover{
-    color: white;
-  }
+  
 }
