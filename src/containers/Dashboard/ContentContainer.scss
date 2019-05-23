@@ -7,7 +7,7 @@
     font-family: fantasy;
   }
   .main-container {
-    background-color: rgb(238, 247, 255);
+    background-color: rgb(244, 246, 234);
     padding-top: 50px;
     .interview-card1,
     .interview-card2,
@@ -17,7 +17,7 @@
     .interview-card3 .progress-div {
       padding-bottom: 30px;
     }
-    
+
     .container .courses,
     .container .languages,
     .container .specialized-skills {
@@ -31,6 +31,22 @@
       margin: 0 auto;
     }
     .container .specialized-skills {
+      float: right;
+    }
+    .tutorial-container .tutorial1,
+    .tutorial-container .tutorial2,
+    .tutorial-container .tutorial3,
+    .tutorial-container .tutorial4 {
+      display: inline-block;
+    }
+
+    .tutorial-container .tutorial1 {
+      float: left;
+    }
+    .tutorial-container .tutorial2 {
+      margin: 0 auto;
+    }
+    .tutorial-container .tutorial3 {
       float: right;
     }
   }
