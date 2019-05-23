@@ -18,19 +18,19 @@
       padding-bottom: 30px;
     }
 
-    .container .courses,
-    .container .languages,
-    .container .specialized-skills {
+    .card-container .courses,
+    .card-container .languages,
+    .card-container .specialized-skills {
       display: inline-block;
     }
 
-    .container .courses {
+    .card-container .courses {
       float: left;
     }
-    .container .languages {
+    .card-container .languages {
       margin: 0 auto;
     }
-    .container .specialized-skills {
+    .card-container .specialized-skills {
       float: right;
     }
     .tutorial-container .tutorial1,

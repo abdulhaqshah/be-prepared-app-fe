@@ -102,14 +102,14 @@ class ContentContainer extends Component {
             Explore BePrepared Skills
           </h5>
 
-          <div className="container ml-4">
-            <div className="courses shadow-lg ml-2 mr-4 mb-5">
+          <div className="card-container ml-5">
+            <div className="courses shadow-lg mr-4 mb-5">
               <Card title="POBLEM SOLVING" />
             </div>
-            <div className="languages shadow-lg  mr-0 mb-5">
+            <div className="languages shadow-lg ml-5 mb-5">
               <Card title="LANGUAGES" />
             </div>
-            <div className="specialized-skills shadow-lg mb-5">
+            <div className="specialized-skills shadow-lg mr-5 mb-5">
               <Card title="SPECIALIZED SKILLS " />
             </div>
           </div>
