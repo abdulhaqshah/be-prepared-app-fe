@@ -47,7 +47,7 @@ class ContentContainer extends Component {
                   curated challenges and tips based on learnings from 1000+
                   compaanies to help you prepare for your upcoming interviews.
                 </p>
-                <a href="#" className="btn btn-success btn-lg">
+                <a href="#" className="btn shadow-lg btn-success btn-lg ">
                   View
                 </a>
               </div>
@@ -66,7 +66,7 @@ class ContentContainer extends Component {
                   the features of out site, including
                   <b> Jobs, Leaderboard, Recommendations and more.</b>
                 </p>
-                <a href="#" className="btn btn-success btn-lg ">
+                <a href="#" className="btn shadow-lg btn-success btn-lg ">
                   Resend Confirmation Email
                 </a>
               </div>
@@ -91,7 +91,7 @@ class ContentContainer extends Component {
                   </div>
                 </div>
 
-                <a href="#" className="btn btn-outline-success btn-lg">
+                <a href="#" className="btn shadow-lg btn-outline-success btn-lg">
                   Continue Practice
                 </a>
               </div>
