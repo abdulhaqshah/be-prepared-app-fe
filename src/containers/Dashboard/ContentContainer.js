@@ -28,7 +28,7 @@ class ContentContainer extends Component {
     return (
       <div className="content-container">
         <header>
-          <div className="ml-5 font-weight-bold">
+          <div className="ml-5 font-weight-bold text-muted">
             <span>practice</span>
           </div>
           <div className="ml-5 font-weight-bold">
@@ -36,7 +36,7 @@ class ContentContainer extends Component {
           </div>
         </header>
         <div className="main-container">
-          <h5 className="ml-5">Your Skills</h5>
+          <h5 className="ml-5 mb-4 font-weight-bold">Your Skills</h5>
 
           <div className="interview-card1 shadow-lg mr-4 ml-5">
             <div className="card" style={{ width: "35rem", height: "15rem" }}>
@@ -116,16 +116,16 @@ class ContentContainer extends Component {
           <h5 className="text-muted ml-5 mb-5 mt-3">Tutorials</h5>
 
           <div className="tutorial-container ml-5">
-            <div className="tutorial1 mr-3 mb-5">
+            <div className="tutorial1 mr-4 mb-5">
               <Tutorial heading={heading1} title={title1} para={para1} link={link1} />
             </div>
-            <div className="tutorial2 ml-5 mr-4 mb-5">
+            <div className="tutorial2 ml-5 mr-5 mb-5">
               <Tutorial heading={heading2} title={title2} para={para2} link={link2} />
             </div>
-            <div className="tutorial3  mr-5 mb-5">
+            <div className="tutorial3 mr-5 mb-5">
               <Tutorial heading={heading3} title={title3} para={para3} link={link2} />
             </div>
-            <div className="tutorial4 ml-0 mb-5">
+            <div className="tutorial4 mb-5">
               <Tutorial heading={heading4} title={title3} para={para4} link={link2} />
             </div>
           </div>
