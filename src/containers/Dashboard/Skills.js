@@ -8,7 +8,7 @@ class Skills extends Component {
         <div>
           <h5 className="ml-5 font-weight-bold">Your Skills</h5>
         </div>
-        <div>
+        <div className="row">
           <div className="interview-prep shadow-lg mt-5 mr-4 ml-5">
             <div className="card">
               <div className="card-body">

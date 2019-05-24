@@ -3,6 +3,10 @@
 .tutorial-container .statistics,
 .tutorial-container .javascript {
   display: inline-block;
+  .card {
+    width: 19rem;
+    height: 13rem;
+  }
 }
 
 .tutorial-container .interview-prep-tutorial {

@@ -9,18 +9,18 @@ class ContentContainer extends Component {
   render() {
     return (
       <div className="content-container">
-        <header>
+        <header className="container">
           <div>
             <div className="prac ml-5">
-              <span>practice</span>
+              <span>Practice</span>
             </div>
             <div className=" ml-5 font-weight-bold">
-              <h5 className="heading">Dashboard</h5>
+              <h1 className="heading">Dashboard</h1>
             </div>
           </div>
         </header>
         <div className="main-container">
-          <div>
+          <div className="container">
             <div>
               <Skills />
             </div>

@@ -12,13 +12,12 @@ class Card extends Component {
             Tutorials
           </h5>
         </div>
-        <div>
+        <div className="row">
           <div className="tutorial-container">
             <div className="interview-prep-tutorial">
               <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
                 <div
                   className="card"
-                  style={{ width: "22rem", height: "13rem" }}
                 >
                   <div className="card-body">
                     <p className="text-muted">INTERVIEW PREPARATION</p>
@@ -41,7 +40,6 @@ class Card extends Component {
               <div className="tutorial-card shadow-lg ml-5 mr-2 mb-5">
                 <div
                   className="card"
-                  style={{ width: "22rem", height: "13rem" }}
                 >
                   <div className="card-body">
                     <p className="text-muted">30 DAYS OF CODE</p>
@@ -63,7 +61,6 @@ class Card extends Component {
               <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
                 <div
                   className="card"
-                  style={{ width: "22rem", height: "13rem" }}
                 >
                   <div className="card-body">
                     <p className="text-muted">TUTORIAL</p>
@@ -82,7 +79,7 @@ class Card extends Component {
             </div>
             <div className="javascript">
             <div className="tutorial-card shadow-lg  ml-5 mb-5">
-              <div className="card" style={{ width: "22rem", height: "13rem" }}>
+              <div className="card" >
                 <div className="card-body">
                   <p className="text-muted">TUTORIAL</p>
                   <h2 className="card-title font-weight-bold">
