@@ -12,7 +12,7 @@ class Courses extends Component{
                   Explore BePrepared Skills
                 </h5>
               </div>
-              <div>
+              <div className="row">
                 <div className="card-container ">
                   <div className="courses shadow-lg ml-5 mr-4 mb-5">
                     <Card title="POBLEM SOLVING" />
