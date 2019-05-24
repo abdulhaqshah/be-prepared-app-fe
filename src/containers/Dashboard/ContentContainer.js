@@ -6,18 +6,15 @@ import Skills from "../Dashboard/Skills";
 import Courses from "./Courses";
 
 class ContentContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="content-container">
         <header>
           <div>
-            <div className="ml-5 text-muted">
+            <div className="prac ml-5">
               <span>practice</span>
             </div>
-            <div className="ml-5 font-weight-bold">
+            <div className=" ml-5 font-weight-bold">
               <h5 className="heading">Dashboard</h5>
             </div>
           </div>

@@ -1,14 +1,14 @@
-.tutorial-container .tutorial1,
-.tutorial-container .tutorial2,
-.tutorial-container .tutorial3,
-.tutorial-container .tutorial4 {
+.tutorial-container .interview-prep-tutorial,
+.tutorial-container .learn-code,
+.tutorial-container .statistics,
+.tutorial-container .javascript {
   display: inline-block;
 }
 
-.tutorial-container .tutorial1 {
+.tutorial-container .interview-prep-tutorial {
   float: left;
 }
-.tutorial-container .tutorial2 {
+.tutorial-container .learn-code {
   margin: 0 auto;
 }
 .tutorial-container {

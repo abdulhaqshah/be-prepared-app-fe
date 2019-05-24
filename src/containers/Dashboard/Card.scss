@@ -1,7 +1,18 @@
 .courses-card{
+  .card{
+    width:22rem !important;
+    height: 30rem !important;
+  }
+  p{
+    color:#738f93;
+    font-family: "sans-serif" !important ;
+
+  }
     a{
       font-size: 23px !important;
       color: black !important;
+      font-family: "sans-serif" !important ;
+
     }
     a:hover{
       color: green;
