@@ -10,9 +10,8 @@
     font-size: 14px !important;
     color: #cce5fa !important;
     font-weight: bold;
-    // font-family: "SourceCodePro, monaco, Courier, monospace;" ;
-    // OpenSans, Arial, Helvetica, sans-serif,
-    &a:hover{
+    font-family: "sans-serif" ;
+    a.nav-link:hover{
       color:white;
     }
   }

@@ -7,14 +7,14 @@ class Card extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h5 className="text-muted font-weight-bold ml-5 mb-5 mt-3">
+        <div className="text-muted font-weight-bold ml-5 mb-5 mt-3">
+          <h5>
             Tutorials
           </h5>
         </div>
         <div>
           <div className="tutorial-container">
-            <div className="tutorial1">
+            <div className="interview-prep-tutorial">
               <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
                 <div
                   className="card"
@@ -26,7 +26,7 @@ class Card extends Component {
                       Interview Preparation Kit
                     </h2>
                     <p className="card-text text-muted">
-                      curated challenges based on learnings from 1000+ companies
+                      challenges based on learnings from 1000+ companies
                       to help you prepare
                     </p>
                     <a href="#" className="font-weight-bold">
@@ -37,7 +37,7 @@ class Card extends Component {
               </div>
             </div>
 
-            <div className="tutorial2">
+            <div className="learn-code">
               <div className="tutorial-card shadow-lg ml-5 mr-2 mb-5">
                 <div
                   className="card"
@@ -59,7 +59,7 @@ class Card extends Component {
                 </div>
               </div>
             </div>
-            <div className="tutorial3">
+            <div className="statistics">
               <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
                 <div
                   className="card"
@@ -80,7 +80,7 @@ class Card extends Component {
                 </div>
               </div>
             </div>
-            <div className="tutorial4">
+            <div className="javascript">
             <div className="tutorial-card shadow-lg  ml-5 mb-5">
               <div className="card" style={{ width: "22rem", height: "13rem" }}>
                 <div className="card-body">

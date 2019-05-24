@@ -10,10 +10,9 @@ class Card extends Component {
         <div
           className="card-div shadow-lg"
           className="card"
-          style={{ width: "22rem", height: "30rem" }}
         >
           <div className="card-body">
-            <p className="text-muted">{this.props.title}</p>
+            <p>{this.props.title}</p>
             <hr />
             <div>
               <a href="#">OOP</a>

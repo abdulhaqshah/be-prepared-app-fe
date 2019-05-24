@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Skills.scss"
 
 class Skills extends Component {
   render() {
@@ -8,8 +9,8 @@ class Skills extends Component {
           <h5 className="ml-5 font-weight-bold">Your Skills</h5>
         </div>
         <div>
-          <div className="interview-card1 shadow-lg mr-4 ml-5">
-            <div className="card" style={{ width: "35rem", height: "15rem" }}>
+          <div className="interview-prep shadow-lg mt-5 mr-4 ml-5">
+            <div className="card">
               <div className="card-body">
                 <p className="text-muted">INTERVIEW PREPARATION</p>
                 <h2 className="card-title">Interview Preparation Kit</h2>
@@ -23,8 +24,8 @@ class Skills extends Component {
               </div>
             </div>
           </div>
-          <div className="interview-card2 shadow ml-5 mt-5">
-            <div className="card" style={{ width: "35rem", height: "15rem" }}>
+          <div className="email shadow ml-5 mt-5">
+            <div className="card" >
               <div className="card-body">
                 <div className="icon-div">
                   <i className="fa fa-envelope-o fa-lg" />
@@ -36,17 +37,16 @@ class Skills extends Component {
                   the features of out site, including
                   <b> Jobs, Leaderboard, Recommendations and more.</b>
                 </p>
-                <a href="#" className="btn shadow-lg btn-success btn-lg ">
+                <a href="#" className="btn shadow-lg btn-success btn-lg">
                   Resend Confirmation Email
                 </a>
               </div>
             </div>
           </div>
-          <div className="interview-card3 shadow-lg ml-5 mt-5">
+          <div className="prob-sol shadow-lg ml-5 mt-5">
             <div
               className="card-div"
               className="card"
-              style={{ width: "35rem", height: "15rem" }}
             >
               <div className="card-body">
                 <p className="text-muted">PROBLEM SOLVING</p>
@@ -56,7 +56,6 @@ class Skills extends Component {
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      style={{ width: " 25%" }}
                     />
                   </div>
                 </div>
