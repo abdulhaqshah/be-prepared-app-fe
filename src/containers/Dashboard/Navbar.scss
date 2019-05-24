@@ -9,7 +9,9 @@
   a.nav-link {
     font-size: 14px !important;
     color: #cce5fa !important;
-    font-family: fantasy !important;
+    font-weight: bold;
+    // font-family: "SourceCodePro, monaco, Courier, monospace;" ;
+    // OpenSans, Arial, Helvetica, sans-serif,
     &a:hover{
       color:white;
     }

@@ -1,58 +1,16 @@
 .content-container {
-  margin-top: 90px;
+  margin-top: 80px;
   .card,
   .btn-outline-success,
   .btn-success {
     border-radius: 0% !important;
   }
-  .dashboard-heading-div,
-  .prac-div,
-  p,
-  h5 {
-    font-family: fantasy;
+  p
+   {
+     color:#b5b8bc;
   }
   .main-container {
     background-color: rgb(244, 246, 234);
-    padding-top: 50px;
-    .interview-card1,
-    .interview-card2,
-    .interview-card3 {
-      display: inline-block;
-    }
-    .interview-card3 .progress-div {
-      padding-bottom: 30px;
-    }
-
-    .card-container .courses,
-    .card-container .languages,
-    .card-container .specialized-skills {
-      display: inline-block;
-    }
-
-    .card-container .courses {
-      float: left;
-    }
-    .card-container .languages {
-      margin: 0 auto;
-    }
-    .card-container .specialized-skills {
-      float: right;
-    }
-    .tutorial-container .tutorial1,
-    .tutorial-container .tutorial2,
-    .tutorial-container .tutorial3,
-    .tutorial-container .tutorial4 {
-      display: inline-block;
-    }
-
-    .tutorial-container .tutorial1 {
-      float: left;
-    }
-    .tutorial-container .tutorial2 {
-      margin: 0 auto;
-    }
-    .tutorial-container .tutorial3 {
-      float: right;
-    }
+    padding-top: 50px;   
   }
 }

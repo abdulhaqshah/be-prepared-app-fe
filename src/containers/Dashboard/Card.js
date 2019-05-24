@@ -15,18 +15,19 @@ class Card extends Component {
           <div className="card-body">
             <p className="text-muted">{this.props.title}</p>
             <hr />
-            <a href="#">OOP</a>
-            <hr />
-            <a href="#">Data Structures</a>
-            <hr />
-            <a href="#">Database</a>
-            <hr />
-            <a href="#">Algorithm</a>
-            <hr />
-            <a href="#">Web Development</a>
-            <hr />
-            <a href="#">Android</a>
-            <br />
+            <div>
+              <a href="#">OOP</a>
+              <hr />
+              <a href="#">Data Structures</a>
+              <hr />
+              <a href="#">Database</a>
+              <hr />
+              <a href="#">Algorithm</a>
+              <hr />
+              <a href="#">Web Development</a>
+              <hr />
+              <a href="#">Android</a>
+            </div>
           </div>
         </div>
       </div>
