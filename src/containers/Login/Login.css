@@ -24,7 +24,6 @@
   cursor: pointer;
   width: 100%;
   font: bold;
-  font-family: cursive;
   font-size: 25px;
   border-radius: 8px;
 }
@@ -34,7 +33,6 @@
 .login-heading {
   padding-top: 10px;
   font: bold;
-  font-family: cursive;
   font-size: 38px;
   align-items: center;
 }

@@ -11,7 +11,19 @@ class Navbar extends Component {
             Be Prepared
           </Link>
         </div>
-        <div class=" navbar-collapse">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 ml-3">
             <li class="active" class="nav-item">
               <a class="nav-link " href={HOME}>
@@ -46,14 +58,14 @@ class Navbar extends Component {
                 />
               </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link " href={HOME}>
-                <i className="fa fa-bell-o fa-lg" />
-              </a>
-            </li>
             <li class="nav-item ml-1">
               <a class="nav-link" href={HOME}>
                 <i className="fa fa-comment-o fa-lg" />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href={HOME}>
+                <i className="fa fa-bell-o fa-lg" />
               </a>
             </li>
             <li class="nav-item ml-1">
