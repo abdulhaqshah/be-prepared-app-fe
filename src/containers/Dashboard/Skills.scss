@@ -15,11 +15,11 @@
       font-size: 13px;
       color: #738f93;
     }
-    .card-heading{
-        color:#0D1525;
-        font-weight: bold
-      }
-    
+    .card-heading {
+      color: #0d1525;
+      font-weight: bold;
+    }
+
     .btn-div {
       padding-top: 7px;
     }
@@ -29,13 +29,24 @@
       padding-right: 25px;
       border-radius: 0%;
       border: 2ch;
-      border-color: green;
+    }
+    .email-verficitaion-card-content {
+      padding-left: 50px;
+      .card-email-btn.btn-success {
+        background: #ffffff;
+        color: black;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 0%;
+        border: 2ch;
+      }
     }
   }
 }
+
 .prob-sol {
   .progress {
-      height: 5px;
+    height: 5px;
     .progress-bar {
       width: 25%;
       background: rgb(27, 169, 76);
@@ -43,13 +54,13 @@
   }
 }
 .email .card-icon,
-.email .card-content {
+.email .email-verficitaion-card-content {
   display: inline-block;
 }
 .email .card-icon {
   float: left;
 }
-.email .card-content {
+.email .email-verficitaion-card-content {
   float: right;
 }
 .card.bg-secondary {

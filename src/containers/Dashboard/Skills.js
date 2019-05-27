@@ -29,20 +29,26 @@ class Skills extends Component {
           <div className="email shadow ml-5 mt-5">
             <div className="card bg-secondary">
               <div className="card-body">
-              {/* <div className="card-icon">
-              <i className="fa fa-envelope-o fa-lg"></i>
-              </div> */}
                 <div className="card-content">
-                  <h3 className="card-heading">Confirm your email address </h3>
-                  <p className="email-p">
-                    please check your inbox. We've sent a link to confirm your
-                    email address. Once you confir, you will be able to access
-                    all the features of out site, including
-                    <b> Jobs, Leaderboard, Recommendations and more.</b>
-                  </p>
-                    <button className="card-btn shadow btn-success btn-lg">
-                      Resend Confirmation Email
-                    </button>
+                  {/* <div className="card-icon">
+                    <i className="fa fa-envelope-o fa-lg" />
+                  </div> */}
+                  <div className="email-verficitaion-card-content">
+                    <h3 className="card-heading">
+                      Confirm your email address
+                    </h3>
+                    <p className="email-p">
+                      please check your inbox. We've sent a link to confirm your
+                      email address. Once you confir, you will be able to access
+                      all the features of out site, including
+                      <b> Jobs, Leaderboard, Recommendations and more.</b>
+                    </p>
+                    <div className="email-btn">
+                      <button className="card-email-btn shadow btn-success btn-lg">
+                        Resend Confirmation Email
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
