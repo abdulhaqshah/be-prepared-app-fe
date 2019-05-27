@@ -5,17 +5,21 @@
   .btn-success {
     border-radius: 0% !important;
   }
-  .prac,p
-   {
+  .prac,
+  p {
     font-family: "sans-serif";
-     color:#738f93;
+    color: #738f93;
   }
-  .heading{
+  .heading {
     font-size: 26px;
     font-weight: 700;
   }
   .main-container {
-    background-color:#F3F7F7;
-    padding-top: 50px;   
+    background-color: #f3f7f7;
+    padding-top: 50px;
+  }
+  .bookmark {
+    color: #50aa52;
+    padding-right: 45px;
   }
 }
