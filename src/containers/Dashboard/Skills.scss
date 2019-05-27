@@ -12,13 +12,18 @@
       font-size: 13px;
       color: #738f93;
     }
-    .card-btn.btn-success {
-      background: rgb(27, 169, 76);
-      padding-left: 25px;
-      padding-right: 25px;
-      border-radius: 0%;
-      border: 2ch;
+    .btn-div {
+        padding-top:7px;
+     
     }
+    .card-btn.btn-success {
+        background: rgb(27, 169, 76);
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 0%;
+        border: 2ch;
+        border-color: green;
+      }
   }
 }
 .prob-sol {

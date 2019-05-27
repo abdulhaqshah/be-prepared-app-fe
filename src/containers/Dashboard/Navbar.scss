@@ -7,12 +7,12 @@
     color: #131c25 !important;
   }
   a.nav-link {
-    font-size: 14px !important;
+    font-size: 14px;
     color: #b7c9cc !important;
     font-weight: bold;
     font-family: "sans-serif" ;
-    a:hover{
-      color:white;
+    &:hover{
+      color: white;
     }
   }
   .fa-search,input:hover{
