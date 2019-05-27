@@ -1,6 +1,7 @@
 .navbar {
   height: 70px;
-  &.navbar-dark.bg-dark,.form-control-sm{
+  &.navbar-dark.bg-dark,
+  .form-control-sm {
     background-color: #252e38 !important;
   }
   &.shadow-lg {
@@ -10,16 +11,19 @@
     font-size: 14px;
     color: #b7c9cc !important;
     font-weight: bold;
-    font-family: "sans-serif" ;
-    &:hover{
+    font-family: "sans-serif";
+    &:hover {
       color: white !important;
     }
   }
-  .fa-search,input:hover{
+  a.nav-link.active {
     color: white !important;
   }
-  a:hover{
+  .fa-search,
+  input:hover {
+    color: white !important;
+  }
+  a:hover {
     color: white;
   }
-  
 }
