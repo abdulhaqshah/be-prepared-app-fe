@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./ContentContainer.scss";
 import Footer from "../../components/Footer";
 import Tutorial from "../Dashboard/Tutorial";
@@ -10,26 +10,24 @@ class ContentContainer extends Component {
     return (
       <div className="content-container">
         <header className="container">
-          <div>
             <div className="prac ml-5">
               <span>Practice</span>
             </div>
-            <div className=" ml-5 font-weight-bold">
+            <div className="ml-5 font-weight-bold">
               <h1 className="heading">Dashboard</h1>
             </div>
-          </div>
         </header>
         <div className="main-container">
           <div className="container">
-            <div>
+            <Fragment>
               <Skills />
-            </div>
-            <div>
+            </Fragment>
+            <Fragment>
               <Courses />
-            </div>
-            <div>
+            </Fragment>
+            <Fragment>
               <Tutorial />
-            </div>
+            </Fragment>
           </div>
         </div>
         <Footer />
