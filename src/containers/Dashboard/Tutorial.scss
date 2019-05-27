@@ -18,12 +18,6 @@
   }
   
 }
-.tutorial-container .interview-prep-tutorial {
-  float: left;
-}
-.tutorial-container .learn-code {
-  margin: 0 auto;
-}
 .tutorial-container {
   .tutorial-card {
     p {
@@ -34,10 +28,11 @@
     }
     a {
       font-size: 15px;
-      color: green;
+      color:#54AA4D;
     }
-    a:hover {
+    &:hover {
       color: green;
+      text-decoration: none;
     }
   }
 }

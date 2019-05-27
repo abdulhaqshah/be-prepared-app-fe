@@ -21,5 +21,9 @@
   .bookmark {
     color: #50aa52;
     padding-right: 45px;
+    &:hover{
+      text-decoration: none;
+      color: green;
+    }
   }
 }

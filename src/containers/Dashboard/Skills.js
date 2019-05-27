@@ -17,9 +17,11 @@ class Skills extends Component {
                     curated challenges and tips based on learnings from 1000+
                     compaanies to help you prepare for your upcoming interviews.
                   </p>
-                  <button className="card-btn shadow btn-success btn-lg">
-                    View
-                  </button>
+                  <div className="btn-div">
+                    <button className="card-btn shadow btn-success btn-lg">
+                      View
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -35,9 +37,9 @@ class Skills extends Component {
                     all the features of out site, including
                     <b> Jobs, Leaderboard, Recommendations and more.</b>
                   </p>
-                  <button className="card-btn shadow btn-success btn-lg">
-                    Resend Confirmation Email
-                  </button>
+                    <button className="card-btn shadow btn-success btn-lg">
+                      Resend Confirmation Email
+                    </button>
                 </div>
               </div>
             </div>
@@ -52,9 +54,11 @@ class Skills extends Component {
                     <div class="progress-bar" role="progressbar" />
                   </div>
                 </div>
-                <button className="card-btn shadow btn-outline-success btn-lg">
-                  Continue Practice
-                </button>
+                <div className="btn-div">
+                  <button className="card-btn shadow btn-outline-success btn-lg">
+                    Continue Practice
+                  </button>
+                </div>
               </div>
             </div>
           </div>
