@@ -7,6 +7,9 @@
   .card {
     width: 30rem;
     height: 15rem;
+    .email-p {
+      color: black;
+    }
     .card-title,
     p {
       font-size: 13px;
@@ -30,11 +33,6 @@
     width: 25%;
   }
 }
-// .email{
-.email-p {
-  color: black;
-}
-// }
 .email .card-icon,
 .email .card-content {
   display: inline-block;
@@ -46,5 +44,5 @@
   float: right;
 }
 .card.bg-secondary {
-  background-color: #dde4e5 !important;
+  background-color: #E7EEEF !important;
 }
