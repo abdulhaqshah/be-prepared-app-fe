@@ -1,20 +1,29 @@
-.courses-card{
-  .card{
-    width:19rem !important;
+.courses-card {
+  .header {
+    border-bottom: solid #e9edee;
+    border-width: 1px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+  }
+  .card {
+    width: 19rem !important;
     height: 30rem !important;
   }
-  p{
-    color:#738f93;
-    font-family: "sans-serif" !important ;
-
+  .card-title {
+    font-size: 13px;
+    color: #738f93;
   }
-    a{
-      font-size: 23px !important;
-      color: black !important;
-      font-family: "sans-serif" !important ;
-
-    }
-    a:hover{
-      color: green;
-    }
+  .course-name {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid #e9edee;
+    border-width: 1px;
+  }
+  a {
+    font-size: 23px;
+    color: black;
+  }
+  a:hover {
+    color: green;
+  }
 }

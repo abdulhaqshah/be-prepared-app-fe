@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 import "./Tutorial.scss";
 class Card extends Component {
   constructor(props) {
@@ -6,9 +6,9 @@ class Card extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="text-muted font-weight-bold ml-5 mb-5 mt-3">
-          <h5>
+      <Fragment>
+        <div>
+        <h5 className="headings ml-5 mb-5 mt-5">
             Tutorials
           </h5>
         </div>
@@ -20,17 +20,20 @@ class Card extends Component {
                   className="card"
                 >
                   <div className="card-body">
-                    <p className="text-muted">INTERVIEW PREPARATION</p>
-                    <h2 className="card-title font-weight-bold">
+                    <h5 className="card-title">INTERVIEW PREPARATION</h5>
+                    <h2 className="card-heading font-weight-bold">
                       Interview Preparation Kit
                     </h2>
-                    <p className="card-text text-muted">
+                    <p>
                       challenges based on learnings from 1000+ companies
                       to help you prepare
                     </p>
-                    <a href="#" className="font-weight-bold">
+                    <div className="tutorial-link">
+                    <a href="#" className=" font-weight-bold">
                       View Tutorial
                     </a>
+                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -42,17 +45,19 @@ class Card extends Component {
                   className="card"
                 >
                   <div className="card-body">
-                    <p className="text-muted">30 DAYS OF CODE</p>
-                    <h2 className="card-title font-weight-bold">
+                    <p className="card-title">30 DAYS OF CODE</p>
+                    <h2 className="card-heading font-weight-bold">
                       Learn to code in 30 days
                     </h2>
-                    <p className="card-text text-muted">
+                    <p>
                       Learn if-else statements, recursion, data, structure, oop
                       and more.
                     </p>
-                    <a href="#" className="font-weight-bold">
-                      Start Tutorial
-                    </a>
+                    <div className="tutorial-link">
+                  <a href="#" className="font-weight-bold">
+                    Start Tutorial
+                  </a>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -63,16 +68,18 @@ class Card extends Component {
                   className="card"
                 >
                   <div className="card-body">
-                    <p className="text-muted">TUTORIAL</p>
-                    <h2 className="card-title font-weight-bold">
+                    <p className="card-title">TUTORIAL</p>
+                    <h2 className="card-heading font-weight-bold">
                       10 Days of Statistics
                     </h2>
-                    <p className="card-text text-muted">
+                    <p>
                       Learn Probabilitym distribution, regression and more!{" "}
                     </p>
-                    <a href="#" className="font-weight-bold">
-                      Start Tutorial
-                    </a>
+                    <div className="tutorial-link">
+                  <a href="#" className="font-weight-bold">
+                    Start Tutorial
+                  </a>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -81,23 +88,25 @@ class Card extends Component {
             <div className="tutorial-card shadow-lg  ml-5 mb-5">
               <div className="card" >
                 <div className="card-body">
-                  <p className="text-muted">TUTORIAL</p>
-                  <h2 className="card-title font-weight-bold">
+                  <p className="card-title">TUTORIAL</p>
+                  <h2 className="card-heading font-weight-bold">
                     10 Days of Javascript
                   </h2>
-                  <p className="card-text text-muted">
+                  <p >
                     Learn and improve your Javascript fundamentals"
                   </p>
+                  <div className="tutorial-link">
                   <a href="#" className="font-weight-bold">
                     Start Tutorial
                   </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

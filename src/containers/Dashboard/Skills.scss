@@ -1,13 +1,28 @@
-.interview-prep,.email,.prob-sol{
-    .card{
-        width:30rem ;
-        height:15rem ;
-        p{
-            font-size:13px;
-        }
-    }
+.skill-label {
+  font-size: 20px;
 }
-
-.progress-bar{
-    width:25%;
+.interview-prep,
+.email,
+.prob-sol {
+  .card {
+    width: 30rem;
+    height: 15rem;
+    .card-title,
+    p {
+      font-size: 13px;
+      color: #738f93;
+    }
+    .card-btn.btn-success {
+      background: rgb(27, 169, 76);
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 0%;
+      border: 2ch;
+    }
+  }
+}
+.prob-sol {
+  .progress-bar {
+    width: 25%;
+  }
 }

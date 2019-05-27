@@ -1,3 +1,7 @@
+.card-heading{
+  padding-top:10px;
+  padding-bottom: 10px;
+}
 .tutorial-container .interview-prep-tutorial,
 .tutorial-container .learn-code,
 .tutorial-container .statistics,
@@ -6,9 +10,14 @@
   .card {
     width: 19rem;
     height: 13rem;
+    .card-title,
+    p {
+      font-size: 13px;
+      color: #738f93;
+    }
   }
+  
 }
-
 .tutorial-container .interview-prep-tutorial {
   float: left;
 }

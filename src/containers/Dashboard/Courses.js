@@ -1,14 +1,14 @@
 
-import React, {Component} from 'react';
+import React, {Component,Fragment} from 'react';
 import Card from "./Card";
 import "./Courses.scss"
 
 class Courses extends Component{
     render() {
         return (
-            <div>
+            <Fragment>
               <div>
-                <h5 className="text-muted font-weight-bold ml-5 mb-5 mt-5">
+                <h5 className="headings ml-5 mb-5 mt-5">
                   Explore BePrepared Skills
                 </h5>
               </div>
@@ -25,7 +25,7 @@ class Courses extends Component{
                   </div>
                 </div>
               </div>
-            </div>
+            </Fragment>
         )
                 
     }

@@ -7,25 +7,30 @@ class Card extends Component {
   render() {
     return (
       <div className="courses-card">
-        <div
-          className="card-div shadow-lg"
-          className="card"
-        >
+        <div className="card-div shadow-lg" className="card">
           <div className="card-body">
-            <p>{this.props.title}</p>
-            <hr />
-            <div>
-              <a href="#">OOP</a>
-              <hr />
-              <a href="#">Data Structures</a>
-              <hr />
+            <div className="header">
+            <h5 className="card-title">{this.props.title}</h5>
+            </div>
+            <div className="card-content">
+              <div className="course-name">
+                <a href="#">OOP</a>
+              </div>
+              <div className="course-name">
+                <a href="#">Data Structures</a>
+              </div>
+              <div className="course-name">
               <a href="#">Database</a>
-              <hr />
+              </div>
+              <div className="course-name">
               <a href="#">Algorithm</a>
-              <hr />
+              </div>
+              <div className="course-name">
               <a href="#">Web Development</a>
-              <hr />
+              </div>
+              <div className="course-name">
               <a href="#">Android</a>
+              </div>
             </div>
           </div>
         </div>
