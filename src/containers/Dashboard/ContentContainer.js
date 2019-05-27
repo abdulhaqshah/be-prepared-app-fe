@@ -13,9 +13,12 @@ class ContentContainer extends Component {
             <div className="prac ml-5">
               <span>Practice</span>
             </div>
-            <div className="ml-5 font-weight-bold">
-              <h1 className="heading">Dashboard</h1>
-            </div>
+          <div className="ml-5">
+            <h1 className="heading">Dashboard</h1>
+          </div>
+          <div className=" d-flex flex-row-reverse">
+            <a className="bookmark" href="#">Bookmarked Challenges</a>
+          </div>
         </header>
         <div className="main-container">
           <div className="container">
