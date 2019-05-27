@@ -27,11 +27,14 @@ class Skills extends Component {
             </div>
           </div>
           <div className="email shadow ml-5 mt-5">
-            <div className="card">
+            <div className="card bg-secondary">
               <div className="card-body">
+              {/* <div className="card-icon">
+              <i className="fa fa-envelope-o fa-lg"></i>
+              </div> */}
                 <div className="card-content">
                   <h3 className="card-heading">Confirm your email address </h3>
-                  <p>
+                  <p className="email-p">
                     please check your inbox. We've sent a link to confirm your
                     email address. Once you confir, you will be able to access
                     all the features of out site, including
