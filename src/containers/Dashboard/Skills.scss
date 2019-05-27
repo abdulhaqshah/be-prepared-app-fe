@@ -13,21 +13,38 @@
       color: #738f93;
     }
     .btn-div {
-        padding-top:7px;
-     
+      padding-top: 7px;
     }
     .card-btn.btn-success {
-        background: rgb(27, 169, 76);
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 0%;
-        border: 2ch;
-        border-color: green;
-      }
+      background: rgb(27, 169, 76);
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 0%;
+      border: 2ch;
+      border-color: green;
+    }
   }
 }
 .prob-sol {
   .progress-bar {
     width: 25%;
   }
+}
+// .email{
+.email-p {
+  color: black;
+}
+// }
+.email .card-icon,
+.email .card-content {
+  display: inline-block;
+}
+.email .card-icon {
+  float: left;
+}
+.email .card-content {
+  float: right;
+}
+.card.bg-secondary {
+  background-color: #dde4e5 !important;
 }
