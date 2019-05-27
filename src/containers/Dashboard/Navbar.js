@@ -26,7 +26,7 @@ class Navbar extends Component {
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 ml-3">
             <li class="active" class="nav-item">
-              <a class="nav-link " href={HOME}>
+              <a class="nav-link active" href={HOME}>
                 PRACTICE
               </a>
             </li>
