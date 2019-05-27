@@ -29,8 +29,12 @@
   }
 }
 .prob-sol {
-  .progress-bar {
-    width: 25%;
+  .progress {
+      height: 5px;
+    .progress-bar {
+      width: 25%;
+      background: rgb(27, 169, 76);
+    }
   }
 }
 .email .card-icon,
@@ -44,5 +48,5 @@
   float: right;
 }
 .card.bg-secondary {
-  background-color: #E7EEEF !important;
+  background-color: #e7eeef !important;
 }
