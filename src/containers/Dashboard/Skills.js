@@ -30,12 +30,13 @@ class Skills extends Component {
             <div className="card bg-secondary">
               <div className="card-body">
                 <div className="card-content">
-                  {/* <div className="card-icon">
-                    <i className="fa fa-envelope-o fa-lg" />
-                  </div> */}
+                  <div className="card-icon">
+                    <i className="fa fa-envelope-o fa-2x" />
+                  </div>
                   <div className="email-verficitaion-card-content">
                     <h3 className="card-heading">
-                      Confirm your <span className="email-add"> email address</span>
+                      Confirm your
+                      <span className="email-add"> email address</span>
                     </h3>
                     <p className="email-p">
                       please check your inbox. We've sent a link to confirm your
