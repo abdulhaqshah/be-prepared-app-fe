@@ -18,6 +18,9 @@
     .card-heading {
       color: #0d1525;
       font-weight: bold;
+      .email-add{
+        color: rgb(27, 169, 76);
+      }
     }
 
     .btn-div {
@@ -55,7 +58,7 @@
 }
 .email .card-icon,
 .email .email-verficitaion-card-content {
-  display: inline-block;
+  display: inline;
 }
 .email .card-icon {
   float: left;
