@@ -35,7 +35,7 @@ class Skills extends Component {
                   </div> */}
                   <div className="email-verficitaion-card-content">
                     <h3 className="card-heading">
-                      Confirm your email address
+                      Confirm your <span className="email-add"> email address</span>
                     </h3>
                     <p className="email-p">
                       please check your inbox. We've sent a link to confirm your
