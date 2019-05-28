@@ -18,7 +18,7 @@
     .card-heading {
       color: #0d1525;
       font-weight: bold;
-      .email-add{
+      .email-add {
         color: rgb(27, 169, 76);
       }
     }
@@ -34,7 +34,6 @@
       border: 2ch;
     }
     .email-verficitaion-card-content {
-      padding-left: 50px;
       .card-email-btn.btn-success {
         background: #ffffff;
         color: black;
@@ -61,9 +60,11 @@
   display: inline;
 }
 .email .card-icon {
+  padding-top: 11px;
   float: left;
 }
 .email .email-verficitaion-card-content {
+  width: 380px;
   float: right;
 }
 .card.bg-secondary {
