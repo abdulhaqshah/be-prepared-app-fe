@@ -26,10 +26,7 @@ class Courses extends Component{
                 </div>
               </div>
             </Fragment>
-        )
-                
+        )          
     }
-
 }
-
 export default Courses
