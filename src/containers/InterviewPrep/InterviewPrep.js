@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import UserProfile from "../Dashboard/UserProfile/UserProfile";
 
 class InterviewPrep extends Component {
   render() {
-   return(
-     <div>InterviewPrep Container</div>
-   );
+    UserProfile.getName();
+
+    return <div>InterviewPrep Container</div>;
   }
 }
 export default InterviewPrep;

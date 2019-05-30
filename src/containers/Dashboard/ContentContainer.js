@@ -1,10 +1,10 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import "./ContentContainer.scss";
 import Footer from "../../components/Footer";
 import Tutorial from "../Dashboard/Tutorial";
 import Skills from "../Dashboard/Skills";
 import Courses from "./Courses";
-import { BOOKMARK} from "../../constants";
+import { BOOKMARK } from "../../constants";
 
 class ContentContainer extends Component {
   render() {

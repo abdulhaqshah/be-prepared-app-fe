@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {HOME} from '../../constants/index'
 import "./Card.scss";
 
 class Card extends Component {
@@ -16,19 +17,19 @@ class Card extends Component {
             </div>
             <div className="card-content">
               <div className="course-name">
-                <a href="#">OOP</a>
+                <a href={HOME}>OOP</a>
               </div>
               <div className="course-name">
-                <a href="#">Data Structures</a>
+                <a href={HOME}>Data Structures</a>
               </div>
               <div className="course-name">
-                <a href="#">Database</a>
+                <a href={HOME}>Database</a>
               </div>
               <div className="course-name">
-                <a href="#">Algorithm</a>
+                <a href={HOME}>Algorithm</a>
               </div>
               <div className="course-name">
-                <a href="#">Web Development</a>
+                <a href={HOME}>Web Development</a>
               </div>
               <div className="course-name">
                 <a href="#">Android</a>

@@ -8,6 +8,8 @@ import addNotification from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import API from "../../api";
 import "./Login.css";
+import UserProfile from "../Dashboard/UserProfile/UserProfile";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class Login extends Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       email: "",
-      password: "",
+      password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -50,10 +52,9 @@ class Login extends Component {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
-          this.props.history.push(
-            DASHBOARD,
-            this.state.email
-          );
+          this.props.history.push(DASHBOARD, this.state.email);
+          // Session["email"] = email;
+          // localStorage.setItem("SessionID", email);
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -84,6 +85,9 @@ class Login extends Component {
   }
 
   render() {
+    debugger;
+    UserProfile.setName(this.state.email);
+
     return (
       <div>
         <Header btnName="SignUp" redirectTo={SINGUP} />

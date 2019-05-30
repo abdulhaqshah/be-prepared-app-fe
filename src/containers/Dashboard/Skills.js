@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import "./Skills.scss";
 import { INTERVIEW_PREP_KIT,PROBLEM_SOLVING } from "../../constants";
+import "./Skills.scss";
 
 class Skills extends Component {
   render() {

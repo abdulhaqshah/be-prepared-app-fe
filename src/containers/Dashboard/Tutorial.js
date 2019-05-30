@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
+import { INTERVIEW_PREP_KIT ,STATISTICS,JAVASCRIPT,CODE} from "../../constants";
+
 import "./Tutorial.scss";
 class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -26,7 +25,7 @@ class Card extends Component {
                       you prepare
                     </p>
                     <div className="tutorial-link">
-                      <a href="#" className=" font-weight-bold">
+                      <a href={INTERVIEW_PREP_KIT} className=" font-weight-bold">
                         View Tutorial
                       </a>
                     </div>
@@ -48,7 +47,7 @@ class Card extends Component {
                       and more.
                     </p>
                     <div className="tutorial-link">
-                      <a href="#" className="font-weight-bold">
+                      <a href={CODE} className="font-weight-bold">
                         Start Tutorial
                       </a>
                     </div>
@@ -68,7 +67,7 @@ class Card extends Component {
                       Learn Probabilitym distribution, regression and more!{" "}
                     </p>
                     <div className="tutorial-link">
-                      <a href="#" className="font-weight-bold">
+                      <a href={STATISTICS} className="font-weight-bold">
                         Start Tutorial
                       </a>
                     </div>
@@ -86,7 +85,7 @@ class Card extends Component {
                     </h2>
                     <p>Learn and improve your Javascript fundamentals"</p>
                     <div className="tutorial-link">
-                      <a href="#" className="font-weight-bold">
+                      <a href={JAVASCRIPT} className="font-weight-bold">
                         Start Tutorial
                       </a>
                     </div>
