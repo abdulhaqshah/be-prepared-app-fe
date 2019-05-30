@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import Tutorial from "../Dashboard/Tutorial";
 import Skills from "../Dashboard/Skills";
 import Courses from "./Courses";
+import { BOOKMARK} from "../../constants";
 
 class ContentContainer extends Component {
   render() {
@@ -17,7 +18,7 @@ class ContentContainer extends Component {
             <h1 className="heading">Dashboard</h1>
           </div>
           <div className=" d-flex flex-row-reverse">
-            <a className="bookmark" href="#">
+            <a href={BOOKMARK} className="bookmark">
               Bookmarked Challenges
             </a>
           </div>

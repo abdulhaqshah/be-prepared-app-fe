@@ -4,7 +4,8 @@ import Home from "../containers/Home/Home";
 import SignUp from "../containers/SignUp/SignUp";
 import Login from "../containers/Login/Login";
 import Dashboard from '../containers/Dashboard/Dashboard'
-import { HOME, SINGUP, LOGIN, DASHBOARD } from "../constants";
+import Bookmark from '../containers/Bookmark/Bookmark'
+import { HOME, SINGUP, LOGIN, DASHBOARD, BOOKMARK } from "../constants";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Routes extends Component {
@@ -16,6 +17,7 @@ class Routes extends Component {
           <Route exact path={LOGIN} component={Login} />
           <Route path={SINGUP} component={SignUp} />
           <Route path={DASHBOARD} component={Dashboard} />
+          <Route path={BOOKMARK} component={Bookmark}/>
         </Switch>
       </Router>
     );
