@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { HOME } from "../../constants";
 import "./Navbar.scss";
 class Navbar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
@@ -74,8 +74,9 @@ class Navbar extends Component {
             </li>
             <li class="nav-item ml-1">
               <a class="nav-link" href={HOME}>
-                <i className="fa fa-user-o fa-lg mr-1" />{this.props.email}
-                <i class="fa fa-angle-down" />
+                <i className="fa fa-user-o fa-lg mr-1" />
+                {this.props.email}
+                <i class="fa fa-angle-down ml-1" />
               </a>
             </li>
           </ul>
