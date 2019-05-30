@@ -5,7 +5,7 @@ import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
-import { SINGUP, DASHBOARD} from "../../constants";
+import { SINGUP, DASHBOARD } from "../../constants";
 import API from "../../api";
 import "./Login.css";
 class Login extends Component {
@@ -15,7 +15,7 @@ class Login extends Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -50,13 +50,10 @@ class Login extends Component {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
-          addNotification(
-            this.notificationDOMRef,
-            "Success",
-            "success",
-            result.message
+          this.props.history.push(
+            DASHBOARD,
+            this.state.email
           );
-          this.props.history.push(DASHBOARD);
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -89,8 +86,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Header
-         btnName ="SignUp" redirectTo={SINGUP} />
+        <Header btnName="SignUp" redirectTo={SINGUP} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
