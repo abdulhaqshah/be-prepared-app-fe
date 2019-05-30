@@ -4,4 +4,6 @@ export const SINGUP = '/signup';
 export const LOGIN = '/login';  
 export const DASHBOARD = '/dashboard';
 export const BOOKMARK = '/bookmark';
+export const INTERVIEW_PREP_KIT = 'interview-prep-kit';
+export const PROBLEM_SOLVING = 'problem-solving';
 

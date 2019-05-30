@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./Skills.scss";
+import { INTERVIEW_PREP_KIT,PROBLEM_SOLVING } from "../../constants";
 
 class Skills extends Component {
   render() {
@@ -7,25 +8,28 @@ class Skills extends Component {
       <Fragment>
         <div className="skill-label ml-5 font-weight-bold">Your Skills</div>
         <div className="row">
-          <div className="interview-prep shadow-lg mt-5 mr-4 ml-5">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">INTERVIEW PREPARATION</h5>
-                <div className="card-content">
-                  <h3 className="card-heading ">Interview Preparation Kit</h3>
-                  <p className="card-text">
-                    curated challenges and tips based on learnings from 1000+
-                    compaanies to help you prepare for your upcoming interviews.
-                  </p>
-                  <div className="btn-div">
-                    <button className="card-btn shadow btn-success btn-lg">
-                      View
-                    </button>
+          <a href={INTERVIEW_PREP_KIT}>
+            <div className="interview-prep shadow-lg mt-5 mr-4 ml-5">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">INTERVIEW PREPARATION</h5>
+                  <div className="card-content">
+                    <h3 className="card-heading ">Interview Preparation Kit</h3>
+                    <p className="card-text">
+                      curated challenges and tips based on learnings from 1000+
+                      compaanies to help you prepare for your upcoming
+                      interviews.
+                    </p>
+                    <div className="btn-div">
+                      <button className="card-btn shadow btn-success btn-lg">
+                        View
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
           <div className="email shadow ml-5 mt-5">
             <div className="card bg-secondary">
               <div className="card-body">
@@ -54,6 +58,7 @@ class Skills extends Component {
               </div>
             </div>
           </div>
+          <a href={PROBLEM_SOLVING}>
           <div className="prob-sol shadow-lg ml-5 mt-5">
             <div className="card-div" className="card">
               <div className="card-body">
@@ -72,6 +77,7 @@ class Skills extends Component {
               </div>
             </div>
           </div>
+          </a>
         </div>
       </Fragment>
     );
