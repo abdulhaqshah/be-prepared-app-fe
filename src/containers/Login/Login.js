@@ -49,6 +49,13 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
+          debugger;
+          localStorage.setItem('id',result.data.user.uuid);
+          localStorage.setItem('token',result.data.token);
+          localStorage.setItem('name',result.data.user.name);
+          localStorage.setItem('email',result.data.user.email);
+          localStorage.setItem('img',result.data.user.image);
+
           //Form reset
           this.formRef.reset();
           this.props.history.push(DASHBOARD, this.state.email);

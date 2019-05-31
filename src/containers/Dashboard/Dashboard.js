@@ -3,9 +3,10 @@ import Navbar from "./Navbar";
 import ContentContainer from "../Dashboard/ContentContainer";
 
 class Dashboard extends Component {
-  
+
   render() {
-    const email = this.props.location.state;
+    debugger;
+    const email = localStorage.getItem("email");
     var name = email.substring(0, email.lastIndexOf("@"));
     return (
       <div>
