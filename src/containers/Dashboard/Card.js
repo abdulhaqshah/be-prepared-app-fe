@@ -3,14 +3,11 @@ import {HOME} from '../../constants/index'
 import "./Card.scss";
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
       <div className="courses-card">
-        <div className="card-div shadow-lg" className="card">
+        <div  className="card shadow-lg">
           <div className="card-body">
             <div className="header">
               <h5 className="card-title">{this.props.title}</h5>
@@ -32,7 +29,7 @@ class Card extends Component {
                 <a href={HOME}>Web Development</a>
               </div>
               <div className="course-name">
-                <a href="#">Android</a>
+                <a href={HOME}>Android</a>
               </div>
             </div>
           </div>

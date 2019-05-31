@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { HOME } from "../../constants";
+import { DASHBOARD } from "../../constants";
 import "./Navbar.scss";
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <div>
-          <Link className="navigation-logo" to={HOME}>
+          <Link className="navigation-logo" to={DASHBOARD}>
             Be Prepared
           </Link>
         </div>
@@ -29,23 +26,23 @@ class Navbar extends Component {
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 ml-3">
-            <li class="active" class="nav-item">
-              <a class="nav-link active" href={HOME}>
+            <li class="nav-item active">
+              <a class="nav-link active" href={DASHBOARD}>
                 PRACTICE
               </a>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+              <a class="nav-link" href={DASHBOARD}>
                 COMPETE
               </a>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+              <a class="nav-link" href={DASHBOARD}>
                 JOBS
               </a>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+              <a class="nav-link" href={DASHBOARD}>
                 LEADERBOARD
               </a>
             </li>
@@ -63,17 +60,17 @@ class Navbar extends Component {
               </form>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+              <a class="nav-link" href={DASHBOARD}>
                 <i className="fa fa-comment-o fa-lg" />
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href={HOME}>
+              <a class="nav-link " href={DASHBOARD}>
                 <i className="fa fa-bell-o fa-lg" />
               </a>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+              <a class="nav-link" href={DASHBOARD}>
                 <i className="fa fa-user-o fa-lg mr-1" />
                 {this.props.email}
                 <i class="fa fa-angle-down ml-1" />

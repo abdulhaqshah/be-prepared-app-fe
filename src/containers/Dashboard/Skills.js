@@ -60,7 +60,7 @@ class Skills extends Component {
           </div>
           <a href={PROBLEM_SOLVING}>
           <div className="prob-sol shadow-lg ml-5 mt-5">
-            <div className="card-div" className="card">
+            <div className="card">
               <div className="card-body">
                 <p className="card-title">PROBLEM SOLVING</p>
                 <h2 className="card-heading">Problem Solving</h2>
