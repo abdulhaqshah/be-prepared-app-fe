@@ -12,16 +12,25 @@
     color: #b7c9cc !important;
     font-weight: bold;
     font-family: "sans-serif";
+    height: 60px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 45px;
+    position: relative;
     &:hover {
       color: white !important;
     }
   }
   a.nav-link.active {
     color: white !important;
-  }
+    border-bottom: 5px solid #1ba94c;
+    }
   .fa-search,
   input:hover {
     color: white !important;
+    line-height: 55px;
+
   }
   a:hover {
     color: white;

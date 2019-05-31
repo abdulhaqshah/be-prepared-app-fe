@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import UserProfile from "../Dashboard/UserProfile/UserProfile";
+// import UserProfile from "../Dashboard/UserProfile/UserProfile";
 
 class InterviewPrep extends Component {
   render() {
-    UserProfile.getName();
+    // UserProfile.getN/ame();
 
     return <div>InterviewPrep Container</div>;
   }
