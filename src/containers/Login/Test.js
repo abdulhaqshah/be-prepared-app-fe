@@ -2,40 +2,25 @@ import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
-import { SINGUP, DASHBOARD } from "../../constants";
-import * as auth from "../../routes/ProtectedRoute";
 import API from "../../api";
 import "./Login.css";
-class Login extends Component {
+
+class Test extends Component {
   constructor(props) {
     super(props);
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      email: "",
-      password: "",
-      redirectToReferrer: false
+      description: "",
+      content: ""
     };
-    this.login = this.login.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
-  componentDidMount() {
-    const flag = this.props.location.state;
-    if (flag === true) {
-      addNotification(
-        this.notificationDOMRef,
-        "Success",
-        "success",
-        "User has been created Successfuly"
-      );
-    }
-  }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -44,23 +29,21 @@ class Login extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { email, password } = this.state;
+      var { description, content } = this.state;
       const data = {
-        email,
-        password
+        tid: "656964e8-6787-41e2-bd1a-f4e21d007fd1",
+        topicId: "5cf4c9cff1571b101a2981ac",
+        lesson: {
+          description,
+          content
+        }
       };
-      API.userLogin(data, result => {
+      API.testData(data, result => {
         if (result.status === "200") {
-          localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("id", result.data.user.uuid);
-          localStorage.setItem("token", result.data.token);
-          localStorage.setItem("name", result.data.user.name);
-          localStorage.setItem("email", result.data.user.email);
-          localStorage.setItem("img", result.data.user.image);
-
+          console.log(result.data);
           //Form reset
           this.formRef.reset();
-          this.props.history.push(DASHBOARD);
+          //   this.props.history.push(DASHBOARD, this.state.email);
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -89,91 +72,66 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
-  login = () => {
-    auth.AuthState.authenticate(() => {
-      this.setState(() => ({
-        redirectToReferrer: true
-      }));
-    });
-  };
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: "/" } };
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer === true) {
-      this.props.history.push(from.pathname);
-    }
-
     return (
       <div>
-        <Header btnName="SignUp" redirectTo={SINGUP} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
         <div className="login-container">
           <div className="login-inner-container">
             <h1 className="heading" align="center">
-              Login
+              Test
             </h1>
             <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
               <div>
                 <label className="labels vertical-spacing">
-                  Email <span className="login-required-indicator">*</span>
+                  Description <span className="login-required-indicator" />
                 </label>
                 <br />
                 <input
                   className="login-field"
-                  name="email"
-                  type="email"
+                  name="description"
+                  type="text"
                   onChange={this.handleUserInput}
                 />
                 <div className="login-error-msg">
                   {this.validator.message(
-                    "email",
-                    this.state.email,
+                    "description",
+                    this.state.description,
                     "required"
                   )}
                 </div>
               </div>
               <div>
                 <label className="labels vertical-spacing">
-                  Password <span className="login-required-indicator">*</span>
+                  Content <span className="login-required-indicator" />{" "}
                 </label>
-                <br />
                 <input
                   className="login-field"
-                  name="password"
-                  type="password"
+                  name="content"
+                  type="text"
                   onChange={this.handleUserInput}
                 />
                 <div className="login-error-msg">
                   {this.validator.message(
-                    "password",
-                    this.state.password,
+                    "content",
+                    this.state.content,
                     "required"
                   )}
                 </div>
               </div>
               <div>
-                <button
-                  className="login-button"
-                  name="loginBtn"
-                  type="submit"
-                  onClick={this.login}
-                >
-                  LOGIN
+                <button className="login-button" name="loginBtn" type="submit">
+                  Submit
                 </button>
-              </div>
-              <div align="center">
-                <a href="/forgetPassword">Forget Password</a>
               </div>
             </form>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
 }
-export default Login;
+export default Test;

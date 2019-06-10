@@ -8,6 +8,7 @@ export const INTERVIEW_PREP_KIT = '/interview-prep-kit';
 export const PROBLEM_SOLVING = '/problem-solving';
 export const STATISTICS = '/10-days-of-statistics';
 export const JAVASCRIPT = '/10-days-of-javascript';
-export const CODE = '30-days-of code'
+export const CODE = '/30-days-of code'
+export const TEST = '/test'
 
 

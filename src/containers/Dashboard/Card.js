@@ -13,7 +13,7 @@ class Card extends Component {
               <h5 className="card-title">{this.props.title}</h5>
             </div>
             <div className="card-content">
-              <div className="course-name">
+           <div className="course-name">
                 <a href={HOME}>OOP</a>
               </div>
               <div className="course-name">

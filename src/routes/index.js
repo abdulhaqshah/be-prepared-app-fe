@@ -9,8 +9,7 @@ import ProblemSolving from "../containers/ProblemSolving/ProblemSolving";
 import Statistics from "../containers/Statistics/Statistics";
 import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
-
-
+import { ProtectedRoute } from "./ProtectedRoute";
 import {
   HOME,
   SINGUP,
@@ -27,13 +26,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Routes extends Component {
   render() {
+    debugger;
     return (
       <Router>
         <Switch>
           <Route exact path={HOME} component={Home} />
-          <Route exact path={LOGIN} component={Login} />
           <Route path={SINGUP} component={SignUp} />
-          <Route path={DASHBOARD} component={Dashboard} />
+          <Route path={LOGIN} component={Login} />
+          <ProtectedRoute path={DASHBOARD} component={Dashboard} />
           <Route path={BOOKMARK} component={Bookmark} />
           <Route path={INTERVIEW_PREP_KIT} component={InterviewPrep} />
           <Route path={PROBLEM_SOLVING} component={ProblemSolving} />
