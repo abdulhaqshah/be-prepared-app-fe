@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import ContentContainer from "../Dashboard/ContentContainer";
-import * as auth from "../../services/Auth";
+import * as auth from "../../services/Session";
 
 class Dashboard extends Component {
   render() {

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import * as auth from '../../../services/Session'
 import "./Card.scss";
 
 class Card extends Component {
 
   render() {
     const courses = this.props.data;
-    const courseList = courses.map((course, index) => {
+    const courseList = courses.map((course) => {
       return (
         <div className="course-name">
-          <a className="course-a" key={index}>{course}</a>
+          <a className="course-a" key={auth.getItem("id")}>{course}</a>
         </div>
       );
     });
