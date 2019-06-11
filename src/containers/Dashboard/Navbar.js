@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { DASHBOARD } from "../../constants";
 import "./Navbar.scss";
 class Navbar extends Component {
+  logout = () => {
+    localStorage.clear();
+  };
+
   render() {
     return (
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
@@ -47,25 +51,10 @@ class Navbar extends Component {
             </li>
           </ul>
           <ul class="navbar-nav  mt-2 ml-5">
-          <li> 
-            <div className="div"></div>
-          </li>
+            <li>
+              <div className="div" />
+            </li>
             <li class="nav-item">
-              {/* <div className="search-form new-search">
-                <div>
-                  <div className="search-query async-autocomplete autocomplete">
-                    <div className="ac-input-wrap cf">
-                      <input
-                        autoComplete="off"
-                        className="ac-input"
-                        placeholder="Search"
-                      />
-                    </div>
-                    
-                  </div>
-                </div>
-              </div> */}
-              
               <form class="form-inline md-form form-sm mt-0">
                 <i class="fa fa-search" />
                 <input
@@ -76,7 +65,7 @@ class Navbar extends Component {
                 />
               </form>
             </li>
-          
+
             <li class="nav-item ml-1">
               <a class="nav-link" href={DASHBOARD}>
                 <i className="fa fa-comment-o fa-lg" />
@@ -88,7 +77,7 @@ class Navbar extends Component {
               </a>
             </li>
             <li class="nav-item ml-1">
-              <a class="nav-link" href={DASHBOARD}>
+              <a class="nav-link" onClick={this.logout}>
                 <i className="fa fa-user-o fa-lg mr-1" />
                 {this.props.email}
                 <i class="fa fa-angle-down ml-1" />

@@ -26,7 +26,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Routes extends Component {
   render() {
-    debugger;
     return (
       <Router>
         <Switch>
@@ -34,12 +33,12 @@ class Routes extends Component {
           <Route path={SINGUP} component={SignUp} />
           <Route path={LOGIN} component={Login} />
           <ProtectedRoute path={DASHBOARD} component={Dashboard} />
-          <Route path={BOOKMARK} component={Bookmark} />
-          <Route path={INTERVIEW_PREP_KIT} component={InterviewPrep} />
-          <Route path={PROBLEM_SOLVING} component={ProblemSolving} />
-          <Route path={STATISTICS} component={Statistics} />
-          <Route path={JAVASCRIPT} component={Javascript} />
-          <Route path={CODE} component={Code} />
+          <ProtectedRoute path={BOOKMARK} component={Bookmark} />
+          <ProtectedRoute path={INTERVIEW_PREP_KIT} component={InterviewPrep} />
+          <ProtectedRoute path={PROBLEM_SOLVING} component={ProblemSolving} />
+          <ProtectedRoute path={STATISTICS} component={Statistics} />
+          <ProtectedRoute path={JAVASCRIPT} component={Javascript} />
+          <ProtectedRoute path={CODE} component={Code} />
         </Switch>
       </Router>
     );

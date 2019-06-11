@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
-import * as auth from "../../routes/ProtectedRoute";
 import API from "../../api";
 import "./Login.css";
 class Login extends Component {
@@ -17,9 +16,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      redirectToReferrer: false
     };
-    this.login = this.login.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
@@ -51,7 +48,6 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("id", result.data.user.uuid);
           localStorage.setItem("token", result.data.token);
           localStorage.setItem("name", result.data.user.name);
@@ -89,21 +85,7 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
-  login = () => {
-    auth.AuthState.authenticate(() => {
-      this.setState(() => ({
-        redirectToReferrer: true
-      }));
-    });
-  };
-
   render() {
-    const { from } = this.props.location.state || { from: { pathname: "/" } };
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer === true) {
-      this.props.history.push(from.pathname);
-    }
 
     return (
       <div>
@@ -125,7 +107,6 @@ class Login extends Component {
                 <input
                   className="login-field"
                   name="email"
-                  type="email"
                   onChange={this.handleUserInput}
                 />
                 <div className="login-error-msg">
@@ -160,7 +141,6 @@ class Login extends Component {
                   className="login-button"
                   name="loginBtn"
                   type="submit"
-                  onClick={this.login}
                 >
                   LOGIN
                 </button>
