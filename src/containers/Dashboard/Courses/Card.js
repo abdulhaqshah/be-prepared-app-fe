@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as auth from '../../../services/Session'
 import "./Card.scss";
 
 class Card extends Component {
@@ -9,7 +8,7 @@ class Card extends Component {
     const courseList = courses.map((course) => {
       return (
         <div className="course-name">
-          <a className="course-a" key={auth.getItem("id")}>{course}</a>
+          <a key={course}>{course}</a>
         </div>
       );
     });
