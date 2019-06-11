@@ -18,7 +18,7 @@ class Courses extends Component {
           <h5 className="headings ml-5 mb-5 mt-5">Explore BePrepared Skills</h5>
         </div>
         <div className="row">
-          <div className="card-container ">
+          <div className="card-container">
             <div className="courses shadow-lg ml-5 mr-4 mb-5">
               <Card data={this.state.courses} title="POBLEM SOLVING" />
             </div>
@@ -26,7 +26,7 @@ class Courses extends Component {
               <Card data={this.state.courses} title="LANGUAGES" />
             </div>
             <div className="specialized-skills shadow-lg ml-5 mr-5 mb-5">
-              <Card  data={this.state.courses} title="SPECIALIZED SKILLS " />
+              <Card  data={this.state.courses} title="SPECIALIZED SKILLS" />
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ class Card extends Component {
               </div>
             </div>
             <div className="javascript">
-              <div className="tutorial-card shadow-lg  ml-5 mb-5">
+              <div className="tutorial-card shadow-lg ml-5 mb-5">
                 <TutorialCard href={CODE} />
               </div>
             </div>

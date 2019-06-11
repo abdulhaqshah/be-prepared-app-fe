@@ -21,7 +21,7 @@ class TutorialCard extends Component {
             prepare
           </p>
           <div className="tutorial-link">
-            <a href={this.props.href} className=" font-weight-bold">
+            <a href={this.props.href} className="font-weight-bold">
               View Tutorial
             </a>
           </div>

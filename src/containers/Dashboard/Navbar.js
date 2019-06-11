@@ -50,12 +50,12 @@ class Navbar extends Component {
               </a>
             </li>
           </ul>
-          <ul className="navbar-nav  mt-2 ml-5">
+          <ul className="navbar-nav mt-2 ml-5">
             <li className="nav-item">
               <form className="form-inline md-form form-sm mt-0">
                 <i className="fa fa-search" />
                 <input
-                  className=" form-control-sm ml-3 w-75"
+                  className="form-control-sm ml-3 w-75"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"

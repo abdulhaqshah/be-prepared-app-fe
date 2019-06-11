@@ -17,7 +17,7 @@ class ContentContainer extends Component {
           <div className="ml-5">
             <h1 className="heading">Dashboard</h1>
           </div>
-          <div className=" d-flex flex-row-reverse">
+          <div className="d-flex flex-row-reverse">
             <a href={BOOKMARK} className="bookmark">
               Bookmarked Challenges
             </a>
