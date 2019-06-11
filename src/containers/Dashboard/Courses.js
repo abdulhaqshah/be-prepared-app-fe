@@ -10,6 +10,7 @@ class Courses extends Component {
       courses: ["OOP", "Algo", "DB"]
     };
   }
+  
   render() {
     // debugger;
     return (

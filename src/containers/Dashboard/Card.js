@@ -8,10 +8,10 @@ class Card extends Component {
   render() {
     const courses = ["OOP", "Algo", "Database"];
     // const courses = this.props.data;
-    const courseList = courses.map(course => {
+    const courseList = courses.map((course, index) => {
       return (
         <div className="course-name">
-          <a>{course}</a>
+          <a key={index}>{course}</a>
         </div>
       );
     });

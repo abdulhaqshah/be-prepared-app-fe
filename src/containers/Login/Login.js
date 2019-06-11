@@ -8,6 +8,7 @@ import addNotification from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import API from "../../api";
 import "./Login.css";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +16,14 @@ class Login extends Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       email: "",
-      password: "",
+      password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
+
   componentDidMount() {
     const flag = this.props.location.state;
     if (flag === true) {
@@ -33,11 +35,13 @@ class Login extends Component {
       );
     }
   }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
   }
+
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -85,8 +89,8 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
+  
   render() {
-
     return (
       <div>
         <Header btnName="SignUp" redirectTo={SINGUP} />
@@ -137,11 +141,7 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button
-                  className="login-button"
-                  name="loginBtn"
-                  type="submit"
-                >
+                <button className="login-button" name="loginBtn" type="submit">
                   LOGIN
                 </button>
               </div>
