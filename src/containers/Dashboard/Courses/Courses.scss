@@ -1,0 +1,22 @@
+.headings{
+  color: #8C9094;
+  font-size: 20px !important;
+  font-weight: bold;
+}
+.interview-prep,
+.email,
+.prob-sol {
+  display: inline-block;
+}
+.prob-sol {
+  .progress-div {
+    padding-bottom: 30px;
+  }
+}
+.card-container .courses,
+.card-container .languages,
+.card-container .specialized-skills {
+  display: inline-block;
+}
+
+
