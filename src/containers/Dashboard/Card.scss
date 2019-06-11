@@ -13,20 +13,19 @@
     font-size: 13px;
     color: #738f93;
   }
-  .course-name {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: solid #e9edee;
-    border-width: 1px;
-    font-weight: bold;
-  
-  }
+}
+.course-name {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid #e9edee;
+  border-width: 1px;
+  font-weight: bold;
   a {
     font-size: 23px;
-    color: #39414E;
+    color: #39414e !important;
   }
   a:hover {
-    color: rgb(27, 169, 76);
+    color: rgb(27, 169, 76) !important;
     text-decoration: none;
   }
 }
