@@ -65,8 +65,8 @@ class Skills extends Component {
                 <p className="card-title">PROBLEM SOLVING</p>
                 <h2 className="card-heading">Problem Solving</h2>
                 <div className="progress-div">
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" />
+                  <div className="progress">
+                    <div className="progress-bar" role="progressbar" />
                   </div>
                 </div>
                 <div className="btn-div">
