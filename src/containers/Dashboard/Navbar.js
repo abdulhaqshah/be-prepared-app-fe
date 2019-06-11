@@ -51,9 +51,6 @@ class Navbar extends Component {
             </li>
           </ul>
           <ul class="navbar-nav  mt-2 ml-5">
-            <li>
-              <div className="div" />
-            </li>
             <li class="nav-item">
               <form class="form-inline md-form form-sm mt-0">
                 <i class="fa fa-search" />

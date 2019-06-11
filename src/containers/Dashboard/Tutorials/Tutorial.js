@@ -4,7 +4,7 @@ import {
   STATISTICS,
   JAVASCRIPT,
   CODE
-} from "../../constants";
+} from "../../../constants";
 import "./Tutorial.scss";
 import TutorialCard from "./TutorialCard";
 
