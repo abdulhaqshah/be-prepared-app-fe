@@ -11,7 +11,6 @@
     "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
-    "react-cookie": "^4.0.0",
     "react-dom": "^16.8.6",
     "react-floating-action-button": "^1.0.5",
     "react-notifications-component": "^1.1.1",
