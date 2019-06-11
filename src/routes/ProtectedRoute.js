@@ -1,18 +1,13 @@
 import React from "react";
+import * as auth from '../services/Auth'
 import { Route, Redirect } from "react-router-dom";
 
-const isAuthenticated = () => {
-  if (localStorage.getItem("token") !== null) return true;
-  else return false;
-};
-
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
-  console.log("ProtectedRoute", isAuthenticated());
   return (
     <Route
       {...rest}
       render={props =>
-        isAuthenticated() === true ? (
+        auth.isLoggedIn() === true ? (
           <Component {...props} />
         ) : (
           <Redirect

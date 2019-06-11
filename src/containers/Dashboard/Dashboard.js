@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import ContentContainer from "../Dashboard/ContentContainer";
+import * as auth from "../../services/Auth";
 
 class Dashboard extends Component {
-
   render() {
-    const email = localStorage.getItem("email");
-    var name = email.substring(0, email.lastIndexOf("@"));
+    const name = auth.getItem("name");
     return (
       <div>
-        <Navbar email={name} />
+        <Navbar name={name} />
         <ContentContainer />
       </div>
     );

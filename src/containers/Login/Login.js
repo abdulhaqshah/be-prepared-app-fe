@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
+import * as auth from '../../services/Auth'
 import API from "../../api";
 import "./Login.css";
 
@@ -52,11 +53,11 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          localStorage.setItem("id", result.data.user.uuid);
-          localStorage.setItem("token", result.data.token);
-          localStorage.setItem("name", result.data.user.name);
-          localStorage.setItem("email", result.data.user.email);
-          localStorage.setItem("img", result.data.user.image);
+          auth.setItem("id", result.data.user.uuid);
+          auth.setItem("token", result.data.token);
+          auth.setItem("name", result.data.user.name);
+          auth.setItem("email", result.data.user.email);
+          auth.setItem("img", result.data.user.image);
 
           //Form reset
           this.formRef.reset();

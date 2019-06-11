@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { DASHBOARD } from "../../constants";
+import * as auth from '../../services/Auth'
 import "./Navbar.scss";
 class Navbar extends Component {
   logout = () => {
-    localStorage.clear();
+    auth.clearSession();
   };
 
   render() {
@@ -76,7 +77,7 @@ class Navbar extends Component {
             <li class="nav-item ml-1">
               <a class="nav-link" onClick={this.logout}>
                 <i className="fa fa-user-o fa-lg mr-1" />
-                {this.props.email}
+                {this.props.name}
                 <i class="fa fa-angle-down ml-1" />
               </a>
             </li>
