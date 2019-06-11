@@ -8,7 +8,7 @@ class Card extends Component {
     const courseList = courses.map((course, index) => {
       return (
         <div className="course-name">
-          <a key={index}>{course}</a>
+          <a className="course-a" key={index}>{course}</a>
         </div>
       );
     });

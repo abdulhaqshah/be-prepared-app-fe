@@ -31,7 +31,7 @@ class Skills extends Component {
             </div>
           </a>
           <div className="email shadow ml-5 mt-5">
-            <div className="card bg-secondary">
+            <div className="card bg-color">
               <div className="card-body">
                 <div className="card-content">
                   <div className="card-icon">

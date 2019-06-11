@@ -5,7 +5,7 @@
     background-color: #252e38 !important;
   }
   &.shadow-lg {
-    color: #131c25 !important;
+    color: #131c25;
   }
   .nav-item {
     input {
@@ -14,36 +14,33 @@
       transition-property: width;
       &:hover {
         width: 300px;
-        color: white !important;
+        color: white;
         line-height: 55px;
       }
     }
-  }
-  a.nav-link {
-    font-size: 14px;
-    color: #b7c9cc !important;
-    font-weight: bold;
-    font-family: "sans-serif";
-    height: 60px;
-    box-sizing: border-box;
-    display: inline-block;
-    font-weight: 700;
-    line-height: 45px;
-    position: relative;
-    &:hover {
-      color: white !important;
+    .fa-search,
+    input:hover {
+      color: white;
+      line-height: 55px;
     }
-  }
-  a.nav-link.active {
-    color: white !important;
-    border-bottom: 5px solid #1ba94c;
-  }
-  .fa-search,
-  input:hover {
-    color: white !important;
-    line-height: 55px;
-  }
-  a:hover {
-    color: white;
+    a.nav-link {
+      font-size: 14px;
+      color: #b7c9cc;
+      font-weight: bold;
+      font-family: "sans-serif";
+      height: 60px;
+      box-sizing: border-box;
+      display: inline-block;
+      font-weight: 700;
+      line-height: 45px;
+      position: relative;
+      &:hover {
+        color: white;
+      }
+    }
+    a.nav-link.active {
+      color: white;
+      border-bottom: 5px solid #1ba94c;
+    }
   }
 }
