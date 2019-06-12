@@ -9,7 +9,7 @@ import ProblemSolving from "../containers/ProblemSolving/ProblemSolving";
 import Statistics from "../containers/Statistics/Statistics";
 import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
-import { ProtectedRoute } from "./ProtectedRoute";
+import { ProtectedRoute,GuestRoute } from "./ProtectedRoute";
 import {
   HOME,
   SINGUP,
@@ -29,9 +29,9 @@ class Routes extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path={HOME} component={Home} />
-          <Route path={SINGUP} component={SignUp} />
-          <Route path={LOGIN} component={Login} />
+          <GuestRoute exact path={HOME} component={Home} />
+          <GuestRoute path={SINGUP} component={SignUp} />
+          <GuestRoute path={LOGIN} component={Login} />
           <ProtectedRoute path={DASHBOARD} component={Dashboard} />
           <ProtectedRoute path={BOOKMARK} component={Bookmark} />
           <ProtectedRoute path={INTERVIEW_PREP_KIT} component={InterviewPrep} />

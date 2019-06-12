@@ -9,7 +9,7 @@ class Navbar extends Component {
   };
 
   render() {
-  
+ 
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark shadow-lg">
         <div className="logo-div">
