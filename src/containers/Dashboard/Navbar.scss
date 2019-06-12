@@ -2,23 +2,27 @@
   height: 70px;
   &.navbar-dark.bg-dark,
   .form-control-sm {
-    background-color: #252e38 !important;
+    background-color: #252E38 !important;
   }
   &.shadow-lg {
     color: #131c25;
   }
-  .logo-div {
+  // .collapse{
+  //   background-color: #252E38;
+  //   height: 310px ;
+  // }
+  .logo-div{
     font-size: 15px;
     white-space: nowrap;
   }
-  .links-div {
-    height: 70px;
+  .links-div{
+   height: 70px;
+
   }
-  .icons-div {
+  .icons-div{
     height: 70px;
-    width: 600px;
-    padding-left: 100px;
-    word-wrap: break-word;
+     width:600px;
+     padding-left: 100px;
   }
   .nav-item {
     input {
