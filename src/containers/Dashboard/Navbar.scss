@@ -1,27 +1,13 @@
 .navbar {
-  height: 70px;
   &.navbar-dark,
   .form-control-sm {
-    background-color: #252E38;
+    background-color: #252e38;
   }
   .form-inline .form-control-sm {
-    color: #FFFFFF;
+    color: #ffffff;
   }
   &.shadow-lg {
     color: #131c25;
-  }
-  .logo-div{
-    font-size: 15px;
-    white-space: nowrap;
-  }
-  .links-div{
-   height: 70px;
-
-  }
-  .icons-div{
-    height: 70px;
-     width:600px;
-     padding-left: 100px;
   }
   .nav-item {
     input {
