@@ -4,14 +4,14 @@ import { DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Navbar.scss";
 class Navbar extends Component {
+
   logout = () => {
     auth.clearSession();
   };
 
   render() {
- 
     return (
-      <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark shadow-lg">
+      <nav className="navbar navbar-expand-xl fixed-top navbar-dark shadow-lg">
         <div className="logo-div">
           <Link className="navigation-logo" to={DASHBOARD}>
             Be Prepared
