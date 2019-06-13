@@ -1,7 +1,7 @@
 .navbar {
   &.navbar-dark,
   .form-control-sm {
-    background-color: #252e38;
+    background-color: #252e38 !important;
   }
   .form-inline .form-control-sm {
     color: #ffffff;
@@ -20,8 +20,12 @@
         line-height: 55px;
       }
     }
-    .fa-search,
-    input:hover {
+    .fa-search {
+      color: #b7c9cc;
+      line-height: 55px;
+
+    }
+    .fa-search input:hover {
       color: white;
       line-height: 55px;
     }
@@ -34,7 +38,7 @@
       box-sizing: border-box;
       display: inline-block;
       font-weight: 700;
-      line-height: 45px;
+      line-height: 50px;
       position: relative;
       &:hover {
         color: white;
@@ -43,6 +47,23 @@
     a.nav-link.active {
       color: white;
       border-bottom: 5px solid #1ba94c;
+    }
+  }
+  .dropdown.myDropdown {
+    padding-top: 17px;
+    color: #b7c9cc;
+    .dropdown-toggle {
+      color: #b7c9cc;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .dropdown-menu {
+    margin-top:24px;
+    width: 160px;
+    .dropdown-item:hover {
+      font-weight: bold;
     }
   }
 }

@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { HOME } from "../../constants";
+import * as auth from "../../services/Session";
 import "./Navbar.scss";
 class Navbar extends Component {
+  onLogout() {
+    auth.clearSession();
+  }
+
   render() {
     return (
-      <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark shadow-lg">
+      <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark shadow-lg">
         <div>
           <Link className="navigation-logo" to={HOME}>
             Be Prepared
           </Link>
         </div>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo02"
@@ -20,59 +25,77 @@ class Navbar extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon" />
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 ml-3">
-            <li class="active" class="nav-item">
-              <a class="nav-link active" href={HOME}>
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul className="navbar-nav mr-auto mt-2 ml-3">
+            <li className="active" className="nav-item">
+              <a className="nav-link active" href={HOME}>
                 PRACTICE
               </a>
             </li>
-            <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+            <li className="nav-item ml-1">
+              <a className="nav-link" href={HOME}>
                 COMPETE
               </a>
             </li>
-            <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+            <li className="nav-item ml-1">
+              <a className="nav-link" href={HOME}>
                 JOBS
               </a>
             </li>
-            <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+            <li className="nav-item ml-1">
+              <a className="nav-link" href={HOME}>
                 LEADERBOARD
               </a>
             </li>
           </ul>
-          <ul class="navbar-nav  mt-2 ml-3">
-            <li class="nav-item">
-              <form class="form-inline md-form form-sm mt-0">
-                <i class="fa fa-search" />
+          <ul className="navbar-nav  mt-1 mr-3 ml-3">
+            <li className="nav-item">
+              <form className="form-inline md-form form-sm mt-0">
+                <i className="fa fa-search mr-2" />
                 <input
-                  class=" form-control-sm ml-3"
+                  className=" form-control-sm"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
                 />
               </form>
             </li>
-            <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
+            <li className="nav-item ml-1">
+              <a className="nav-link" href={HOME}>
                 <i className="fa fa-comment-o fa-lg" />
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link " href={HOME}>
+            <li className="nav-item ml-1">
+              <a className="nav-link " href={HOME}>
                 <i className="fa fa-bell-o fa-lg" />
               </a>
             </li>
-            <li class="nav-item ml-1">
-              <a class="nav-link" href={HOME}>
-                <i className="fa fa-user-o fa-lg" /> Humna Aleem{" "}
-                <i class="fa fa-angle-down" />
-              </a>
+            <li>
+              <div className="dropdown myDropdown mt-1 shadow-lg mr-5">
+                <a
+                  className="dropdown-toggle"
+                  id="dropdownMenu"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
+                </a>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenu">
+                  <a className="dropdown-item">Profile</a>
+                  <a className="dropdown-item">Settings</a>
+                  <a className="dropdown-item">Bookmarks</a>
+                  <a className="dropdown-item">Network</a>
+                  <a className="dropdown-item">Submissions</a>
+                  <a className="dropdown-item">Administration</a>
+                  <a className="dropdown-item" onClick={this.onLogout}>
+                    Logout
+                  </a>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
