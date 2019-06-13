@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
-import * as auth from '../../services/Session'
+import * as auth from "../../services/Session";
 import API from "../../api";
 import "./Login.css";
 
@@ -90,7 +90,7 @@ class Login extends Component {
       this.forceUpdate();
     }
   }
-  
+
   render() {
     return (
       <div>

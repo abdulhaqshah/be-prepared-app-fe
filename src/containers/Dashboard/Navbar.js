@@ -4,8 +4,14 @@ import { HOME } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Navbar.scss";
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.onLogout = this.onLogout.bind(this);
+  }
+
   onLogout() {
     auth.clearSession();
+    this.props.history.push(HOME);
   }
 
   render() {
@@ -30,7 +36,7 @@ class Navbar extends Component {
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav mr-auto mt-2 ml-3">
-            <li className="active" className="nav-item">
+            <li className="nav-item active">
               <a className="nav-link active" href={HOME}>
                 PRACTICE
               </a>
@@ -76,6 +82,7 @@ class Navbar extends Component {
             <li>
               <div className="dropdown myDropdown mt-1 shadow-lg mr-5">
                 <a
+                  href="./home"
                   className="dropdown-toggle"
                   id="dropdownMenu"
                   data-toggle="dropdown"
@@ -85,13 +92,29 @@ class Navbar extends Component {
                   <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-                  <a className="dropdown-item">Profile</a>
-                  <a className="dropdown-item">Settings</a>
-                  <a className="dropdown-item">Bookmarks</a>
-                  <a className="dropdown-item">Network</a>
-                  <a className="dropdown-item">Submissions</a>
-                  <a className="dropdown-item">Administration</a>
-                  <a className="dropdown-item" onClick={this.onLogout}>
+                  <a href="./home" className="dropdown-item">
+                    Profile
+                  </a>
+                  <a href="./home" className="dropdown-item">
+                    Settings
+                  </a>
+                  <a href="./home" className="dropdown-item">
+                    Bookmarks
+                  </a>
+                  <a href="./home" className="dropdown-item">
+                    Network
+                  </a>
+                  <a href="./home" className="dropdown-item">
+                    Submissions
+                  </a>
+                  <a href="./home" className="dropdown-item">
+                    Administration
+                  </a>
+                  <a
+                    href="./home"
+                    className="dropdown-item"
+                    onClick={this.onLogout}
+                  >
                     Logout
                   </a>
                 </div>

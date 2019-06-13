@@ -8,7 +8,7 @@ class Dashboard extends Component {
     const name = auth.getItem("name");
     return (
       <div>
-        <Navbar name={name} />
+        <Navbar history={this.props.history} name={name} />
         <ContentContainer />
       </div>
     );

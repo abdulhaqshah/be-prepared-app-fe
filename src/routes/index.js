@@ -22,7 +22,7 @@ import {
   STATISTICS,
   JAVASCRIPT
 } from "../constants";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 class Routes extends Component {
   render() {
