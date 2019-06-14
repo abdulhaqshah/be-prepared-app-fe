@@ -5,7 +5,7 @@
     color: #131c25;
   }
   .navigation-logo {
-    word-wrap: none;
+    white-space: nowrap;
     margin: 10px 10px;
     padding-top: 30px;
     font-size: 25px;
@@ -29,7 +29,7 @@
     }
   }
 }
-.btn-secondary.btn-signup {
+.btn-warning.btn-signup {
   background-color: #f2bb13;
   color: #454c55;
   font-size: 14px;
@@ -41,4 +41,7 @@
   width: 50%;
   max-width: 150px;
   font-family: "sans-serif";
+  &:hover {
+    background-color: #f2bb13;
+  }
 }

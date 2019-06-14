@@ -11,7 +11,7 @@ class Section extends Component{
                     <h1>Mock interview with engineers</h1>
                     <p>We provide the same experience as real interviews and you'll get real feedback in the end.</p>
                     <Link to={SINGUP}>
-                        <button className="btn-secondary btn-signup" >Sign Up</button>
+                        <button className="btn-warning btn-signup" >Sign Up</button>
                     </Link>
                 </section>
 

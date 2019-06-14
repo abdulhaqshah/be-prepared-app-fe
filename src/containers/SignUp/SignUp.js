@@ -139,6 +139,7 @@ class SignUp extends Component {
                 </label>
                 <br />
                 <input
+                  autoComplete="off"
                   className="field"
                   name="password"
                   type="password"
@@ -158,6 +159,7 @@ class SignUp extends Component {
                 </label>
                 <br />
                 <input
+                  autoComplete="off"
                   className="field"
                   name="confirmPassword"
                   type="password"

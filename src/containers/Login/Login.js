@@ -128,6 +128,7 @@ class Login extends Component {
                 </label>
                 <br />
                 <input
+                  autoComplete="off"
                   className="login-field"
                   name="password"
                   type="password"
