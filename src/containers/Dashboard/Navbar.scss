@@ -1,13 +1,22 @@
 .navbar {
-  &.navbar-dark,
-  .form-control-sm {
+  &.navbar-dark {
     background-color: #252e38 !important;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   .form-inline .form-control-sm {
+    background-color: #252e38 !important;
     color: #ffffff;
   }
   &.shadow-lg {
     color: #131c25;
+  }
+  .navigation-logo {
+    margin: 10px 10px;
+    padding-top: 30px;
+    font-size: 24px;
+    color: white;
+    font-family: "sans-serif";
   }
   .nav-item {
     input {
@@ -23,7 +32,6 @@
     .fa-search {
       color: #b7c9cc;
       line-height: 55px;
-
     }
     .fa-search input:hover {
       color: white;
@@ -34,11 +42,11 @@
       color: #b7c9cc;
       font-weight: bold;
       font-family: "sans-serif";
-      height: 60px;
+      height: 50px;
       box-sizing: border-box;
       display: inline-block;
       font-weight: 700;
-      line-height: 50px;
+      line-height: 30px;
       position: relative;
       &:hover {
         color: white;
@@ -49,21 +57,18 @@
       border-bottom: 5px solid #1ba94c;
     }
   }
-  .dropdown.myDropdown {
-    padding-top: 17px;
+  .nav-item.dropdown {
     color: #b7c9cc;
-    .dropdown-toggle {
-      color: #b7c9cc;
-      &:hover {
-        color: white;
-      }
+    &:hover {
+      color: white;
+      text-decoration: none;
     }
-  }
-  .dropdown-menu {
-    margin-top:24px;
-    width: 160px;
-    .dropdown-item:hover {
-      font-weight: bold;
+    .dropdown-menu {
+      margin-top: 6px;
+      width: 160px;
+      .dropdown-item:hover {
+        font-weight: bold;
+      }
     }
   }
 }

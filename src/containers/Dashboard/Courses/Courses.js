@@ -23,10 +23,10 @@ class Courses extends Component {
               <Card data={this.state.courses} title="POBLEM SOLVING" />
             </div>
             <div className="languages shadow-lg ml-5 mr-2 mb-5">
-              <Card data={this.state.courses} title="LANGUAGES" />
+              {/* <Card data={this.state.courses} title="LANGUAGES" /> */}
             </div>
             <div className="specialized-skills shadow-lg ml-5 mr-5 mb-5">
-              <Card  data={this.state.courses} title="SPECIALIZED SKILLS" />
+              {/* <Card  data={this.state.courses} title="SPECIALIZED SKILLS" /> */}
             </div>
           </div>
         </div>

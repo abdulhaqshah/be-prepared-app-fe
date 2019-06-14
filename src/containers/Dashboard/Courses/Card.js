@@ -7,8 +7,8 @@ class Card extends Component {
     const courses = this.props.data;
     const courseList = courses.map((course,index) => {
       return (
-        <div className="course-name">
-          <a href="./home" key={index}>{course}</a>
+        <div className="course-name" key={index}>
+          <a href="./home" >{course}</a>
         </div>
       );
     });
