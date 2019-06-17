@@ -58,11 +58,11 @@ class Navbar extends Component {
             </li>
           </ul>
           <ul className="navbar-nav mr-3 ml-3">
-            <li className="nav-item">
-              <form className="form-inline md-form form-sm mt-0">
-                <i className="fa fa-search mr-2" />
+            <li class="nav-item">
+              <form class="form-inline md-form form-sm mt-0">
+                <i class="fa fa-search" />
                 <input
-                  className=" form-control-sm"
+                  class=" form-control-sm ml-3 w-75"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
@@ -70,36 +70,40 @@ class Navbar extends Component {
               </form>
             </li>
             <li className="nav-item dropdown">
-              <a href="." className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
+              <a
+                href="."
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a href="./home" className="dropdown-item">
-                    Profile
-                  </a>
-                  <a href="./home" className="dropdown-item">
-                    Settings
-                  </a>
-                  <a href="./home" className="dropdown-item">
-                    Bookmarks
-                  </a>
-                  <a href="./home" className="dropdown-item">
-                    Network
-                  </a>
-                  <a href="./home" className="dropdown-item">
-                    Submissions
-                  </a>
-                  <a href="./home" className="dropdown-item">
-                    Administration
-                  </a>
-                  <a
-                    href="."
-                    className="dropdown-item"
-                    onClick={this.onLogout}
-                  >
-                    Logout
-                  </a>
-                </div>
+                <a href="./home" className="dropdown-item">
+                  Profile
+                </a>
+                <a href="./home" className="dropdown-item">
+                  Settings
+                </a>
+                <a href="./home" className="dropdown-item">
+                  Bookmarks
+                </a>
+                <a href="./home" className="dropdown-item">
+                  Network
+                </a>
+                <a href="./home" className="dropdown-item">
+                  Submissions
+                </a>
+                <a href="./home" className="dropdown-item">
+                  Administration
+                </a>
+                <a href="." className="dropdown-item" onClick={this.onLogout}>
+                  Logout
+                </a>
+              </div>
             </li>
           </ul>
         </div>
