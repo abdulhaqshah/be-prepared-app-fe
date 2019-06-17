@@ -82,7 +82,7 @@ class Navbar extends Component {
                 <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="./home" className="dropdown-item">
+                <a href="./profile" className="dropdown-item">
                   Profile
                 </a>
                 <a href="./home" className="dropdown-item">

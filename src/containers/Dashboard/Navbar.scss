@@ -3,6 +3,15 @@
     background-color: #252e38 !important;
     padding-top: 6px;
     padding-bottom: 6px;
+    .navigation-logo {
+      white-space: nowrap;
+      margin: 10px 10px;
+      padding-top: 30px;
+      font-size: 32px;
+      font-weight: 500;
+      color: white;
+      font-family: "sans-serif";
+    }
   }
   .form-inline .form-control-sm {
     background-color: #252e38 !important;
@@ -11,14 +20,7 @@
   &.shadow-lg {
     color: #131c25;
   }
-  .navigation-logo {
-    white-space: nowrap;
-    margin: 10px 10px;
-    padding-top: 30px;
-    font-size: 24px;
-    color: white;
-    font-family: "sans-serif";
-  }
+
   .nav-item {
     input {
       border-color: transparent;
