@@ -1,10 +1,17 @@
-.container.profile-container{
-    .user-profile{
-        width:200px;
-        height: 100%;
-    }
-    .user-info{
-        width:600px;
-        height: 100%;
-    }
+.profile-container {
+  padding-top: 120px;
+  background-color: #f3f7f7;
+  .profile-left-pane {
+    float: left;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-self: flex-start;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .profile-right-pane {
+    float: right;
+  }
 }

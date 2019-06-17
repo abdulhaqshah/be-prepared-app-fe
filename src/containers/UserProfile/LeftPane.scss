@@ -1,0 +1,23 @@
+.profile-btn.btn-secondary {
+  border: none;
+  border-radius: 8px;
+  font-size: 50px;
+  background-color: black;
+  .overlay {
+    position: relative;
+    opacity: 0;
+    transition: 0.3s ease;
+    text-align: center;
+  }
+  &:hover .overlay {
+    opacity: 1;
+  }
+}
+.profile-name {
+  padding-top: 15px;
+}
+.edit-btn {
+  a {
+    text-decoration: none;
+  }
+}
