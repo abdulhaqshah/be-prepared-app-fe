@@ -1,23 +1,49 @@
-.profile-btn.btn-secondary {
-  border: none;
-  border-radius: 8px;
-  font-size: 50px;
-  background-color: black;
-  .overlay {
-    position: relative;
-    opacity: 0;
-    transition: 0.3s ease;
-    text-align: center;
+.about {
+  .profile-btn.btn-secondary {
+    border: none;
+    border-radius: 8px;
+    font-size: 50px;
+    background-color: black;
+    .overlay {
+      position: relative;
+      opacity: 0;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+    &:hover .overlay {
+      opacity: 1;
+    }
   }
-  &:hover .overlay {
-    opacity: 1;
+  .profile-name {
+    padding-top: 15px;
+    font-weight: 600;
+  }
+  .profile-email {
+    color: #738f93;
+  }
+  .edit-btn {
+    a:hover {
+      text-decoration: none;
+    }
   }
 }
-.profile-name {
-  padding-top: 15px;
-}
-.edit-btn {
-  a {
-    text-decoration: none;
+.profile-detail {
+  border-top: solid #d6e0e2;
+  border-width: 1px;
+  margin-top: 30px;
+  .about-heading {
+    margin-right: 225px;
+  }
+  h5 {
+    margin-top: 30px;
+    font-weight: 600;
+  }
+  span {
+    font-size: 15px;
+    color: #738f93;
+  }
+  .about-heading,
+  .about-pen-icon {
+    display: inline-flex;
   }
 }

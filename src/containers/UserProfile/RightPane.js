@@ -30,8 +30,8 @@ class RightPane extends Component {
                   <i className="fa fa-briefcase fa-sm mr-2" />
                   Work Experience
                 </h5>
-                <div className="work-exp-link">
-                  <a>
+                <div className="work-exp-link ml-4">
+                  <a href="./link">
                     + Add work experience, including contracts and internships
                   </a>
                 </div>
@@ -47,8 +47,8 @@ class RightPane extends Component {
                   <i className="fa fa-graduation-cap fa-sm mr-2" />
                   Education
                 </h5>
-                <div className="badge-text">
-                  <a>+ Add your education history</a>
+                <div className="education-link ml-4">
+                  <a href="./link">+ Add your education history</a>
                 </div>
               </div>
             </div>

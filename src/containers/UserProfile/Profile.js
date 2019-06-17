@@ -18,7 +18,7 @@ class Profile extends Component {
               <LeftPane name={name} email={email} />
             </div>
             <div className="profile-right-pane">
-              <RightPane/>
+              <RightPane />
             </div>
           </div>
         </div>

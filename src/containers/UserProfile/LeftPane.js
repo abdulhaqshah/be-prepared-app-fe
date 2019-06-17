@@ -5,24 +5,35 @@ class LeftPane extends Component {
   render() {
     return (
       <Fragment>
-        <button className="profile-btn btn-secondary btn-xl">
-          HA
-          <div className="overlay">
-            <a href="./edit">
-              {/* <i className="fa fa-pencil" /> */}
+        <div className="about">
+          <button className="profile-btn btn-secondary btn-xl">
+            HA
+            <div className="overlay">
+              <a href="./edit">{/* <i className="fa fa-pencil" /> */}</a>
+            </div>
+          </button>
+          <h3 className="profile-name">{this.props.name}</h3>
+          <p>{this.props.email}</p>
+          <div className="edit-btn">
+            <a href="./edit-intro">
+              <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
-        </button>
-        <div className="profile-name">
-          <h3>{this.props.name}</h3>
         </div>
-        <div className="profile-email">
-          <h5>{this.props.email}</h5>
-        </div>
-        <div className="edit-btn">
-          <a href="./edit-intro">
-            <i className="fa fa-pencil" /> Edit_Intro
-          </a>
+        <div className="profile-detail">
+          <div className="about-heading">
+            <h5>About</h5>
+          </div>
+          <div className="about-pen-icon">
+            <a href="./link">
+              <i className="fa fa-pencil" />
+            </a>
+          </div>
+          <div className="user-about-info">
+            <span>Expected year of Graduation</span>
+            <br />
+            <b>2019</b>
+          </div>
         </div>
       </Fragment>
     );

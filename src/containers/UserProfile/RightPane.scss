@@ -19,6 +19,11 @@
 .work-exp,
 .education {
   margin-top: 23px;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
   .work-exp-link {
     padding-top: 10px;
   }
