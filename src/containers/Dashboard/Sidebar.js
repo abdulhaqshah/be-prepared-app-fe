@@ -9,10 +9,9 @@ class Sidebar extends Component {
           <div className="btn-div">
             <button
               className="btn">
-              <i className="fa fa-angle-double-left fa-lg" />{" "}
+              <i className="fa fa-angle-double-left fa-lg" />
             </button>
           </div>
-
           <ul className="list-unstyled components">
             <li>
               <a href="/home">

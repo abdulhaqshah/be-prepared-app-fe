@@ -2,7 +2,7 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {SINGUP} from '../../constants';
-
+import '../../components/Header.scss';
 class Section extends Component{
     render() {
         return (
@@ -11,7 +11,7 @@ class Section extends Component{
                     <h1>Mock interview with engineers</h1>
                     <p>We provide the same experience as real interviews and you'll get real feedback in the end.</p>
                     <Link to={SINGUP}>
-                        <button className="navigation-auth_signup-button" >Sign Up</button>
+                        <button className="btn-warning btn-signup" >Sign Up</button>
                     </Link>
                 </section>
 

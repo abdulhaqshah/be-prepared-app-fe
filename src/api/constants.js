@@ -7,4 +7,5 @@ export const METHODS = {
 }
 export const USER_URL = '/user/register';
 export const USER_LOGIN_URL = '/user/login';
+export const TEST_DATA = '/tutorial/addLesson';
 

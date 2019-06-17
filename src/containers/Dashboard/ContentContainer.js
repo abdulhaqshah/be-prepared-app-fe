@@ -1,9 +1,10 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import "./ContentContainer.scss";
 import Footer from "../../components/Footer";
-import Tutorial from "../Dashboard/Tutorial";
-import Skills from "../Dashboard/Skills";
-import Courses from "./Courses";
+import Tutorial from "../Dashboard/Tutorials/Tutorial";
+import Skills from "../Dashboard/Skills/Skills";
+import Courses from "./Courses/Courses";
+import { BOOKMARK } from "../../constants";
 
 class ContentContainer extends Component {
   render() {
@@ -16,8 +17,8 @@ class ContentContainer extends Component {
           <div className="ml-5">
             <h1 className="heading">Dashboard</h1>
           </div>
-          <div className=" d-flex flex-row-reverse">
-            <a className="bookmark" href="#">
+          <div className="d-flex flex-row-reverse">
+            <a href={BOOKMARK} className="bookmark">
               Bookmarked Challenges
             </a>
           </div>
