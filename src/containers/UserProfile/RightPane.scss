@@ -5,7 +5,6 @@
     .card-title,
     p,
     .fa-id-badge {
-      //   font-size: 13px;
       color: #738f93;
     }
     .card-heading {
@@ -13,11 +12,25 @@
       font-weight: bold;
     }
     .badge-text {
-    padding-top: 20px;
+      padding-top: 20px;
     }
   }
 }
-
+.work-exp,
+.education {
+  margin-top: 23px;
+  .work-exp-link {
+    padding-top: 10px;
+  }
+  .fa-briefcase,
+  .fa-graduation-cap {
+    color: #738f93;
+  }
+  .card {
+    width: 45rem;
+    height: 8rem;
+  }
+}
 .card.bg-color {
   background-color: #e7eeef;
 }
