@@ -9,6 +9,7 @@ import ProblemSolving from "../containers/ProblemSolving/ProblemSolving";
 import Statistics from "../containers/Statistics/Statistics";
 import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
+import Profile from "../containers/UserProfile/Profile";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import {
   HOME,
@@ -20,7 +21,8 @@ import {
   PROBLEM_SOLVING,
   CODE,
   STATISTICS,
-  JAVASCRIPT
+  JAVASCRIPT,
+  PROFILE
 } from "../constants";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -39,6 +41,7 @@ class Routes extends Component {
           <ProtectedRoute path={STATISTICS} component={Statistics} />
           <ProtectedRoute path={JAVASCRIPT} component={Javascript} />
           <ProtectedRoute path={CODE} component={Code} />
+          <ProtectedRoute path={PROFILE} component={Profile} />
         </Switch>
       </Router>
     );
