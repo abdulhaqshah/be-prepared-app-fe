@@ -3,6 +3,7 @@ import Navbar from "../../containers/Dashboard/Navbar";
 import * as auth from "../../services/Session";
 import "./Profile.scss";
 import LeftPane from "./LeftPane";
+import RightPane from "./RightPane";
 
 class Profile extends Component {
   render() {
@@ -17,7 +18,7 @@ class Profile extends Component {
               <LeftPane name={name} email={email} />
             </div>
             <div className="profile-right-pane">
-              <h1>User Info</h1>
+              <RightPane/>
             </div>
           </div>
         </div>

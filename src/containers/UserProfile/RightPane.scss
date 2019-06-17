@@ -1,0 +1,23 @@
+.badges {
+  .card {
+    width: 45rem;
+    height: 13rem;
+    .card-title,
+    p,
+    .fa-id-badge {
+      //   font-size: 13px;
+      color: #738f93;
+    }
+    .card-heading {
+      color: #0d1525;
+      font-weight: bold;
+    }
+    .badge-text {
+    padding-top: 20px;
+    }
+  }
+}
+
+.card.bg-color {
+  background-color: #e7eeef;
+}
