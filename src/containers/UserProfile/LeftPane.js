@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
+// import Popup from "reactjs-popup";
 import "./LeftPane.scss";
 
 class LeftPane extends Component {
   render() {
     return (
       <Fragment>
+        {/* <Popup trigger={<button> Trigger</button>} position="right center"> */}
+        {/* </Popup> */}
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             HA

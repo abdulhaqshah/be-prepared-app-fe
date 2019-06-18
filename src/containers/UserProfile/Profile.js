@@ -10,6 +10,7 @@ class Profile extends Component {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
     return (
+
       <Fragment>
         <Navbar name={name} />
         <div className="profile-container">
