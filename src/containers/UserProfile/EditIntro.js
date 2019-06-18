@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import "./EditIntro.scss";
 
@@ -12,7 +12,6 @@ class EditInto extends Component {
       email: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    // this.submitForm = this.submitForm.bind(this);
   }
 
   handleUserInput(e) {
@@ -23,26 +22,25 @@ class EditInto extends Component {
 
   render() {
     return (
-      <div className="container shadow-lg edit-intro-container">
-        <div className="header d-flex flex-row">
+      <div className="container">
+        <div className="header">
           <div className="heading">
             <h5>Edit Intro</h5>
           </div>
-          <div className="close-btn">
-            <button className="close">
-              <i className="fa fa-close" />
-            </button>
-          </div>
         </div>
-
-        <form className="form" onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
-        <div className="feilds"></div>
+        <form
+          className="form"
+          onSubmit={this.submitForm}
+          ref={ref => (this.formRef = ref)}
+        >
+          <div className="feilds" />
           <div className="name">
             <label className="labels vertical-spacing">
               Name <span className="edit-required-indicator">*</span>
             </label>
             <br />
             <input
+            //  value={this.props.name}
               className="edit-field"
               name="name"
               onChange={this.handleUserInput}
@@ -57,6 +55,7 @@ class EditInto extends Component {
             </label>
             <br />
             <input
+            // value={this.props.email}
               className="edit-field"
               name="email"
               type="email"

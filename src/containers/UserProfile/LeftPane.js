@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from "react";
-// import Popup from "reactjs-popup";
+import Popup from "reactjs-popup";
 import "./LeftPane.scss";
+import EditIntro from "./EditIntro";
+import * as auth from '../../services/Session'
 
 class LeftPane extends Component {
   render() {
+  const name= auth.getItem('name');
+  const email= auth.getItem('email');
     return (
       <Fragment>
-        {/* <Popup trigger={<button> Trigger</button>} position="right center"> */}
-        {/* </Popup> */}
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             HA
@@ -17,11 +19,34 @@ class LeftPane extends Component {
           </button>
           <h3 className="profile-name">{this.props.name}</h3>
           <p>{this.props.email}</p>
-          <div className="edit-btn">
-            <a href="./edit-intro">
-              <i className="fa fa-pencil" /> Edit_Intro
-            </a>
-          </div>
+          <Popup
+            trigger={
+              <div className="edit-btn">
+                <a href>
+                  <i className="fa fa-pencil" /> Edit_Intro
+                </a>
+              </div>
+            }
+            modal
+          >
+            {close => (
+              <div className="">
+                <a className="close" onClick={close}>
+                  &times;
+                </a>
+                <div className="content">
+                  <EditIntro name={name} email={email}/>
+                  {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+          Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+          delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+          commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+          explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae? */}
+                </div>
+              </div>
+            )}
+          </Popup>
         </div>
         <div className="profile-detail">
           <div className="about-heading">
