@@ -12,7 +12,7 @@ class LeftPane extends Component {
       <Fragment>
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
-            HA
+            {this.props.initials}
             <div className="overlay">
               <a href="./edit">{/* <i className="fa fa-pencil" /> */}</a>
             </div>

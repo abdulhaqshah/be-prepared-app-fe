@@ -31,6 +31,8 @@ class EditInto extends Component {
   submitForm(e) {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
+    const existingName = auth.getItem("name");
+    const existingEmail = auth.getItem("email");
     if (this.validator.allValid()) {
       var { name, email } = this.state;
       const data = {
@@ -38,10 +40,27 @@ class EditInto extends Component {
         email,
         uuid
       };
+      // if(name === existingName || email === existingEmail){
+      //   addNotification(
+      //     this.notificationDOMRef,
+      //     "error",
+      //     "error",
+      //     "same name or email has been entered"
+      //   );
+      // }
       API.updateData(data, result => {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
+
+          auth.setItem("name", result.data.name);
+          auth.setItem("email", result.data.email);
+          addNotification(
+            this.notificationDOMRef,
+            "success",
+            "success",
+            result.message
+          );
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -53,9 +72,7 @@ class EditInto extends Component {
             "danger",
             result.message
           );
-        } else if (
-          result.status === "401"
-        ) {
+        } else if (result.status === "401") {
           addNotification(
             this.notificationDOMRef,
             "Error",
@@ -134,7 +151,6 @@ class EditInto extends Component {
                 className="btn btn-outline-success"
                 name="cancelBtn"
                 type="submit"
-            
               >
                 Cancel
               </button>
