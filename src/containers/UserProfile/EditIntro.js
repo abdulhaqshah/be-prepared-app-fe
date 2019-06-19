@@ -2,8 +2,9 @@ import React, { Component, Fragment } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import addNotification from '../../utilities/index'
-import API from '../../api/index'
+import addNotification from "../../utilities/index";
+import * as auth from "../../services/Session";
+import API from "../../api/index";
 import "./EditIntro.scss";
 
 class EditInto extends Component {
@@ -29,11 +30,13 @@ class EditInto extends Component {
 
   submitForm(e) {
     e.preventDefault();
+    const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
       var { name, email } = this.state;
       const data = {
         name,
-        email
+        email,
+        uuid
       };
       API.updateData(data, result => {
         if (result.status === "200") {
@@ -43,6 +46,15 @@ class EditInto extends Component {
           result.status === "404" ||
           result.status === "403" ||
           result.status === "500"
+        ) {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
+        } else if (
+          result.status === "401"
         ) {
           addNotification(
             this.notificationDOMRef,
@@ -122,6 +134,7 @@ class EditInto extends Component {
                 className="btn btn-outline-success"
                 name="cancelBtn"
                 type="submit"
+            
               >
                 Cancel
               </button>

@@ -16,7 +16,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
         <div>
           <Link className="navigation-logo" to={HOME}>
             Be Prepared

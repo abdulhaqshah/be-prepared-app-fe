@@ -12,7 +12,7 @@ const userLogin = (data, resolve, reject) => {
     .catch(err => reject(err));
 };
 const updateData = (data, resolve, reject) => {
-  return GlobalAPISvc(UPDATE_DATA, METHODS.POST, data)
+  return GlobalAPISvc(UPDATE_DATA, METHODS.PATCH, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };

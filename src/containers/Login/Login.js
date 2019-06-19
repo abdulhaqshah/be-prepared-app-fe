@@ -53,7 +53,7 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          auth.setItem("id", result.data.user.uuid);
+          auth.setItem("uuid", result.data.user.uuid);
           auth.setItem("token", result.data.token);
           auth.setItem("name", result.data.user.name);
           auth.setItem("email", result.data.user.email);
