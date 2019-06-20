@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./LeftPane.scss";
 import EditPopup from "./EditPopup";
+import DetailPopup from './DetailPopup'
 
 class LeftPane extends Component {
   render() {
@@ -22,10 +23,8 @@ class LeftPane extends Component {
             <h5>About</h5>
           </div>
           <div className="about-pen-icon">
-            <a href="./link">
-              <i className="fa fa-pencil" />
-            </a>
-          </div>
+         <DetailPopup/>
+         </div>
           <div className="user-about-info">
             <span>Expected year of Graduation</span>
             <br />
