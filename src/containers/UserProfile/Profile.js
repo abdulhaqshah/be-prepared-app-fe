@@ -20,7 +20,7 @@ class Profile extends Component {
         <div className="profile-container">
           <div className="container">
             <div className="row">
-              <div className="col-lg-4">
+              <div className="col-lg-4col-xs-12 col-sm-4">
                 <div className="profile-left-pane">
                   <LeftPane initials={initials} name={name} email={email} />
                 </div>
