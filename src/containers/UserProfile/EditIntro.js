@@ -46,7 +46,6 @@ class EditInto extends Component {
 
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
-          window.location.reload();
           addNotification(
             this.notificationDOMRef,
             "success",
@@ -152,7 +151,6 @@ class EditInto extends Component {
                 className="btn btn-success"
                 name="saveBtn"
                 type="submit"
-                onClick={this.saveData}
               >
                 Save
               </button>
