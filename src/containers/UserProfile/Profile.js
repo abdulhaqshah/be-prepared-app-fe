@@ -8,6 +8,7 @@ import RightPane from "./RightPane";
 class Profile extends Component {
   render() {
     const name = auth.getItem("name");
+    console.log('name', name);
     const email = auth.getItem("email");
     var initials = name.match(/\b\w/g) || [];
     initials = (

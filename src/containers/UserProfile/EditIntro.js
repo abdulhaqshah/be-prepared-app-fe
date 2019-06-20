@@ -31,8 +31,8 @@ class EditInto extends Component {
   submitForm(e) {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
-    const existingName = auth.getItem("name");
-    const existingEmail = auth.getItem("email");
+    // const existingName = auth.getItem("name");
+    // const existingEmail = auth.getItem("email");
     if (this.validator.allValid()) {
       var { name, email } = this.state;
       const data = {
@@ -98,6 +98,7 @@ class EditInto extends Component {
   }
 
   render() {
+    const { name, email } = this.props;
     return (
       <Fragment>
         <div>
@@ -121,7 +122,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                //  value={this.props.name}
+                value={name}
                 className="edit-field"
                 name="name"
                 onChange={this.handleUserInput}
@@ -136,10 +137,9 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                // value={this.props.email}
+                value={email}
                 className="edit-field"
                 name="email"
-                type="email"
                 onChange={this.handleUserInput}
               />
               <div className="edit-error-msg">
@@ -151,6 +151,7 @@ class EditInto extends Component {
                 className="btn btn-outline-success"
                 name="cancelBtn"
                 type="submit"
+                onClick={this.props.closeModal}
               >
                 Cancel
               </button>
@@ -158,7 +159,7 @@ class EditInto extends Component {
                 className="btn btn-success"
                 name="saveBtn"
                 type="submit"
-                onclick={this.saveData}
+                onClick={this.saveData}
               >
                 Save
               </button>
