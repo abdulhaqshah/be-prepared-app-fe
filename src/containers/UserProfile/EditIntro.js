@@ -90,6 +90,8 @@ class EditInto extends Component {
   }
 
   render() {
+    const name = auth.getItem('name');
+    const email = auth.getItem('email');
     return (
       <Fragment>
         <div>
@@ -113,7 +115,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                value={this.state.name}
+                defaultValue={name}
                 className="edit-field"
                 name="name"
                 onChange={this.handleUserInput}
@@ -128,7 +130,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                value={this.state.email}
+                defaultValue={email}
                 className="edit-field"
                 name="email"
                 onChange={this.handleUserInput}
