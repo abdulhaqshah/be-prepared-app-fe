@@ -4,7 +4,7 @@
     border-radius: 8px;
     font-size: 50px;
     background-color: black;
-    width:105px;
+    width: 105px;
     height: 105px;
     .overlay {
       position: relative;
@@ -24,7 +24,7 @@
     color: #738f93;
   }
   .edit-btn {
-    // color: blue;
+    color: blue;
     a:hover {
       text-decoration: none;
     }
@@ -44,6 +44,9 @@
   span {
     font-size: 15px;
     color: #738f93;
+  }
+  .fa-pencil {
+    color: blue;
   }
   .about-heading,
   .about-pen-icon {
