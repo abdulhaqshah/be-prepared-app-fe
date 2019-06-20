@@ -46,12 +46,7 @@ class EditInto extends Component {
 
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
-          addNotification(
-            this.notificationDOMRef,
-            "success",
-            "success",
-            result.message
-          );
+          this.props.closeModal();
         } else if (
           result.status === "404" ||
           result.status === "403" ||

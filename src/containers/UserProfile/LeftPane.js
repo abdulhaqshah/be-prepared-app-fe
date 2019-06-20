@@ -14,7 +14,6 @@ class LeftPane extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.getName = this.getName.bind(this);
     this.getEmail = this.getEmail.bind(this);
-
   }
   openModal() {
     this.setState({ open: true });
@@ -33,8 +32,6 @@ class LeftPane extends Component {
   }
 
   render() {
-    // console.log(this.getInfo().getEmail);
-    // console.log(this.getEmail());
     var initials = this.getName().match(/\b\w/g) || [];
     initials = (
       (initials.shift() || "") + (initials.pop() || "")
@@ -66,7 +63,7 @@ class LeftPane extends Component {
               </a>
               <div className="content">
                 <EditIntro
-                 getName={this.getName}
+                  getName={this.getName}
                   closeModal={this.closeModal}
                 />
               </div>
@@ -78,7 +75,7 @@ class LeftPane extends Component {
             <h5>About</h5>
           </div>
           <div className="about-pen-icon">
-            <DetailPopup/>
+            <DetailPopup />
           </div>
           <div className="user-about-info">
             <span>Expected year of Graduation</span>
