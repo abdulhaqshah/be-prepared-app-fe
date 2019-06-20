@@ -31,8 +31,6 @@ class EditInto extends Component {
   submitForm(e) {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
-    // const existingName = auth.getItem("name");
-    // const existingEmail = auth.getItem("email");
     if (this.validator.allValid()) {
       var { name, email } = this.state;
       const data = {
@@ -40,14 +38,7 @@ class EditInto extends Component {
         email,
         uuid
       };
-      // if(name === existingName || email === existingEmail){
-      //   addNotification(
-      //     this.notificationDOMRef,
-      //     "error",
-      //     "error",
-      //     "same name or email has been entered"
-      //   );
-      // }
+
       API.updateData(data, result => {
         if (result.status === "200") {
           //Form reset
@@ -55,6 +46,7 @@ class EditInto extends Component {
 
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
+          window.location.reload();
           addNotification(
             this.notificationDOMRef,
             "success",
@@ -98,7 +90,6 @@ class EditInto extends Component {
   }
 
   render() {
-    const { name, email } = this.props;
     return (
       <Fragment>
         <div>
@@ -122,7 +113,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                value={name}
+                value={this.state.name}
                 className="edit-field"
                 name="name"
                 onChange={this.handleUserInput}
@@ -137,7 +128,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                value={email}
+                value={this.state.email}
                 className="edit-field"
                 name="email"
                 onChange={this.handleUserInput}
