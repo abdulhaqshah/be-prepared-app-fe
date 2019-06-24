@@ -11,8 +11,7 @@ class LeftPane extends Component {
     this.state = { open: false };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.getName = this.getName.bind(this);
-    this.getEmail = this.getEmail.bind(this);
+
   }
   openModal() {
     this.setState({ open: true });
@@ -20,18 +19,11 @@ class LeftPane extends Component {
   closeModal() {
     this.setState({ open: false });
   }
-
-  getName() {
-    const name = auth.getItem("name");
-    return name;
-  }
-  getEmail() {
-    const email = auth.getItem("email");
-    return email;
-  }
-
   render() {
-    var initials = this.getName().match(/\b\w/g) || [];
+    const name = auth.getItem("name");
+    const email = auth.getItem("email");
+
+    var initials = name.match(/\b\w/g) || [];
     initials = (
       (initials.shift() || "") + (initials.pop() || "")
     ).toUpperCase();
@@ -44,8 +36,8 @@ class LeftPane extends Component {
               <a href="./edit">{/* <i className="fa fa-pencil" /> */}</a>
             </div>
           </button>
-          <h3 className="profile-name">{this.getName()}</h3>
-          <p>{this.getEmail()}</p>
+          <h3 className="profile-name">{name}</h3>
+          <p>{email}</p>
           <div className="edit-btn">
             <a href="#/" onClick={this.openModal}>
               <i className="fa fa-pencil" /> Edit_Intro
