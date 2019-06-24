@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { HOME } from "../constants";
 import "./Header.scss";
 
@@ -8,7 +7,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <div className="logo-div">
-            <a href="./" className="navigation-logo">
+            <a href={HOME} className="navigation-logo">
             Be Prepared
             </a>
         </div>
@@ -26,11 +25,9 @@ class Header extends Component {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <div className="d-lg-flex flex-row-reverse">
             <div className="login-btn">
-              {/* <Link to={this.props.redirectTo}> */}
                 <a href={this.props.redirectTo} className="btn-secondary btn-login">
                   {this.props.btnName}
                 </a>
-              {/* </Link> */}
             </div>
           </div>
         </div>

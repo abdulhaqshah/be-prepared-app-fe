@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { HOME } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Navbar.scss";
@@ -15,15 +14,12 @@ class Navbar extends Component {
   }
 
   render() {
-    debugger;
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
         <div>
-          {/* <Link to={HOME}> */}
             <a href="./" className="navigation-logo">
             Be Prepared
             </a>
-          {/* </Link> */}
         </div>
         <button
           className="navbar-toggler"

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import Navbar from "../Dashboard/Navbar";
 import * as auth from "../../services/Session";
 import "./UserProfile.scss";
 import LeftPane from "./LeftPane";
@@ -12,7 +11,6 @@ class UserProfile extends Component {
   
     return (
       <Fragment>
-        <Navbar name={name} />
         <div className="profile-container">
           <div className="container">
             <div className="row">
