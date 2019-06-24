@@ -1,4 +1,4 @@
-export const API_HOST = 'https://be-prepared-app-bk.herokuapp.com';
+export const API_HOST = 'http://localhost:8000';
 export const METHODS = {
     POST : "POST",
     GET  : "GET",
