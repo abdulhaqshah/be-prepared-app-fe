@@ -38,7 +38,7 @@ class LeftPane extends Component {
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>
           <div className="edit-btn">
-            <a href="#/" onClick={this.openModal}>
+            <a href="#editintro" onClick={this.openModal}>
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
