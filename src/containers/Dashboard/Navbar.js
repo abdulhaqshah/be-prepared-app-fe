@@ -15,12 +15,15 @@ class Navbar extends Component {
   }
 
   render() {
+    debugger;
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
         <div>
-          <Link className="navigation-logo" to={HOME}>
+          {/* <Link to={HOME}> */}
+            <a href="./" className="navigation-logo">
             Be Prepared
-          </Link>
+            </a>
+          {/* </Link> */}
         </div>
         <button
           className="navbar-toggler"

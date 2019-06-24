@@ -8,9 +8,9 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <div className="logo-div">
-          <Link className="navigation-logo" to={HOME}>
+            <a href="./" className="navigation-logo">
             Be Prepared
-          </Link>
+            </a>
         </div>
         <button
           className="navbar-toggler"
@@ -26,11 +26,11 @@ class Header extends Component {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <div className="d-lg-flex flex-row-reverse">
             <div className="login-btn">
-              <Link to={this.props.redirectTo}>
-                <button className="btn-secondary btn-login">
+              {/* <Link to={this.props.redirectTo}> */}
+                <a className="btn-secondary btn-login">
                   {this.props.btnName}
-                </button>
-              </Link>
+                </a>
+              {/* </Link> */}
             </div>
           </div>
         </div>

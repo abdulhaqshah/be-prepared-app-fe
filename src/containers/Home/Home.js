@@ -9,7 +9,6 @@ class Home extends Component{
     render() {
         return (
             <div className="page-landing">
-                <Header btnName="Log In" redirectTo={LOGIN} />
                 <Section />
                 <Footer />
             </div>
