@@ -48,7 +48,7 @@ class LeftPane extends Component {
             onClose={this.closeModal}
           >
             <div className="">
-              <a href="#/" className="close" onClick={this.closeModal}>
+              <a href="#close" className="close" onClick={this.closeModal}>
                 &times;
               </a>
               <div className="content">

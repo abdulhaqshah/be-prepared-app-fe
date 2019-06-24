@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "../Dashboard/Navbar";
 import * as auth from "../../services/Session";
-import "./Profile.scss";
+import "./UserProfile.scss";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 
