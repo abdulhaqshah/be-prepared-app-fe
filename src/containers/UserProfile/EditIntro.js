@@ -46,7 +46,6 @@ class EditInto extends Component {
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
           this.props.closeModal();
-        
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -84,73 +83,72 @@ class EditInto extends Component {
   }
 
   render() {
-
     return (
       <Fragment>
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
-        <div className="container">
-          <div className="header">
-            <div className="heading">
-              <h5>Edit Intro</h5>
+        <div className="header">
+          <div className="heading">
+            <h5>Edit Intro</h5>
+          </div>
+        </div>
+        <form
+          className="form"
+          onSubmit={this.submitForm}
+          ref={ref => (this.formRef = ref)}
+        >
+          <div className="feilds" />
+          <div className="name">
+            <label className="labels vertical-spacing">
+              Name <span className="edit-required-indicator">*</span>
+            </label>
+            <br />
+            <input
+              defaultValue={this.state.name}
+              className="edit-field"
+              name="name"
+              onChange={this.handleUserInput}
+            />
+            <div className="edit-error-msg">
+              {this.validator.message("name", this.state.name, "required")}
             </div>
           </div>
-          <form
-            className="form"
-            onSubmit={this.submitForm}
-            ref={ref => (this.formRef = ref)}
-          >
-            <div className="feilds" />
-            <div className="name">
-              <label className="labels vertical-spacing">
-                Name <span className="edit-required-indicator">*</span>
-              </label>
-              <br />
-              <input
-                defaultValue={this.state.name}
-                className="edit-field"
-                name="name"
-                onChange={this.handleUserInput}
-              />
-              <div className="edit-error-msg">
-                {this.validator.message("name", this.state.name, "required")}
-              </div>
+          <div className="email-div">
+            <label className="labels vertical-spacing">
+              Email <span className="edit-required-indicator">*</span>
+            </label>
+            <br />
+            <input
+              defaultValue={this.state.email}
+              className="edit-field"
+              name="email"
+              onChange={this.handleUserInput}
+            />
+            <div className="edit-error-msg">
+              {this.validator.message("email", this.state.email, "required")}
             </div>
-            <div className="email-div">
-              <label className="labels vertical-spacing">
-                Email <span className="edit-required-indicator">*</span>
-              </label>
-              <br />
-              <input
-                defaultValue={this.state.email}
-                className="edit-field"
-                name="email"
-                onChange={this.handleUserInput}
-              />
-              <div className="edit-error-msg">
-                {this.validator.message("email", this.state.email, "required")}
-              </div>
-            </div>
-            <div className="btns-div">
+          </div>
+          <div className="btns-div d-flex flex-row-reverse">
+            <div className="row d-flex flex-row-reverse">
               <button
-                className="btn btn-outline-success"
+                className="btn btn-success col-lg-3 mt-1"
+                name="saveBtn"
+                type="submit"
+              >
+                Save
+              </button>
+              <button
+                className="btn btn-outline-success col-lg-3 mt-1"
                 name="cancelBtn"
                 type="submit"
                 onClick={this.props.closeModal}
               >
                 Cancel
               </button>
-              <button
-                className="btn btn-success"
-                name="saveBtn"
-                type="submit"
-              >
-                Save
-              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </Fragment>
     );
   }
