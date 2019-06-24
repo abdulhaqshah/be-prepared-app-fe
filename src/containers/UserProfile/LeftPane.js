@@ -11,7 +11,6 @@ class LeftPane extends Component {
     this.state = { open: false };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-
   }
   openModal() {
     this.setState({ open: true });
@@ -54,7 +53,8 @@ class LeftPane extends Component {
               </a>
               <div className="content">
                 <EditIntro
-                  getName={this.getName}
+                  name={name}
+                  email={email}
                   closeModal={this.closeModal}
                 />
               </div>

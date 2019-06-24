@@ -9,7 +9,7 @@ import ProblemSolving from "../containers/ProblemSolving/ProblemSolving";
 import Statistics from "../containers/Statistics/Statistics";
 import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
-import Profile from "../containers/UserProfile/Profile";
+import Profile from "../containers/UserProfile/UserProfile";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import {
   HOME,

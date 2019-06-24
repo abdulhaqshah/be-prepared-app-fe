@@ -13,8 +13,8 @@ class EditInto extends Component {
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      name: "",
-      email: ""
+      name: this.props.name,
+      email: this.props.email
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -38,7 +38,6 @@ class EditInto extends Component {
         email,
         uuid
       };
-
       API.updateData(data, result => {
         if (result.status === "200") {
           //Form reset
@@ -47,6 +46,7 @@ class EditInto extends Component {
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
           this.props.closeModal();
+        
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -84,8 +84,7 @@ class EditInto extends Component {
   }
 
   render() {
-    const name = auth.getItem('name');
-    const email = auth.getItem('email');
+
     return (
       <Fragment>
         <div>
@@ -109,7 +108,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                defaultValue={name}
+                defaultValue={this.state.name}
                 className="edit-field"
                 name="name"
                 onChange={this.handleUserInput}
@@ -124,7 +123,7 @@ class EditInto extends Component {
               </label>
               <br />
               <input
-                defaultValue={email}
+                defaultValue={this.state.email}
                 className="edit-field"
                 name="email"
                 onChange={this.handleUserInput}

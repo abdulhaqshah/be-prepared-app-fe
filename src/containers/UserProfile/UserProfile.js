@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import Navbar from "../../containers/Dashboard/Navbar";
+import Navbar from "../Dashboard/Navbar";
 import * as auth from "../../services/Session";
 import "./Profile.scss";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 
-class Profile extends Component {
+class UserProfile extends Component {
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
@@ -33,4 +33,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default UserProfile;
