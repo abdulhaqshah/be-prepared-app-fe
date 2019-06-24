@@ -9,6 +9,20 @@ import Header from "./components/Header";
 import { LOGIN } from "./constants/index";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      refresh: false
+    };
+    this.refresh = this.refresh.bind(this);
+  }
+
+  refresh() {
+    this.setState({
+      refresh: true
+    });
+  }
+
   render() {
     const name = getItem("name");
     const token = getItem("token");
