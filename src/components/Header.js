@@ -27,7 +27,7 @@ class Header extends Component {
           <div className="d-lg-flex flex-row-reverse">
             <div className="login-btn">
               {/* <Link to={this.props.redirectTo}> */}
-                <a className="btn-secondary btn-login">
+                <a href={this.props.redirectTo} className="btn-secondary btn-login">
                   {this.props.btnName}
                 </a>
               {/* </Link> */}
