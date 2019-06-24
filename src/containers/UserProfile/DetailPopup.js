@@ -19,7 +19,7 @@ class DetailPopup extends Component {
   render() {
     return (
       <div>
-        <a onClick={this.openModal}>
+        <a href="#/" onClick={this.openModal}>
           <i className="fa fa-pencil" />
         </a>
         <Popup
@@ -28,7 +28,7 @@ class DetailPopup extends Component {
           onClose={this.closeModal}
         >
           <div className="">
-            <a className="close" onClick={this.closeModal}>
+            <a href="#/" className="close" onClick={this.closeModal}>
               &times;
             </a>
             <div className="content">

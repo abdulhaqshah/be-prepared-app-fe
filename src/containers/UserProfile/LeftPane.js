@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Popup from "reactjs-popup";
 import EditIntro from "../../containers/UserProfile/EditIntro";
-import EditDetail from "../../containers/UserProfile/DetailPopup";
 import * as auth from "../../services/Session";
 import "./LeftPane.scss";
 import DetailPopup from "../../containers/UserProfile/DetailPopup";
@@ -48,7 +47,7 @@ class LeftPane extends Component {
           <h3 className="profile-name">{this.getName()}</h3>
           <p>{this.getEmail()}</p>
           <div className="edit-btn">
-            <a onClick={this.openModal}>
+            <a href="#/" onClick={this.openModal}>
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
@@ -58,7 +57,7 @@ class LeftPane extends Component {
             onClose={this.closeModal}
           >
             <div className="">
-              <a className="close" onClick={this.closeModal}>
+              <a href="#/" className="close" onClick={this.closeModal}>
                 &times;
               </a>
               <div className="content">
