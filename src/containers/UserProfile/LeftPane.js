@@ -9,15 +9,13 @@ class LeftPane extends Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
-    this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  openModal() {
-    this.setState({ open: true });
-  }
+
   closeModal() {
     this.setState({ open: false });
   }
+
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
@@ -70,7 +68,11 @@ class LeftPane extends Component {
                   </button>
                 </div>
                 <div class="modal-body" />
-                <EditIntro closeModal={this.closeModal} name={name} email={email} />
+                <EditIntro
+                  closeModal={this.closeModal}
+                  name={name}
+                  email={email}
+                />
               </div>
             </div>
           </div>

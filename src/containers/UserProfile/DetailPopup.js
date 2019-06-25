@@ -6,12 +6,9 @@ class DetailPopup extends Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
-    this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  openModal() {
-    this.setState({ open: true });
-  }
+
   closeModal() {
     this.setState({ open: false });
   }
@@ -19,23 +16,40 @@ class DetailPopup extends Component {
   render() {
     return (
       <div>
-        <a href="#/" onClick={this.openModal}>
+        <a
+          href="#/"
+          onClick={this.openModal}
+          data-toggle="modal"
+          data-target="#Modal"
+        >
           <i className="fa fa-pencil" />
         </a>
-        <Popup
-          open={this.state.open}
-          closeOnDocumentClick
-          onClose={this.closeModal}
+        <div
+          class="modal fade"
+          id="Modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
         >
-          <div className="">
-            <a href="#/" className="close" onClick={this.closeModal}>
-              &times;
-            </a>
-            <div className="content">
-              <EditDetail closeModal={this.closeModal} />
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header ">
+                <b> Edit Detail</b>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" />
+              <EditDetail />
             </div>
           </div>
-        </Popup>
+        </div>
       </div>
     );
   }

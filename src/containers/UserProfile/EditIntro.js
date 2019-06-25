@@ -91,7 +91,7 @@ class EditInto extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="container">
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
@@ -153,7 +153,7 @@ class EditInto extends Component {
             </div>
           </div>
         </form>
-      </Fragment>
+      </div>
     );
   }
 }
