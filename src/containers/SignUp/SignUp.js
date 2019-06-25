@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import addNotification from "../../utilities";
 import { LOGIN } from "../../constants";
@@ -12,6 +11,7 @@ import "./SignUp.css";
 class SignUp extends Component {
   constructor(props) {
     super(props);
+    // debugger;
     this.validator = new SimpleReactValidator({
       //This rule is for confirm password
       validators: {
@@ -88,7 +88,6 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Header btnName="Log In" redirectTo={LOGIN} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>

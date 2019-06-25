@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { HOME } from "../../constants";
 import * as auth from "../../services/Session";
+import { Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import "./Navbar.scss";
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -10,16 +13,19 @@ class Navbar extends Component {
 
   onLogout() {
     auth.clearSession();
-    this.props.history.push(HOME);
+    // this.props.history.push(HOME);
   }
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+      <nav
+        className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg"
+        onSubmit={this.props.refresh}
+      >
         <div>
-            <a href="./" className="navigation-logo">
+          <Link to={HOME} className="navigation-logo">
             Be Prepared
-            </a>
+          </Link>
         </div>
         <button
           className="navbar-toggler"

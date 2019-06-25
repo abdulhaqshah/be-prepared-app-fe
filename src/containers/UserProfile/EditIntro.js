@@ -22,13 +22,14 @@ class EditInto extends Component {
     this.formRef = null;
   }
 
+  //
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
   }
-
   submitForm(e) {
+    debugger;
     e.preventDefault();
     const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
@@ -46,6 +47,12 @@ class EditInto extends Component {
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
           this.props.closeModal();
+          addNotification(
+            this.notificationDOMRef,
+            "success",
+            "success",
+            result.message
+          );
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -88,11 +95,6 @@ class EditInto extends Component {
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
-        <div className="header">
-          <div className="heading">
-            <h5>Edit Intro</h5>
-          </div>
-        </div>
         <form
           className="form"
           onSubmit={this.submitForm}
@@ -130,22 +132,24 @@ class EditInto extends Component {
             </div>
           </div>
           <div className="btns-div d-flex flex-row-reverse">
-            <div className="row d-flex flex-row-reverse">
-              <button
-                className="btn btn-success col-lg-3 mt-1"
-                name="saveBtn"
-                type="submit"
-              >
-                Save
-              </button>
-              <button
-                className="btn btn-outline-success col-lg-3 mt-1"
-                name="cancelBtn"
-                type="submit"
-                onClick={this.props.closeModal}
-              >
-                Cancel
-              </button>
+            <div className="modal-body">
+              <div className="row d-flex flex-row-reverse">
+                <button
+                  className="btn btn-success col-lg-3 mt-1"
+                  name="saveBtn"
+                  type="submit"
+                >
+                  Save
+                </button>
+                <button
+                  className="btn btn-outline-success col-lg-3 mt-1"
+                  name="cancelBtn"
+                  type="submit"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </form>

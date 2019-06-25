@@ -13,6 +13,7 @@ import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
+    // debugger;
 
     this.validator = new SimpleReactValidator();
     this.state = {

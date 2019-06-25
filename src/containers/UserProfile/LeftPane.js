@@ -38,28 +38,42 @@ class LeftPane extends Component {
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>
           <div className="edit-btn">
-            <a href="#editintro" onClick={this.openModal}>
+            <a
+              href="#editintro"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
-          <Popup
-            open={this.state.open}
-            closeOnDocumentClick
-            onClose={this.closeModal}
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
           >
-            <div className="">
-              <a href="#close" className="close" onClick={this.closeModal}>
-                &times;
-              </a>
-              <div className="content">
-                <EditIntro
-                  name={name}
-                  email={email}
-                  closeModal={this.closeModal}
-                />
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Edit Intro
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" />
+                <EditIntro closeModal={this.closeModal} name={name} email={email} />
               </div>
             </div>
-          </Popup>
+          </div>
         </div>
         <div className="profile-detail">
           <div className="about-heading">
