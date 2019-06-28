@@ -15,37 +15,35 @@ class DetailPopup extends Component {
   render() {
     return (
       <div>
-        <a
-          href="#/"
-          onClick={this.openModal}
-          data-toggle="modal"
-          data-target="#Modal"
-        >
+        <a href="#editdetail" data-toggle="modal" data-target="#Modal">
           <i className="fa fa-pencil" />
         </a>
         <div
-          className="modal fade"
+          className="modal"
           id="Modal"
           tabIndex="-1"
           role="dialog"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="ModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <div className="modal-header ">
-                <b> Edit Detail</b>
+              <div className="modal-header">
+                <h5 className="modal-title" id="ModalLabel">
+                  Edit Detail
+                </h5>
                 <button
                   type="button"
                   className="close"
                   data-dismiss="modal"
                   aria-label="Close"
+                  aria-hidden="true"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body" />
-              <EditDetail />
+              <EditDetail closeModal={this.closeModal} />
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
+import * as $ from "jquery";
 import "./EditIntro.scss";
 
 class EditDetail extends Component {
@@ -12,6 +13,11 @@ class EditDetail extends Component {
       year: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.onSave = this.onSave.bind(this);
+  }
+  onSave() {
+    $("#exampleModal").modal("hide");
+    $(".modal-backdrop").remove();
   }
 
   handleUserInput(e) {
@@ -59,7 +65,7 @@ class EditDetail extends Component {
                 className="btn btn-success col-lg-3 mt-1"
                 name="saveBtn"
                 type="submit"
-                onClick={this.saveData}
+                onClick={this.onSave}
               >
                 Save
               </button>
@@ -67,7 +73,7 @@ class EditDetail extends Component {
                 className="btn btn-outline-success col-lg-3 mr-1 mt-1"
                 name="cancelBtn"
                 type="submit"
-                onClick={this.props.closeModal}
+                data-dismiss="modal"
               >
                 Cancel
               </button>
