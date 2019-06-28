@@ -11,22 +11,6 @@ import "./myOwn.css";
 class App extends Component {
   render() {
     return <Routes />;
-    // const token = getItem("token");
-    // debugger;
-    // if (token !== null) {
-    //   return (
-    //     <Fragment>
-    //       <Routes />
-    //     </Fragment>
-    //   );
-    // } else {
-    //   return (
-    //     <Fragment>
-    //       <Header btnName="Log In" redirectTo={LOGIN} />
-    //       <Routes />
-    //     </Fragment>
-    //   );
-    // }
   }
 }
 export default App;

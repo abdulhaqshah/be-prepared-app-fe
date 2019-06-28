@@ -24,7 +24,7 @@ class EditDetail extends Component {
     return (
       <div className="container">
         <label for="comment">About me:</label>
-        <textarea class="form-control" rows="5" id="comment" />
+        <textarea className="form-control" rows="5" id="comment" />
 
         <form className="form" ref={ref => (this.formRef = ref)}>
           <div className="feilds" />
@@ -33,7 +33,7 @@ class EditDetail extends Component {
               I am currently a<span className="edit-required-indicator">*</span>
             </label>
             <br />
-            <select class="form-control" id="sel1">
+            <select className="form-control" id="sel1">
               <option>Student</option>
               <option>Professional</option>
             </select>
@@ -44,7 +44,7 @@ class EditDetail extends Component {
               <span className="edit-required-indicator">*</span>
             </label>
             <br />
-            <select class="form-control" id="sel1">
+            <select className="form-control" id="sel1">
               <option>2019</option>
               <option>2020</option>
               <option>2021</option>

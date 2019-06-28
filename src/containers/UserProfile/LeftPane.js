@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import Popup from "reactjs-popup";
 import EditIntro from "../../containers/UserProfile/EditIntro";
 import * as auth from "../../services/Session";
 import "./LeftPane.scss";
@@ -8,7 +7,7 @@ import DetailPopup from "../../containers/UserProfile/DetailPopup";
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: true };
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -45,33 +44,34 @@ class LeftPane extends Component {
             </a>
           </div>
           <div
-            class="modal fade"
+            className="modal"
             id="exampleModal"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">
                     Edit Intro
                   </h5>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
+                    aria-hidden="true"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body" />
+                <div className="modal-body" />
                 <EditIntro
-                  closeModal={this.closeModal}
                   name={name}
                   email={email}
+                  closeModal={this.closeModal}
                 />
               </div>
             </div>

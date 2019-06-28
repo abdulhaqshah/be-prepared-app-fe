@@ -19,7 +19,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav
-        className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg"
+        className="navbar navbar-expand-lg fixefixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topd-top navbar-dark bg-dark shadow-lg"
         onSubmit={this.props.refresh}
       >
         <div>
@@ -74,7 +74,7 @@ class Navbar extends Component {
                 />
               </form>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown mr-5">
               <a
                 href="."
                 className="nav-link dropdown-toggle"

@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import addNotification from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
+import * as $ from "jquery";
 import "./EditIntro.scss";
 
 class EditInto extends Component {
@@ -19,17 +20,19 @@ class EditInto extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.onSave = this.onSave.bind(this);
     this.formRef = null;
   }
-
-  //
+  onSave() {
+    $("#exampleModal").modal("hide");
+    $(".modal-backdrop").remove();
+  }
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
   }
   submitForm(e) {
-    debugger;
     e.preventDefault();
     const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
@@ -43,16 +46,9 @@ class EditInto extends Component {
         if (result.status === "200") {
           //Form reset
           this.formRef.reset();
-
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
           this.props.closeModal();
-          addNotification(
-            this.notificationDOMRef,
-            "success",
-            "success",
-            result.message
-          );
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -135,9 +131,10 @@ class EditInto extends Component {
             <div className="modal-body">
               <div className="row d-flex flex-row-reverse">
                 <button
-                  className="btn btn-success col-lg-3 mt-1"
+                  className="btn btn-success col-lg-3 mt-1 save-details"
                   name="saveBtn"
                   type="submit"
+                  onClick={this.onSave}
                 >
                   Save
                 </button>

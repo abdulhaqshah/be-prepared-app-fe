@@ -27,7 +27,7 @@ import {
 } from "../constants";
 import { BrowserRouter as Router } from "react-router-dom";
 import {getItem} from '../services/Session'
-import Header from '../components/Header'
+// import Header from '../components/Header'
 
 class Routes extends Component {
 

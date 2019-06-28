@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Popup from "reactjs-popup";
 import EditDetail from "./EditDetail";
 
 class DetailPopup extends Component {
@@ -25,27 +24,27 @@ class DetailPopup extends Component {
           <i className="fa fa-pencil" />
         </a>
         <div
-          class="modal fade"
+          className="modal fade"
           id="Modal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header ">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header ">
                 <b> Edit Detail</b>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body" />
+              <div className="modal-body" />
               <EditDetail />
             </div>
           </div>

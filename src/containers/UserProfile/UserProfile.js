@@ -4,6 +4,7 @@ import "./UserProfile.scss";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 
+
 class UserProfile extends Component {
   render() {
     const name = auth.getItem("name");
