@@ -23,7 +23,7 @@ class EditDetail extends Component {
   render() {
     return (
       <div className="container">
-        <label for="comment">About me:</label>
+        <label htmlFor="comment">About me:</label>
         <textarea className="form-control" rows="5" id="comment" />
 
         <form className="form" ref={ref => (this.formRef = ref)}>
