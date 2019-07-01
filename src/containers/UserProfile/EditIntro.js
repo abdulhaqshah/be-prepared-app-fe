@@ -5,8 +5,6 @@ import "react-notifications-component/dist/theme.css";
 import addNotification from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
-// import * as $ from "jquery";
-// import 'bootstrap';
 import "./EditIntro.scss";
 
 class EditInto extends Component {
@@ -45,6 +43,7 @@ class EditInto extends Component {
           auth.setItem("email", result.data.email);
           this.props.closeModal();
           this.modalRef.remove();
+
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -66,6 +65,7 @@ class EditInto extends Component {
           );
         }
       }).catch = error => {
+        debugger;
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
