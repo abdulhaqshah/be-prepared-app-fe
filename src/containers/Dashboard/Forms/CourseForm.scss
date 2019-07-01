@@ -1,0 +1,60 @@
+.form-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+.form-inner-container {
+  background: #fffdfd;
+  padding-top: 4px;
+  border: 2px solid black;
+  border-radius: 15px;
+  height: 500px;
+  width: 550px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 80px;
+}
+.choose-image,
+.add-quiz {
+  display: inline;
+}
+.row.d-flex {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.form-labels {
+  margin-top: 6px;
+}
+.form-heading {
+  padding-top: 10px;
+  font: bold;
+  font-size: 38px;
+  align-items: center;
+}
+.form-field {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s all;
+}
+.form-field:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+.form-control {
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s all;
+}
+
+.form-control:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.form-error-msg {
+  color: red;
+}
