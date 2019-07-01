@@ -14,7 +14,6 @@ class LeftPane extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
-    // this.modalRef = React.createRef();
   }
 
   closeModal() {
@@ -30,7 +29,6 @@ class LeftPane extends Component {
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
-    debugger;
 
     return (
       <Fragment>
@@ -55,42 +53,13 @@ class LeftPane extends Component {
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
-          <div
-            // ref={ref => (this.modalRef = ref)}
-            className="modal"
-            id="exampleModal"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">
-                    Edit Intro
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                    aria-hidden="true"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body" />
-                <EditIntro
-                  // ref={this.modalRef} // modalRef={this.modalRef}
-                  name={name}
-                  email={email}
-                  closeModal={this.closeModal}
-                />
-              </div>
-            </div>
-          </div>
+          <EditIntro
+            name={name}
+            email={email}
+            closeModal={this.closeModal}
+          />
         </div>
+
         <div className="profile-detail">
           <div className="about-heading">
             <h5>About</h5>

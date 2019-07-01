@@ -21,15 +21,9 @@ class EditInto extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
-    this.onSave = this.onSave.bind(this);
-    this.formRef = null;
+    this.modalRef = React.createRef();
   }
-  onSave() {
-    debugger;
-    console.log(this.props.modalRef);
-    this.props.modalRef.modal("hide");
-    // $(".modal-backdrop").remove();
-  }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -47,11 +41,10 @@ class EditInto extends Component {
       };
       API.updateData(data, result => {
         if (result.status === "200") {
-          //Form reset
-          this.formRef.reset();
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
           this.props.closeModal();
+          this.modalRef.remove();
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -84,69 +77,102 @@ class EditInto extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
-        <form
-          className="form"
-          onSubmit={this.submitForm}
-          ref={ref => (this.formRef = ref)}
-        >
-          <div className="feilds" />
-          <div className="name">
-            <label className="labels vertical-spacing">
-              Name <span className="edit-required-indicator">*</span>
-            </label>
-            <br />
-            <input
-              defaultValue={this.state.name}
-              className="edit-field"
-              name="name"
-              onChange={this.handleUserInput}
-            />
-            <div className="edit-error-msg">
-              {this.validator.message("name", this.state.name, "required")}
+      <div
+        ref={ref => (this.modalRef = ref)}
+        className="modal"
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Edit Intro
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                aria-hidden="true"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          </div>
-          <div className="email-div">
-            <label className="labels vertical-spacing">
-              Email <span className="edit-required-indicator">*</span>
-            </label>
-            <br />
-            <input
-              defaultValue={this.state.email}
-              className="edit-field"
-              name="email"
-              onChange={this.handleUserInput}
-            />
-            <div className="edit-error-msg">
-              {this.validator.message("email", this.state.email, "required")}
-            </div>
-          </div>
-          <div className="btns-div d-flex flex-row-reverse">
-            <div className="modal-body">
-              <div className="row d-flex flex-row-reverse">
-                <button
-                  className="btn btn-success col-lg-3 mt-1 save-details"
-                  name="saveBtn"
-                  type="submit"
-                  onClick={this.onSave}
-                >
-                  Save
-                </button>
-                <button
-                  className="btn btn-outline-success col-lg-3 mt-1"
-                  name="cancelBtn"
-                  type="submit"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
+            <div className="modal-body" />
+
+            <div className="container">
+              <div>
+                <ReactNotification ref={this.notificationDOMRef} />
               </div>
+              <form className="form" onSubmit={this.submitForm}>
+                <div className="feilds" />
+                <div className="name">
+                  <label className="labels vertical-spacing">
+                    Name <span className="edit-required-indicator">*</span>
+                  </label>
+                  <br />
+                  <input
+                    defaultValue={this.state.name}
+                    className="edit-field"
+                    name="name"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="edit-error-msg">
+                    {this.validator.message(
+                      "name",
+                      this.state.name,
+                      "required"
+                    )}
+                  </div>
+                </div>
+                <div className="email-div">
+                  <label className="labels vertical-spacing">
+                    Email <span className="edit-required-indicator">*</span>
+                  </label>
+                  <br />
+                  <input
+                    defaultValue={this.state.email}
+                    className="edit-field"
+                    name="email"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="edit-error-msg">
+                    {this.validator.message(
+                      "email",
+                      this.state.email,
+                      "required"
+                    )}
+                  </div>
+                </div>
+                <div className="btns-div d-flex flex-row-reverse">
+                  <div className="modal-body">
+                    <div className="row d-flex flex-row-reverse">
+                      <button
+                        className="btn btn-success col-lg-3 mt-1 save-details"
+                        name="saveBtn"
+                        type="submit"
+                      >
+                        Save
+                      </button>
+                      <button
+                        className="btn btn-outline-success col-lg-3 mt-1"
+                        name="cancelBtn"
+                        type="submit"
+                        data-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
