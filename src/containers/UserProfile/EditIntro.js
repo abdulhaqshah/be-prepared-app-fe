@@ -55,15 +55,9 @@ class EditInto extends Component {
         } else if (
           result.status === "404" ||
           result.status === "403" ||
-          result.status === "500"
+          result.status === "500" ||
+          result.status === "401"
         ) {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "danger",
-            result.message
-          );
-        } else if (result.status === "401") {
           addNotification(
             this.notificationDOMRef,
             "Error",

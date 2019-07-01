@@ -1,4 +1,4 @@
-const addNotification = (notificationDOMRef, title, type, message) => {
+export const addNotification = (notificationDOMRef, title, type, message) => {
   notificationDOMRef.current.addNotification({
     title,
     message,
@@ -11,4 +11,12 @@ const addNotification = (notificationDOMRef, title, type, message) => {
     dismissable: { click: true }
   });
 };
-export default addNotification;
+export const getInitials = name => {
+  var initials = name.match(/\b\w/g) || [];
+  initials = ((initials.shift() || "") + (initials.pop() || "")).toUpperCase();
+  return initials;
+};
+export default {
+  addNotification,
+  getInitials
+};
