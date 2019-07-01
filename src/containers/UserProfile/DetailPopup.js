@@ -29,9 +29,7 @@ class DetailPopup extends Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="ModalLabel">
-                  Edit Detail
-                </h5>
+                <b>Edit Detail</b>
                 <button
                   type="button"
                   className="close"

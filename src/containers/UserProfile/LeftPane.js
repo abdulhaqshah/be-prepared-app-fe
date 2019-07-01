@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
 import EditIntro from "../../containers/UserProfile/EditIntro";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import addNotification from "../../utilities/index";
 import * as auth from "../../services/Session";
 import "./LeftPane.scss";
 import DetailPopup from "../../containers/UserProfile/DetailPopup";
@@ -9,22 +12,36 @@ class LeftPane extends Component {
     super(props);
     this.state = { open: true };
     this.closeModal = this.closeModal.bind(this);
+    this.notificationDOMRef = React.createRef();
+    this.formRef = null;
+    // this.modalRef = React.createRef();
   }
 
   closeModal() {
     this.setState({ open: false });
+    addNotification(
+      this.notificationDOMRef,
+      "success",
+      "success",
+      "User has been updated"
+    );
   }
 
   render() {
+    debugger;
+
+    console.log(this.formRef)
     const name = auth.getItem("name");
     const email = auth.getItem("email");
-
     var initials = name.match(/\b\w/g) || [];
     initials = (
       (initials.shift() || "") + (initials.pop() || "")
     ).toUpperCase();
     return (
       <Fragment>
+        <div>
+          <ReactNotification ref={this.notificationDOMRef} />
+        </div>
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             {initials}
@@ -44,6 +61,7 @@ class LeftPane extends Component {
             </a>
           </div>
           <div
+            // ref={ref => (this.modalRef = ref)}
             className="modal"
             id="exampleModal"
             tabIndex="-1"
@@ -69,6 +87,7 @@ class LeftPane extends Component {
                 </div>
                 <div className="modal-body" />
                 <EditIntro
+                  // ref={this.modalRef} // modalRef={this.modalRef}
                   name={name}
                   email={email}
                   closeModal={this.closeModal}

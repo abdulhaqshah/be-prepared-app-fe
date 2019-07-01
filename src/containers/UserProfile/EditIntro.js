@@ -5,7 +5,8 @@ import "react-notifications-component/dist/theme.css";
 import addNotification from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
-import * as $ from "jquery";
+// import * as $ from "jquery";
+// import 'bootstrap';
 import "./EditIntro.scss";
 
 class EditInto extends Component {
@@ -24,8 +25,10 @@ class EditInto extends Component {
     this.formRef = null;
   }
   onSave() {
-    $("#exampleModal").modal("hide");
-    $(".modal-backdrop").remove();
+    debugger;
+    console.log(this.props.modalRef);
+    this.props.modalRef.modal("hide");
+    // $(".modal-backdrop").remove();
   }
   handleUserInput(e) {
     const name = e.target.name;

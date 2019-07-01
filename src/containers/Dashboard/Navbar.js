@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { HOME } from "../../constants";
 import * as auth from "../../services/Session";
 import { Link } from "react-router-dom";
-// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import "./Navbar.scss";
 
 class Navbar extends Component {
@@ -13,14 +12,13 @@ class Navbar extends Component {
 
   onLogout() {
     auth.clearSession();
-    // this.props.history.push(HOME);
+    this.props.history.push(HOME);
   }
 
   render() {
     return (
       <nav
-        className="navbar navbar-expand-lg fixefixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topfixed-topd-top navbar-dark bg-dark shadow-lg"
-        onSubmit={this.props.refresh}
+        className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark shadow-lg"
       >
         <div>
           <Link to={HOME} className="navigation-logo">
