@@ -9,6 +9,8 @@ import ProblemSolving from "../containers/ProblemSolving/ProblemSolving";
 import Statistics from "../containers/Statistics/Statistics";
 import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
+import Profile from "../containers/UserProfile/UserProfile";
+import Navbar from "../containers/Dashboard/Navbar";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import {
   HOME,
@@ -20,15 +22,21 @@ import {
   PROBLEM_SOLVING,
   CODE,
   STATISTICS,
-  JAVASCRIPT
+  JAVASCRIPT,
+  PROFILE
 } from "../constants";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import {getItem} from '../services/Session'
+// import Header from '../components/Header'
 
 class Routes extends Component {
+
   render() {
+    const name = getItem("name");
     return (
       <Router>
-        <Switch>
+           {/* <Header btnName="Log In" redirectTo={LOGIN} /> */}
+          <Navbar name={name}/>
           <GuestRoute exact path={HOME} component={Home} />
           <GuestRoute path={SINGUP} component={SignUp} />
           <GuestRoute path={LOGIN} component={Login} />
@@ -39,7 +47,7 @@ class Routes extends Component {
           <ProtectedRoute path={STATISTICS} component={Statistics} />
           <ProtectedRoute path={JAVASCRIPT} component={Javascript} />
           <ProtectedRoute path={CODE} component={Code} />
-        </Switch>
+          <ProtectedRoute path={PROFILE} component={Profile} />
       </Router>
     );
   }

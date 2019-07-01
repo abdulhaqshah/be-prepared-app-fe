@@ -19,8 +19,10 @@
     padding-top: 3px;
     padding-bottom: 3px;
     width: 145px;
-    .btn-secondary.btn-login {
+    .btn-login {
       border-radius: 0%;
+      padding-bottom: 10px;
+      padding-top: 10px;
       padding-left: 40px;
       padding-right: 40px;
       background-color: hsla(0, 0%, 100%, 0.08);
@@ -29,6 +31,9 @@
       border: black;
       height: 42px;
       font-family: "sans-serif";
+      &:hover{
+        text-decoration:none;
+      }
     }
   }
 }

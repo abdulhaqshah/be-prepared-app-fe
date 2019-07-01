@@ -1,0 +1,13 @@
+.profile-container {
+  padding-top: 70px;
+  background-color: hsl(180, 20%, 96%);
+  .profile-left-pane {
+    margin-top: 30px;
+    width: 300px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-right-pane {
+    margin-top: 30px;
+  }
+}

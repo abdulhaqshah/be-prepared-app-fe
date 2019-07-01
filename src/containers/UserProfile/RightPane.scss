@@ -1,0 +1,39 @@
+.badges {
+  .card {
+    height: 13rem;
+    .card-title,
+    p,
+    .fa-id-badge {
+      color: #738f93;
+    }
+    .card-heading {
+      color: #0d1525;
+      font-weight: bold;
+    }
+    .badge-text {
+      padding-top: 20px;
+    }
+  }
+}
+.work-exp,
+.education {
+  margin-top: 23px;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .work-exp-link {
+    padding-top: 10px;
+  }
+  .fa-briefcase,
+  .fa-graduation-cap {
+    color: #738f93;
+  }
+  .card {
+    height: 8rem;
+  }
+}
+.card.bg-color {
+  background-color: #e7eeef;
+}

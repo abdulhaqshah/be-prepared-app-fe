@@ -1,4 +1,4 @@
-import { USER_URL, USER_LOGIN_URL, METHODS ,TEST_DATA} from "./constants";
+import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA} from "./constants";
 import GlobalAPISvc from "./globalApi";
 
 const postUserData = (data, resolve, reject) => {
@@ -11,13 +11,13 @@ const userLogin = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
-const testData = (data, resolve, reject) => {
-  return GlobalAPISvc(TEST_DATA, METHODS.POST, data)
+const updateData = (data, resolve, reject) => {
+  return GlobalAPISvc(UPDATE_DATA, METHODS.PATCH, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
 export default {
   postUserData,
   userLogin,
-  testData
+  updateData
 };
