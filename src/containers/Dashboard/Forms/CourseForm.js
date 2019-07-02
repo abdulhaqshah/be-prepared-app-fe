@@ -117,7 +117,7 @@ class CourseForm extends Component {
                     name="saveBtn"
                     type="submit"
                   >
-                    Add Quiz
+                    Add Course
                   </button>
                 </div>
               </form>
