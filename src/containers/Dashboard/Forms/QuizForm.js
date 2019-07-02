@@ -27,6 +27,7 @@ class QuizForm extends Component {
     this.setState({ [name]: value });
   }
   submitForm(e) {
+    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, course } = this.state;
@@ -34,8 +35,8 @@ class QuizForm extends Component {
         name,
         course
       };
-      API.courseData(data, result => {
-        if (result.status === "201") {
+      API.quizData(data, result => {
+        if (result.status === "200") {
           // Form reset
           this.formRef.reset();
           addNotification(
@@ -53,7 +54,7 @@ class QuizForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            result.message
+            result.status
           );
         }
       }).catch = error => {
@@ -102,7 +103,7 @@ class QuizForm extends Component {
                 <div>
                   <label className="labels">Course</label>
                   <select class="custom-select">
-                    <option selected>COOP</option>
+                    <option selected>OOP</option>
                     <option value="1">Database</option>
                     <option value="2">Data Structure</option>
                     <option value="3">PF</option>
