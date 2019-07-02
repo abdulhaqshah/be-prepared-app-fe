@@ -36,8 +36,6 @@ class QuizForm extends Component {
         courseId
       };
       API.quizData(data, result => {
-        alert("api hit");
-
         if (result.status === "201") {
           // Form reset
           this.formRef.reset();
@@ -111,7 +109,8 @@ class QuizForm extends Component {
                       type="text"
                       onChange={this.handleUserInput}
                     >
-                      <option defaultValue>OOP</option>
+                      <option defaultValue>Select Course</option>
+                      <option value="OOP">OOP</option>
                       <option value="Database">Database</option>
                       <option value="Data Structure">Data Structure</option>
                       <option value="PF">PF</option>
