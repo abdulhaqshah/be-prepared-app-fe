@@ -102,12 +102,19 @@ class QuizForm extends Component {
                 </div>
                 <div>
                   <label className="labels">Course</label>
-                  <select class="custom-select">
-                    <option selected>OOP</option>
-                    <option value="1">Database</option>
-                    <option value="2">Data Structure</option>
-                    <option value="3">PF</option>
-                  </select>
+
+                     <select
+                      className="custom-select"
+                      name="course"
+                      type="text"
+                      onChange={this.handleUserInput}
+                    >
+                      <option defaultValue>OOP</option>
+                      <option value="1">Database</option>
+                      <option value="2">Data Structure</option>
+                      <option value="3">PF</option>
+                    </select>
+                   
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
