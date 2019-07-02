@@ -46,7 +46,10 @@ const getQuizzes = (resolve, reject) => {
 const userAboutInfo = (data, resolve, reject) => {
   return GlobalAPISvc(USER_ABOUT_INFO(userId), METHODS.PATCH, data)
     .then(res => resolve(res))
-    .catch(err => reject(err));
+    .catch(err => {
+      debugger;
+      return reject(err);
+    });
 };
 export default {
   userRegister,

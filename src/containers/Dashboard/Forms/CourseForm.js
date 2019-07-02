@@ -47,7 +47,7 @@ class CourseForm extends Component {
         } else if (
           result.status === "404" ||
           result.status === "400" ||
-          result.status === "500" 
+          result.status === "500"
         ) {
           addNotification(
             this.notificationDOMRef,
@@ -92,7 +92,11 @@ class CourseForm extends Component {
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
-                    {this.validator.message("name", this.state.name, "name")}
+                    {this.validator.message(
+                      "name",
+                      this.state.name,
+                      "min:3|max:25|required"
+                    )}
                   </div>
                 </div>
                 <div>
@@ -104,13 +108,13 @@ class CourseForm extends Component {
                     rows="5"
                     onChange={this.handleUserInput}
                   />
-                  <div className="form-error-msg">
-                    {this.validator.message(
-                      "description",
-                      this.state.description,
-                      "description"
-                    )}
-                  </div>
+                 <div className="form-error-msg">
+                  {this.validator.message(
+                    "description",
+                    this.state.description,
+                    "min:3|required"
+                  )}
+                </div>
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
