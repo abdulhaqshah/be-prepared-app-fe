@@ -21,17 +21,10 @@
       width: 100%;
       height: 40px;
       border-radius: 4px;
-      position: relative;
-      &:hover {
-        color: grey;
-      }
     }
     textarea {
       color: black;
       border: solid 1px;
-      &:hover {
-        color: grey;
-      }
     }
     .form-error-msg {
       color: red;

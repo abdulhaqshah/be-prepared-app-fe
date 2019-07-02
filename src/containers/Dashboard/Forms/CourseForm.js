@@ -38,6 +38,13 @@ class CourseForm extends Component {
         if (result.status === "200") {
           // Form reset
           this.formRef.reset();
+          // alert(result.message)
+          // addNotification(
+          //   this.notificationDOMRef,
+          //   "success",
+          //   "success",
+          //   result.message
+          // );
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -48,13 +55,6 @@ class CourseForm extends Component {
             "Error",
             "danger",
             result.message
-          );
-        } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            "Somgthing went wrong"
           );
         }
       }).catch = error => {
@@ -93,16 +93,18 @@ class CourseForm extends Component {
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
-                    {this.validator.message(
-                      "name",
-                      this.state.name,
-                      "name"
-                    )}
+                    {this.validator.message("name", this.state.name, "name")}
                   </div>
                 </div>
                 <div>
                   <label className="labels">Description</label>
-                  <textarea className="form-control" rows="5" id="comment" />
+                  <textarea
+                    className="form-control"
+                    name="description"
+                    type="text"
+                    rows="5"
+                    onChange={this.handleUserInput}
+                  />
                   <div className="form-error-msg">
                     {this.validator.message(
                       "description",
@@ -113,8 +115,8 @@ class CourseForm extends Component {
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
-                    className="btn btn-secondary col-lg-4 mt-1 mr-1 ml-1"
-                    name="saveBtn"
+                    className="btn btn-secondary col-lg-4 mt-1"
+                    name="addBtn"
                     type="submit"
                   >
                     Add Course
