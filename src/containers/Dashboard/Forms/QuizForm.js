@@ -13,7 +13,7 @@ class QuizForm extends Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       name: "",
-      course: ""
+      courseId: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -30,13 +30,15 @@ class QuizForm extends Component {
     debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { name, course } = this.state;
+      var { name, courseId } = this.state;
       const data = {
         name,
-        course
+        courseId
       };
       API.quizData(data, result => {
-        if (result.status === "200") {
+        alert("api hit");
+
+        if (result.status === "201") {
           // Form reset
           this.formRef.reset();
           addNotification(
@@ -105,14 +107,14 @@ class QuizForm extends Component {
 
                      <select
                       className="custom-select"
-                      name="course"
+                      name="courseId"
                       type="text"
                       onChange={this.handleUserInput}
                     >
                       <option defaultValue>OOP</option>
-                      <option value="1">Database</option>
-                      <option value="2">Data Structure</option>
-                      <option value="3">PF</option>
+                      <option value="Database">Database</option>
+                      <option value="Data Structure">Data Structure</option>
+                      <option value="PF">PF</option>
                     </select>
                    
                 </div>
