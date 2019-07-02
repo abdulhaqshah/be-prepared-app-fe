@@ -35,7 +35,6 @@ class CourseForm extends Component {
         description
       };
       API.courseData(data, result => {
-        // debugger;
         if (result.status === "201") {
           // Form reset
           this.formRef.reset();
