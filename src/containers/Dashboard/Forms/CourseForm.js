@@ -35,6 +35,7 @@ class CourseForm extends Component {
         description
       };
       API.courseData(data, result => {
+        // debugger;
         if (result.status === "201") {
           // Form reset
           this.formRef.reset();
@@ -53,7 +54,7 @@ class CourseForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            result.message
+            result.status
           );
         }
       }).catch = error => {
@@ -108,13 +109,13 @@ class CourseForm extends Component {
                     rows="5"
                     onChange={this.handleUserInput}
                   />
-                 <div className="form-error-msg">
-                  {this.validator.message(
-                    "description",
-                    this.state.description,
-                    "min:3|required"
-                  )}
-                </div>
+                  <div className="form-error-msg">
+                    {this.validator.message(
+                      "description",
+                      this.state.description,
+                      "min:3|required"
+                    )}
+                  </div>
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
