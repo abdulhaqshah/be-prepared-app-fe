@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import addNotification from "../../../utilities/index";
+import { addNotification } from "../../../utilities/index";
 import API from "../../../api/index";
 import "./CourseForm.scss";
 
@@ -35,20 +35,19 @@ class CourseForm extends Component {
         description
       };
       API.courseData(data, result => {
-        if (result.status === "200") {
+        if (result.status === "201") {
           // Form reset
           this.formRef.reset();
-          // alert(result.message)
-          // addNotification(
-          //   this.notificationDOMRef,
-          //   "success",
-          //   "success",
-          //   result.message
-          // );
+          addNotification(
+            this.notificationDOMRef,
+            "success",
+            "success",
+            result.message
+          );
         } else if (
           result.status === "404" ||
-          result.status === "403" ||
-          result.status === "500"
+          result.status === "400" ||
+          result.status === "500" 
         ) {
           addNotification(
             this.notificationDOMRef,
