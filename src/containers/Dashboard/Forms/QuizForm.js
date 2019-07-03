@@ -27,7 +27,6 @@ class QuizForm extends Component {
     this.setState({ [name]: value });
   }
   submitForm(e) {
-    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, courseId } = this.state;
@@ -103,19 +102,25 @@ class QuizForm extends Component {
                 <div>
                   <label className="labels">Course</label>
 
-                     <select
-                      className="custom-select"
-                      name="courseId"
-                      type="text"
-                      onChange={this.handleUserInput}
-                    >
-                      <option defaultValue>Select Course</option>
-                      <option value="OOP">OOP</option>
-                      <option value="Database">Database</option>
-                      <option value="Data Structure">Data Structure</option>
-                      <option value="PF">PF</option>
-                    </select>
-                   
+                  <select
+                    className="custom-select"
+                    name="courseId"
+                    type="text"
+                    onChange={this.handleUserInput}
+                  >
+                    <option defaultValue>Select Course</option>
+                    <option value="OOP">OOP</option>
+                    <option value="Database">Database</option>
+                    <option value="Data Structure">Data Structure</option>
+                    <option value="PF">PF</option>
+                  </select>
+                  <div className="form-error-msg">
+                    {this.validator.message(
+                      "course",
+                      this.state.courseId,
+                      "required"
+                    )}
+                  </div>
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
