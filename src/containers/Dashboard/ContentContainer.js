@@ -15,7 +15,7 @@ class ContentContainer extends Component {
           <div className="prac ml-5">
             <span>Practice</span>
           </div>
-          <div className="ml-5">
+          <div className="ml-5">.
             <h1 className="heading">Dashboard</h1>
           </div>
           <div className="d-flex flex-row-reverse">

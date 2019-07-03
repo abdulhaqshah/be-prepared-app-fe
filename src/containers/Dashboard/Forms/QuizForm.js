@@ -13,14 +13,32 @@ class QuizForm extends Component {
     this.validator = new SimpleReactValidator();
     this.state = {
       name: "",
-      courseId: ""
+      courseId: "",
+      courses: []
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
-
+  componentWillMount() {
+    API.getCourses(result => {
+      if (result.status === "200") {
+        this.setState({
+          courses: result.data
+        });
+      } else {
+        addNotification(
+          this.notificationDOMRef,
+          "Error",
+          "danger",
+          result.message
+        );
+      }
+    }).catch = error => {
+      addNotification(this.notificationDOMRef, "Error", "warning", error);
+    };
+  }
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -38,6 +56,7 @@ class QuizForm extends Component {
         if (result.status === "201") {
           // Form reset
           this.formRef.reset();
+
           addNotification(
             this.notificationDOMRef,
             "success",
@@ -109,10 +128,11 @@ class QuizForm extends Component {
                     onChange={this.handleUserInput}
                   >
                     <option defaultValue>Select Course</option>
-                    <option value="OOP">OOP</option>
-                    <option value="Database">Database</option>
-                    <option value="Data Structure">Data Structure</option>
-                    <option value="PF">PF</option>
+                    {this.state.courses.map((course, index) => (
+                      <option key={index} value={course.courseId}>
+                        {course.name}
+                      </option>
+                    ))}
                   </select>
                   <div className="form-error-msg">
                     {this.validator.message(
