@@ -60,7 +60,7 @@ class CourseForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            "Somthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
