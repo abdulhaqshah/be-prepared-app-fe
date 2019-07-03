@@ -16,6 +16,11 @@ export const getInitials = name => {
   initials = ((initials.shift() || "") + (initials.pop() || "")).toUpperCase();
   return initials;
 };
+
+export const newTextField = () => {
+
+}
+
 export default {
   addNotification,
   getInitials
