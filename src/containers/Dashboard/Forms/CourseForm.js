@@ -44,6 +44,10 @@ class CourseForm extends Component {
             "success",
             result.message
           );
+          this.setState({
+            name: "",
+            description: ""
+          });
         } else if (
           result.status === "404" ||
           result.status === "400" ||
@@ -53,7 +57,7 @@ class CourseForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            result.status
+            result.message
           );
         } else {
           addNotification(
