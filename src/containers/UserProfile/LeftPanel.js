@@ -3,6 +3,7 @@ import EditIntro from "./EditIntro";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
+import API from "../../api/index";
 import * as auth from "../../services/Session";
 import "./LeftPanel.scss";
 import AboutUser from "./AboutUser";
@@ -21,15 +22,26 @@ class LeftPane extends Component {
   }
 
   fileChangedHandler = event => {
-    // alert("clicked")
-    this.setState({ selectedFile: event.target.files[0] });
+    this.setState({
+      //  selectedFile: event.target.files[0]
+      selectedFile: URL.createObjectURL(event.target.files[0])
+    });
     alert(this.state.selectedFile);
+    // var { filePath } = this.state;
+    // const data = {
+    //   filePath:
+    //     "blob:http://localhost:3000/73023102-9369-4533-9624-bbf252df3bc5"
+    // };
+    // debugger;
+    // API.uploadImage(data, result => {
+    //   if (result.status === "200") {
+    //     debugger;
+    //     alert("api hit");
+    //   }
+    // }).catch = error => {
+    //   addNotification(this.notificationDOMRef, "Error", "warning", error);
+    // };
   };
-
-  // uploadHandler = () => {
-  //   console.log(this.state.selectedFile);
-  // };
-
   closeModal() {
     this.setState({ open: false });
     addNotification(
@@ -64,14 +76,14 @@ class LeftPane extends Component {
               >
                 {getInitials(name)}
               </button> */}
+              <img src={this.state.selectedFile} />
+
               <input
-                className="profile-btn btn-secondary image"
+                // className="profile-btn btn-secondary image"
                 type="file"
-                onChange={this.fileChangedHandler}
-              //  defaultValue= {getInitials(name)}
-
+                onChange={event => this.fileChangedHandler(event)}
+                // placeholder={getInitials(name)}
               />
-
               <div class="middle">
                 <div class="text">
                   <i className="fa fa-pencil" />
