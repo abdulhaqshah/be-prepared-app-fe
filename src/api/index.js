@@ -9,9 +9,9 @@ import {
   GET_QUIZZES,
   TUTORIAL_DATA,
   COURSE_DATA,
-  QUIZ_DATA
+  QUIZ_DATA,
+  UPLOAD_IMAGE
 } from "./constants";
-
 import GlobalAPISvc from "./globalApi";
 import * as auth from "../services/Session";
 const uuid = auth.getItem("uuid");
@@ -71,6 +71,11 @@ const userAboutInfo = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+const uploadImage = (data, resolve, reject) => {
+  return GlobalAPISvc(UPLOAD_IMAGE, METHODS.POST, data)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
 export default {
   userRegister,
   userLogin,
@@ -81,5 +86,6 @@ export default {
   userAboutInfo,
   tutorialData,
   courseData,
-  quizData
+  quizData,
+  uploadImage
 };

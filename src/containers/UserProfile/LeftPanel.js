@@ -10,15 +10,27 @@ import AboutUser from "./AboutUser";
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      readOnly: true,
-      open: true
-    };
+    this.state = { readOnly: true, open: true };
+    this.closeModal = this.closeModal.bind(this);
+    this.fileChangedHandler = this.fileChangedHandler.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
+    this.state = {
+      selectedFile: ""
+    };
   }
 
-  closeModal = () => {
+  fileChangedHandler = event => {
+    // alert("clicked")
+    this.setState({ selectedFile: event.target.files[0] });
+    alert(this.state.selectedFile);
+  };
+
+  // uploadHandler = () => {
+  //   console.log(this.state.selectedFile);
+  // };
+
+  closeModal() {
     this.setState({ open: false });
     addNotification(
       this.notificationDOMRef,
@@ -45,9 +57,21 @@ class LeftPane extends Component {
         <div className="about">
           <div>
             <div class="container">
-              <button className="profile-btn btn-secondary btn-xl image">
+              {/* <button
+                className="profile-btn btn-secondary btn-xl image"
+                type="image"
+                // onClick={this.fileChangedHandler}
+              >
                 {getInitials(name)}
-              </button>
+              </button> */}
+              <input
+                className="profile-btn btn-secondary image"
+                type="file"
+                onChange={this.fileChangedHandler}
+              //  defaultValue= {getInitials(name)}
+
+              />
+
               <div class="middle">
                 <div class="text">
                   <i className="fa fa-pencil" />

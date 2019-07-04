@@ -19,5 +19,5 @@ export const QUIZ_DATA = '/quiz/new'
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
-
+export const UPLOAD_IMAGE = "/user/uploadPhoto";
 
