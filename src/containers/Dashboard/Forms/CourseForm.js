@@ -21,6 +21,7 @@ class CourseForm extends Component {
     this.formRef = null;
   }
 
+  
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -38,16 +39,17 @@ class CourseForm extends Component {
         if (result.status === "201") {
           // Form reset
           this.formRef.reset();
+
           addNotification(
             this.notificationDOMRef,
             "success",
             "success",
             result.message
           );
-          // this.setState({
-          //   name: "",
-          //   description: ""
-          // });
+            this.setState({
+              name: "",
+              description: ""
+            })
         } else if (
           result.status === "404" ||
           result.status === "400" ||
@@ -97,10 +99,12 @@ class CourseForm extends Component {
                   <label className="labels">Name</label>
                   <br />
                   <input
+                    id="nameId"
                     className="form-field"
                     name="name"
                     type="text"
                     maxLength="30"
+                    // value={this.state.name}
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
