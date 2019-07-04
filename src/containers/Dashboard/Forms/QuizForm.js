@@ -20,8 +20,6 @@ class QuizForm extends Component {
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
-  }
-  componentWillMount() {
     API.getCourses(result => {
       if (result.status === "200") {
         this.setState({
@@ -39,6 +37,7 @@ class QuizForm extends Component {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
     };
   }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -63,6 +62,10 @@ class QuizForm extends Component {
             "success",
             result.message
           );
+          this.setState({
+            name: "",
+            courseId: ""
+          });
         } else if (
           result.status === "404" ||
           result.status === "400" ||
@@ -72,7 +75,7 @@ class QuizForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            result.status
+            result.message
           );
         }
       }).catch = error => {
@@ -114,7 +117,7 @@ class QuizForm extends Component {
                     {this.validator.message(
                       "name",
                       this.state.name,
-                      "min:3|max:25|required"
+                      "required|min:3|max:25"
                     )}
                   </div>
                 </div>
