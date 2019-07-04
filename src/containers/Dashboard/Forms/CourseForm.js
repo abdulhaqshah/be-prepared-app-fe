@@ -24,7 +24,7 @@ class CourseForm extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
   submitForm(e) {
     e.preventDefault();
@@ -44,10 +44,10 @@ class CourseForm extends Component {
             "success",
             result.message
           );
-          this.setState({
-            name: "",
-            description: ""
-          });
+          // this.setState({
+          //   name: "",
+          //   description: ""
+          // });
         } else if (
           result.status === "404" ||
           result.status === "400" ||
@@ -100,6 +100,7 @@ class CourseForm extends Component {
                     className="form-field"
                     name="name"
                     type="text"
+                    maxLength="30"
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
