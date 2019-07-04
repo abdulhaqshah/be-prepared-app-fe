@@ -43,9 +43,18 @@ class LeftPane extends Component {
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
         <div className="about">
-          <button className="profile-btn btn-secondary btn-xl">
-            {getInitials(name)}
-          </button>
+          <div>
+            <div class="container">
+              <button className="profile-btn btn-secondary btn-xl image">
+                {getInitials(name)}
+              </button>
+              <div class="middle">
+                <div class="text">
+                  <i className="fa fa-pencil" />
+                </div>
+              </div>
+            </div>
+          </div>
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>
           <div className="edit-btn">
