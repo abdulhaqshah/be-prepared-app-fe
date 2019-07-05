@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
-import{ addNotification} from "../../utilities";
+import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
 import API from "../../api";
 import "./SignUp.css";

@@ -3,7 +3,6 @@ import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import addNotification from "../../utilities/index";
-import * as auth from "../../services/Session";
 import API from "../../api/index";
 
 class AboutUser extends Component {
@@ -21,12 +20,10 @@ class AboutUser extends Component {
   }
   submitForm(e) {
     e.preventDefault();
-    const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
       var { about } = this.state;
       const data = {
-        about,
-        uuid
+        about
       };
       API.aboutUser(data, result => {
         if (result.status === "200") {
@@ -36,7 +33,7 @@ class AboutUser extends Component {
           result.status === "404" ||
           result.status === "403" ||
           result.status === "500" ||
-          result.status === "401"
+          result.status === "400"
         ) {
           addNotification(
             this.notificationDOMRef,

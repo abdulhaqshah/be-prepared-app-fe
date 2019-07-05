@@ -1,5 +1,7 @@
 import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA, ABOUT_USER, GET_COURSES, GET_TUTORIALS, GET_QUIZZES} from "./constants";
 import GlobalAPISvc from "./globalApi";
+import * as auth from "../services/Session";
+const uuid = auth.getItem("uuid");
 
 const postUserData = (data, resolve, reject) => {
   return GlobalAPISvc(USER_URL, METHODS.POST, data)
@@ -36,7 +38,7 @@ const getQuizzes = (resolve, reject) => {
 };
 
 const aboutUser = (data, resolve, reject) => {
-  return GlobalAPISvc(ABOUT_USER, METHODS.PATCH, data)
+  return GlobalAPISvc(ABOUT_USER(uuid), METHODS.PATCH, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
