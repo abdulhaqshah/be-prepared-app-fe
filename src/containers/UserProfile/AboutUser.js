@@ -96,22 +96,21 @@ class AboutUser extends Component {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body" />
             <div className="container">
               <form className="form" ref={ref => (this.formRef = ref)}>
                 <div className="modal-body">
-                  <label htmlFor="comment">About me:</label>
+                  <label htmlFor="comment">About me</label>
                   <textarea className="form-control" rows="5" id="comment" />
                   <div className="row d-flex flex-row-reverse mt-4">
                     <button
-                      className="btn btn-success col-lg-3 mt-1"
+                      className="btn btn-success col-lg-3 mt-1 mr-1 ml-1"
                       name="saveBtn"
                       type="submit"
                     >
                       Save
                     </button>
                     <button
-                      className="btn btn-outline-success col-lg-3 mr-1 mt-1"
+                      className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
                       name="cancelBtn"
                       type="submit"
                       data-dismiss="modal"
