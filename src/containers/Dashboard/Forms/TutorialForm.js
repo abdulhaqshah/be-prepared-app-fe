@@ -22,8 +22,6 @@ class TutorialForm extends Component {
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
-  }
-  componentWillMount() {
     API.getCourses(result => {
       if (result.status === "200") {
         this.setState({
@@ -45,13 +43,13 @@ class TutorialForm extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
 
   addClick(){
     this.setState(prevState => ({ tags: [...prevState.tags, '']}))
   }
-
+  
   removeClick(i){
     let tags = [...this.state.tags];
     tags.splice(i,1);
@@ -74,13 +72,15 @@ class TutorialForm extends Component {
         courseId,
         tags
       };
-      debugger;
+      this.setState({
+        name: "",
+        content: "",
+        courseId: "",
+        tags : [],
+      })
       API.tutorialData(data, result => {
         if (result.status === "201") {
-          // console.log(result.data);
-          //Form reset
           this.formRef.reset();
-          //   this.props.history.push(DASHBOARD, this.state.email);
         } else if (
           result.status === "400" ||
           result.status === "404" ||
@@ -91,7 +91,7 @@ class TutorialForm extends Component {
             this.notificationDOMRef,
             "Error",
             "danger",
-            result.status
+            result.message
           );
         } else {
           addNotification(
@@ -135,13 +135,14 @@ class TutorialForm extends Component {
                     className="form-field"
                     name="name"
                     type="text"
+                    maxLength="50"
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
                     {this.validator.message(
                       "name",
                       this.state.name,
-                      "name"
+                      "min:3|required"
                     )}
                   </div>
                 </div>
@@ -173,18 +174,19 @@ class TutorialForm extends Component {
                     Tags
                   </label>
                 </div>
-                {this.state.tags.map((tag, idx) => (
+                {this.state.tags.map((tag, index) => (
                   <div className="tagholder">
                     <input
                       className="form-field-1"
                       name="tags"
                       type="text"
                       value={tag}
-                      onChange={this.handleChange.bind(this, idx)}
+                      key={index}
+                      onChange={this.handleChange.bind(this, index)}
                     />
                     <button
                       type="button"
-                      onClick={this.removeClick.bind(this, idx)}
+                      onClick={this.removeClick.bind(this, index)}
                       className="small"
                     >
                       -
@@ -209,6 +211,13 @@ class TutorialForm extends Component {
                     name="content"
                     onChange={this.handleUserInput}
                   />
+                </div>
+                <div className="form-error-msg">
+                {this.validator.message(
+                     "content",
+                     this.state.content,
+                     "required"
+                )}
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
