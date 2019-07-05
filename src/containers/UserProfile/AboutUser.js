@@ -20,15 +20,17 @@ class AboutUser extends Component {
     this.modalRef = React.createRef();
   }
   submitForm(e) {
+    debugger;
     e.preventDefault();
     const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
+      debugger;
       var { about } = this.state;
       const data = {
         about,
         uuid
       };
-      API.userAboutData(data, result => {
+      API.userAbout(data, result => {
         if (result.status === "200") {
           this.props.closeModal();
           this.modalRef.remove();
@@ -53,7 +55,6 @@ class AboutUser extends Component {
           );
         }
       }).catch = error => {
-        debugger;
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
@@ -69,6 +70,7 @@ class AboutUser extends Component {
     this.setState({ [name]: value });
   }
   render() {
+    debugger;
     return (
       <div
         ref={ref => (this.modalRef = ref)}
@@ -81,9 +83,6 @@ class AboutUser extends Component {
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div>
-              <ReactNotification ref={this.notificationDOMRef} />
-            </div>
             <div className="modal-header">
               <b>Edit Detail</b>
               <button
@@ -96,11 +95,26 @@ class AboutUser extends Component {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <div>
+              <ReactNotification ref={this.notificationDOMRef} />
+            </div>
             <div className="container">
-              <form className="form" ref={ref => (this.formRef = ref)}>
+              <form className="form" onSubmit={this.submitForm}>
                 <div className="modal-body">
                   <label htmlFor="comment">About me</label>
-                  <textarea className="form-control" rows="5" id="comment" />
+                  <textarea
+                    className="form-control"
+                    rows="5"
+                    name="about"
+                    type="text"
+                  />
+                  <div className="edit-error-msg">
+                    {this.validator.message(
+                      "about",
+                      this.state.about,
+                      "required"
+                    )}
+                  </div>
                   <div className="row d-flex flex-row-reverse mt-4">
                     <button
                       className="btn btn-success col-lg-3 mt-1 mr-1 ml-1"
