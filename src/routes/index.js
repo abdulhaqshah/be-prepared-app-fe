@@ -54,7 +54,7 @@ class Routes extends Component {
         <ProtectedRoute path={JAVASCRIPT} component={Javascript} />
         <ProtectedRoute path={CODE} component={Code} />
         <ProtectedRoute path={PROFILE} component={Profile} />
-        <GuestRoute path={TUTORIAL_FORM} component={TutorialForm} />
+        <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm} />
       </Router>
     );
   }
