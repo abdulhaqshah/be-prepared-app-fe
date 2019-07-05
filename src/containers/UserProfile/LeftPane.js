@@ -5,7 +5,7 @@ import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import "./LeftPane.scss";
-import DetailPopup from "../../containers/UserProfile/DetailPopup";
+import AboutUser from "./AboutUser";
 
 class LeftPane extends Component {
   constructor(props) {
@@ -53,11 +53,7 @@ class LeftPane extends Component {
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
-          <EditIntro
-            name={name}
-            email={email}
-            closeModal={this.closeModal}
-          />
+          <EditIntro name={name} email={email} closeModal={this.closeModal} />
         </div>
 
         <div className="profile-detail">
@@ -65,7 +61,7 @@ class LeftPane extends Component {
             <h5>About</h5>
           </div>
           <div className="about-pen-icon">
-            <DetailPopup />
+            <AboutUser />
           </div>
           <div className="user-about-info">
             <span>Expected year of Graduation</span>
