@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import * as $ from "jquery";
 import "./EditIntro.scss";
 
 class EditDetail extends Component {
@@ -9,16 +8,12 @@ class EditDetail extends Component {
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      role: "",
-      year: ""
+      about: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.onSave = this.onSave.bind(this);
   }
-  onSave() {
-    $("#exampleModal").modal("hide");
-    $(".modal-backdrop").remove();
-  }
+  onSave() {}
 
   handleUserInput(e) {
     const name = e.target.name;
@@ -29,38 +24,11 @@ class EditDetail extends Component {
   render() {
     return (
       <div className="container">
-        <label htmlFor="comment">About me:</label>
-        <textarea className="form-control" rows="5" id="comment" />
-
         <form className="form" ref={ref => (this.formRef = ref)}>
-          <div className="feilds" />
-          <div className="name">
-            <label className="labels vertical-spacing">
-              I am currently a<span className="edit-required-indicator">*</span>
-            </label>
-            <br />
-            <select className="form-control" id="sel1">
-              <option>Student</option>
-              <option>Professional</option>
-            </select>
-          </div>
-          <div className="email-div">
-            <label className="labels vertical-spacing">
-              Expected year of graduation{" "}
-              <span className="edit-required-indicator">*</span>
-            </label>
-            <br />
-            <select className="form-control" id="sel1">
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-              <option>2023</option>
-              <option>2024</option>
-            </select>
-          </div>
           <div className="modal-body">
-            <div className="row d-flex flex-row-reverse">
+            <label htmlFor="comment">About me:</label>
+            <textarea className="form-control" rows="5" id="comment" />
+            <div className="row d-flex flex-row-reverse mt-4">
               <button
                 className="btn btn-success col-lg-3 mt-1"
                 name="saveBtn"
