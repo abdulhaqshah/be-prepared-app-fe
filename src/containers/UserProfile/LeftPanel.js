@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import EditIntro from "./EditIntro";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import { addNotification, getInitials } from "../../utilities/index";
+import { addNotification } from "../../utilities/index";
 import API from "../../api/index";
 import * as auth from "../../services/Session";
 import "./LeftPanel.scss";
@@ -13,35 +13,49 @@ class LeftPane extends Component {
     super(props);
     this.state = { readOnly: true, open: true };
     this.closeModal = this.closeModal.bind(this);
-    this.fileChangedHandler = this.fileChangedHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.fileChangedHandler = this.fileChangedHandler.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
     this.state = {
       selectedFile: ""
     };
   }
+  handleSubmit(event) {
+    debugger;
+    event.preventDefault();
+    const data = new FormData(event.target);
+    console.log(data);
 
-  fileChangedHandler = event => {
-    this.setState({
-      //  selectedFile: event.target.files[0]
-      selectedFile: URL.createObjectURL(event.target.files[0])
-    });
-    alert(this.state.selectedFile);
-    // var { filePath } = this.state;
-    // const data = {
-    //   filePath:
-    //     "blob:http://localhost:3000/73023102-9369-4533-9624-bbf252df3bc5"
-    // };
-    // debugger;
-    // API.uploadImage(data, result => {
-    //   if (result.status === "200") {
-    //     debugger;
-    //     alert("api hit");
-    //   }
-    // }).catch = error => {
-    //   addNotification(this.notificationDOMRef, "Error", "warning", error);
-    // };
-  };
+    API.uploadImage(data, result => {
+      if (result.status === "200") {
+        debugger;
+        alert("api hit");
+      }
+    }).catch = error => {
+      addNotification(this.notificationDOMRef, "Error", "warning", error);
+    };
+  }
+  // fileChangedHandler = event => {
+  //   this.setState({
+  //     //  selectedFile: event.target.files[0]
+  //     selectedFile: URL.createObjectURL(event.target.files[0])
+  //   });
+  //   alert(this.state.selectedFile);
+  //   var { filePath } = this.state;
+  //   const data = {
+  //     filePath
+  //   };
+  //   debugger;
+  //   API.uploadImage(data, result => {
+  //     if (result.status === "200") {
+  //       debugger;
+  //       alert("api hit");
+  //     }
+  //   }).catch = error => {
+  //     addNotification(this.notificationDOMRef, "Error", "warning", error);
+  //   };
+  // };
   closeModal() {
     this.setState({ open: false });
     addNotification(
@@ -68,28 +82,26 @@ class LeftPane extends Component {
         </div>
         <div className="about">
           <div>
-            <div class="container">
-              {/* <button
+            <form encType="multipart/form-data" onSubmit={this.handleSubmit}>
+              <div class="container">
+                {/* <button
                 className="profile-btn btn-secondary btn-xl image"
                 type="image"
                 // onClick={this.fileChangedHandler}
               >
                 {getInitials(name)}
               </button> */}
-              <img src={this.state.selectedFile} />
+                <img src={this.state.selectedFile} />
 
-              <input
-                // className="profile-btn btn-secondary image"
-                type="file"
-                onChange={event => this.fileChangedHandler(event)}
-                // placeholder={getInitials(name)}
-              />
-              <div class="middle">
-                <div class="text">
-                  <i className="fa fa-pencil" />
+                <input
+                  type="file"
+                  // onChange={event => this.fileChangedHandler(event)}
+                />
+                <div class="middle">
+                  <div class="text">{/* <i className="fa fa-pencil" /> */}</div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>

@@ -11,7 +11,8 @@ const GlobalAPISvc = (endPoint, method, data) => {
       headers: {
         "Content-Type": "application/json",
         "x-authentication": token,
-        uuid: uuid
+        uuid: uuid,
+        type: "formData"
       }
     })
       .then(res => {
