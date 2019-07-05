@@ -20,17 +20,15 @@ class AboutUser extends Component {
     this.modalRef = React.createRef();
   }
   submitForm(e) {
-    debugger;
     e.preventDefault();
     const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
-      debugger;
       var { about } = this.state;
       const data = {
         about,
         uuid
       };
-      API.userAbout(data, result => {
+      API.aboutUser(data, result => {
         if (result.status === "200") {
           this.props.closeModal();
           this.modalRef.remove();
@@ -70,7 +68,6 @@ class AboutUser extends Component {
     this.setState({ [name]: value });
   }
   render() {
-    debugger;
     return (
       <div
         ref={ref => (this.modalRef = ref)}
@@ -107,6 +104,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
+                    onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
                     {this.validator.message(
