@@ -55,19 +55,23 @@ class LeftPane extends Component {
           </div>
           <EditIntro name={name} email={email} closeModal={this.closeModal} />
         </div>
-
         <div className="profile-detail">
           <div className="about-heading">
             <h5>About</h5>
           </div>
           <div className="about-pen-icon">
-            <AboutUser />
+            <div>
+              <a href="#editdetail" data-toggle="modal" data-target="#Modal">
+                <i className="fa fa-pencil" />
+              </a>
+              <AboutUser closeModal={this.closeModal} />
+            </div>
           </div>
-          <div className="user-about-info">
-            <span>Expected year of Graduation</span>
-            <br />
-            <b>2019</b>
-          </div>
+        </div>
+        <div className="user-about-info">
+          <span>Expected year of Graduation</span>
+          <br />
+          <b>2019</b>
         </div>
       </Fragment>
     );

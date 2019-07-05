@@ -1,14 +1,66 @@
 import React, { Component } from "react";
-// import EditDetail from "./EditDetail";
+import SimpleReactValidator from "simple-react-validator";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import addNotification from "../../utilities/index";
+import * as auth from "../../services/Session";
+import API from "../../api/index";
 
 class AboutUser extends Component {
   constructor(props) {
     super(props);
 
+    this.validator = new SimpleReactValidator();
     this.state = {
       about: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.notificationDOMRef = React.createRef();
+    this.submitForm = this.submitForm.bind(this);
+    this.modalRef = React.createRef();
+  }
+  submitForm(e) {
+    e.preventDefault();
+    const uuid = auth.getItem("uuid");
+    if (this.validator.allValid()) {
+      var { about } = this.state;
+      const data = {
+        about,
+        uuid
+      };
+      API.userAboutData(data, result => {
+        if (result.status === "200") {
+          this.props.closeModal();
+          this.modalRef.remove();
+        } else if (
+          result.status === "404" ||
+          result.status === "403" ||
+          result.status === "500" ||
+          result.status === "401"
+        ) {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
+        } else {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "warning",
+            "Somgthing went wrong"
+          );
+        }
+      }).catch = error => {
+        debugger;
+        addNotification(this.notificationDOMRef, "Error", "warning", error);
+      };
+    } else {
+      this.validator.showMessages();
+      // rerender to show messages for the first time
+      this.forceUpdate();
+    }
   }
 
   handleUserInput(e) {
@@ -18,59 +70,57 @@ class AboutUser extends Component {
   }
   render() {
     return (
-      <div>
-        <a href="#editdetail" data-toggle="modal" data-target="#Modal">
-          <i className="fa fa-pencil" />
-        </a>
-        <div
-          className="modal"
-          id="Modal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="ModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <b>Edit Detail</b>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  aria-hidden="true"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body" />
-              <div className="container">
-                <form className="form" ref={ref => (this.formRef = ref)}>
-                  <div className="modal-body">
-                    <label htmlFor="comment">About me:</label>
-                    <textarea className="form-control" rows="5" id="comment" />
-                    <div className="row d-flex flex-row-reverse mt-4">
-                      <button
-                        className="btn btn-success col-lg-3 mt-1"
-                        name="saveBtn"
-                        type="submit"
-                      >
-                        Save
-                      </button>
-                      <button
-                        className="btn btn-outline-success col-lg-3 mr-1 mt-1"
-                        name="cancelBtn"
-                        type="submit"
-                        data-dismiss="modal"
-                      >
-                        Cancel
-                      </button>
-                    </div>
+      <div
+        ref={ref => (this.modalRef = ref)}
+        className="modal"
+        id="Modal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="ModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div>
+              <ReactNotification ref={this.notificationDOMRef} />
+            </div>
+            <div className="modal-header">
+              <b>Edit Detail</b>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                aria-hidden="true"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body" />
+            <div className="container">
+              <form className="form" ref={ref => (this.formRef = ref)}>
+                <div className="modal-body">
+                  <label htmlFor="comment">About me:</label>
+                  <textarea className="form-control" rows="5" id="comment" />
+                  <div className="row d-flex flex-row-reverse mt-4">
+                    <button
+                      className="btn btn-success col-lg-3 mt-1"
+                      name="saveBtn"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="btn btn-outline-success col-lg-3 mr-1 mt-1"
+                      name="cancelBtn"
+                      type="submit"
+                      data-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
                   </div>
-                </form>
-              </div>
-              {/* <EditDetail closeModal={this.closeModal} /> */}
+                </div>
+              </form>
             </div>
           </div>
         </div>
