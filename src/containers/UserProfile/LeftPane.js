@@ -29,6 +29,7 @@ class LeftPane extends Component {
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
+    const about = auth.getItem("about");
 
     return (
       <Fragment>
@@ -64,14 +65,12 @@ class LeftPane extends Component {
               <a href="#editdetail" data-toggle="modal" data-target="#Modal">
                 <i className="fa fa-pencil" />
               </a>
-              <AboutUser closeModal={this.closeModal} />
+              <AboutUser aboutUser={about} closeModal={this.closeModal} />
             </div>
           </div>
         </div>
         <div className="user-about-info">
-          <span>Expected year of Graduation</span>
-          <br />
-          <b>2019</b>
+          <span>{about}</span>
         </div>
       </Fragment>
     );

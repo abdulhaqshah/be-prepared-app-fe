@@ -3,6 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import addNotification from "../../utilities/index";
+import * as auth from "../../services/Session";
 import API from "../../api/index";
 
 class AboutUser extends Component {
@@ -18,6 +19,13 @@ class AboutUser extends Component {
     this.submitForm = this.submitForm.bind(this);
     this.modalRef = React.createRef();
   }
+
+  handleUserInput(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
+  }
+
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -27,6 +35,8 @@ class AboutUser extends Component {
       };
       API.aboutUser(data, result => {
         if (result.status === "200") {
+          auth.setItem("about", result.data);
+
           this.props.closeModal();
           this.modalRef.remove();
         } else if (
@@ -59,11 +69,6 @@ class AboutUser extends Component {
     }
   }
 
-  handleUserInput(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({ [name]: value });
-  }
   render() {
     return (
       <div
@@ -101,6 +106,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
+                    defaultValue={this.props.aboutUser}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
