@@ -4,8 +4,17 @@ import React, { Component } from "react";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
-    this.closeModal = this.closeModal.bind(this);
+
+    this.state = {
+      about: ""
+    };
+    this.handleUserInput = this.handleUserInput.bind(this);
+  }
+
+  handleUserInput(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
   }
   render() {
     return (
@@ -46,7 +55,6 @@ class AboutUser extends Component {
                         className="btn btn-success col-lg-3 mt-1"
                         name="saveBtn"
                         type="submit"
-                        onClick={this.onSave}
                       >
                         Save
                       </button>
