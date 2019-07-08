@@ -12,5 +12,6 @@ export const TEST_DATA = '/tutorial/addLesson';
 export const UPDATE_DATA = '/user/userUpdate';
 export const GET_COURSES = '/course/allInActive';
 export const GET_TUTORIALS = '/tutorial/allInActive';
+export const GET_QUIZZES = '/quiz/allInActive';
 
 

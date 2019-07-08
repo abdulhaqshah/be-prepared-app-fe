@@ -1,4 +1,4 @@
-import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA, GET_COURSES, GET_TUTORIALS} from "./constants";
+import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA, GET_COURSES, GET_TUTORIALS, GET_QUIZZES} from "./constants";
 import GlobalAPISvc from "./globalApi";
 
 const postUserData = (data, resolve, reject) => {
@@ -29,10 +29,17 @@ const getTutorials = (resolve, reject) => {
     .catch(err => reject(err));
 };
 
+const getQuizzes = (resolve, reject) => {
+  return GlobalAPISvc(GET_QUIZZES, METHODS.GET)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+
 export default {
   postUserData,
   userLogin,
   updateData,
   getCourses,
-  getTutorials
+  getTutorials,
+  getQuizzes
 };

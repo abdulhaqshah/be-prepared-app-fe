@@ -19,7 +19,7 @@ class QuizCard extends Component {
             challenges based on learnings from 1000+ companies to help you
             prepare
           </p>
-          <div className="tutorial-link">
+          <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">
               View Quiz
             </a>
