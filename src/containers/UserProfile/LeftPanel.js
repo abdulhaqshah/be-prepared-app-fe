@@ -13,49 +13,35 @@ class LeftPane extends Component {
     super(props);
     this.state = { readOnly: true, open: true };
     this.closeModal = this.closeModal.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // this.fileChangedHandler = this.fileChangedHandler.bind(this);
+    this.onUpload = this.onUpload.bind(this);
+    this.fileChangedHandler = this.fileChangedHandler.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
     this.state = {
       selectedFile: ""
     };
   }
-  handleSubmit(event) {
-    debugger;
-    event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(data);
 
+  onUpload() {
+    debugger;
+    let file = this.state.selectedFile;
+    let formData = new formData();
+    formData.append("image", file);
+    formData.append("name", "humna");
+    var { fileData } = formData;
+    const data = {
+      fileData
+    };
     API.uploadImage(data, result => {
+      debugger;
+      alert("hitapi");
       if (result.status === "200") {
-        debugger;
         alert("api hit");
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
     };
   }
-  // fileChangedHandler = event => {
-  //   this.setState({
-  //     //  selectedFile: event.target.files[0]
-  //     selectedFile: URL.createObjectURL(event.target.files[0])
-  //   });
-  //   alert(this.state.selectedFile);
-  //   var { filePath } = this.state;
-  //   const data = {
-  //     filePath
-  //   };
-  //   debugger;
-  //   API.uploadImage(data, result => {
-  //     if (result.status === "200") {
-  //       debugger;
-  //       alert("api hit");
-  //     }
-  //   }).catch = error => {
-  //     addNotification(this.notificationDOMRef, "Error", "warning", error);
-  //   };
-  // };
   closeModal() {
     this.setState({ open: false });
     addNotification(
@@ -70,6 +56,13 @@ class LeftPane extends Component {
     return about === "" ? "Tell us about yourself . . ." : about;
   };
 
+  fileChangedHandler = event => {
+    debugger;
+    this.setState({
+      selectedFile: event.target.files[0]
+    });
+  };
+
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
@@ -82,8 +75,9 @@ class LeftPane extends Component {
         </div>
         <div className="about">
           <div>
-            <form encType="multipart/form-data" onSubmit={this.handleSubmit}>
-              <div class="container">
+            <form id="AwesomeForm" encType="multipart/form-data" method="post">
+              {/* <form encType="multipart/form-data" onSubmit={this.handleSubmit}> */}
+              <div className="container">
                 {/* <button
                 className="profile-btn btn-secondary btn-xl image"
                 type="image"
@@ -91,15 +85,18 @@ class LeftPane extends Component {
               >
                 {getInitials(name)}
               </button> */}
-                <img src={this.state.selectedFile} />
+                <img alt="myImage" src={this.state.selectedFile} />
 
                 <input
                   type="file"
-                  // onChange={event => this.fileChangedHandler(event)}
+                  onChange={event => this.fileChangedHandler(event)}
                 />
-                <div class="middle">
-                  <div class="text">{/* <i className="fa fa-pencil" /> */}</div>
-                </div>
+                <button type="submit" onClick={this.uploadImage}>
+                  Upload Image
+                </button>
+                {/* <div className="middle">
+                  <div className="text"><i className="fa fa-pencil" /></div>
+                </div> */}
               </div>
             </form>
           </div>
