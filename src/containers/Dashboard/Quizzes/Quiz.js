@@ -46,6 +46,27 @@ class Quizzes extends Component {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
     };
   }
+
+  render() {
+    return (
+      <Fragment>
+        <div>
+          <h5 className="headings ml-5 mb-5 mt-5">Quizzes</h5>
+        </div>
+        <div className="row">
+          <div className="quiz-container">
+          {this.state.quiz.map((quiz, index) => (
+            <div className="interview-prep-quiz" key={index}>
+            <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
+              <QuizCard heading={quiz}/>
+            </div>
+          </div>
+          ))}
+          </div>
+        </div>
+      </Fragment>
+    );
+  }
 }
 
 export default Quizzes;

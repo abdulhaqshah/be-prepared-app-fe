@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./ContentContainer.scss";
 import Footer from "../../components/Footer";
 import Tutorial from "../Dashboard/Tutorials/Tutorial";
+import Quiz from "../Dashboard/Quizzes/Quiz"
 import Skills from "../Dashboard/Skills/Skills";
 import Courses from "./Courses/Courses";
 import { BOOKMARK } from "../../constants";
@@ -28,6 +29,7 @@ class ContentContainer extends Component {
             <Skills />
             <Courses />
             <Tutorial />
+            <Quiz />
           </div>
         </div>
         <Footer />
