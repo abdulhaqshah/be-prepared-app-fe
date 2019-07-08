@@ -12,6 +12,7 @@ import {
   QUIZ_DATA,
   UPLOAD_IMAGE
 } from "./constants";
+import * as auth from "../services/Session"
 import GlobalAPISvc from "./globalApi";
 import * as auth from "../services/Session";
 const uuid = auth.getItem("uuid");
@@ -72,7 +73,9 @@ const userAboutInfo = (data, resolve, reject) => {
     .catch(err => reject(err));
 };
 const uploadImage = (data, resolve, reject) => {
-  return GlobalAPISvc(UPLOAD_IMAGE, METHODS.POST, data)
+  let uuid = auth.getItem("uuid")
+  debugger
+  return GlobalAPISvc(UPLOAD_IMAGE(uuid), METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };

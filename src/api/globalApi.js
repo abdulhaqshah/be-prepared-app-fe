@@ -4,15 +4,17 @@ import * as auth from "../services/Session";
 const token = auth.getItem("token");
 const uuid = auth.getItem("uuid");
 const GlobalAPISvc = (endPoint, method, data) => {
+  debugger
   return new Promise((resolve, reject) => {
     fetch(`${API_HOST}${endPoint}`, {
       method: method,
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
+        "Accept": "application/json",
         "x-authentication": token,
         uuid: uuid,
-        type: "formData"
+        "type": "formData"
       }
     })
       .then(res => {

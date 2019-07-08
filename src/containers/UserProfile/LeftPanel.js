@@ -24,13 +24,14 @@ class LeftPane extends Component {
 
   onUpload() {
     debugger;
+    console.log(this.state.selectedFile);
     let file = this.state.selectedFile;
-    let formData = new formData();
+    let formData = new FormData();
     formData.append("image", file);
     formData.append("name", "humna");
-    var { fileData } = formData;
+    console.log(formData)
     const data = {
-      fileData
+      formData
     };
     API.uploadImage(data, result => {
       debugger;
@@ -75,7 +76,7 @@ class LeftPane extends Component {
         </div>
         <div className="about">
           <div>
-            <form id="AwesomeForm" encType="multipart/form-data" method="post">
+            <form encType="multipart/form-data">
               {/* <form encType="multipart/form-data" onSubmit={this.handleSubmit}> */}
               <div className="container">
                 {/* <button
@@ -89,9 +90,10 @@ class LeftPane extends Component {
 
                 <input
                   type="file"
+                  name="photo"
                   onChange={event => this.fileChangedHandler(event)}
                 />
-                <button type="submit" onClick={this.uploadImage}>
+                <button type="submit" onClick={this.onUpload}>
                   Upload Image
                 </button>
                 {/* <div className="middle">
