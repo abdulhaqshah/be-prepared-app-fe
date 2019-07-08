@@ -19,7 +19,9 @@ class EditInto extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.modalRef = React.createRef();
+    this.formRef = null;
   }
 
   handleUserInput(e) {
@@ -27,6 +29,11 @@ class EditInto extends Component {
     const value = e.target.value;
     this.setState({ [name]: value });
   }
+
+  onCancel() {
+    this.formRef.reset();
+  }
+
   submitForm(e) {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
@@ -43,7 +50,6 @@ class EditInto extends Component {
           auth.setItem("email", result.data.email);
           this.props.closeModal();
           this.modalRef.remove();
-
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -108,7 +114,11 @@ class EditInto extends Component {
               <div>
                 <ReactNotification ref={this.notificationDOMRef} />
               </div>
-              <form className="form" onSubmit={this.submitForm}>
+              <form
+                className="form"
+                onSubmit={this.submitForm}
+                ref={ref => (this.formRef = ref)}
+              >
                 <div className="feilds" />
                 <div className="name">
                   <label className="labels vertical-spacing">
@@ -116,7 +126,7 @@ class EditInto extends Component {
                   </label>
                   <br />
                   <input
-                    defaultValue={this.state.name}
+                    defaultValue={this.props.name}
                     className="edit-field"
                     name="name"
                     onChange={this.handleUserInput}
@@ -135,7 +145,7 @@ class EditInto extends Component {
                   </label>
                   <br />
                   <input
-                    defaultValue={this.state.email}
+                    defaultValue={this.props.email}
                     className="edit-field"
                     name="email"
                     onChange={this.handleUserInput}
@@ -160,8 +170,9 @@ class EditInto extends Component {
                       </button>
                       <button
                         className="btn btn-outline-success col-lg-3 mt-1"
+                        type="button"
                         name="cancelBtn"
-                        type="submit"
+                        onClick={this.onCancel}
                         data-dismiss="modal"
                       >
                         Cancel
