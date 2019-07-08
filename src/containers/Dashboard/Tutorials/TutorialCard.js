@@ -13,7 +13,6 @@ class TutorialCard extends Component {
           </h5>
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
-            Interview Preparation Kit
           </h2>
           <p>
             {this.props.para}
