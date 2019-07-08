@@ -12,18 +12,19 @@ class AboutUser extends Component {
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      about: ""
+      about: this.props.aboutUser
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.modalRef = React.createRef();
+    this.formRef = null;
   }
 
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
 
   submitForm(e) {
@@ -98,7 +99,11 @@ class AboutUser extends Component {
               <ReactNotification ref={this.notificationDOMRef} />
             </div>
             <div className="container">
-              <form className="form" onSubmit={this.submitForm}>
+              <form
+                className="form"
+                onSubmit={this.submitForm}
+                ref={ref => (this.formRef = ref)}
+              >
                 <div className="modal-body">
                   <label htmlFor="comment">About me</label>
                   <textarea
@@ -106,7 +111,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
-                    defaultValue={this.props.aboutUser}
+                    defaultValue={this.state.about}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
@@ -127,7 +132,6 @@ class AboutUser extends Component {
                     <button
                       className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
                       name="cancelBtn"
-                      type="submit"
                       data-dismiss="modal"
                     >
                       Cancel
