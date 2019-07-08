@@ -70,7 +70,11 @@ class LeftPane extends Component {
           </div>
         </div>
         <div className="user-about-info">
-          <span>{about}</span>
+          <input
+            placeholder="Tell us about Who you are..."
+            value={about}
+            className="about"
+          />
         </div>
       </Fragment>
     );
