@@ -32,6 +32,7 @@ import {getItem} from '../services/Session'
 class Routes extends Component {
 
   render() {
+    // debugger;
     const name = getItem("name");
     return (
       <Router>
