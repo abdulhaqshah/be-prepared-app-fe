@@ -17,6 +17,7 @@ class AboutUser extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.modalRef = React.createRef();
     this.formRef = null;
   }
@@ -25,6 +26,10 @@ class AboutUser extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
+  }
+
+  onCancel() {
+    this.formRef.reset();
   }
 
   submitForm(e) {
@@ -37,7 +42,6 @@ class AboutUser extends Component {
       API.aboutUser(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
-
           this.props.closeModal();
           this.modalRef.remove();
         } else if (
@@ -111,7 +115,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
-                    defaultValue={this.state.about}
+                    defaultValue={this.props.aboutUser}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
@@ -131,7 +135,9 @@ class AboutUser extends Component {
                     </button>
                     <button
                       className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
+                      type="button"
                       name="cancelBtn"
+                      onClick={this.onCancel}
                       data-dismiss="modal"
                     >
                       Cancel
