@@ -85,7 +85,7 @@ class EditInto extends Component {
     return (
       <div
         ref={ref => (this.modalRef = ref)}
-        className="modal"
+        className="modal fade"
         id="exampleModal"
         tabIndex="-1"
         role="dialog"

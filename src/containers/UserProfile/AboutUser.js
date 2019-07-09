@@ -29,7 +29,6 @@ class AboutUser extends Component {
   }
 
   onCancel() {
-    // debugger;
     this.formRef.reset();
   }
 
@@ -43,6 +42,7 @@ class AboutUser extends Component {
       API.aboutUser(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
+
           this.props.closeModal();
           this.modalRef.remove();
         } else if (
@@ -79,14 +79,17 @@ class AboutUser extends Component {
     return (
       <div
         ref={ref => (this.modalRef = ref)}
-        className="modal"
+        className="modal fade"
         id="Modal"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="ModalLabel"
-        aria-hidden="true"
+        // tabIndex="-1"
+        // role="dialog"
+        // aria-labelledby="ModalLabel"
+        // aria-hidden="true"
       >
-        <div className="modal-dialog" role="document">
+        <div
+          className="modal-dialog"
+          //  role="document"
+        >
           <div className="modal-content">
             <div className="modal-header">
               <b>Edit Detail</b>
@@ -98,7 +101,11 @@ class AboutUser extends Component {
                 // aria-label="Close"
                 // aria-hidden="true"
               >
-                <span aria-hidden="true">&times;</span>
+                <span
+                //  aria-hidden="true"
+                >
+                  &times;
+                </span>
               </button>
             </div>
             <div>
@@ -118,7 +125,7 @@ class AboutUser extends Component {
                     name="about"
                     type="text"
                     placeholder="Who you are...."
-                    // defaultValue={this.props.aboutUser}
+                    defaultValue={this.props.aboutUser}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
