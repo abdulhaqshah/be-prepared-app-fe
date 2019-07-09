@@ -29,28 +29,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { getItem } from "../services/Session";
 
 class Routes extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      refresh:false
-    }
-    // this.onRefresh = this.onRefresh.bind(this);
-  }
-
-  // onRefresh() {
-  //   this.setState({
-  //     refresh: false
-  //   });
-  // }
-
   render() {
-    debugger;
     const name = getItem("name");
     return (
       <Router>
-        <Navbar
-        //  onRefresh={this.onRefreshs} 
-         name={name} />
+        <Navbar name={name} />
         <GuestRoute exact path={HOME} component={Home} />
         <GuestRoute path={SINGUP} component={SignUp} />
         <GuestRoute path={LOGIN} component={Login} />

@@ -8,7 +8,6 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.onLogout = this.onLogout.bind(this);
-    // this.props.onRefresh();
   }
 
   onLogout() {
