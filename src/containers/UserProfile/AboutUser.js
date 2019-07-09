@@ -126,7 +126,7 @@ class AboutUser extends Component {
                     {this.validator.message(
                       "about",
                       this.state.about,
-                      "required"
+                      "required|min:5|max:150"
                     )}
                   </div>
                   <div className="row d-flex flex-row-reverse mt-4">
