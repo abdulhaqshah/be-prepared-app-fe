@@ -12,7 +12,7 @@ class AboutUser extends Component {
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      about: this.props.aboutUser
+      about: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -29,6 +29,7 @@ class AboutUser extends Component {
   }
 
   onCancel() {
+    // debugger;
     this.formRef.reset();
   }
 
@@ -92,9 +93,10 @@ class AboutUser extends Component {
               <button
                 type="button"
                 className="close"
+                onClick={this.onCancel}
                 data-dismiss="modal"
-                aria-label="Close"
-                aria-hidden="true"
+                // aria-label="Close"
+                // aria-hidden="true"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -116,7 +118,7 @@ class AboutUser extends Component {
                     name="about"
                     type="text"
                     placeholder="Who you are...."
-                    defaultValue={this.props.aboutUser}
+                    // defaultValue={this.props.aboutUser}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
