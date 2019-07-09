@@ -26,7 +26,7 @@ class LeftPane extends Component {
     console.log(this.state.selectedFile);
     let file = this.state.selectedFile;
     let formData = new FormData();
-    formData.append("image", file);
+    formData.append("photo", file);
     formData.append("name", "humna");
     const data = {
       formData
@@ -54,7 +54,6 @@ class LeftPane extends Component {
   };
 
   fileChangedHandler = event => {
-    debugger;
     this.setState({
       selectedFile: event.target.files[0]
     });
@@ -89,7 +88,7 @@ class LeftPane extends Component {
                   name="photo"
                   onChange={event => this.fileChangedHandler(event)}
                 />
-                <button type="submit" onClick={this.onUpload}>
+                <button type="button" onClick={this.onUpload}>
                   Upload Image
                 </button>
                 {/* <div className="middle">

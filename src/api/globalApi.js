@@ -9,8 +9,8 @@ const GlobalAPISvc = (endPoint, method, data) => {
       method: method,
       body: data.formData,
       headers: {
-        "Content-Type": "multipart/form-data",
-        "Accept": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // "Accept": "application/json",
         "x-authentication": token,
         uuid: uuid,
         "type": "formData"
