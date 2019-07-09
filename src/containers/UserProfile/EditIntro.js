@@ -87,6 +87,7 @@ class EditInto extends Component {
         ref={ref => (this.modalRef = ref)}
         className="modal fade"
         id="exampleModal"
+        data-backdrop="static"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"

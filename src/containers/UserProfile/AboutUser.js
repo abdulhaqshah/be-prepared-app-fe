@@ -81,15 +81,13 @@ class AboutUser extends Component {
         ref={ref => (this.modalRef = ref)}
         className="modal fade"
         id="Modal"
-        // tabIndex="-1"
-        // role="dialog"
-        // aria-labelledby="ModalLabel"
-        // aria-hidden="true"
+        data-backdrop="static"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="ModalLabel"
+        aria-hidden="true"
       >
-        <div
-          className="modal-dialog"
-          //  role="document"
-        >
+        <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <b>Edit Detail</b>
@@ -98,14 +96,10 @@ class AboutUser extends Component {
                 className="close"
                 onClick={this.onCancel}
                 data-dismiss="modal"
-                // aria-label="Close"
-                // aria-hidden="true"
+                aria-label="Close"
+                aria-hidden="true"
               >
-                <span
-                //  aria-hidden="true"
-                >
-                  &times;
-                </span>
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div>
