@@ -18,12 +18,12 @@ class LeftPane extends Component {
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
     this.state = {
-      selectedFile: ""
+      selectedFile: "",
+      image : `http:localhost:8000/public/${auth.getItem('img')}`
     };
   }
 
    onUpload() {
-    console.log(this.state.selectedFile);
     let file = this.state.selectedFile;
     let formData = new FormData();
     formData.append("photo", file);
@@ -72,16 +72,8 @@ class LeftPane extends Component {
         <div className="about">
           <div>
             <form>
-              {/* <form encType="multipart/form-data" onSubmit={this.handleSubmit}> */}
               <div className="container">
-                {/* <button
-                className="profile-btn btn-secondary btn-xl image"
-                type="image"
-                // onClick={this.fileChangedHandler}
-              >
-                {getInitials(name)}
-              </button> */}
-                <img alt="myImage" src={this.state.selectedFile} />
+                <img alt="myImage" src = {this.state.image}/>
 
                 <input
                   type="file"
