@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import {addNotification} from "../../utilities";
+import { addNotification } from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import API from "../../api";
@@ -15,10 +16,10 @@ class Login extends Component {
     super(props);
 
     this.validator = new SimpleReactValidator();
-    this.state = {
-      email: "",
-      password: ""
-    };
+    // this.state = {
+    //   email: "",
+    //   password: ""
+    // };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
@@ -46,13 +47,15 @@ class Login extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { email, password } = this.state;
+      var { email, password } = this.props;
       const data = {
         email,
         password
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
+          debugger;
+          this.props.setData("uuid", result.data.user.uuid);
           auth.setItem("uuid", result.data.user.uuid);
           auth.setItem("token", result.data.token);
           auth.setItem("name", result.data.user.name);
@@ -117,7 +120,7 @@ class Login extends Component {
                 <div className="login-error-msg">
                   {this.validator.message(
                     "email",
-                    this.state.email,
+                    this.props.email,
                     "required"
                   )}
                 </div>
@@ -137,7 +140,7 @@ class Login extends Component {
                 <div className="login-error-msg">
                   {this.validator.message(
                     "password",
-                    this.state.password,
+                    this.props.password,
                     "required"
                   )}
                 </div>
@@ -158,4 +161,27 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+const mapStateToProps = state => {
+  return {
+    name: state.name,
+    email: state.email,
+    token: state.token,
+    pass: state.pass
+  };
+};
+const mapDispatchToProps = displatch => {
+  return {
+    setData: (name, email, pass, token) =>
+      displatch({
+        type: "setData"
+      }),
+    getData: () =>
+      displatch({
+        type: "getData"
+      })
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
