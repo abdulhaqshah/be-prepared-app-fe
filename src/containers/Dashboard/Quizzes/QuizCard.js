@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TextTruncate from 'react-text-truncate';
 import "./Quiz.scss";
 
 class QuizCard extends Component {
@@ -14,11 +15,13 @@ class QuizCard extends Component {
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
           </h2>
-          <p>
-            {this.props.para}
-            challenges based on learnings from 1000+ companies to help you
-            prepare
-          </p>
+          <TextTruncate
+            line={2}
+            element="span"
+            truncateText="…"
+            text="challenges based on learnings from 1000+ companies to help you prepare"
+            textTruncateChild={<a href="#">Read on</a>}
+          />
           <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">
               View Quiz

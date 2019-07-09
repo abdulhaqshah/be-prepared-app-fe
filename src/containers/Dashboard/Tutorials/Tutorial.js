@@ -1,7 +1,4 @@
 import React, { Component, Fragment } from "react";
-// import {
-//   INTERVIEW_PREP_KIT
-// } from "../../../constants";
 import "./Tutorial.scss";
 import TutorialCard from "./TutorialCard";
 import { addNotification } from "../../../utilities";
@@ -11,7 +8,6 @@ class Card extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       tutorials: [],
       tutorial : []
@@ -27,23 +23,16 @@ class Card extends Component {
         if (this.state.tutorials.length < 6) {
           this.state.tutorials.map((tutorial, index) => {
             this.setState({
-              tutorial: this.state.tutorial.concat(tutorial.name)
+              tutorial: this.state.tutorial.concat(tutorial)
             });
           })
         } else {
           for(let i =0 ; i<6; i++) {
             this.setState({
-              tutorial: this.state.tutorial.concat(this.state.tutorials[i].name)
+              tutorial: this.state.tutorial.concat(this.state.tutorials[i])
             });
           }
         }
-      } else {
-        // addNotification(
-        //   this.notificationDOMRef,
-        //   "Error",
-        //   "danger",
-        //   result.message
-        // );
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
@@ -61,7 +50,7 @@ class Card extends Component {
           {this.state.tutorial.map((tutoria, index) => (
             <div className="interview-prep-tutorial" key={index}>
             <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-              <TutorialCard heading={tutoria}/>
+              <TutorialCard heading={tutoria.name} para={tutoria.content} value={tutoria.tutorialId}/>
             </div>
           </div>
           ))}

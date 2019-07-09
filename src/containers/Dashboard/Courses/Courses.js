@@ -7,7 +7,6 @@ import "./Courses.scss";
 class Courses extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       courses: [],
       cards : ["Top Courses", "Most Viewed", "Top Rated"],
@@ -34,13 +33,6 @@ class Courses extends Component {
             });
           }
         }
-      } else {
-        // addNotification(
-        //   this.notificationDOMRef,
-        //   "Error",
-        //   "danger",
-        //   result.message
-        // );
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);

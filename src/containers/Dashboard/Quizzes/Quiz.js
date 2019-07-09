@@ -8,7 +8,6 @@ class Quizzes extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       quizzes: [],
       quiz : []
@@ -24,23 +23,16 @@ class Quizzes extends Component {
         if (this.state.quizzes.length < 6) {
           this.state.quizzes.map((quiz, index) => {
             this.setState({
-              quiz: this.state.quiz.concat(quiz.name)
+              quiz: this.state.quiz.concat(quiz)
             });
           })
         } else {
           for(let i =0 ; i<6; i++) {
             this.setState({
-              quiz: this.state.quiz.concat(this.state.quizzes[i].name)
+              quiz: this.state.quiz.concat(this.state.quizzes[i])
             });
           }
         }
-      } else {
-        // addNotification(
-        //   this.notificationDOMRef,
-        //   "Error",
-        //   "danger",
-        //   result.message
-        // );
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
@@ -58,7 +50,7 @@ class Quizzes extends Component {
           {this.state.quiz.map((quiz, index) => (
             <div className="interview-prep-quiz" key={index}>
             <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
-              <QuizCard heading={quiz}/>
+              <QuizCard heading={quiz.name} value={quiz.quizId}/>
             </div>
           </div>
           ))}
