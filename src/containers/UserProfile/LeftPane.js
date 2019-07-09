@@ -10,7 +10,8 @@ import AboutUser from "./AboutUser";
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: true };
+    this.state = { readOnly: true, open: true };
+
     this.closeModal = this.closeModal.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -75,7 +76,8 @@ class LeftPane extends Component {
             placeholder="Tell us about Who you are..."
             value={about}
             className="about"
-            maxlength="25"
+            maxLength="25"
+            readOnly={this.state.readOnly}
           />
         </div>
       </Fragment>
