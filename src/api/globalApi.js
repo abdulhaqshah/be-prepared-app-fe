@@ -4,11 +4,10 @@ import * as auth from "../services/Session";
 const token = auth.getItem("token");
 const uuid = auth.getItem("uuid");
 const GlobalAPISvc = (endPoint, method, data) => {
-  debugger
   return new Promise((resolve, reject) => {
     fetch(`${API_HOST}${endPoint}`, {
       method: method,
-      body: JSON.stringify(data),
+      body: data.formData,
       headers: {
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",

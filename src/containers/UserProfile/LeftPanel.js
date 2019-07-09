@@ -22,20 +22,16 @@ class LeftPane extends Component {
     };
   }
 
-  onUpload() {
-    debugger;
+   onUpload() {
     console.log(this.state.selectedFile);
     let file = this.state.selectedFile;
     let formData = new FormData();
     formData.append("image", file);
     formData.append("name", "humna");
-    console.log(formData)
     const data = {
       formData
     };
     API.uploadImage(data, result => {
-      debugger;
-      alert("hitapi");
       if (result.status === "200") {
         alert("api hit");
       }
@@ -72,11 +68,11 @@ class LeftPane extends Component {
     return (
       <Fragment>
         <div>
-          <ReactNotification ref={this.notificationDOMRef} />
+          <ReactNotification ref={this.notificationDOMRef}/>
         </div>
         <div className="about">
           <div>
-            <form encType="multipart/form-data">
+            <form>
               {/* <form encType="multipart/form-data" onSubmit={this.handleSubmit}> */}
               <div className="container">
                 {/* <button

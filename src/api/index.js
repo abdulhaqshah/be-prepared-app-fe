@@ -74,7 +74,6 @@ const userAboutInfo = (data, resolve, reject) => {
 };
 const uploadImage = (data, resolve, reject) => {
   let uuid = auth.getItem("uuid")
-  debugger
   return GlobalAPISvc(UPLOAD_IMAGE(uuid), METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
