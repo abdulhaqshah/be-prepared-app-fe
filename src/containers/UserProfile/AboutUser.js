@@ -9,8 +9,8 @@ import API from "../../api/index";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.validator = new SimpleReactValidator();
     this.state = { about: this.props.aboutUser };
+    this.validator = new SimpleReactValidator();
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
@@ -59,7 +59,7 @@ class AboutUser extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somgthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
