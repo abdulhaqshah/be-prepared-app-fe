@@ -9,8 +9,7 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tutorials: [],
-      tutorial : []
+      tutorials: []
     };
     this.getTutorials();
   }
@@ -18,22 +17,11 @@ class Card extends Component {
   getTutorials() {
     API.getTutorials(result => {
       if (result.status === "200") {
+        let tutorial = result.data;
+        tutorial = tutorial.slice(0,6);
         this.setState({
-          tutorials: result.data
+          tutorials: tutorial
         });
-        if (this.state.tutorials.length < 6) {
-          this.state.tutorials.map((tutorial, index) => {
-            this.setState({
-              tutorial: this.state.tutorial.concat(tutorial)
-            });
-          })
-        } else {
-          for(let i =0 ; i<6; i++) {
-            this.setState({
-              tutorial: this.state.tutorial.concat(this.state.tutorials[i])
-            });
-          }
-        }
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
@@ -48,10 +36,10 @@ class Card extends Component {
         </div>
         <div className="row">
           <div className="tutorial-container">
-          {this.state.tutorial.map((tutoria, index) => (
+          {this.state.tutorials.map((tutorial, index) => (
             <div className="interview-prep-tutorial" key={index}>
             <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-              <TutorialCard heading={tutoria.name} para={tutoria.content} value={tutoria.tutorialId}/>
+              <TutorialCard heading={tutorial.name} para={tutorial.content} value={tutorial.tutorialId}/>
             </div>
           </div>
           ))}
