@@ -13,7 +13,6 @@ import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.validator = new SimpleReactValidator();
     this.state = {
       email: "",
@@ -53,13 +52,8 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          auth.setItem("uuid", result.data.user.uuid);
+          auth.setItem("data", JSON.stringify(result.data.user));
           auth.setItem("token", result.data.token);
-          auth.setItem("name", result.data.user.name);
-          auth.setItem("email", result.data.user.email);
-          auth.setItem("img", result.data.user.image);
-
-          //Form reset
           this.formRef.reset();
           this.props.history.push(DASHBOARD);
         } else if (
@@ -78,7 +72,7 @@ class Login extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somgthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
@@ -86,7 +80,6 @@ class Login extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }

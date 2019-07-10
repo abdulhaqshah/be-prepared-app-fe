@@ -5,12 +5,12 @@ import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import "./LeftPane.scss";
-import DetailPopup from "../../containers/UserProfile/DetailPopup";
+import AboutUser from "./AboutUser";
 
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: true };
+    this.state = { readOnly: true, open: true };
     this.closeModal = this.closeModal.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -27,9 +27,10 @@ class LeftPane extends Component {
   }
 
   render() {
-    const name = auth.getItem("name");
-    const email = auth.getItem("email");
-
+    const data = JSON.parse(auth.getItem("data"));
+    const name = data.name;
+    const email = data.email;
+    const about = data.about;
     return (
       <Fragment>
         <div>
@@ -38,9 +39,6 @@ class LeftPane extends Component {
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             {getInitials(name)}
-            <div className="overlay">
-              <a href="./edit">{/* <i className="fa fa-pencil" /> */}</a>
-            </div>
           </button>
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>
@@ -53,25 +51,30 @@ class LeftPane extends Component {
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
           </div>
-          <EditIntro
-            name={name}
-            email={email}
-            closeModal={this.closeModal}
-          />
+          <EditIntro name={name} email={email} closeModal={this.closeModal} />
         </div>
-
         <div className="profile-detail">
           <div className="about-heading">
             <h5>About</h5>
           </div>
           <div className="about-pen-icon">
-            <DetailPopup />
+            <div>
+              <a href="#editdetail" data-toggle="modal" data-target="#Modal">
+                <i className="fa fa-pencil" />
+              </a>
+              <AboutUser aboutUser={about} closeModal={this.closeModal} />
+            </div>
           </div>
-          <div className="user-about-info">
-            <span>Expected year of Graduation</span>
-            <br />
-            <b>2019</b>
-          </div>
+        </div>
+        <div className="user-about-info">
+          <textarea
+            rows="5"
+            placeholder="Tell us about Who you are..."
+            value={about}
+            className="about"
+            maxLength="25"
+            readOnly={this.state.readOnly}
+          />
         </div>
       </Fragment>
     );

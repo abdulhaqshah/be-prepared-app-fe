@@ -7,9 +7,9 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
         <div className="logo-div">
-            <a href={HOME} className="navigation-logo">
+          <a href={HOME} className="navigation-logo">
             Be Prepared
-            </a>
+          </a>
         </div>
         <button
           className="navbar-toggler"
@@ -25,9 +25,12 @@ class Header extends Component {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <div className="d-lg-flex flex-row-reverse">
             <div className="login-btn">
-                <a href={this.props.redirectTo} className="btn-secondary btn-login">
-                  {this.props.btnName}
-                </a>
+              <a
+                href={this.props.redirectTo}
+                className="btn-secondary btn-login"
+              >
+                {this.props.btnName}
+              </a>
             </div>
           </div>
         </div>
@@ -35,5 +38,4 @@ class Header extends Component {
     );
   }
 }
-
 export default Header;

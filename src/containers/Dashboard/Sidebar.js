@@ -7,8 +7,7 @@ class Sidebar extends Component {
       <div id="#sidebar" className="sidebar-container">
         <nav className="sidenav">
           <div className="btn-div">
-            <button
-              className="btn">
+            <button className="btn">
               <i className="fa fa-angle-double-left fa-lg" />
             </button>
           </div>
@@ -49,5 +48,4 @@ class Sidebar extends Component {
     );
   }
 }
-
 export default Sidebar;

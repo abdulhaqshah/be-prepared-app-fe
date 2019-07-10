@@ -10,7 +10,6 @@ import "./EditIntro.scss";
 class EditInto extends Component {
   constructor(props) {
     super(props);
-
     this.validator = new SimpleReactValidator();
     this.state = {
       name: this.props.name,
@@ -19,14 +18,21 @@ class EditInto extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.modalRef = React.createRef();
+    this.formRef = null;
   }
 
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
+
+  onCancel() {
+    this.formRef.reset();
+  }
+
   submitForm(e) {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
@@ -43,7 +49,6 @@ class EditInto extends Component {
           auth.setItem("email", result.data.email);
           this.props.closeModal();
           this.modalRef.remove();
-
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -61,16 +66,14 @@ class EditInto extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somgthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
-        debugger;
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }
@@ -79,12 +82,9 @@ class EditInto extends Component {
     return (
       <div
         ref={ref => (this.modalRef = ref)}
-        className="modal"
+        className="modal fade"
         id="exampleModal"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        data-backdrop="static"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -95,11 +95,10 @@ class EditInto extends Component {
               <button
                 type="button"
                 className="close"
+                onClick={this.onCancel}
                 data-dismiss="modal"
-                aria-label="Close"
-                aria-hidden="true"
               >
-                <span aria-hidden="true">&times;</span>
+                <span>&times;</span>
               </button>
             </div>
             <div className="modal-body" />
@@ -108,7 +107,11 @@ class EditInto extends Component {
               <div>
                 <ReactNotification ref={this.notificationDOMRef} />
               </div>
-              <form className="form" onSubmit={this.submitForm}>
+              <form
+                className="form"
+                onSubmit={this.submitForm}
+                ref={ref => (this.formRef = ref)}
+              >
                 <div className="feilds" />
                 <div className="name">
                   <label className="labels vertical-spacing">
@@ -116,7 +119,7 @@ class EditInto extends Component {
                   </label>
                   <br />
                   <input
-                    defaultValue={this.state.name}
+                    defaultValue={this.props.name}
                     className="edit-field"
                     name="name"
                     onChange={this.handleUserInput}
@@ -135,7 +138,7 @@ class EditInto extends Component {
                   </label>
                   <br />
                   <input
-                    defaultValue={this.state.email}
+                    defaultValue={this.props.email}
                     className="edit-field"
                     name="email"
                     onChange={this.handleUserInput}
@@ -160,8 +163,9 @@ class EditInto extends Component {
                       </button>
                       <button
                         className="btn btn-outline-success col-lg-3 mt-1"
+                        type="button"
                         name="cancelBtn"
-                        type="submit"
+                        onClick={this.onCancel}
                         data-dismiss="modal"
                       >
                         Cancel

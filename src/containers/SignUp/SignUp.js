@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
-import{ addNotification} from "../../utilities";
+import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
 import API from "../../api";
 import "./SignUp.css";
@@ -12,15 +12,13 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator({
-      //This rule is for confirm password
       validators: {
         cp: {
-          // name the rule
           message: "The :attribute does not match.",
           rule: (val, params, validator) => {
             return Boolean(val) ? val === params[0] : null;
           },
-          required: true // optional
+          required: true
         }
       }
     });
@@ -36,11 +34,13 @@ class SignUp extends Component {
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
   }
+
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -52,7 +52,6 @@ class SignUp extends Component {
       };
       API.postUserData(data, result => {
         if (result.status === "201") {
-          //Form reset
           this.formRef.reset();
           this.props.history.push(LOGIN, this.state.param);
         } else if (
@@ -71,7 +70,7 @@ class SignUp extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
@@ -79,7 +78,6 @@ class SignUp extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }
