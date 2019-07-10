@@ -3,7 +3,6 @@ import TextTruncate from 'react-text-truncate';
 import "./Tutorial.scss";
 
 class TutorialCard extends Component {
-  
   render() {
     return (
       <div className="card">
@@ -32,5 +31,4 @@ class TutorialCard extends Component {
     );
   }
 }
-
 export default TutorialCard;

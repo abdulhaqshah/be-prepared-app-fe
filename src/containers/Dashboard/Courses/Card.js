@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import "./Card.scss";
 
 class Card extends Component {
-
   render() {
     const courses = this.props.data;
-    const courseList = courses.map((course,index) => {
+    const courseList = courses.map((course, index) => {
       return (
         <div className="course-name" key={index}>
-          <a href="./home" >{course}</a>
+          <a href="./home">{course}</a>
         </div>
       );
     });
@@ -26,5 +25,4 @@ class Card extends Component {
     );
   }
 }
-
 export default Card;

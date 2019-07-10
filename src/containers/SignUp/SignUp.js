@@ -34,11 +34,13 @@ class SignUp extends Component {
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
   }
+
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {

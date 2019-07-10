@@ -30,7 +30,6 @@ class Courses extends Component {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
     };
   }
-
   render() {
     const cards = this.state.cards.map((card, index) => (
       <div className="courses shadow-lg ml-5 mr-4 mb-5" key={index}>

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { HOME, LOGIN } from "../../constants";
 import * as auth from "../../services/Session";
+import { HOME } from "../../constants";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
@@ -157,5 +157,4 @@ class Navbar extends Component {
     }
   }
 }
-
 export default Navbar;

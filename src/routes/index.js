@@ -12,6 +12,8 @@ import Code from "../containers/Code/Code";
 import Profile from "../containers/UserProfile/UserProfile";
 import Navbar from "../containers/Dashboard/Navbar";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
+import { BrowserRouter as Router } from "react-router-dom";
+import { getItem } from "../services/Session";
 import {
   HOME,
   SINGUP,
@@ -25,8 +27,6 @@ import {
   JAVASCRIPT,
   PROFILE
 } from "../constants";
-import { BrowserRouter as Router } from "react-router-dom";
-import { getItem } from "../services/Session";
 
 class Routes extends Component {
   render() {

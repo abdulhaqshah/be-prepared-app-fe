@@ -11,7 +11,6 @@ class LeftPane extends Component {
   constructor(props) {
     super(props);
     this.state = { readOnly: true, open: true };
-
     this.closeModal = this.closeModal.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -31,7 +30,6 @@ class LeftPane extends Component {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
     const about = auth.getItem("about");
-
     return (
       <Fragment>
         <div>
