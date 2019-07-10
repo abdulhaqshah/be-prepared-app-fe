@@ -9,30 +9,25 @@ class Quizzes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizzes: [],
-      quiz : []
+      quizzes: []
     };
+    this.getQuizzes();
   }
 
-  componentWillMount() {
+  getQuizzes () {
     API.getQuizzes(result => {
       if (result.status === "200") {
-        this.setState({
-          quizzes: result.data
-        });
-        if (this.state.quizzes.length < 6) {
-          this.state.quizzes.map((quiz, index) => {
-            this.setState({
-              quiz: this.state.quiz.concat(quiz)
-            });
-          })
-        } else {
-          for(let i =0 ; i<6; i++) {
-            this.setState({
-              quiz: this.state.quiz.concat(this.state.quizzes[i])
-            });
+        let quiz = [];
+        for(let i=0; i<result.data.length; i++) {
+          if(i === 6) {
+            break;
+          } else {
+            quiz.push(result.data[i])
           }
         }
+        this.setState({
+          quizzes: quiz
+        });
       }
     }).catch = error => {
       addNotification(this.notificationDOMRef, "Error", "warning", error);
@@ -40,6 +35,13 @@ class Quizzes extends Component {
   }
 
   render() {
+    const quizCards = this.state.quizzes.map((quiz, index) => (
+      <div className="interview-prep-quiz" key={index}>
+      <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
+        <QuizCard heading={quiz.name} value={quiz.quizId}/>
+      </div>
+    </div>
+    ))
     return (
       <Fragment>
         <div>
@@ -47,13 +49,7 @@ class Quizzes extends Component {
         </div>
         <div className="row">
           <div className="quiz-container">
-          {this.state.quiz.map((quiz, index) => (
-            <div className="interview-prep-quiz" key={index}>
-            <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
-              <QuizCard heading={quiz.name} value={quiz.quizId}/>
-            </div>
-          </div>
-          ))}
+            {quizCards}
           </div>
         </div>
       </Fragment>

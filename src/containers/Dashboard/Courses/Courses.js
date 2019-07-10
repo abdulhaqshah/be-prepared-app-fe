@@ -12,9 +12,10 @@ class Courses extends Component {
       cards : ["Top Courses", "Most Viewed", "Top Rated"],
       course : []
     };
+    this.getCourses();
   }
 
-  componentWillMount() {
+  getCourses() {
     API.getCourses(result => {
       if (result.status === "200") {
         this.setState({
@@ -40,6 +41,11 @@ class Courses extends Component {
   }
 
   render() {
+    const cards = this.state.cards.map((card, index) => (
+      <div className="courses shadow-lg ml-5 mr-4 mb-5" key={index}>
+        <Card data={this.state.course} key ={index} title={card} />
+      </div>
+    ))
     return (
       <Fragment>
         <div>
@@ -47,11 +53,7 @@ class Courses extends Component {
         </div>
         <div className="row">
           <div className="card-container">
-          {this.state.cards.map((card, index) => (
-            <div className="courses shadow-lg ml-5 mr-4 mb-5" key={index}>
-              <Card data={this.state.course} key ={index} title={card} />
-            </div>
-          ))}
+          {cards}
           </div>
         </div>
       </Fragment>

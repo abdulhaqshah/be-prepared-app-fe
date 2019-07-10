@@ -12,9 +12,10 @@ class Card extends Component {
       tutorials: [],
       tutorial : []
     };
+    this.getTutorials();
   }
 
-  componentWillMount() {
+  getTutorials() {
     API.getTutorials(result => {
       if (result.status === "200") {
         this.setState({
