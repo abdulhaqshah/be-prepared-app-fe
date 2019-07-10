@@ -20,22 +20,22 @@ class QuizForm extends Component {
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
-    API.getCourses(result => {
-      if (result.status === "200") {
-        this.setState({
-          courses: result.data
-        });
-      } else {
-        addNotification(
-          this.notificationDOMRef,
-          "Error",
-          "danger",
-          result.message
-        );
-      }
-    }).catch = error => {
-      addNotification(this.notificationDOMRef, "Error", "warning", error);
-    };
+    // API.getCourses(result => {
+    //   if (result.status === "200") {
+    //     this.setState({
+    //       courses: result.data
+    //     });
+    //   } else {
+    //     addNotification(
+    //       this.notificationDOMRef,
+    //       "Error",
+    //       "danger",
+    //       result.message
+    //     );
+    //   }
+    // }).catch = error => {
+    //   addNotification(this.notificationDOMRef, "Error", "warning", error);
+    // };
   }
 
   handleUserInput(e) {
@@ -43,6 +43,7 @@ class QuizForm extends Component {
     const value = e.target.value;
     this.setState({ [name]: value });
   }
+
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -53,7 +54,6 @@ class QuizForm extends Component {
       };
       API.quizData(data, result => {
         if (result.status === "201") {
-          // Form reset
           this.formRef.reset();
 
           addNotification(
@@ -77,13 +77,19 @@ class QuizForm extends Component {
             "danger",
             result.message
           );
+        } else {
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
         }
       }).catch = error => {
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }
