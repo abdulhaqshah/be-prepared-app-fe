@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import TextTruncate from 'react-text-truncate';
-import "./Tutorial.scss";
+import "./Quiz.scss";
 
-class TutorialCard extends Component {
+class QuizCard extends Component {
   
   render() {
     return (
@@ -19,12 +19,12 @@ class TutorialCard extends Component {
             line={2}
             element="span"
             truncateText="…"
-            text={this.props.para}
+            text="challenges based on learnings from 1000+ companies to help you prepare"
             textTruncateChild={<a href="#">Read on</a>}
           />
-          <div className="tutorial-link">
+          <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">
-              View Tutorial
+              View Quiz
             </a>
           </div>
         </div>
@@ -33,4 +33,4 @@ class TutorialCard extends Component {
   }
 }
 
-export default TutorialCard;
+export default QuizCard;
