@@ -77,7 +77,7 @@ class Login extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somgthing went wrong"
+            result.message
           );
         }
       }).catch = error => {

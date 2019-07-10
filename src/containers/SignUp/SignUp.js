@@ -70,7 +70,7 @@ class SignUp extends Component {
             this.notificationDOMRef,
             "Error",
             "warning",
-            "Somthing went wrong"
+            result.message
           );
         }
       }).catch = error => {
