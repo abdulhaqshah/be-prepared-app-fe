@@ -21,7 +21,6 @@ class CourseForm extends Component {
     this.formRef = null;
   }
 
-  
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -37,7 +36,6 @@ class CourseForm extends Component {
       };
       API.courseData(data, result => {
         if (result.status === "201") {
-          // Form reset
           this.formRef.reset();
 
           addNotification(
@@ -46,10 +44,10 @@ class CourseForm extends Component {
             "success",
             result.message
           );
-            this.setState({
-              name: "",
-              description: ""
-            })
+          this.setState({
+            name: "",
+            description: ""
+          });
         } else if (
           result.status === "404" ||
           result.status === "400" ||
@@ -74,7 +72,6 @@ class CourseForm extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }
@@ -104,7 +101,6 @@ class CourseForm extends Component {
                     name="name"
                     type="text"
                     maxLength="30"
-                    // value={this.state.name}
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
