@@ -13,7 +13,7 @@ import Profile from "../containers/UserProfile/UserProfile";
 import Navbar from "../containers/Dashboard/Navbar";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
-import { getItem } from "../services/Session";
+import * as auth from "../services/Session";
 import {
   HOME,
   SINGUP,
@@ -30,7 +30,8 @@ import {
 
 class Routes extends Component {
   render() {
-    const name = getItem("name");
+    const data = JSON.parse(auth.getItem("data"));
+    const name = data.name;
     return (
       <Router>
         <Navbar
