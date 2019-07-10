@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
-import addNotification from "../../utilities";
+import{ addNotification} from "../../utilities";
 import { LOGIN } from "../../constants";
 import API from "../../api";
 import "./SignUp.css";
@@ -11,7 +11,6 @@ import "./SignUp.css";
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    // debugger;
     this.validator = new SimpleReactValidator({
       //This rule is for confirm password
       validators: {
@@ -40,7 +39,7 @@ class SignUp extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
   submitForm(e) {
     e.preventDefault();

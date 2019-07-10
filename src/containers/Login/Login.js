@@ -4,7 +4,7 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import addNotification from "../../utilities";
+import { addNotification } from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import API from "../../api";
@@ -13,7 +13,6 @@ import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
-    // debugger;
 
     this.validator = new SimpleReactValidator();
     this.state = {
@@ -41,7 +40,7 @@ class Login extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
 
   submitForm(e) {
