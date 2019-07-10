@@ -17,10 +17,9 @@ class Courses extends Component {
   getCourses() {
     API.getCourses(result => {
       if (result.status === "200") {
-        let course = []
-        result.data.map((obj) => {
-          course.push(obj.name)
-        })
+        let course = result.data.map(obj => {
+          return obj.name
+        });
         course = course.slice(0,6);
         this.setState({
           courses: course
