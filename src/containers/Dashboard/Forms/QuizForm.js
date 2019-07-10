@@ -19,23 +19,10 @@ class QuizForm extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.getCourses = this.getCourses.bind(this);
     this.formRef = null;
-    // API.getCourses(result => {
-    //   if (result.status === "200") {
-    //     this.setState({
-    //       courses: result.data
-    //     });
-    //   } else {
-    //     addNotification(
-    //       this.notificationDOMRef,
-    //       "Error",
-    //       "danger",
-    //       result.message
-    //     );
-    //   }
-    // }).catch = error => {
-    //   addNotification(this.notificationDOMRef, "Error", "warning", error);
-    // };
+    this.getCourses();
+
   }
 
   handleUserInput(e) {
@@ -92,6 +79,25 @@ class QuizForm extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
+  }
+
+  getCourses() {
+    API.getCourses(result => {
+      if (result.status === "200") {
+        this.setState({
+          courses: result.data
+        });
+      } else {
+        addNotification(
+          this.notificationDOMRef,
+          "Error",
+          "danger",
+          result.message
+        );
+      }
+    }).catch = error => {
+      addNotification(this.notificationDOMRef, "Error", "warning", error);
+    };
   }
 
   render() {
