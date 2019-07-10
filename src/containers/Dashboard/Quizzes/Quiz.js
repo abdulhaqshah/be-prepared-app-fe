@@ -17,10 +17,8 @@ class Quizzes extends Component {
   getQuizzes () {
     API.getQuizzes(result => {
       if (result.status === "200") {
-        let quiz = result.data;
-        quiz = quiz.slice(0,6);
         this.setState({
-          quizzes: quiz
+          quizzes: result.data.slice(0,6),
         });
       }
     }).catch = error => {

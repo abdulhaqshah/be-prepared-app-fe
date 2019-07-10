@@ -17,10 +17,8 @@ class Card extends Component {
   getTutorials() {
     API.getTutorials(result => {
       if (result.status === "200") {
-        let tutorial = result.data;
-        tutorial = tutorial.slice(0,6);
         this.setState({
-          tutorials: tutorial
+          tutorials: result.data.slice(0, 6),
         });
       }
     }).catch = error => {
