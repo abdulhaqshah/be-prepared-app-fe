@@ -27,7 +27,7 @@ class EditInto extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
 
   onCancel() {
@@ -71,7 +71,6 @@ class EditInto extends Component {
           );
         }
       }).catch = error => {
-        debugger;
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
@@ -102,6 +101,7 @@ class EditInto extends Component {
               <button
                 type="button"
                 className="close"
+                onClick={this.onCancel}
                 data-dismiss="modal"
                 aria-label="Close"
                 aria-hidden="true"

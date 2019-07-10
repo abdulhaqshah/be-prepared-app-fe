@@ -12,7 +12,7 @@ class AboutUser extends Component {
 
     this.validator = new SimpleReactValidator();
     this.state = {
-      about: ""
+      about: this.props.aboutUser
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
