@@ -2,18 +2,15 @@ import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import addNotification from "../../utilities/index";
+import { addNotification } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
 
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-
     this.validator = new SimpleReactValidator();
-    this.state = {
-      about: this.props.aboutUser
-    };
+    this.state = { about: this.props.aboutUser };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
@@ -81,10 +78,6 @@ class AboutUser extends Component {
         className="modal fade"
         id="Modal"
         data-backdrop="static"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="ModalLabel"
-        aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -95,10 +88,8 @@ class AboutUser extends Component {
                 className="close"
                 onClick={this.onCancel}
                 data-dismiss="modal"
-                aria-label="Close"
-                aria-hidden="true"
               >
-                <span aria-hidden="true">&times;</span>
+                <span>&times;</span>
               </button>
             </div>
             <div>

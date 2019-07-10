@@ -10,7 +10,6 @@ import "./EditIntro.scss";
 class EditInto extends Component {
   constructor(props) {
     super(props);
-
     this.validator = new SimpleReactValidator();
     this.state = {
       name: this.props.name,
@@ -86,10 +85,6 @@ class EditInto extends Component {
         className="modal fade"
         id="exampleModal"
         data-backdrop="static"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -102,10 +97,8 @@ class EditInto extends Component {
                 className="close"
                 onClick={this.onCancel}
                 data-dismiss="modal"
-                aria-label="Close"
-                aria-hidden="true"
               >
-                <span aria-hidden="true">&times;</span>
+                <span>&times;</span>
               </button>
             </div>
             <div className="modal-body" />
