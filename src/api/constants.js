@@ -6,7 +6,7 @@ export const METHODS = {
     DELETE : "DELETE",
     PATCH : "PATCH"
 }
-export const USER_URL = '/user/register';
+export const USER_REGISTER_URL = '/user/register';
 export const USER_LOGIN_URL = '/user/login';
 export const TEST_DATA = '/tutorial/addLesson';
 export const UPDATE_DATA = '/user/userUpdate';
