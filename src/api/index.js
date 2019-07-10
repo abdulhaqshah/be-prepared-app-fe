@@ -1,4 +1,4 @@
-import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA, ABOUT_USER, GET_COURSES, GET_TUTORIALS, GET_QUIZZES} from "./constants";
+import { USER_URL, USER_LOGIN_URL, METHODS ,UPDATE_DATA, USER_ABOUT_INFO, GET_COURSES, GET_TUTORIALS, GET_QUIZZES} from "./constants";
 import GlobalAPISvc from "./globalApi";
 import * as auth from "../services/Session";
 const uuid = auth.getItem("uuid");
@@ -37,8 +37,8 @@ const getQuizzes = (resolve, reject) => {
     .catch(err => reject(err));
 };
 
-const aboutUser = (data, resolve, reject) => {
-  return GlobalAPISvc(ABOUT_USER(uuid), METHODS.PATCH, data)
+const userAboutInfo = (data, resolve, reject) => {
+  return GlobalAPISvc(USER_ABOUT_INFO(uuid), METHODS.PATCH, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -49,5 +49,5 @@ export default {
   getCourses,
   getTutorials,
   getQuizzes,
-  aboutUser,
+  userAboutInfo,
 };

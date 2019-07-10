@@ -39,7 +39,7 @@ class AboutUser extends Component {
       const data = {
         about
       };
-      API.aboutUser(data, result => {
+      API.userAboutInfo(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
 
