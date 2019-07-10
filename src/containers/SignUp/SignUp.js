@@ -39,7 +39,7 @@ class SignUp extends Component {
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value.trim() });
   }
   submitForm(e) {
     e.preventDefault();
