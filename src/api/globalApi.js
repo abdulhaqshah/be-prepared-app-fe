@@ -2,7 +2,7 @@ import { API_HOST } from "./constants";
 import * as auth from "../services/Session";
 
 const token = auth.getItem("token");
-const uuid = auth.getItem("uuid");
+const userId = auth.getItem("uuid");
 
 const GlobalAPISvc = (endPoint, method, data) => {
   return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ const GlobalAPISvc = (endPoint, method, data) => {
       headers: {
         "Content-Type": "application/json",
         "x-authentication": token,
-        uuid: uuid
+        userId: userId
       }
     })
       .then(res => {

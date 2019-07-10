@@ -13,6 +13,6 @@ export const UPDATE_DATA = '/user/userUpdate';
 export const GET_COURSES = '/course/allInActive';
 export const GET_TUTORIALS = '/tutorial/allInActive';
 export const GET_QUIZZES = '/quiz/allInActive';
-export const ABOUT_USER = uuid => {
+export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
