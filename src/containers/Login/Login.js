@@ -60,7 +60,6 @@ class Login extends Component {
           auth.setItem("email", result.data.user.email);
           auth.setItem("img", result.data.user.image);
 
-          //Form reset
           this.formRef.reset();
           this.props.history.push(DASHBOARD);
         } else if (
@@ -87,7 +86,6 @@ class Login extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }

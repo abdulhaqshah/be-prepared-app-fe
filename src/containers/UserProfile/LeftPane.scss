@@ -6,15 +6,6 @@
     background-color: black;
     width: 105px;
     height: 105px;
-    .overlay {
-      position: relative;
-      opacity: 0;
-      transition: 0.3s ease;
-      text-align: center;
-    }
-    &:hover .overlay {
-      opacity: 1;
-    }
   }
   .profile-name {
     padding-top: 15px;
@@ -56,7 +47,7 @@
 .user-about-info {
   .about {
     border: none;
-    background-color: #F3F7F7;
-    width:100%;
+    background-color: #f3f7f7;
+    width: 100%;
   }
 }

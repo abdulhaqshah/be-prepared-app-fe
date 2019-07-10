@@ -40,9 +40,6 @@ class LeftPane extends Component {
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             {getInitials(name)}
-            <div className="overlay">
-              <a href="./edit">{/* <i className="fa fa-pencil" /> */}</a>
-            </div>
           </button>
           <h3 className="profile-name">{name}</h3>
           <p>{email}</p>

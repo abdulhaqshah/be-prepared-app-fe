@@ -75,7 +75,6 @@ class EditInto extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
       this.forceUpdate();
     }
   }
