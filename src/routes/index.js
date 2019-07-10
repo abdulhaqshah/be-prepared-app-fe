@@ -33,7 +33,13 @@ class Routes extends Component {
     const name = getItem("name");
     return (
       <Router>
-        <Navbar name={name} />
+        <Navbar
+          loginBtn="LOGIN"
+          signupBtn="SIGNUP"
+          signupRoute={SINGUP}
+          loginRoute={LOGIN}
+          name={name}
+        />
         <GuestRoute exact path={HOME} component={Home} />
         <GuestRoute path={SINGUP} component={SignUp} />
         <GuestRoute path={LOGIN} component={Login} />

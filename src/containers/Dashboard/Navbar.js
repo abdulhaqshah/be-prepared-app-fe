@@ -39,9 +39,12 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <div className="d-lg-flex flex-row-reverse">
               <div className="login-btn">
-                <a href={LOGIN} className="btn-secondary btn-login">
-                  Login
-                </a>
+                <Link
+                  to={this.props.loginRoute}
+                  className="btn-secondary btn-login"
+                >
+                  {this.props.loginBtn}
+                </Link>
               </div>
             </div>
           </div>
