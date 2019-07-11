@@ -52,7 +52,11 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          auth.setItem("data", JSON.stringify(result.data.user));
+          auth.setItem("uuid", result.data.user.uuid);
+          auth.setItem("name", result.data.user.name);
+          auth.setItem("email", result.data.user.email);
+          auth.setItem("about", result.data.user.about);
+          auth.setItem("img", result.data.user.img);
           auth.setItem("token", result.data.token);
           this.formRef.reset();
           this.props.history.push(DASHBOARD);

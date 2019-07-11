@@ -50,7 +50,7 @@ class SignUp extends Component {
         email,
         password
       };
-      API.postUserData(data, result => {
+      API.userRegister(data, result => {
         if (result.status === "201") {
           this.formRef.reset();
           this.props.history.push(LOGIN, this.state.param);

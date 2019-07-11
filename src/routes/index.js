@@ -36,8 +36,7 @@ import {
 
 class Routes extends Component {
   render() {
-    const data = JSON.parse(auth.getItem("data"));
-    const name = data.name;
+    const name = auth.getItem("name");
     return (
       <Router>
         <Navbar

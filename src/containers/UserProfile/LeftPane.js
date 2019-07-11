@@ -27,10 +27,9 @@ class LeftPane extends Component {
   }
 
   render() {
-    const data = JSON.parse(auth.getItem("data"));
-    const name = data.name;
-    const email = data.email;
-    const about = data.about;
+    const name = auth.getItem("name");
+    const email = auth.getItem("email");
+    const about = auth.getItem("about");
     return (
       <Fragment>
         <div>
