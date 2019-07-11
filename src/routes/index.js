@@ -11,7 +11,8 @@ import Javascript from "../containers/Javascript/Javascript";
 import Code from "../containers/Code/Code";
 import Profile from "../containers/UserProfile/UserProfile";
 import Navbar from "../containers/Dashboard/Navbar";
-import TutorialForm from "../containers/Dashboard/Forms/TutorialForm"
+import TutorialForm from "../containers/Dashboard/Forms/TutorialForm";
+import CourseForm from "../containers/Dashboard/Forms/CourseForm";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as auth from "../services/Session";
@@ -27,7 +28,8 @@ import {
   STATISTICS,
   JAVASCRIPT,
   PROFILE,
-  TUTORIAL_FORM
+  TUTORIAL_FORM,
+  COURSE_FORM
 } from "../constants";
 
 class Routes extends Component {
@@ -55,6 +57,7 @@ class Routes extends Component {
         <ProtectedRoute path={CODE} component={Code} />
         <ProtectedRoute path={PROFILE} component={Profile} />
         <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm} />
+        <ProtectedRoute path={COURSE_FORM} component={CourseForm} />
       </Router>
     );
   }
