@@ -9,7 +9,7 @@
     display: inline-block;
     .card {
       width: 19rem;
-      height: 13rem;
+      height: auto;
       .card-title,
       p {
         font-size: 13px;
@@ -20,6 +20,8 @@
         color: #738f93;
       }
       .card-heading{
+        display: -webkit-box;
+        text-overflow: ellipsis;
         color:#39414E;
       }
     }
