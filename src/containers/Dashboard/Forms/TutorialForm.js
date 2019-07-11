@@ -27,6 +27,7 @@ class TutorialForm extends Component {
         this.setState({
           courses: result.data
         });
+        
       } else {
         addNotification(
           this.notificationDOMRef,
@@ -81,6 +82,12 @@ class TutorialForm extends Component {
       API.tutorialData(data, result => {
         if (result.status === "201") {
           this.formRef.reset();
+          addNotification(
+            this.notificationDOMRef,
+            "success",
+            "success",
+            result.message
+          );
         } else if (
           result.status === "400" ||
           result.status === "404" ||
