@@ -30,7 +30,6 @@ class AboutUser extends Component {
   }
 
   submitForm(e) {
-    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { about } = this.state;
