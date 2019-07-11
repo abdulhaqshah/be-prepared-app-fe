@@ -13,6 +13,7 @@ import Profile from "../containers/UserProfile/UserProfile";
 import Navbar from "../containers/Dashboard/Navbar";
 import TutorialForm from "../containers/Dashboard/Forms/TutorialForm";
 import CourseForm from "../containers/Dashboard/Forms/CourseForm";
+import QuizForm from "../containers/Dashboard/Forms/QuizForm";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as auth from "../services/Session";
@@ -29,13 +30,13 @@ import {
   JAVASCRIPT,
   PROFILE,
   TUTORIAL_FORM,
-  COURSE_FORM
+  COURSE_FORM,
+  QUIZ_FORM
 } from "../constants";
 
 class Routes extends Component {
   render() {
-    const data = JSON.parse(auth.getItem("data"));
-    const name = data.name;
+    const name = auth.getItem("name");
     return (
       <Router>
         <Navbar
@@ -58,6 +59,7 @@ class Routes extends Component {
         <ProtectedRoute path={PROFILE} component={Profile} />
         <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm} />
         <ProtectedRoute path={COURSE_FORM} component={CourseForm} />
+        <ProtectedRoute path={QUIZ_FORM} component={QuizForm} />
       </Router>
     );
   }
