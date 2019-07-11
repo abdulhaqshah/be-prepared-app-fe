@@ -16,3 +16,6 @@ export const GET_QUIZZES = '/quiz/allInActive';
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
+export const TUTORIAL_DATA = '/tutorial/new'
+
+
