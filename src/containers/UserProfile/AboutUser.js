@@ -9,7 +9,7 @@ import API from "../../api/index";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { about: this.props.aboutUser };
+    this.state = { about: this.props.userAbout };
     this.validator = new SimpleReactValidator();
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -30,6 +30,7 @@ class AboutUser extends Component {
   }
 
   submitForm(e) {
+    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { about } = this.state;
@@ -39,7 +40,6 @@ class AboutUser extends Component {
       API.userAboutInfo(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
-
           this.props.closeModal();
           this.modalRef.remove();
         } else if (

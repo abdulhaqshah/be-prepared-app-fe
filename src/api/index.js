@@ -17,7 +17,9 @@ const userLogin = (data, resolve, reject) => {
 const updateData = (data, resolve, reject) => {
   return GlobalAPISvc(UPDATE_DATA, METHODS.PATCH, data)
     .then(res => resolve(res))
-    .catch(err => reject(err));
+    .catch(err => {
+      return reject(err);
+    });
 };
 const getCourses = (resolve, reject) => {
   return GlobalAPISvc(GET_COURSES, METHODS.GET)

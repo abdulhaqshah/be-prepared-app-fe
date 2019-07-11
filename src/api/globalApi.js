@@ -3,7 +3,6 @@ import * as auth from "../services/Session";
 
 const token = auth.getItem("token");
 const uuid = auth.getItem("uuid");
-
 const GlobalAPISvc = (endPoint, method, data) => {
   return new Promise((resolve, reject) => {
     fetch(`${API_HOST}${endPoint}`, {
