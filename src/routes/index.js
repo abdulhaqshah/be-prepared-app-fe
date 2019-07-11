@@ -30,7 +30,7 @@ import {
   JAVASCRIPT,
   PROFILE,
   TUTORIAL_FORM,
-  COURSE_FORM
+  COURSE_FORM,
   QUIZ_FORM
 } from "../constants";
 
