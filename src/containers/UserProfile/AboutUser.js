@@ -9,7 +9,7 @@ import API from "../../api/index";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { about: this.props.userAbout };
+    this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -108,7 +108,7 @@ class AboutUser extends Component {
                     name="about"
                     type="text"
                     placeholder="Who you are...."
-                    defaultValue={this.props.aboutUser}
+                    defaultValue={this.props.about}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
