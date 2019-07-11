@@ -10,7 +10,7 @@ import AboutUser from "./AboutUser";
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { readOnly: true, open: true, userAbout: "" };
+    this.state = { readOnly: true, open: true };
     this.closeModal = this.closeModal.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -18,7 +18,6 @@ class LeftPane extends Component {
 
   closeModal() {
     this.setState({ open: false });
-    this.setAboutState();
     addNotification(
       this.notificationDOMRef,
       "success",
@@ -26,14 +25,11 @@ class LeftPane extends Component {
       "User has been updated"
     );
   }
-  setAboutState = () => {
-    const about = auth.getItem("about");
 
-    this.setState({ userAbout: about });
-  };
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
+    const about = auth.getItem("about");
 
     return (
       <Fragment>
@@ -67,7 +63,7 @@ class LeftPane extends Component {
                 <i className="fa fa-pencil" />
               </a>
               <AboutUser
-                userAbout={this.state.userAbout}
+                about={about}
                 closeModal={this.closeModal}
               />
             </div>
@@ -77,7 +73,7 @@ class LeftPane extends Component {
           <textarea
             rows="5"
             placeholder="Tell us about Who you are..."
-            value={this.state.userAbout}
+            value={about}
             className="about"
             maxLength="25"
             readOnly={this.state.readOnly}
