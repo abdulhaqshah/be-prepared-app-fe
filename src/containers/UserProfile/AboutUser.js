@@ -9,7 +9,7 @@ import API from "../../api/index";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { about: "" };
+    this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -31,9 +31,9 @@ class AboutUser extends Component {
 
   getAboutValue = () => {
     if (this.props.about === "Tell us about yourself . . .") {
-      return this.state.about;
+      return "";
     } else {
-      return this.props.about;
+      return this.state.about;
     }
   };
 
