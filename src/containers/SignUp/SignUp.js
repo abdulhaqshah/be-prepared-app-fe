@@ -107,7 +107,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "name",
                     this.state.name,
-                    "min:3|max:25"
+                    "required|min:3|max:25"
                   )}
                 </div>
               </div>
