@@ -107,6 +107,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
+                    maxLength="150"
                     placeholder="Who you are...."
                     defaultValue={this.props.about}
                     onChange={this.handleUserInput}
