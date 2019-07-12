@@ -13,7 +13,7 @@ class LeftPane extends Component {
     this.state = {
       readOnly: true,
       open: true,
-      aboutUser: "Tell us about yourself . . . "
+      aboutUser: "Tell us about yourself . . ."
     };
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -30,11 +30,10 @@ class LeftPane extends Component {
   };
 
   setAboutValue = about => {
-    debugger;
     if (about === "undefined") {
-      return <p>{this.state.aboutUser}</p>;
+      return this.state.aboutUser;
     } else {
-      return <p>{about}</p>;
+      return about;
     }
   };
 
@@ -75,13 +74,15 @@ class LeftPane extends Component {
                 <i className="fa fa-pencil" />
               </a>
               <AboutUser
-                about={about}
+                about={this.setAboutValue(about)}
                 closeModal={this.closeModal}
               />
             </div>
           </div>
         </div>
-        <div className="user-about-info">{this.setAboutValue(about)}</div>
+        <div className="user-about-info">
+          <p>{this.setAboutValue(about)}</p>
+        </div>
       </Fragment>
     );
   }

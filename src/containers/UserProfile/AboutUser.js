@@ -9,7 +9,7 @@ import API from "../../api/index";
 class AboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { about: this.props.about };
+    this.state = { about: "" };
     this.validator = new SimpleReactValidator();
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -29,9 +29,16 @@ class AboutUser extends Component {
     this.formRef.reset();
   }
 
+  getAboutValue = () => {
+    if (this.props.about === "Tell us about yourself . . .") {
+      return this.state.about;
+    } else {
+      return this.props.about;
+    }
+  };
+
   submitForm(e) {
     e.preventDefault();
-    debugger;
     if (this.validator.allValid()) {
       var { about } = this.state;
       const data = {
@@ -108,16 +115,16 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
-                    maxLength="150"
+                    maxLength="101"
                     placeholder="Tell us about yourself...."
-                    defaultValue={this.props.about}
+                    defaultValue={this.getAboutValue()}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
                     {this.validator.message(
                       "about",
                       this.state.about,
-                      "required|min:5|max:150"
+                      "required|min:5|max:100"
                     )}
                   </div>
                   <div className="row d-flex flex-row-reverse mt-4">
