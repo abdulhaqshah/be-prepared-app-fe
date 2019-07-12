@@ -182,7 +182,7 @@ class TutorialForm extends Component {
                   </label>
                 </div>
                 {this.state.tags.map((tag, index) => (
-                  <div className="tagholder">
+                  <div className="col-12 tagholder">
                     <input
                       className="form-field-1"
                       name="tags"
@@ -196,10 +196,18 @@ class TutorialForm extends Component {
                       onClick={this.removeClick.bind(this, index)}
                       className="small"
                     >
-                      -
+                      Remove
                     </button>
+                    <div className="tagMessage">
+                    {this.validator.message(
+                     "tag",
+                     tag,
+                     "required"
+                   )}
+                   </div>
                   </div>
                 ))}
+
                 <div className="tagholder-1">
                   <button
                     type="button"

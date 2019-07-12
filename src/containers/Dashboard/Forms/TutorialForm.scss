@@ -44,18 +44,35 @@
       border-radius: 4px;
       position: relative;
     }
+    .tagholder{
+      .tagMessage {
+        padding-left : 10px;
+        padding-top : 10px;
+        padding-right: 10px;
+        color : red;
+        height: 20px;
+      }
+    }
     .tagholder {
       display: flex;
       direction: row;
       align-items: center;
+      height: 60px;
     }
     .tagholder button {
       margin: 0;
       margin-left: 10px;
+      margin-top: 10px;
+      width : auto;
+      font-size: 16px;
+      border-radius: 4px;
+      height: 40px;
     }
     .tagholder input {
       margin: 0;
       margin-top: 10px;
+      width: auto;
+      height : 40px;
     }
     .tagholder-1 button {
       margin: 0;
