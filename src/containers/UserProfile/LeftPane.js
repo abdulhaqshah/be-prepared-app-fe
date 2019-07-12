@@ -10,17 +10,16 @@ import AboutUser from "./AboutUser";
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { readOnly: true, open: true, aboutUser: "" };
-    this.closeModal = this.closeModal.bind(this);
+    this.state = {
+      readOnly: true,
+      open: true,
+      aboutUser: "Tell us about yourself . . . "
+    };
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
-    debugger;
-    const about = auth.getItem("about");
-
-    this.setAboutValue(about);
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ open: false });
     addNotification(
       this.notificationDOMRef,
@@ -28,24 +27,22 @@ class LeftPane extends Component {
       "success",
       "User has been updated"
     );
-  }
+  };
 
   setAboutValue = about => {
     debugger;
     if (about === "undefined") {
-      this.setState({
-        aboutUser: "Tell us about yourself"
-      });
+      return <p>{this.state.aboutUser}</p>;
     } else {
-      this.setState({
-        aboutUser: about
-      });
+      return <p>{about}</p>;
     }
   };
 
   render() {
     const name = auth.getItem("name");
     const email = auth.getItem("email");
+    const about = auth.getItem("about");
+
     return (
       <Fragment>
         <div>
@@ -82,17 +79,7 @@ class LeftPane extends Component {
             </div>
           </div>
         </div>
-        <div className="user-about-info">
-          <p>{this.state.aboutUser}</p>
-          {/* <textarea
-            rows="5"
-            placeholder="Tell us about Who you are..."
-            value={about}
-            className="about"
-            maxLength="25"
-            readOnly={this.state.readOnly}
-          /> */}
-        </div>
+        <div className="user-about-info">{this.setAboutValue(about)}</div>
       </Fragment>
     );
   }
