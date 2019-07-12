@@ -31,6 +31,7 @@ class AboutUser extends Component {
 
   submitForm(e) {
     e.preventDefault();
+    debugger;
     if (this.validator.allValid()) {
       var { about } = this.state;
       const data = {
@@ -108,7 +109,7 @@ class AboutUser extends Component {
                     name="about"
                     type="text"
                     maxLength="150"
-                    placeholder="Who you are...."
+                    placeholder="Tell us about yourself...."
                     defaultValue={this.props.about}
                     onChange={this.handleUserInput}
                   />
