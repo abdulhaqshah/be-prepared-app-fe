@@ -182,29 +182,39 @@ class TutorialForm extends Component {
                   </label>
                 </div>
                 {this.state.tags.map((tag, index) => (
-                  <div className="col-12 tagholder">
-                    <input
-                      className="form-field-1"
-                      name="tags"
-                      type="text"
-                      value={tag}
-                      key={index}
-                      onChange={this.handleChange.bind(this, index)}
-                    />
-                    <button
-                      type="button"
-                      onClick={this.removeClick.bind(this, index)}
-                      className="small"
-                    >
-                      Remove
-                    </button>
-                    <div className="tagMessage">
-                    {this.validator.message(
-                     "tag",
-                     tag,
-                     "required"
-                   )}
-                   </div>
+                  <div className="tagholder">
+                    <div className="row">
+                      <div className="col-xs-8 col-sm-8">
+                        <div>
+                        <input
+                          className="form-field-1"
+                          name="tags"
+                          type="text"
+                          value={tag}
+                          key={index}
+                          onChange={this.handleChange.bind(this, index)}
+                        />
+                        </div>
+                        <div className="tagMessage">
+                        {this.validator.message(
+                          "tag",
+                          tag,
+                          "required"
+                        )}
+                        </div>
+                      </div>
+                      <div className="col-xs-4 col-sm-4">
+                        <div className="remove">
+                        <button
+                        type="button"
+                        onClick={this.removeClick.bind(this, index)}
+                        className="small"
+                        >
+                         Remove
+                        </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
 
