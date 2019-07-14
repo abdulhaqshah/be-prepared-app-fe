@@ -57,7 +57,7 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
-          this.props.history.push(LOGIN, this.state.param);
+          this.props.history.push(LOGIN);
         } else if (
           result.status === "400" ||
           result.status === "403" ||
