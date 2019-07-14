@@ -23,14 +23,6 @@ class Login extends Component {
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
-  notification = () => {
-    addNotification(
-      this.notificationDOMRef,
-      "Success",
-      "success",
-      "User has been created Successfuly"
-    );
-  };
 
   componentDidMount = () => {
     const action = this.props.history.action;
@@ -39,7 +31,7 @@ class Login extends Component {
         this.notificationDOMRef,
         "Success",
         "success",
-        "User has been created Successfuly"
+        this.props.location.state
       );
     }
   };

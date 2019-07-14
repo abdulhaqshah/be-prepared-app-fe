@@ -29,8 +29,7 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
-      param: true
+      confirmPassword: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
