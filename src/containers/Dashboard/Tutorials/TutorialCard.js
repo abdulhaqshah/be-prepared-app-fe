@@ -19,7 +19,7 @@ class TutorialCard extends Component {
             element="span"
             truncateText="…"
             text={this.props.para}
-            textTruncateChild={<a href="#">Read on</a>}
+            textTruncateChild={<a href="ReanOn">Read on</a>}
           />
           <div className="tutorial-link">
             <a href={this.props.href} className="font-weight-bold">
