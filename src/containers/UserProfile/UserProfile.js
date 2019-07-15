@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./UserProfile.scss";
-import LeftPane from "./LeftPane";
-import RightPane from "./RightPane";
+import LeftPanel from "./LeftPanel";
+import RightPanel from "./RightPanel";
 
 class UserProfile extends Component {
   render() {
@@ -12,12 +12,12 @@ class UserProfile extends Component {
             <div className="row">
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="profile-left-pane">
-                  <LeftPane />
+                  <LeftPanel />
                 </div>
               </div>
               <div className="col-lg-8 col-md-6 col-sm-12">
                 <div className="profile-right-pane">
-                  <RightPane />
+                  <RightPanel />
                 </div>
               </div>
             </div>

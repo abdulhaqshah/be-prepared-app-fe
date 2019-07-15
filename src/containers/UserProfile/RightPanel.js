@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "./RightPane.scss";
+import "./RightPanel.scss";
 
 class RightPane extends Component {
   render() {

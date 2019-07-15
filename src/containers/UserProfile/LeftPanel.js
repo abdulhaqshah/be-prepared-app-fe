@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import EditIntro from "../../containers/UserProfile/EditIntro";
+import EditIntro from "./EditIntro";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
 import * as auth from "../../services/Session";
-import "./LeftPane.scss";
+import "./LeftPanel.scss";
 import AboutUser from "./AboutUser";
 
 class LeftPane extends Component {
