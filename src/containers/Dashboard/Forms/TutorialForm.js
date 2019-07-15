@@ -65,6 +65,7 @@ class TutorialForm extends Component {
 
   submitForm(e) {
     e.preventDefault();
+    debugger
     if (this.validator.allValid()) {
       var { name, content, courseId, tags } = this.state;
       const data = {
@@ -119,6 +120,7 @@ class TutorialForm extends Component {
   }
 
   render() {
+    this.validator.purgeFields();
     return (
       <div >
         <div>
@@ -161,7 +163,7 @@ class TutorialForm extends Component {
                     name="courseId"
                     type="text"
                     onChange={this.handleUserInput}>
-                    <option value="Select">Select</option>
+                    <option value="">Select</option>
                     {this.state.courses.map((course, index) => (
                      <option key={index} value={course.courseId}>
                        {course.name}
@@ -187,7 +189,6 @@ class TutorialForm extends Component {
                     <div className="row">
                       <div className="col-xs-8 col-sm-8">
                         <div>
-                          
                         <input
                           className="form-field-1"
                           name="tags"
@@ -200,7 +201,7 @@ class TutorialForm extends Component {
                         <div className="tagMessage">
                         {this.validator.message(
                           "tag",
-                          tag,
+                          this.state.tags[index],
                           "required"
                         )}
                         </div>
@@ -220,7 +221,6 @@ class TutorialForm extends Component {
                     </div>
                   </div>
                 ))}
-
                 <div className="tagholder-1">
                   <button
                     type="button"
@@ -251,7 +251,8 @@ class TutorialForm extends Component {
                   <button
                     className="btn btn-secondary col-lg-4 mt-1 mr-1 ml-1"
                     name="saveBtn"
-                    type="submit"
+                    type="button"
+                    onClick={this.submitForm}
                   >
                     Add Tutorial
                   </button>
