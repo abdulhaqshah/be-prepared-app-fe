@@ -31,20 +31,7 @@ class AboutUser extends Component {
       element[0].remove();
     }
   };
-
-<<<<<<< HEAD
-  submitForm = e => {
-=======
-  getAboutValue = () => {
-    if (this.props.about === "Tell us about yourself . . .") {
-      return "";
-    } else {
-      return this.state.about;
-    }
-  };
-
   submitForm(e) {
->>>>>>> set about value on modal text area
     e.preventDefault();
     if (this.validator.allValid()) {
       var { about } = this.state;
@@ -84,7 +71,7 @@ class AboutUser extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
-  };
+  }
 
   render() {
     return (
@@ -125,7 +112,7 @@ class AboutUser extends Component {
                     type="text"
                     maxLength="300"
                     placeholder="Tell us about yourself...."
-                    defaultValue={this.getAboutValue()}
+                    defaultValue={this.state.about}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
