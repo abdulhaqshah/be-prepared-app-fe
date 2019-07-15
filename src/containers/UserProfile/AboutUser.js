@@ -123,7 +123,7 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
-                    maxLength="101"
+                    maxLength="300"
                     placeholder="Tell us about yourself...."
                     defaultValue={this.getAboutValue()}
                     onChange={this.handleUserInput}
@@ -132,7 +132,7 @@ class AboutUser extends Component {
                     {this.validator.message(
                       "about",
                       this.state.about,
-                      "required|min:5|max:100"
+                      "required|min:5|max:300"
                     )}
                   </div>
                   <div className="row d-flex flex-row-reverse mt-4">

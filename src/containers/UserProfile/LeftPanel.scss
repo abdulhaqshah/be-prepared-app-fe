@@ -45,9 +45,8 @@
   }
 }
 .user-about-info {
-  .about {
-    border: none;
-    background-color: #f3f7f7;
-    width: 100%;
+  p {
+    width: 280px;
+    word-wrap: break-word;
   }
 }
