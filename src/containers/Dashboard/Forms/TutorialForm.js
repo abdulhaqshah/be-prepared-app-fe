@@ -74,14 +74,15 @@ class TutorialForm extends Component {
         courseId,
         tags
       };
-      this.setState({
-        name: "",
-        content: "",
-        courseId: "",
-        tags : [],
-      })
+      
       API.tutorialData(data, result => {
         if (result.status === "201") {
+          this.setState({
+            name: "",
+            content: "",
+            courseId: "",
+            tags : [],
+          })
           this.formRef.reset();
           addNotification(
             this.notificationDOMRef,
