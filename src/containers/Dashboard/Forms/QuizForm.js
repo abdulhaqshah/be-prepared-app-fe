@@ -31,7 +31,6 @@ class QuizForm extends Component {
   }
 
   submitForm(e) {
-    let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, courseId } = this.state;
@@ -41,8 +40,8 @@ class QuizForm extends Component {
       };
       API.quizData(data, result => {
         if (result.status === "201") {
-          self.formRef.reset();
-          self.validator.hideMessages();
+          this.formRef.reset();
+          this.validator.hideMessages();
           addNotification(
             this.notificationDOMRef,
             "success",

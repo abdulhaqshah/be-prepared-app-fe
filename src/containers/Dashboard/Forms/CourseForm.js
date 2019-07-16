@@ -27,7 +27,6 @@ class CourseForm extends Component {
     this.setState({ [name]: value.trim() });
   }
   submitForm(e) {
-    let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, description } = this.state;
@@ -37,8 +36,8 @@ class CourseForm extends Component {
       };
       API.courseData(data, result => {
         if (result.status === "201") {
-          self.formRef.reset();
-          self.validator.hideMessages();
+          this.formRef.reset();
+          this.validator.hideMessages();
           addNotification(
             this.notificationDOMRef,
             "success",
