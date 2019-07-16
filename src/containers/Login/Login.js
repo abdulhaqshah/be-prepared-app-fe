@@ -52,11 +52,12 @@ class Login extends Component {
       };
       API.userLogin(data, result => {
         if (result.status === "200") {
-          auth.setItem("uuid", result.data.user.uuid);
-          auth.setItem("name", result.data.user.name);
-          auth.setItem("email", result.data.user.email);
-          auth.setItem("about", result.data.user.about ? result.data.user.about : "");
-          auth.setItem("img", result.data.user.img);
+          const { uuid, name, email, about, img } = result.data.user;
+          auth.setItem("uuid", uuid);
+          auth.setItem("name", name);
+          auth.setItem("email", email);
+          auth.setItem("about", about ? about : "");
+          auth.setItem("img", img);
           auth.setItem("token", result.data.token);
           this.formRef.reset();
           this.validator.hideMessages();
