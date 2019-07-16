@@ -21,7 +21,7 @@ class TutorialForm extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
-    this.setPreviousStates = this.setPreviousStates.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.formRef = null;
     API.getCourses(result => {
       if (result.status === "200") {
@@ -63,7 +63,7 @@ class TutorialForm extends Component {
     tags[i] = event.target.value;
     this.setState({ tags });
   }
-  setPreviousStates() {
+  resetState() {
     this.setState({
       name: "",
       content: "",
@@ -86,34 +86,19 @@ class TutorialForm extends Component {
       
       API.tutorialData(data, result => {
         if (result.status === "201") {
-          this.setPreviousStates();
+          this.resetState();
           self.formRef.reset();
           self.validator.hideMessages();
-          addNotification(
-            this.notificationDOMRef,
-            "success",
-            "success",
-            result.message
-          );
+          addNotification(this.notificationDOMRef, "success", "success",result.message);
         } else if (
           result.status === "400" ||
           result.status === "404" ||
           result.status === "403" ||
           result.status === "500"
         ) {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "danger",
-            result.message
-          );
+          addNotification(this.notificationDOMRef, "Error", "danger", result.message);
         } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            "Somgthing went wrong"
-          );
+          addNotification(this.notificationDOMRef, "Error", "warning", "Somgthing went wrong");
         }
       }).catch = error => {
         addNotification(this.notificationDOMRef, "Error", "warning", error);
@@ -145,7 +130,7 @@ class TutorialForm extends Component {
                     Name
                   </label>
                   <input
-                    className="form-field"
+                    className="name-field"
                     name="name"
                     type="text"
                     maxLength="50"
@@ -194,7 +179,7 @@ class TutorialForm extends Component {
                       <div className="col-xs-8 col-sm-8">
                         <div>
                         <input
-                          className="form-field-1"
+                          className="tag-field"
                           name="tags"
                           type="text"
                           value={tag}
@@ -225,7 +210,7 @@ class TutorialForm extends Component {
                     </div>
                   </div>
                 ))}
-                <div className="tagholder-1">
+                <div className="tag-button">
                   <button
                     type="button"
                     onClick={this.addClick.bind(this)}
@@ -234,7 +219,7 @@ class TutorialForm extends Component {
                     Add Tag
                 </button>
                 </div>
-                <div className="control-form">
+                <div className="content-field">
                   <label className="labels">
                     Content
                   </label>
