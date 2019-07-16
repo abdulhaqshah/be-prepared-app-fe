@@ -21,6 +21,7 @@ class TutorialForm extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.setPreviousStates = this.setPreviousStates.bind(this);
     this.formRef = null;
     API.getCourses(result => {
       if (result.status === "200") {
@@ -48,7 +49,6 @@ class TutorialForm extends Component {
   }
 
   addClick(){
-    this.validator.hideMessages();
     this.setState(prevState => ({ tags: [...prevState.tags, '']}))
   }
   
@@ -62,6 +62,14 @@ class TutorialForm extends Component {
     let tags = [...this.state.tags];
     tags[i] = event.target.value;
     this.setState({ tags });
+  }
+  setPreviousStates() {
+    this.setState({
+      name: "",
+      content: "",
+      courseId: "",
+      tags : [],
+    })
   }
 
   submitForm(e) {
@@ -78,12 +86,7 @@ class TutorialForm extends Component {
       
       API.tutorialData(data, result => {
         if (result.status === "201") {
-          self.setState({
-            name: "",
-            content: "",
-            courseId: "",
-            tags : [],
-          })
+          this.setPreviousStates();
           self.formRef.reset();
           self.validator.hideMessages();
           addNotification(
@@ -231,7 +234,7 @@ class TutorialForm extends Component {
                     Add Tag
                 </button>
                 </div>
-                <div>
+                <div className="control-form">
                   <label className="labels">
                     Content
                   </label>
