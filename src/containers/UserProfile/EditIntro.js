@@ -49,6 +49,7 @@ class EditInto extends Component {
           auth.setItem("email", result.data.email);
           this.props.closeModal();
           this.modalRef.remove();
+          this.removeBackdrop();
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -77,6 +78,11 @@ class EditInto extends Component {
       this.forceUpdate();
     }
   }
+
+  removeBackdrop = () => {
+    var parent = document.getElementsByClassName("modal-backdrop fade show");
+    parent[0].remove();
+  };
 
   render() {
     return (

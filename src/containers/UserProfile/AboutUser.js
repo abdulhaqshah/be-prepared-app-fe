@@ -15,7 +15,7 @@ class AboutUser extends Component {
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.onCancel = this.onCancel.bind(this);
-    this.modalRef = React.createRef();
+    this.backdropRef = React.createRef();
     this.formRef = null;
   }
 
@@ -41,6 +41,7 @@ class AboutUser extends Component {
           auth.setItem("about", result.data);
           this.props.closeModal();
           this.modalRef.remove();
+          this.removeBackdrop();
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -69,6 +70,11 @@ class AboutUser extends Component {
       this.forceUpdate();
     }
   }
+
+  removeBackdrop = () => {
+    var parent = document.getElementsByClassName("modal-backdrop fade show");
+    parent[0].remove();
+  };
 
   render() {
     return (
