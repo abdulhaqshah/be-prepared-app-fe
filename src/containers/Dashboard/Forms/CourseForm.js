@@ -10,7 +10,7 @@ class CourseForm extends Component {
   constructor(props) {
     super(props);
 
-    this.validator = new SimpleReactValidator();
+    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       name: "",
       description: ""
@@ -27,6 +27,7 @@ class CourseForm extends Component {
     this.setState({ [name]: value.trim() });
   }
   submitForm(e) {
+    let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, description } = this.state;
@@ -36,8 +37,8 @@ class CourseForm extends Component {
       };
       API.courseData(data, result => {
         if (result.status === "201") {
-          this.formRef.reset();
-
+          self.formRef.reset();
+          self.validator.hideMessages();
           addNotification(
             this.notificationDOMRef,
             "success",
