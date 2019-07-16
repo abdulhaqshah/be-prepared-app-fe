@@ -48,6 +48,7 @@ class TutorialForm extends Component {
   }
 
   addClick(){
+    this.validator.hideMessages();
     this.setState(prevState => ({ tags: [...prevState.tags, '']}))
   }
   
