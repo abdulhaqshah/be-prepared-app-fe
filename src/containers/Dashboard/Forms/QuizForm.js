@@ -10,7 +10,7 @@ class QuizForm extends Component {
   constructor(props) {
     super(props);
 
-    this.validator = new SimpleReactValidator();
+    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       name: "",
       courseId: "",
@@ -22,7 +22,6 @@ class QuizForm extends Component {
     this.getCourses = this.getCourses.bind(this);
     this.formRef = null;
     this.getCourses();
-
   }
 
   handleUserInput(e) {
@@ -42,7 +41,7 @@ class QuizForm extends Component {
       API.quizData(data, result => {
         if (result.status === "201") {
           this.formRef.reset();
-
+          this.validator.hideMessages();
           addNotification(
             this.notificationDOMRef,
             "success",
