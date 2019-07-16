@@ -1,49 +1,48 @@
 .card-heading{
-    padding-top:10px;
-    padding-bottom: 10px;
-  }
-  .quiz-container .interview-prep-quiz,
-  .quiz-container .learn-code,
-  .quiz-container .statistics,
-  .quiz-container .javascript {
-    display: inline-block;
-    .card {
-      width: 19rem;
-      height: auto;
-      .card-title,
-      p {
-        font-size: 13px;
-        color: #738f93;
-      }
-      span {
-        font-size: 13px;
-        color: #738f93;
-      }
-      .card-heading{
-        display: -webkit-box;
-        text-overflow: ellipsis;
-        color:#39414E;
-      }
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+.quiz-container .interview-prep-quiz,
+.quiz-container .learn-code,
+.quiz-container .statistics,
+.quiz-container .javascript {
+  display: inline-block;
+  .card {
+    width: 19rem;
+    height: auto;
+    .card-title,
+    p {
+      font-size: 13px;
+      color: #738f93;
     }
-    
-  }
-  .quiz-container {
-    .quiz-card {
-      p {
-        font-size: 15px;
-      }
-      h2 {
-        font-size: 18px;
-      }
-      a {
-        font-size: 15px;
-        color:#54AA4D;
-      }
+    span {
+      font-size: 13px;
+      color: #738f93;
     }
-    .quizShow {
-      text-align: center;
-      align-content: center;
-      font-size: 24px;
+    .card-heading{
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      color:#39414E;
     }
   }
   
+}
+.quiz-container {
+  .quiz-card {
+    p {
+      font-size: 15px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+    a {
+      font-size: 15px;
+      color:#54AA4D;
+    }
+  }
+  .quizShow {
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+  }
+}
