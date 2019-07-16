@@ -10,7 +10,7 @@ class TutorialForm extends Component {
   constructor(props) {
     super(props);
 
-    this.validator = new SimpleReactValidator();
+    this.validator = new SimpleReactValidator({autoForceUpdate: this});
     this.state = {
       name: "",
       content: "",
@@ -64,8 +64,8 @@ class TutorialForm extends Component {
   }
 
   submitForm(e) {
+    let self = this;
     e.preventDefault();
-    debugger
     if (this.validator.allValid()) {
       var { name, content, courseId, tags } = this.state;
       const data = {
@@ -77,13 +77,14 @@ class TutorialForm extends Component {
       
       API.tutorialData(data, result => {
         if (result.status === "201") {
-          this.setState({
+          self.setState({
             name: "",
             content: "",
             courseId: "",
             tags : [],
           })
-          this.formRef.reset();
+          self.formRef.reset();
+          self.validator.hideMessages();
           addNotification(
             this.notificationDOMRef,
             "success",
@@ -115,8 +116,6 @@ class TutorialForm extends Component {
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
-      this.forceUpdate();
     }
   }
 
