@@ -79,6 +79,11 @@
       margin: 0;
       margin-top: 10px;
     }
+    .control-form {
+      .form-control {
+        resize : none;
+      }
+    }
     textarea {
       color: black;
       border: solid 1px;
