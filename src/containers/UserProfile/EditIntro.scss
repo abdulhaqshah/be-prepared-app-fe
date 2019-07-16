@@ -1,6 +1,9 @@
 .form {
-  .modal-body{
-    label{
+  .modal-body {
+    textarea {
+      resize: none;
+    }
+    label {
       font-weight: 600;
     }
   }
