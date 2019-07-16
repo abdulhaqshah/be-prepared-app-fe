@@ -31,7 +31,7 @@ class Login extends Component {
         this.notificationDOMRef,
         "Success",
         "success",
-        this.props.location.state
+        "User has been login successfully"
       );
     }
   };
