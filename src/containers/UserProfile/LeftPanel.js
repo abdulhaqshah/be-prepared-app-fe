@@ -29,11 +29,7 @@ class LeftPane extends Component {
   };
 
   getAboutValue = about => {
-    if (about === "") {
-      return "Tell us about yourself . . .";
-    } else {
-      return about;
-    }
+    return about === "" ? "Tell us about yourself . . ." : about;
   };
 
   render() {
