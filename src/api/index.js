@@ -14,7 +14,6 @@ import {
 } from "./constants";
 import * as auth from "../services/Session"
 import GlobalAPISvc from "./globalApi";
-import * as auth from "../services/Session";
 const uuid = auth.getItem("uuid");
 
 const userRegister = (data, resolve, reject) => {
