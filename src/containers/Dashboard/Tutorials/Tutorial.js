@@ -27,20 +27,31 @@ class Card extends Component {
   }
   
   render() {
+    let cards;
+    if(this.state.tutorials.length > 0) {
+      cards = this.state.tutorials.map((tutorial, index) => (
+        <div className="interview-prep-tutorial" key={index}>
+          <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
+            <TutorialCard heading={tutorial.name} para={tutorial.content} value={tutorial.tutorialId}/>
+          </div>
+        </div>
+      ));
+    } else {
+      cards = (
+        <div className="tutorialShow">
+          <p>There is no tutorial available</p>
+        </div>
+      )
+    }
+    
     return (
       <Fragment>
         <div>
           <h5 className="headings ml-5 mb-5 mt-5">Tutorials</h5>
         </div>
-        <div className="row">
+        <div className="d-flex justify-content-center row">
           <div className="tutorial-container">
-          {this.state.tutorials.map((tutorial, index) => (
-            <div className="interview-prep-tutorial" key={index}>
-            <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-              <TutorialCard heading={tutorial.name} para={tutorial.content} value={tutorial.tutorialId}/>
-            </div>
-          </div>
-          ))}
+          {cards}
           </div>
         </div>
       </Fragment>

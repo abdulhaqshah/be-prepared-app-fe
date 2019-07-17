@@ -27,21 +27,30 @@ class Quizzes extends Component {
   }
 
   render() {
-    const quizCards = this.state.quizzes.map((quiz, index) => (
-      <div className="interview-prep-quiz" key={index}>
-      <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
-        <QuizCard heading={quiz.name} value={quiz.quizId}/>
+    let cards;
+    if(this.state.quizzes.length > 0) {
+      cards = this.state.quizzes.map((quiz, index) => (
+        <div className="interview-prep-quiz" key={index}>
+          <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
+            <QuizCard heading={quiz.name} value={quiz.quizId}/>
+          </div>
       </div>
-    </div>
-    ))
+      ));
+    } else {
+      cards = (
+        <div className="quizShow">
+          <p>There is no quiz available</p>
+        </div>
+      )
+    }
     return (
       <Fragment>
         <div>
           <h5 className="headings ml-5 mb-5 mt-5">Quizzes</h5>
         </div>
-        <div className="row">
+        <div className="d-flex justify-content-center row">
           <div className="quiz-container">
-            {quizCards}
+            {cards}
           </div>
         </div>
       </Fragment>
