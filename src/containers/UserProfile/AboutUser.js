@@ -12,7 +12,6 @@ class AboutUser extends Component {
     this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
     this.notificationDOMRef = React.createRef();
-    this.backdropRef = React.createRef();
     this.formRef = null;
   }
 
