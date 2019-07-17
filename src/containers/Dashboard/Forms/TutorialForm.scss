@@ -16,7 +16,7 @@
     .labels {
       margin-top: 10px;
     }
-    .form-field {
+    .name-field {
       border: solid 1px;
       width: 100%;
       height: 40px;
@@ -26,7 +26,7 @@
         color: grey;
       }
     }
-    .form-field-1 {
+    .tag-field {
       border: solid 1px;
       width: 200px;
       height: 40px;
@@ -44,6 +44,19 @@
       border-radius: 4px;
       position: relative;
     }
+    .tagholder{
+      .row {
+        .remove{
+          padding-top: 5px;
+        }
+      }
+      .tagMessage {
+        padding-left : 10px;
+        padding-top : 10px;
+        padding-right: 10px;
+        color : red;
+      }
+    }
     .tagholder {
       display: flex;
       direction: row;
@@ -52,14 +65,24 @@
     .tagholder button {
       margin: 0;
       margin-left: 10px;
+      margin-top: 10px;
+      width : auto;
+      font-size: 16px;
+      border-radius: 4px;
     }
     .tagholder input {
       margin: 0;
       margin-top: 10px;
+      width: auto;
     }
-    .tagholder-1 button {
+    .tag-button button {
       margin: 0;
       margin-top: 10px;
+    }
+    .content-field {
+      .form-control {
+        resize : none;
+      }
     }
     textarea {
       color: black;

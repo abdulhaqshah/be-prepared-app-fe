@@ -11,17 +11,20 @@ import "./SignUp.css";
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.validator = new SimpleReactValidator({
-      validators: {
-        cp: {
-          message: "The :attribute does not match.",
-          rule: (val, params, validator) => {
-            return Boolean(val) ? val === params[0] : null;
-          },
-          required: true
+    this.validator = new SimpleReactValidator(
+      { autoForceUpdate: this },
+      {
+        validators: {
+          cp: {
+            message: "The :attribute does not match.",
+            rule: (val, params, validator) => {
+              return Boolean(val) ? val === params[0] : null;
+            },
+            required: true
+          }
         }
       }
-    });
+    );
     this.state = {
       name: "",
       email: "",
@@ -53,6 +56,7 @@ class SignUp extends Component {
       API.userRegister(data, result => {
         if (result.status === "201") {
           this.formRef.reset();
+          this.validator.hideMessages();
           this.props.history.push(LOGIN, this.state.param);
         } else if (
           result.status === "400" ||
@@ -107,7 +111,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "name",
                     this.state.name,
-                    "min:3|max:25"
+                    "required|min:3|max:25"
                   )}
                 </div>
               </div>

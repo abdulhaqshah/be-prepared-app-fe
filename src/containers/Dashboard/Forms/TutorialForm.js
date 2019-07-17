@@ -10,7 +10,7 @@ class TutorialForm extends Component {
   constructor(props) {
     super(props);
 
-    this.validator = new SimpleReactValidator();
+    this.validator = new SimpleReactValidator({autoForceUpdate: this});
     this.state = {
       name: "",
       content: "",
@@ -21,12 +21,14 @@ class TutorialForm extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.formRef = null;
     API.getCourses(result => {
       if (result.status === "200") {
         this.setState({
           courses: result.data
         });
+        
       } else {
         addNotification(
           this.notificationDOMRef,
@@ -61,8 +63,17 @@ class TutorialForm extends Component {
     tags[i] = event.target.value;
     this.setState({ tags });
   }
+  resetState() {
+    this.setState({
+      name: "",
+      content: "",
+      courseId: "",
+      tags : [],
+    })
+  }
 
   submitForm(e) {
+    let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
       var { name, content, courseId, tags } = this.state;
@@ -72,46 +83,33 @@ class TutorialForm extends Component {
         courseId,
         tags
       };
-      this.setState({
-        name: "",
-        content: "",
-        courseId: "",
-        tags : [],
-      })
+      
       API.tutorialData(data, result => {
         if (result.status === "201") {
-          this.formRef.reset();
+          this.resetState();
+          self.formRef.reset();
+          self.validator.hideMessages();
+          addNotification(this.notificationDOMRef, "success", "success",result.message);
         } else if (
           result.status === "400" ||
           result.status === "404" ||
           result.status === "403" ||
           result.status === "500"
         ) {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "danger",
-            result.message
-          );
+          addNotification(this.notificationDOMRef, "Error", "danger", result.message);
         } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            "Somgthing went wrong"
-          );
+          addNotification(this.notificationDOMRef, "Error", "warning", "Somgthing went wrong");
         }
       }).catch = error => {
         addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
-      this.forceUpdate();
     }
   }
 
   render() {
+    this.validator.purgeFields();
     return (
       <div >
         <div>
@@ -132,7 +130,7 @@ class TutorialForm extends Component {
                     Name
                   </label>
                   <input
-                    className="form-field"
+                    className="name-field"
                     name="name"
                     type="text"
                     maxLength="50"
@@ -154,7 +152,7 @@ class TutorialForm extends Component {
                     name="courseId"
                     type="text"
                     onChange={this.handleUserInput}>
-                    <option value="Select">Select</option>
+                    <option value="">Select</option>
                     {this.state.courses.map((course, index) => (
                      <option key={index} value={course.courseId}>
                        {course.name}
@@ -175,25 +173,44 @@ class TutorialForm extends Component {
                   </label>
                 </div>
                 {this.state.tags.map((tag, index) => (
-                  <div className="tagholder">
-                    <input
-                      className="form-field-1"
-                      name="tags"
-                      type="text"
-                      value={tag}
-                      key={index}
-                      onChange={this.handleChange.bind(this, index)}
-                    />
-                    <button
-                      type="button"
-                      onClick={this.removeClick.bind(this, index)}
-                      className="small"
-                    >
-                      -
-                    </button>
+                  
+                  <div className="tagholder" key={index}>
+                    <div className="row">
+                      <div className="col-xs-8 col-sm-8">
+                        <div>
+                        <input
+                          className="tag-field"
+                          name="tags"
+                          type="text"
+                          value={tag}
+                          key={index}
+                          onChange={this.handleChange.bind(this, index)}
+                        />
+                        </div>
+                        <div className="tagMessage">
+                        {this.validator.message(
+                          "tag",
+                          this.state.tags[index],
+                          "required"
+                        )}
+                        </div>
+                      </div>
+                      <div className="col-xs-4 col-sm-4">
+                        <div className="remove">
+                        <button
+                        type="button"
+                        key={index}
+                        onClick={this.removeClick.bind(this, index)}
+                        className="small"
+                        >
+                         Remove
+                        </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
-                <div className="tagholder-1">
+                <div className="tag-button">
                   <button
                     type="button"
                     onClick={this.addClick.bind(this)}
@@ -202,7 +219,7 @@ class TutorialForm extends Component {
                     Add Tag
                 </button>
                 </div>
-                <div>
+                <div className="content-field">
                   <label className="labels">
                     Content
                   </label>
@@ -223,7 +240,8 @@ class TutorialForm extends Component {
                   <button
                     className="btn btn-secondary col-lg-4 mt-1 mr-1 ml-1"
                     name="saveBtn"
-                    type="submit"
+                    type="button"
+                    onClick={this.submitForm}
                   >
                     Add Tutorial
                   </button>

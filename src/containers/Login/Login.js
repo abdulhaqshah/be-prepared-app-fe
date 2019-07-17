@@ -13,7 +13,7 @@ import "./Login.css";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.validator = new SimpleReactValidator();
+    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       email: "",
       password: ""
@@ -59,6 +59,7 @@ class Login extends Component {
           auth.setItem("img", result.data.user.img);
           auth.setItem("token", result.data.token);
           this.formRef.reset();
+          this.validator.hideMessages();
           this.props.history.push(DASHBOARD);
         } else if (
           result.status === "404" ||
