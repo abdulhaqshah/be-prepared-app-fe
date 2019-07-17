@@ -11,25 +11,27 @@ class AboutUser extends Component {
     super(props);
     this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
-    this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
-    this.submitForm = this.submitForm.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.backdropRef = React.createRef();
     this.formRef = null;
   }
 
-  handleUserInput(e) {
+  handleUserInput = e => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
-  }
+  };
 
-  onCancel() {
+  onCancel = () => {
     this.formRef.reset();
-  }
+  };
 
-  submitForm(e) {
+  removeBackdrop = () => {
+    var parent = document.getElementsByClassName("modal-backdrop fade show");
+    parent[0].remove();
+  };
+
+  submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
       var { about } = this.state;
@@ -39,9 +41,9 @@ class AboutUser extends Component {
       API.userAboutInfo(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
-          this.props.closeModal();
           this.modalRef.remove();
           this.removeBackdrop();
+          this.props.closeModal();
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -69,11 +71,6 @@ class AboutUser extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
-  }
-
-  removeBackdrop = () => {
-    var parent = document.getElementsByClassName("modal-backdrop fade show");
-    parent[0].remove();
   };
 
   render() {
