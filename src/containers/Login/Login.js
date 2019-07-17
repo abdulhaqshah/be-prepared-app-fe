@@ -26,6 +26,7 @@ class Login extends Component {
   }
 
   componentDidMount = () => {
+    this.props.getData();
     const action = this.props.history.action;
     if (action === "PUSH") {
       addNotification(
@@ -143,7 +144,12 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button className="login-button" name="loginBtn" type="submit">
+                <button
+                  className="login-button"
+                  name="loginBtn"
+                  type="submit"
+                  onClick={this.props.getData}
+                >
                   LOGIN
                 </button>
               </div>
@@ -158,7 +164,18 @@ class Login extends Component {
     );
   }
 }
-mapStateToProps = state => {
-  return (name = state.name);
+const mapStateToProps = state => {
+  return {
+    // name: state.user.name
+  };
 };
-export default connect(mapStateToProps)(Login);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData: () => dispatch({ type: "GET_DATA" })
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

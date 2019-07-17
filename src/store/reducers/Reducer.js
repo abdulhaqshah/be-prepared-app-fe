@@ -1,21 +1,27 @@
+
 import { combineReducers } from "redux";
-import { getData } from "../actions/User";
+import * as types from "../actions/ActionTypes";
 
 const initialState = {
-  name: "Humna",
-  email: "",
-  pass: "",
-  token: ""
+ user:{
+   name:"",
+   email:"",
+   token:"",
+   uuid:""
+ }
 };
 
-const userReducer = (state = initialState, action) => {
-  if (action.type === getData) {
-    return state;
-  }else{
-    return "no action"
+const Reducer = (state = initialState, action) => {
+  const newState = { ...state };
+  if (action.type === types.GET_DATA) {
+    return {
+      ...state,
+      user: action.getData
+    };
   }
+  return newState;
 };
 
 export default combineReducers({
-  userReducer
+ Reducer
 });
