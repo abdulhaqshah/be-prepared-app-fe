@@ -10,6 +10,7 @@ import CourseForm from "../containers/Dashboard/Forms/CourseForm";
 import QuizForm from "../containers/Dashboard/Forms/QuizForm";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
+import ReactNotification from "react-notifications-component";
 import {
   HOME,
   SINGUP,
@@ -22,12 +23,18 @@ import {
 } from "../constants";
 
 class Routes extends Component {
+  constructor(props) {
+    super(props);
+    this.notificationDOMRef = React.createRef();
+  }
+
   render() {
     return (
       <Router>
         <GuestRoute exact path={HOME} component={Home} />
         <GuestRoute path={SINGUP} component={SignUp} />
         <GuestRoute path={LOGIN} component={Login} />
+        <ReactNotification ref={this.notificationDOMRef} />
         <Navbar
           loginBtn="LOGIN"
           signupBtn="SIGNUP"

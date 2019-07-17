@@ -20,7 +20,7 @@ class Login extends Component {
       password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
@@ -73,9 +73,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="login-container">
           <div className="login-inner-container">
             <h1 className="heading" align="center">
