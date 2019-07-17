@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { getData } from "../actions/User";
 
 const initialState = {
   name: "Humna",
@@ -8,15 +9,10 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  const newState = { ...state };
-  if (action.type === "setData") {
-    // const name = initialState.name;
-    // const email = initialState.email;
-    // const token = initialState.token;
-  } else if (action.type === "getData") {
-    return this.state.name;
-  } else {
-    return newState;
+  if (action.type === getData) {
+    return state;
+  }else{
+    return "no action"
   }
 };
 

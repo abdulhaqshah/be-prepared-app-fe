@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
@@ -157,4 +158,7 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+mapStateToProps = state => {
+  return (name = state.name);
+};
+export default connect(mapStateToProps)(Login);

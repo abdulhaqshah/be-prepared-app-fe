@@ -1,4 +1,4 @@
-// import * as types from "./ActionTypes";
+import * as types from "./ActionTypes";
 
 // export const setData = () => dispatch => {
 //   dispatch({
@@ -6,8 +6,8 @@
 //   });
 // };
 
-// export const getData = () => dispatch => {
-//   dispatch({
-//     type: types.GET_DATA
-//   });
-// };
+export const getData = () => dispatch => {
+  dispatch({
+    type: types.GET_DATA
+  });
+};
