@@ -31,7 +31,7 @@ class AboutUser extends Component {
       element[0].remove();
     }
   };
-  submitForm(e) {
+  submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
       var { about } = this.state;
@@ -71,7 +71,7 @@ class AboutUser extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
-  }
+  };
 
   render() {
     return (

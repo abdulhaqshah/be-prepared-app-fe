@@ -29,6 +29,7 @@ class LeftPane extends Component {
   };
 
   getAboutValue = about => {
+    debugger;
     return about === "" ? "Tell us about yourself . . ." : about;
   };
 
@@ -53,7 +54,6 @@ class LeftPane extends Component {
               href="#editintro"
               data-toggle="modal"
               data-target="#exampleModal"
-              onClick={this.openModal}
             >
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
