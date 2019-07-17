@@ -33,7 +33,8 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
+
     this.formRef = null;
   }
 

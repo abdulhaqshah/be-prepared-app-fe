@@ -43,9 +43,9 @@ class Routes extends Component {
         />
         <ProtectedRoute path={DASHBOARD} component={Dashboard} />
         <ProtectedRoute path={PROFILE} component={Profile} />
-        <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm} />
-        <ProtectedRoute path={COURSE_FORM} component={CourseForm} />
-        <ProtectedRoute path={QUIZ_FORM} component={QuizForm} />
+        <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm}  notificationRef={this.notificationDOMRef}/>
+        <ProtectedRoute path={COURSE_FORM} component={CourseForm}  notificationRef={this.notificationDOMRef}/>
+        <ProtectedRoute path={QUIZ_FORM} component={QuizForm}  notificationRef={this.notificationDOMRef} />
       </Router>
     );
   }
