@@ -26,8 +26,10 @@ class AboutUser extends Component {
   };
 
   removeBackdrop = () => {
-    var parent = document.getElementsByClassName("modal-backdrop fade show");
-    parent[0].remove();
+    var element = document.getElementsByClassName("modal-backdrop fade show");
+    if (element && element.length) {
+      element[0].remove();
+    }
   };
 
   submitForm = e => {
