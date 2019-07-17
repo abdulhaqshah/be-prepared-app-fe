@@ -29,7 +29,6 @@ class LeftPane extends Component {
   };
 
   getAboutValue = about => {
-    debugger;
     return about === "" ? "Tell us about yourself . . ." : about;
   };
 
