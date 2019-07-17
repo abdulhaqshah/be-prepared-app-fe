@@ -47,6 +47,7 @@ class LeftPane extends Component {
               href="#editintro"
               data-toggle="modal"
               data-target="#exampleModal"
+              onClick={this.openModal}
             >
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
@@ -62,10 +63,7 @@ class LeftPane extends Component {
               <a href="#editdetail" data-toggle="modal" data-target="#Modal">
                 <i className="fa fa-pencil" />
               </a>
-              <AboutUser
-                about={about}
-                closeModal={this.closeModal}
-              />
+              <AboutUser about={about} closeModal={this.closeModal} />
             </div>
           </div>
         </div>

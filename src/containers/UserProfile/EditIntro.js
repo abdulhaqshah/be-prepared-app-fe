@@ -15,25 +15,29 @@ class EditInto extends Component {
       name: this.props.name,
       email: this.props.email
     };
-    this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
-    this.submitForm = this.submitForm.bind(this);
-    this.onCancel = this.onCancel.bind(this);
     this.modalRef = React.createRef();
     this.formRef = null;
   }
 
-  handleUserInput(e) {
+  handleUserInput = e => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
-  }
+  };
 
-  onCancel() {
+  onCancel = () => {
     this.formRef.reset();
-  }
+  };
 
-  submitForm(e) {
+  removeBackdrop = () => {
+    var element = document.getElementsByClassName("modal-backdrop fade show");
+    if (element && element.length) {
+      element[0].remove();
+    }
+  };
+
+  submitForm = e => {
     e.preventDefault();
     const uuid = auth.getItem("uuid");
     if (this.validator.allValid()) {
@@ -47,8 +51,9 @@ class EditInto extends Component {
         if (result.status === "200") {
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
-          this.props.closeModal();
           this.modalRef.remove();
+          this.removeBackdrop();
+          this.props.closeModal();
         } else if (
           result.status === "404" ||
           result.status === "403" ||
@@ -76,7 +81,7 @@ class EditInto extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
-  }
+  };
 
   render() {
     return (
@@ -151,27 +156,23 @@ class EditInto extends Component {
                     )}
                   </div>
                 </div>
-                <div className="btns-div d-flex flex-row-reverse">
-                  <div className="modal-body">
-                    <div className="row d-flex flex-row-reverse">
-                      <button
-                        className="btn btn-success col-lg-3 mt-1 save-details"
-                        name="saveBtn"
-                        type="submit"
-                      >
-                        Save
-                      </button>
-                      <button
-                        className="btn btn-outline-success col-lg-3 mt-1"
-                        type="button"
-                        name="cancelBtn"
-                        onClick={this.onCancel}
-                        data-dismiss="modal"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
+                <div className="row d-flex flex-row-reverse mt-4 mb-3">
+                  <button
+                    className="btn btn-success col-lg-3 mt-1 mr-1 ml-1"
+                    name="saveBtn"
+                    type="submit"
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
+                    type="button"
+                    name="cancelBtn"
+                    onClick={this.onCancel}
+                    data-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             </div>
