@@ -33,7 +33,6 @@ class SignUp extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.notificationRef = this.props.notificationRef;
-
     this.formRef = null;
   }
 
@@ -56,6 +55,12 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
+          addNotification(
+            this.notificationRef,
+            "Success",
+            "success",
+            result.message
+          );
           this.props.history.push(LOGIN);
         } else if (
           result.status === "400" ||
