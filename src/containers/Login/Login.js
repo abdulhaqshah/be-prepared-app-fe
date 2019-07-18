@@ -10,6 +10,7 @@ import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import API from "../../api";
 import "./Login.css";
+import { changeState } from "../../store/actions/Actions";
 
 class Login extends Component {
   constructor(props) {
@@ -25,24 +26,29 @@ class Login extends Component {
     this.formRef = null;
   }
 
-  componentDidMount = () => {
-    this.props.getData();
-    const action = this.props.history.action;
-    if (action === "PUSH") {
-      addNotification(
-        this.notificationDOMRef,
-        "Success",
-        "success",
-        "User has been login successfully"
-      );
-    }
-  };
+  // componentDidMount = () => {
+  //   this.props.getData();
+  //   const action = this.props.history.action;
+  //   if (action === "PUSH") {
+  //     addNotification(
+  //       this.notificationDOMRef,
+  //       "Success",
+  //       "success",
+  //       "User has been login successfully"
+  //     );
+  //   }
+  // };
 
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
   }
+
+  _changeState = () => {
+    this.props.changeStateToReducer(this.state.email);
+    this.setState({ email: "" });
+  };
 
   submitForm(e) {
     e.preventDefault();
@@ -113,6 +119,7 @@ class Login extends Component {
                 <input
                   className="login-field"
                   name="email"
+                  defaultValue={this.state.email}
                   onChange={this.handleUserInput}
                 />
                 <div className="login-error-msg">
@@ -124,6 +131,9 @@ class Login extends Component {
                 </div>
               </div>
               <div>
+                <h1>{this.props.email}</h1>
+              </div>
+              {/* <div>
                 <label className="labels vertical-spacing">
                   Password <span className="login-required-indicator">*</span>
                 </label>
@@ -142,13 +152,13 @@ class Login extends Component {
                     "required"
                   )}
                 </div>
-              </div>
+              </div> */}
               <div>
                 <button
                   className="login-button"
                   name="loginBtn"
                   type="submit"
-                  onClick={this.props.getData}
+                  onClick={this._changeState}
                 >
                   LOGIN
                 </button>
@@ -166,13 +176,16 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
-    // name: state.user.name
+    email: state.email
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: () => dispatch({ type: "GET_DATA" })
+    changeStateToReducer: updatedEmail => {
+      dispatch(changeState(updatedEmail));
+    }
+    // getData: () => dispatch({ type: "GET_DATA" })
   };
 };
 export default connect(
