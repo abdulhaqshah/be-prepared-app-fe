@@ -1,3 +1,7 @@
+:root {
+  /* Not my favorite that line-height has to be united, but needed */
+  --lh: 1.4rem;
+}
 .card-heading{
   padding-top:10px;
   padding-bottom: 10px;
@@ -48,3 +52,46 @@
     font-size: 24px;
   }
 }
+  .truncate-overflow {
+      position: relative;
+  }
+  
+  .truncate-overflow::after {
+      background: inherit;
+      bottom: 0;
+      content: "...";
+      margin-right: 1.0rem;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      width: 1rem;
+  }    
+  //   overflow: hidden;
+  // position: relative;
+  // line-height: 1.2em;
+  // max-height: 6em;
+  // text-align: justify;
+  // margin-right: -1em;
+  // padding-right: 1em;
+  // }
+  // .truncate-overflow:before {
+  //   content: '...';
+  //   position: absolute;
+  //   right: 0;
+  //   bottom: 0;
+  // }
+  // .truncate-overflow:after {
+  //   content: '';
+  //   position: absolute;
+  //   right: 0;
+  //   width: 1em;
+  //   height: 1em;
+  //   margin-top: 0.2em;
+  //   background: white;
+  // }
+  // // .truncate-overflow::after {
+  //   content: '...';
+  // position: absolute;
+  // // right: 0;
+  // // bottom: 0;
+  // }
