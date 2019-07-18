@@ -60,5 +60,6 @@
   line-height: 20px;
 }
 .error-msg{
+  font-size: 12px;
   color: red;
 }
