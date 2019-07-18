@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TextTruncate from 'react-text-truncate';
 import "./Tutorial.scss";
 
 class TutorialCard extends Component {
@@ -14,9 +13,7 @@ class TutorialCard extends Component {
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
           </h2>
-          <div className="truncate-overflow">
-            <p >{this.props.para}</p>
-          </div>
+          <p className="truncate-overflow">{this.props.para}</p>
           <div className="tutorial-link">
             <a href={this.props.href} className="font-weight-bold">
               View Tutorial

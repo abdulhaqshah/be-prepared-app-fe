@@ -38,8 +38,9 @@
     }
     h2 {
       font-size: 18px;
-      display: -webkit-box;
+      white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
     a {
       font-size: 15px;
@@ -52,46 +53,29 @@
     font-size: 24px;
   }
 }
-  .truncate-overflow {
-      position: relative;
-  }
-  
-  .truncate-overflow::after {
-      background: inherit;
-      bottom: 0;
-      content: "...";
-      margin-right: 1.0rem;
-      position: absolute;
-      right: 0;
-      text-align: right;
-      width: 1rem;
-  }    
-  //   overflow: hidden;
-  // position: relative;
-  // line-height: 1.2em;
-  // max-height: 6em;
-  // text-align: justify;
-  // margin-right: -1em;
-  // padding-right: 1em;
-  // }
-  // .truncate-overflow:before {
-  //   content: '...';
-  //   position: absolute;
-  //   right: 0;
-  //   bottom: 0;
-  // }
-  // .truncate-overflow:after {
-  //   content: '';
-  //   position: absolute;
-  //   right: 0;
-  //   width: 1em;
-  //   height: 1em;
-  //   margin-top: 0.2em;
-  //   background: white;
-  // }
-  // // .truncate-overflow::after {
-  //   content: '...';
-  // position: absolute;
-  // // right: 0;
-  // // bottom: 0;
-  // }
+.truncate-overflow {
+  --max-lines: 3;
+  line-height: var(--lh);
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 0.5rem;
+}
+.truncate-overflow::before {
+  position: absolute;
+  content: "...";
+  top: calc(var(--lh) * (var(--max-lines) - 1));
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  right: 0;
+}
+.truncate-overflow:after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  background: white;
+}
