@@ -9,18 +9,22 @@
     width: 19rem;
     height: auto;
     .course-name {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-bottom: solid #e9edee;
+      padding-top: 5px;
       border-width: 0.5px;
-      font-weight: bold;
-      a {
-        font-size: 18px;
+      font-weight: 600;
+      .course-reference {
+        padding-top: 10px;
+        padding-bottom: 2px;
+        font-size: 20px;
         color: #39414e;
-        line-height: 1.4;
+        line-height: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         &:hover {
           color: rgb(27, 169, 76);
           text-decoration: none;
+          white-space : pre-wrap;
         }
       }
     }

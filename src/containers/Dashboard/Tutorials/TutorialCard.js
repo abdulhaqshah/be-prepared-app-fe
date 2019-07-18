@@ -14,13 +14,9 @@ class TutorialCard extends Component {
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
           </h2>
-          <TextTruncate
-            line={2}
-            element="span"
-            truncateText="…"
-            text={this.props.para}
-            textTruncateChild={<a href=" ">Read on</a>}
-          />
+          <div className="truncate-overflow">
+            <p >{this.props.para}</p>
+          </div>
           <div className="tutorial-link">
             <a href={this.props.href} className="font-weight-bold">
               View Tutorial
