@@ -12,13 +12,19 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator(
-      { autoForceUpdate: this },
       {
         validators: {
           cp: {
             message: "The :attribute does not match.",
             rule: (val, params, validator) => {
               return Boolean(val) ? val === params[0] : null;
+            },
+            required: true
+          },
+          password: {
+            message: 'The :attribute must have 1 uppercase letter, 1 special character and 1 numeric',
+            rule: (val, params, validator) => {
+              return validator.helpers.testRegex(val,/^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#\$%\^&\*])(?=.*[A-Z])[0-9a-zA-Z!@#\$%\^&\*]{8,}$/)
             },
             required: true
           }
@@ -149,7 +155,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "password",
                     this.state.password,
-                    "required|min:6|max:20"
+                    "required|password"
                   )}
                 </div>
               </div>
