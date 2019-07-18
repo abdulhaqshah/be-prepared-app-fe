@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Home from "../containers/Home/Home";
 import SignUp from "../containers/SignUp/SignUp";
 import Login from "../containers/Login/Login";
@@ -34,6 +35,21 @@ import {
 } from "../constants";
 
 class Routes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    debugger;
+    const { userName } = nextProps.user.user;
+    this.setState({
+      name: userName
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -61,4 +77,9 @@ class Routes extends Component {
     );
   }
 }
-export default Routes;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user
+  };
+};
+export default connect(mapStateToProps)(Routes);
