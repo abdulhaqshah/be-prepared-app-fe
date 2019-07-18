@@ -31,7 +31,6 @@ class AboutUser extends Component {
       element[0].remove();
     }
   };
-
   submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -111,15 +110,16 @@ class AboutUser extends Component {
                     rows="5"
                     name="about"
                     type="text"
-                    placeholder="Who you are...."
-                    defaultValue={this.props.about}
+                    maxLength="300"
+                    placeholder="Tell us about yourself...."
+                    defaultValue={this.state.about}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">
                     {this.validator.message(
                       "about",
                       this.state.about,
-                      "required|min:5|max:150"
+                      "required|min:5|max:300"
                     )}
                   </div>
                   <div className="row d-flex flex-row-reverse mt-4">

@@ -1,22 +1,24 @@
 import React, { Component, Fragment } from "react";
-import EditIntro from "../../containers/UserProfile/EditIntro";
+import EditIntro from "./EditIntro";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
 import * as auth from "../../services/Session";
-import "./LeftPane.scss";
+import "./LeftPanel.scss";
 import AboutUser from "./AboutUser";
 
 class LeftPane extends Component {
   constructor(props) {
     super(props);
-    this.state = { readOnly: true, open: true };
-    this.closeModal = this.closeModal.bind(this);
+    this.state = {
+      readOnly: true,
+      open: true
+    };
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ open: false });
     addNotification(
       this.notificationDOMRef,
@@ -24,7 +26,11 @@ class LeftPane extends Component {
       "success",
       "User has been updated"
     );
-  }
+  };
+
+  getAboutValue = about => {
+    return about === "" ? "Tell us about yourself . . ." : about;
+  };
 
   render() {
     const name = auth.getItem("name");
@@ -47,7 +53,6 @@ class LeftPane extends Component {
               href="#editintro"
               data-toggle="modal"
               data-target="#exampleModal"
-              onClick={this.openModal}
             >
               <i className="fa fa-pencil" /> Edit_Intro
             </a>
@@ -68,14 +73,7 @@ class LeftPane extends Component {
           </div>
         </div>
         <div className="user-about-info">
-          <textarea
-            rows="5"
-            placeholder="Tell us about Who you are..."
-            value={about}
-            className="about"
-            maxLength="25"
-            readOnly={this.state.readOnly}
-          />
+          <p>{this.getAboutValue(about)}</p>
         </div>
       </Fragment>
     );

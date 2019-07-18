@@ -9,10 +9,13 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 80px;
+    textarea {
+      resize: none;
+    }
     .row.d-flex {
       margin-left: 2px;
       margin-right: 2px;
-      margin-bottom:10px;
+      margin-bottom: 10px;
     }
     .labels {
       margin-top: 10px;
