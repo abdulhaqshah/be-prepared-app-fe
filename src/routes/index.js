@@ -11,6 +11,8 @@ import QuizForm from "../containers/Dashboard/Forms/QuizForm";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import * as auth from "../services/Session";
 import {
   HOME,
   SINGUP,
@@ -41,11 +43,47 @@ class Routes extends Component {
           signupRoute={SINGUP}
           loginRoute={LOGIN}
         />
-        <ProtectedRoute path={DASHBOARD} component={Dashboard} />
-        <ProtectedRoute path={PROFILE} component={Profile} />
-        <ProtectedRoute path={TUTORIAL_FORM} component={TutorialForm}  notificationRef={this.notificationDOMRef}/>
-        <ProtectedRoute path={COURSE_FORM} component={CourseForm}  notificationRef={this.notificationDOMRef}/>
-        <ProtectedRoute path={QUIZ_FORM} component={QuizForm}  notificationRef={this.notificationDOMRef} />
+        <GuestRoute
+          exact
+          path={HOME}
+          component={Home}
+          notificationRef={this.notificationDOMRef}
+        />
+        <GuestRoute
+          path={SINGUP}
+          component={SignUp}
+          notificationRef={this.notificationDOMRef}
+        />
+        <GuestRoute
+          path={LOGIN}
+          component={Login}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={DASHBOARD}
+          component={Dashboard}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={PROFILE}
+          component={Profile}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={TUTORIAL_FORM}
+          component={TutorialForm}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={COURSE_FORM}
+          component={CourseForm}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={QUIZ_FORM}
+          component={QuizForm}
+          notificationRef={this.notificationDOMRef}
+        />
       </Router>
     );
   }

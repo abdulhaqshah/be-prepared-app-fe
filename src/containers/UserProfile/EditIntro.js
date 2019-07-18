@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
-import addNotification from "../../utilities/index";
+import { addNotification } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
 import "./EditIntro.scss";
@@ -15,7 +13,8 @@ class EditInto extends Component {
       name: this.props.name,
       email: this.props.email
     };
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
+    this.modalRef = React.createRef();
     this.formRef = null;
   }
 
@@ -59,7 +58,7 @@ class EditInto extends Component {
           result.status === "401"
         ) {
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "Error",
             "danger",
             result.message
@@ -69,7 +68,7 @@ class EditInto extends Component {
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -98,9 +97,6 @@ class EditInto extends Component {
             <div className="modal-body" />
 
             <div className="container">
-              <div>
-                <ReactNotification ref={this.notificationDOMRef} />
-              </div>
               <form
                 className="form"
                 onSubmit={this.submitForm}

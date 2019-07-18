@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities";
 import API from "../../../api/index";
 import "./TutorialForm.scss";
@@ -112,9 +110,6 @@ class TutorialForm extends Component {
     this.validator.purgeFields();
     return (
       <div >
-        <div>
-          <ReactNotification ref={this.notificationRef} />
-        </div>
         <div className="d-flex justify-content-center container" >
           <div className="row">
             <div className="col-12 form-inner-container" >

@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
 import EditIntro from "./EditIntro";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { addNotification, getInitials } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import "./LeftPanel.scss";
@@ -13,7 +11,7 @@ class LeftPane extends Component {
     this.state = {
       open: true
     };
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.formRef = null;
   }
 
@@ -25,7 +23,7 @@ class LeftPane extends Component {
     this.setState({ open: false });
 
     addNotification(
-      this.notificationDOMRef,
+      this.notificationRef,
       "success",
       "success",
       "User has been updated"
@@ -44,9 +42,6 @@ class LeftPane extends Component {
 
     return (
       <Fragment>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="about">
           <button className="profile-btn btn-secondary btn-xl">
             {getInitials(name)}

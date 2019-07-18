@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities/index";
 import API from "../../../api/index";
 import "./CourseForm.scss";
