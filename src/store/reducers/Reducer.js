@@ -1,29 +1,23 @@
-
-// import { combineReducers } from "redux";
-// import * as types from "../actions/ActionTypes";
+import { combineReducers } from "redux";
+import * as types from "../actions/ActionTypes";
 
 const initialState = {
-  email:"Humna@gmail.com"
-//  user:{
-//    name:"",
-//    email:"",
-//    token:"",
-//    uuid:""
-//  }
+  user: {}
 };
 
-const Reducer = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   const newState = { ...state };
-  if (action.type === 'CHANGE_EMAIL') {
+  if (action.type === types.GET_USER_DATA) {
     return {
       ...state,
-      email:action.payload
-      // user: action.getData
+      user: action.user,
+      status:action.status,
+      message:action.message
     };
   }
   return newState;
 };
 
-// export default combineReducers({
- export default Reducer;
-// });
+export default combineReducers({
+  user
+});

@@ -1,20 +1,15 @@
-// import API from "../../api/index";
-// import * as types from "./actionTypes";
+import * as types from "../actions/ActionTypes";
+import API from "../../api/index";
 
-// export const getData = () => dispatch => {
-//   API.userLogin()
-//     .then(results => {
-//       dispatch({
-//         type: types.GET_DATA,
-//         user: results.data
-//       });
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// };
-export function changeState(updatedEmail){
-return dispatch=>{
-  dispatch({type:'CHANGE_EMAIL',payload:updatedEmail})
-}
-}
+export const getUserData = data => dispatch => {
+  API.userLogin(data, result => {
+    dispatch({
+      type: types.GET_USER_DATA,
+      user: result.data,
+      status: result.status,
+      message: result.message
+    });
+  }).catch(error => {
+    console.log(error);
+  });
+};

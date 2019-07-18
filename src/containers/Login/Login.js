@@ -5,12 +5,11 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
-import API from "../../api";
 import "./Login.css";
-import { changeState } from "../../store/actions/Actions";
 
 class Login extends Component {
   constructor(props) {
@@ -18,7 +17,8 @@ class Login extends Component {
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      status: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -26,29 +26,44 @@ class Login extends Component {
     this.formRef = null;
   }
 
-  // componentDidMount = () => {
-  //   this.props.getData();
-  //   const action = this.props.history.action;
-  //   if (action === "PUSH") {
-  //     addNotification(
-  //       this.notificationDOMRef,
-  //       "Success",
-  //       "success",
-  //       "User has been login successfully"
-  //     );
-  //   }
-  // };
-
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
   }
 
-  _changeState = () => {
-    this.props.changeStateToReducer(this.state.email);
-    this.setState({ email: "" });
-  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.status === "200") {
+      const { uuid, name, email, about, img } = nextProps.user.user;
+      auth.setItem("uuid", uuid);
+      auth.setItem("name", name);
+      auth.setItem("email", email);
+      auth.setItem("about", about ? about : "");
+      auth.setItem("img", img);
+      auth.setItem("token", nextProps.user.token);
+      this.formRef.reset();
+      this.validator.hideMessages();
+      this.props.history.push(DASHBOARD);
+    } else if (
+      nextProps.status === "404" ||
+      nextProps.status === "403" ||
+      nextProps.status === "500"
+    ) {
+      addNotification(
+        this.notificationDOMRef,
+        "Error",
+        "danger",
+        nextProps.message
+      );
+    } else {
+      addNotification(
+        this.notificationDOMRef,
+        "Error",
+        "warning",
+        nextProps.message
+      );
+    }
+  }
 
   submitForm(e) {
     e.preventDefault();
@@ -58,40 +73,7 @@ class Login extends Component {
         email,
         password
       };
-      API.userLogin(data, result => {
-        if (result.status === "200") {
-          const { uuid, name, email, about, img } = result.data.user;
-          auth.setItem("uuid", uuid);
-          auth.setItem("name", name);
-          auth.setItem("email", email);
-          auth.setItem("about", about ? about : "");
-          auth.setItem("img", img);
-          auth.setItem("token", result.data.token);
-          this.formRef.reset();
-          this.validator.hideMessages();
-          this.props.history.push(DASHBOARD);
-        } else if (
-          result.status === "404" ||
-          result.status === "403" ||
-          result.status === "500"
-        ) {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "danger",
-            result.message
-          );
-        } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            result.message
-          );
-        }
-      }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
-      };
+      this.props.getData(data);
     } else {
       this.validator.showMessages();
       this.forceUpdate();
@@ -119,7 +101,6 @@ class Login extends Component {
                 <input
                   className="login-field"
                   name="email"
-                  defaultValue={this.state.email}
                   onChange={this.handleUserInput}
                 />
                 <div className="login-error-msg">
@@ -130,10 +111,8 @@ class Login extends Component {
                   )}
                 </div>
               </div>
+
               <div>
-                <h1>{this.props.email}</h1>
-              </div>
-              {/* <div>
                 <label className="labels vertical-spacing">
                   Password <span className="login-required-indicator">*</span>
                 </label>
@@ -152,7 +131,7 @@ class Login extends Component {
                     "required"
                   )}
                 </div>
-              </div> */}
+              </div>
               <div>
                 <button
                   className="login-button"
@@ -176,16 +155,17 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
-    email: state.email
+    user: state.user.user,
+    status: state.user.status,
+    message: state.user.message
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeStateToReducer: updatedEmail => {
-      dispatch(changeState(updatedEmail));
+    getData: data => {
+      dispatch(getUserData(data));
     }
-    // getData: () => dispatch({ type: "GET_DATA" })
   };
 };
 export default connect(
