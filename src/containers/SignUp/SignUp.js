@@ -24,7 +24,7 @@ class SignUp extends Component {
           password: {
             message: 'The :attribute must have minimum 8 characters with 1 uppercase letter, 1 special character and 1 numeric',
             rule: (val, params, validator) => {
-              return validator.helpers.testRegex(val,/^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#\$%\^&\*])(?=.*[A-Z])[0-9a-zA-Z!@#\$%\^&\*]{8,}$/)
+              return validator.helpers.testRegex(val,/^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#$%^&*])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/)
             },
             required: true
           }
