@@ -21,7 +21,7 @@ class TutorialForm extends Component {
       courses : []
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef =this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.resetState = this.resetState.bind(this);
     this.formRef = null;
@@ -37,7 +37,7 @@ class TutorialForm extends Component {
         addNotification(this.notificationDOMRef, "Error", "danger", error);
       }
     }).catch = error => {
-      addNotification(this.notificationDOMRef, "Error", "warning", error);
+      addNotification(this.notificationRef, "Error", "warning", error);
     };
   }
 
@@ -88,20 +88,20 @@ class TutorialForm extends Component {
           this.resetState();
           self.formRef.reset();
           self.validator.hideMessages();
-          addNotification(this.notificationDOMRef, "success", "success",result.message);
+          addNotification(this.notificationRef, "success", "success",result.message);
         } else if (
           result.status === "400" ||
           result.status === "404" ||
           result.status === "403" ||
           result.status === "500"
         ) {
-          addNotification(this.notificationDOMRef, "Error", "danger", result.message);
+          addNotification(this.notificationRef, "Error", "danger", result.message);
         } else {
           let error = API.getErrorMessage(result.message);
           addNotification(this.notificationDOMRef, "Error", "warning", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -113,7 +113,7 @@ class TutorialForm extends Component {
     return (
       <div >
         <div>
-          <ReactNotification ref={this.notificationDOMRef} />
+          <ReactNotification ref={this.notificationRef} />
         </div>
         <div className="d-flex justify-content-center container" >
           <div className="row">

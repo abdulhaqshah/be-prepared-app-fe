@@ -18,7 +18,7 @@ class CourseForm extends Component {
       description: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef =this.props.notificationRef
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
@@ -41,7 +41,7 @@ class CourseForm extends Component {
           this.formRef.reset();
           this.validator.hideMessages();
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "success",
             "success",
             result.message
@@ -61,7 +61,7 @@ class CourseForm extends Component {
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -72,9 +72,6 @@ class CourseForm extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="d-flex justify-content-center container">
           <div className="row">
             <div className="form-inner-container">
