@@ -16,7 +16,7 @@ class CourseForm extends Component {
       description: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationRef =this.props.notificationRef
+    this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
