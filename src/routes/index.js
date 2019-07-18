@@ -35,21 +35,6 @@ import {
 } from "../constants";
 
 class Routes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: ""
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    debugger;
-    const { userName } = nextProps.user.user;
-    this.setState({
-      name: userName
-    });
-  }
-
   render() {
     return (
       <Router>
@@ -77,9 +62,4 @@ class Routes extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    user: state.user.user
-  };
-};
-export default connect(mapStateToProps)(Routes);
+export default Routes;

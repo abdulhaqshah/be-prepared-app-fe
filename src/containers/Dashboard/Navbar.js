@@ -14,6 +14,10 @@ class Navbar extends Component {
           : this.props.loginBtn
     };
     this.onLogout = this.onLogout.bind(this);
+    this.state = {
+      name: "",
+      token: null
+    };
   }
 
   onLogout() {
@@ -36,8 +40,8 @@ class Navbar extends Component {
   };
 
   render() {
-    const token = auth.getItem("token");
-    if (token === null) {
+
+    if (this.state.token === null) {
       return (
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
           <div className="logo-div">
@@ -136,7 +140,7 @@ class Navbar extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
+                    <i className="fa fa-user-o fa-lg ml-1" /> {this.state.name}
                   </a>
                   <div
                     className="dropdown-menu"
