@@ -29,8 +29,7 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
-      param: true
+      confirmPassword: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -57,7 +56,7 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
-          this.props.history.push(LOGIN, this.state.param);
+          this.props.history.push(LOGIN);
         } else if (
           result.status === "400" ||
           result.status === "403" ||

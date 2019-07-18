@@ -20,7 +20,7 @@ class QuizCard extends Component {
             element="span"
             truncateText="…"
             text="challenges based on learnings from 1000+ companies to help you prepare"
-            textTruncateChild={<a href="#">Read on</a>}
+            textTruncateChild={<a href=" ">Read on</a>}
           />
           <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">

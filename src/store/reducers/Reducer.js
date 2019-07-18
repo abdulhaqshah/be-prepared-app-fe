@@ -1,25 +1,23 @@
 import { combineReducers } from "redux";
+import * as types from "../actions/ActionTypes";
 
 const initialState = {
-  name: "Humna",
-  email: "",
-  pass: "",
-  token: ""
+  user: {}
 };
 
-const userReducer = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   const newState = { ...state };
-  if (action.type === "setData") {
-    // const name = initialState.name;
-    // const email = initialState.email;
-    // const token = initialState.token;
-  } else if (action.type === "getData") {
-    return this.state.name;
-  } else {
-    return newState;
+  if (action.type === types.GET_USER_DATA) {
+    return {
+      ...state,
+      user: action.user,
+      status:action.status,
+      message:action.message
+    };
   }
+  return newState;
 };
 
 export default combineReducers({
-  userReducer
+  user
 });

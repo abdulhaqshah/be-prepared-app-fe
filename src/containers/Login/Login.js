@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
-import API from "../../api";
 import "./Login.css";
 
 class Login extends Component {
@@ -16,7 +17,8 @@ class Login extends Component {
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      status: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -24,22 +26,43 @@ class Login extends Component {
     this.formRef = null;
   }
 
-  componentDidMount() {
-    const flag = this.props.location.state;
-    if (flag === true) {
-      addNotification(
-        this.notificationDOMRef,
-        "Success",
-        "success",
-        "User has been created Successfuly"
-      );
-    }
-  }
-
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.status === "200") {
+      const { uuid, name, email, about, img } = nextProps.user.user;
+      auth.setItem("uuid", uuid);
+      auth.setItem("name", name);
+      auth.setItem("email", email);
+      auth.setItem("about", about ? about : "");
+      auth.setItem("img", img);
+      auth.setItem("token", nextProps.user.token);
+      this.formRef.reset();
+      this.validator.hideMessages();
+      this.props.history.push(DASHBOARD);
+    } else if (
+      nextProps.status === "404" ||
+      nextProps.status === "403" ||
+      nextProps.status === "500"
+    ) {
+      addNotification(
+        this.notificationDOMRef,
+        "Error",
+        "danger",
+        nextProps.message
+      );
+    } else {
+      addNotification(
+        this.notificationDOMRef,
+        "Error",
+        "warning",
+        nextProps.message
+      );
+    }
   }
 
   submitForm(e) {
@@ -50,40 +73,7 @@ class Login extends Component {
         email,
         password
       };
-      API.userLogin(data, result => {
-        if (result.status === "200") {
-          const { uuid, name, email, about, img } = result.data.user;
-          auth.setItem("uuid", uuid);
-          auth.setItem("name", name);
-          auth.setItem("email", email);
-          auth.setItem("about", about ? about : "");
-          auth.setItem("img", img);
-          auth.setItem("token", result.data.token);
-          this.formRef.reset();
-          this.validator.hideMessages();
-          this.props.history.push(DASHBOARD);
-        } else if (
-          result.status === "404" ||
-          result.status === "403" ||
-          result.status === "500"
-        ) {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "danger",
-            result.message
-          );
-        } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            result.message
-          );
-        }
-      }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
-      };
+      this.props.getData(data);
     } else {
       this.validator.showMessages();
       this.forceUpdate();
@@ -121,6 +111,7 @@ class Login extends Component {
                   )}
                 </div>
               </div>
+
               <div>
                 <label className="labels vertical-spacing">
                   Password <span className="login-required-indicator">*</span>
@@ -142,7 +133,12 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button className="login-button" name="loginBtn" type="submit">
+                <button
+                  className="login-button"
+                  name="loginBtn"
+                  type="submit"
+                  onClick={this._changeState}
+                >
                   LOGIN
                 </button>
               </div>
@@ -157,4 +153,22 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+    status: state.user.status,
+    message: state.user.message
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData: data => {
+      dispatch(getUserData(data));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
