@@ -40,8 +40,8 @@ class Navbar extends Component {
   };
 
   render() {
-
-    if (this.state.token === null) {
+    const token = auth.getItem("token");
+    if (token === null) {
       return (
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg">
           <div className="logo-div">
@@ -146,24 +146,24 @@ class Navbar extends Component {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a href="./profile" className="dropdown-item">
+                    <Link to={PROFILE} className="dropdown-item">
                       Profile
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Settings
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Bookmarks
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Network
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Submissions
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Administration
-                    </a>
+                    </Link>
                     <a
                       href="."
                       className="dropdown-item"
