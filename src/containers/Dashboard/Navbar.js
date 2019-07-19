@@ -15,8 +15,7 @@ class Navbar extends Component {
     };
     this.onLogout = this.onLogout.bind(this);
     this.state = {
-      name: "",
-      token: ""
+      name: ""
     };
   }
 

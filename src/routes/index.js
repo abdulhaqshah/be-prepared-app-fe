@@ -41,6 +41,7 @@ class Routes extends Component {
         <GuestRoute path={SINGUP} component={SignUp} />
         <GuestRoute path={LOGIN} component={Login} />
         <Navbar
+          // history={history}
           loginBtn="LOGIN"
           signupBtn="SIGNUP"
           signupRoute={SINGUP}
