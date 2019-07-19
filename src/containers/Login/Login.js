@@ -18,12 +18,13 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      status: ""
+      loginPathname: this.props.location.loginPathname
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
+    this.props.getPathname(loginPathname);
   }
 
   handleUserInput(e) {
@@ -34,6 +35,7 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === "200") {
+      console(nextProps.loginPathname)
       const { uuid, name, email, about, img } = nextProps.user.user;
       auth.setItem("uuid", uuid);
       auth.setItem("name", name);
@@ -157,7 +159,8 @@ const mapStateToProps = state => {
   return {
     user: state.user.user,
     status: state.user.status,
-    message: state.user.message
+    message: state.user.message,
+    loginPathname : state.user.loginPathname
   };
 };
 
@@ -165,6 +168,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getData: data => {
       dispatch(getUserData(data));
+    },
+    getPathname: loginPathname => {
+      dispatch(getLoginPathname(loginPathname));
     }
   };
 };

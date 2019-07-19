@@ -13,3 +13,9 @@ export const getUserData = data => dispatch => {
     console.log(error);
   });
 };
+export const getLoginPathname = loginPathname => dispatch => {
+  dispatch({
+    type: types.GET_LOGIN_PATHNAME,
+    loginPathname: loginPathname
+  });
+};

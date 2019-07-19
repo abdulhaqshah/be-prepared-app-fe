@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import * as types from "../actions/ActionTypes";
 
 const initialState = {
-  user: {}
+  user: {},
+  loginPathname: "",
+  signupPathname: ""
 };
 
 const user = (state = initialState, action) => {
@@ -11,8 +13,13 @@ const user = (state = initialState, action) => {
     return {
       ...state,
       user: action.user,
-      status:action.status,
-      message:action.message
+      status: action.status,
+      message: action.message
+    };
+  } else if (action.type === types.GET_LOGIN_PATHNAME) {
+    return {
+      ...state,
+      loginPathname: action.loginPathname
     };
   }
   return newState;
