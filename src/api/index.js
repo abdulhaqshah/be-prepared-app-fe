@@ -71,6 +71,15 @@ const userAboutInfo = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
+const serverDownErrorMessage = (error) => {
+  debugger
+  if (error === 'Failed to fetch') {
+    return 'Server is down at the moment'
+  } else {
+    return error;
+  }
+}
 export default {
   userRegister,
   userLogin,
@@ -81,5 +90,6 @@ export default {
   userAboutInfo,
   tutorialData,
   courseData,
-  quizData
+  quizData,
+  serverDownErrorMessage
 };

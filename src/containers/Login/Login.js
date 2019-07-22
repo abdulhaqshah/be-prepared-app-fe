@@ -10,6 +10,7 @@ import { addNotification } from "../../utilities";
 import { SINGUP, DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
+import API from '../../api/index'
 
 class Login extends Component {
   constructor(props) {
@@ -49,19 +50,10 @@ class Login extends Component {
       nextProps.status === "403" ||
       nextProps.status === "500"
     ) {
-      addNotification(
-        this.notificationDOMRef,
-        "Error",
-        "danger",
-        nextProps.message
-      );
+      addNotification(this.notificationDOMRef, "Error", "danger", nextProps.message);
     } else {
-      addNotification(
-        this.notificationDOMRef,
-        "Error",
-        "warning",
-        nextProps.message
-      );
+      let error = API.serverDownErrorMessage(nextProps.message)
+      addNotification(this.notificationDOMRef, "Error", "danger", error);
     }
   }
 
