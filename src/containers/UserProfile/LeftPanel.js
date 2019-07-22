@@ -56,7 +56,7 @@ class LeftPane extends Component {
           <p>{email}</p>
           <div className="edit-btn">
             <a
-              href="#editintro"
+              href=" "
               data-toggle="modal"
               data-target="#exampleModal"
               onClick={this.openModal}
@@ -76,7 +76,7 @@ class LeftPane extends Component {
           <div className="about-pen-icon">
             <div>
               <a
-                href="#editdetail"
+                href=" "
                 data-toggle="modal"
                 data-target="#Modal"
                 onClick={this.openModal}
