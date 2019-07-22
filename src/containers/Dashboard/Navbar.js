@@ -16,24 +16,18 @@ class Navbar extends Component {
   }
 
   getBtnName = () => {
-    if (
-      window.location.pathname === "/signup" ||
-      window.location.pathname === "/"
-    ) {
-      return this.props.loginBtn;
-    } else {
+    if (window.location.pathname === "/login") {
       return this.props.signupBtn;
+    } else {
+      return this.props.loginBtn;
     }
   };
 
   getRouteName = () => {
-    if (
-      window.location.pathname === "/signup" ||
-      window.location.pathname === "/"
-    ) {
-      return this.props.loginRoute;
-    } else {
+    if (window.location.pathname === "/login") {
       return this.props.signupRoute;
+    } else {
+      return this.props.loginRoute;
     }
   };
   render() {
