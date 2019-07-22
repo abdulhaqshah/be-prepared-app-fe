@@ -16,7 +16,6 @@ class EditInto extends Component {
       email: this.props.email
     };
     this.notificationDOMRef = React.createRef();
-    this.modalRef = React.createRef();
     this.formRef = null;
   }
 
@@ -80,12 +79,7 @@ class EditInto extends Component {
 
   render() {
     return (
-      <div
-        ref={ref => (this.modalRef = ref)}
-        className="modal fade"
-        id="exampleModal"
-        data-backdrop="static"
-      >
+      <div className="modal fade" id="exampleModal" data-backdrop="static">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

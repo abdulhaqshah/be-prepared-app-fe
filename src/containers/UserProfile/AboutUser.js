@@ -11,7 +11,6 @@ class AboutUser extends Component {
     super(props);
     this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
-    this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
 
@@ -70,12 +69,7 @@ class AboutUser extends Component {
 
   render() {
     return (
-      <div
-        ref={ref => (this.modalRef = ref)}
-        className="modal fade"
-        id="Modal"
-        data-backdrop="static"
-      >
+      <div className="modal fade" id="Modal" data-backdrop="static">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
