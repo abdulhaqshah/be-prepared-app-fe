@@ -1,4 +1,12 @@
-export const API_HOST = "http://localhost:8000";
+let API = '';
+
+if(process.env.NODE_ENV === 'development') {
+  API = "http://localhost:8000";
+} else if (process.env.NODE_ENV === 'production') {
+  API = "https://prepared-app.herokuapp.com/";
+}
+
+export const API_HOST = API;
 export const METHODS = {
   POST: "POST",
   GET: "GET",
