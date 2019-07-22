@@ -51,7 +51,7 @@ class EditInto extends Component {
         if (result.status === "200") {
           auth.setItem("name", result.data.name);
           auth.setItem("email", result.data.email);
-          this.modalRef.remove();
+          // this.modalRef.remove();
           this.removeBackdrop();
           this.props.closeModal();
         } else if (
@@ -173,7 +173,9 @@ class EditInto extends Component {
               </form>
             </div>
           </div>
+          //{" "}
         </div>
+        //{" "}
       </div>
     );
   }
