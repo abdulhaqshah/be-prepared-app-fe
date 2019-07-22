@@ -41,7 +41,6 @@ class AboutUser extends Component {
       API.userAboutInfo(data, result => {
         if (result.status === "200") {
           auth.setItem("about", result.data);
-          // this.modalRef.remove();
           this.removeBackdrop();
           this.props.closeModal();
         } else if (

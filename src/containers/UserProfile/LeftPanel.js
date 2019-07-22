@@ -12,7 +12,7 @@ class LeftPane extends Component {
     super(props);
     this.state = {
       readOnly: true,
-      open: false
+      open: true
     };
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
@@ -31,6 +31,7 @@ class LeftPane extends Component {
       "success",
       "User has been updated"
     );
+    this.setState({ open: true });
   };
 
   getAboutValue = about => {
