@@ -24,7 +24,7 @@
     "simple-react-validator": "^1.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "sudo npm install && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
