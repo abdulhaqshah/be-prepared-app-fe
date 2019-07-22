@@ -16,7 +16,10 @@ class Navbar extends Component {
   }
 
   getBtnName = () => {
-    if (window.location.pathname === "/signup") {
+    if (
+      window.location.pathname === "/signup" ||
+      window.location.pathname === "/"
+    ) {
       return this.props.loginBtn;
     } else {
       return this.props.signupBtn;
@@ -24,7 +27,10 @@ class Navbar extends Component {
   };
 
   getRouteName = () => {
-    if (window.location.pathname === "/signup") {
+    if (
+      window.location.pathname === "/signup" ||
+      window.location.pathname === "/"
+    ) {
       return this.props.loginRoute;
     } else {
       return this.props.signupRoute;
