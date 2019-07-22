@@ -75,7 +75,7 @@ const userAboutInfo = (data, resolve, reject) => {
 const serverDownErrorMessage = (error) => {
   debugger
   if (error === 'Failed to fetch') {
-    return 'Server is down at the moment'
+    return 'Something went wrong. Try again later'
   } else {
     return error;
   }
