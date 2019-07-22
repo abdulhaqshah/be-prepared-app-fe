@@ -7,6 +7,7 @@ import "./Navbar.scss";
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    // console.log(this.getPathname());
     this.onLogout = this.onLogout.bind(this);
   }
 
@@ -15,6 +16,21 @@ class Navbar extends Component {
     this.props.history.push(HOME);
   }
 
+  getBtnName = () => {
+    if (window.location.pathname === "/signup") {
+      return this.props.loginBtn;
+    } else {
+      return this.props.signupBtn;
+    }
+  };
+
+  getRouteName = () => {
+    if (window.location.pathname === "/signup") {
+      return this.props.loginRoute;
+    } else {
+      return this.props.signupRoute;
+    }
+  };
   render() {
     const token = auth.getItem("token");
     if (token === null) {
@@ -40,10 +56,10 @@ class Navbar extends Component {
             <div className="d-lg-flex flex-row-reverse">
               <div className="login-btn">
                 <Link
-                  to={this.props.loginRoute}
+                  to={this.getRouteName()}
                   className="btn-secondary btn-login"
                 >
-                  {this.props.loginBtn}
+                  {this.getBtnName()}
                 </Link>
               </div>
             </div>

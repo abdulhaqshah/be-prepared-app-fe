@@ -75,7 +75,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Header btnName="SignUp" redirectTo={SINGUP} />
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
