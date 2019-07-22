@@ -30,7 +30,7 @@ class TutorialForm extends Component {
         });
         
       } else {
-        let error = API.serverDownErrorMessage(result.message)
+        let error = API.getErrorMessage(result.message)
         addNotification(this.notificationDOMRef, "Error", "danger", error);
       }
     }).catch = error => {
@@ -94,7 +94,7 @@ class TutorialForm extends Component {
         ) {
           addNotification(this.notificationDOMRef, "Error", "danger", result.message);
         } else {
-          let error = API.serverDownErrorMessage(result.message);
+          let error = API.getErrorMessage(result.message);
           addNotification(this.notificationDOMRef, "Error", "warning", error);
         }
       }).catch = error => {

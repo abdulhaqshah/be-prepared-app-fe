@@ -52,7 +52,7 @@ class Login extends Component {
     ) {
       addNotification(this.notificationDOMRef, "Error", "danger", nextProps.message);
     } else {
-      let error = API.serverDownErrorMessage(nextProps.message)
+      let error = API.getErrorMessage(nextProps.message)
       addNotification(this.notificationDOMRef, "Error", "danger", error);
     }
   }
