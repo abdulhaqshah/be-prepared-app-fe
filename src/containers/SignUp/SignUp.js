@@ -75,12 +75,8 @@ class SignUp extends Component {
             result.message
           );
         } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            result.message
-          );
+          let error = API.serverDownErrorMessage(result.message)
+          addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
         addNotification(this.notificationDOMRef, "Error", "warning", error);

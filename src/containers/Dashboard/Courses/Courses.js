@@ -21,7 +21,6 @@ class Courses extends Component {
           return obj.name;
         });
         course = course.slice(0, 6);
-
         this.setState({
           courses: course
         });
