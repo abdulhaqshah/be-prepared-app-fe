@@ -7,7 +7,6 @@ import "./Navbar.scss";
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    // console.log(this.getPathname());
     this.onLogout = this.onLogout.bind(this);
   }
 

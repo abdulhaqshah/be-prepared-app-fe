@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
-import { SINGUP, DASHBOARD } from "../../constants";
+import { DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
 import API from '../../api/index'
