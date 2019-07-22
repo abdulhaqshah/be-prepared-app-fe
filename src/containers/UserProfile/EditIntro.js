@@ -173,9 +173,7 @@ class EditInto extends Component {
               </form>
             </div>
           </div>
-          //{" "}
         </div>
-        //{" "}
       </div>
     );
   }
