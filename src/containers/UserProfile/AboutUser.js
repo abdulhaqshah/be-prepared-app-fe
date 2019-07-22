@@ -57,7 +57,7 @@ class AboutUser extends Component {
             result.message
           );
         } else {
-          let error = API.serverDownErrorMessage(result.message)
+          let error = API.getErrorMessage(result.message)
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {

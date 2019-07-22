@@ -72,8 +72,7 @@ const userAboutInfo = (data, resolve, reject) => {
     .catch(err => reject(err));
 };
 
-const serverDownErrorMessage = (error) => {
-  debugger
+const getErrorMessage = (error) => {
   if (error === 'Failed to fetch') {
     return 'Something went wrong. Try again later'
   } else {
@@ -91,5 +90,5 @@ export default {
   tutorialData,
   courseData,
   quizData,
-  serverDownErrorMessage
+  getErrorMessage
 };
