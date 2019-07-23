@@ -22,7 +22,7 @@
     }
     .form-field {
       border: solid 1px;
-      width: 100%;
+      width: 25rem;
       height: 40px;
       border-radius: 4px;
     }
@@ -33,5 +33,9 @@
     .form-error-msg {
       color: red;
     }
+  }
+  .ck.ck-editor {
+    position: relative;
+    width: 25rem;
   }
 }
