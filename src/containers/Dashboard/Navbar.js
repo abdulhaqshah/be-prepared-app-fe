@@ -101,21 +101,6 @@ class Navbar extends Component {
                     PRACTICE
                   </a>
                 </li>
-                {/* <li className="nav-item ml-1">
-                  <a className="nav-link" href={HOME}>
-                    COMPETE
-                  </a>
-                </li>
-                <li className="nav-item ml-1">
-                  <a className="nav-link" href={HOME}>
-                    JOBS
-                  </a>
-                </li>
-                <li className="nav-item ml-1">
-                  <a className="nav-link" href={HOME}>
-                    LEADERBOARD
-                  </a>
-                </li> */}
               </ul>
               <ul className="navbar-nav mr-3 ml-3">
                 <li className="nav-item">
