@@ -226,18 +226,9 @@ class TutorialForm extends Component {
                   <label className="labels">
                     Content
                   </label>
-                  {/* <textarea className="form-control"
-                    rows="4"
-                    name="content"
-                    onChange={this.handleUserInput}
-                  /> */}
                   <CKEditor
                     className="form-control"
                     editor={ ClassicEditor }
-                    onInit={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
                     onChange={ ( event, editor ) => {
                       this.setState({ content : editor.getData() });
                     } }
