@@ -5,6 +5,8 @@ import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities/index";
 import API from "../../../api/index";
 import "./CourseForm.scss";
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class CourseForm extends Component {
   constructor(props) {
@@ -104,13 +106,17 @@ class CourseForm extends Component {
                 </div>
                 <div>
                   <label className="labels">Description</label>
-                  <textarea
+                  <CKEditor
                     className="form-control"
-                    name="description"
-                    type="text"
-                    rows="5"
-                    onChange={this.handleUserInput}
-                  />
+                    editor={ ClassicEditor }
+                    onInit={ editor => {
+                        // You can store the "editor" and use when it is needed.
+                        console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event, editor ) => {
+                      this.setState({ description : editor.getData() });
+                    } }
+                />
                   <div className="form-error-msg">
                     {this.validator.message(
                       "description",
