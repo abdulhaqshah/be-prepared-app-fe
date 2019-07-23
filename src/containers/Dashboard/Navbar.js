@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from "react";
 import * as auth from "../../services/Session";
 import { HOME } from "../../constants";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./Navbar.scss";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      btnName:
+        window.location.pathname === "/login"
+          ? this.props.signupBtn
+          : this.props.loginBtn
+    };
     this.onLogout = this.onLogout.bind(this);
   }
 
@@ -15,21 +21,20 @@ class Navbar extends Component {
     this.props.history.push(HOME);
   }
 
-  getBtnName = () => {
+  onBtnClick = () => {
     if (window.location.pathname === "/login") {
-      return this.props.signupBtn;
+      this.props.history.push(this.props.signupRoute);
+      this.setState({
+        btnName: this.props.loginBtn
+      });
     } else {
-      return this.props.loginBtn;
+      this.props.history.push(this.props.loginRoute);
+      this.setState({
+        btnName: this.props.signupBtn
+      });
     }
   };
 
-  getRouteName = () => {
-    if (window.location.pathname === "/login") {
-      return this.props.signupRoute;
-    } else {
-      return this.props.loginRoute;
-    }
-  };
   render() {
     const token = auth.getItem("token");
     if (token === null) {
@@ -54,12 +59,12 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <div className="d-lg-flex flex-row-reverse">
               <div className="login-btn">
-                <Link
-                  to={this.getRouteName()}
+                <button
                   className="btn-secondary btn-login"
+                  onClick={this.onBtnClick}
                 >
-                  {this.getBtnName()}
-                </Link>
+                  {this.state.btnName}
+                </button>
               </div>
             </div>
           </div>
@@ -172,4 +177,4 @@ class Navbar extends Component {
     }
   }
 }
-export default Navbar;
+export default withRouter(Navbar);
