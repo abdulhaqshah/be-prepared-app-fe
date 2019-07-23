@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import * as auth from "../../services/Session";
 import { HOME, PROFILE } from "../../constants";
 import { Link, withRouter } from "react-router-dom";
@@ -101,7 +101,7 @@ class Navbar extends Component {
                     PRACTICE
                   </a>
                 </li>
-                <li className="nav-item ml-1">
+                {/* <li className="nav-item ml-1">
                   <a className="nav-link" href={HOME}>
                     COMPETE
                   </a>
@@ -115,7 +115,7 @@ class Navbar extends Component {
                   <a className="nav-link" href={HOME}>
                     LEADERBOARD
                   </a>
-                </li>
+                </li> */}
               </ul>
               <ul className="navbar-nav mr-3 ml-3">
                 <li className="nav-item">
@@ -148,25 +148,8 @@ class Navbar extends Component {
                     <Link to={PROFILE} className="dropdown-item">
                       Profile
                     </Link>
-                    <Link to={PROFILE} className="dropdown-item">
-                      Settings
-                    </Link>
-                    <Link to={PROFILE} className="dropdown-item">
-                      Bookmarks
-                    </Link>
-                    <Link to={PROFILE} className="dropdown-item">
-                      Network
-                    </Link>
-                    <Link to={PROFILE} className="dropdown-item">
-                      Submissions
-                    </Link>
-                    <Link to={PROFILE} className="dropdown-item">
-                      Administration
-                    </Link>
-                    <div
-                      className="dropdown-item"
-                      onClick={this.onLogout}
-                    >
+
+                    <div className="dropdown-item" onClick={this.onLogout}>
                       Logout
                     </div>
                   </div>
