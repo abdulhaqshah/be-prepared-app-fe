@@ -1,22 +1,22 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux"
 import * as auth from "../../services/Session";
-import { HOME } from "../../constants";
-import { withRouter, Link } from "react-router-dom";
+import { HOME, PROFILE } from "../../constants";
+import { Link, withRouter } from "react-router-dom";
 import "./Navbar.scss";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       btnName:
         window.location.pathname === "/login"
           ? this.props.signupBtn
           : this.props.loginBtn
     };
     this.onLogout = this.onLogout.bind(this);
-    this.state = {
-      name: ""
-    };
+    this.onBtnClick = this.onBtnClick.bind(this);
   }
 
   onLogout() {
@@ -163,13 +163,12 @@ class Navbar extends Component {
                     <Link to={PROFILE} className="dropdown-item">
                       Administration
                     </Link>
-                    <Link
-                      to={HOME}
+                    <div
                       className="dropdown-item"
                       onClick={this.onLogout}
                     >
-                      logout
-                    </Link>
+                      Logout
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -180,4 +179,9 @@ class Navbar extends Component {
     }
   }
 }
-export default withRouter(Navbar);
+const mapStateToProps = state => {
+  return {
+    user: state.user.user
+  };
+};
+export default withRouter(connect(mapStateToProps)(Navbar));
