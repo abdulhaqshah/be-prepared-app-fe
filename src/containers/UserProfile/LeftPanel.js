@@ -11,7 +11,6 @@ class LeftPane extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      readOnly: true,
       open: true
     };
     this.notificationDOMRef = React.createRef();
