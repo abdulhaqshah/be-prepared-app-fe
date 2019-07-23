@@ -1,19 +1,22 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux"
 import * as auth from "../../services/Session";
-import { HOME } from "../../constants";
-import { withRouter, Link } from "react-router-dom";
+import { HOME, PROFILE } from "../../constants";
+import { Link, withRouter } from "react-router-dom";
 import "./Navbar.scss";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       btnName:
         window.location.pathname === "/login"
           ? this.props.signupBtn
           : this.props.loginBtn
     };
     this.onLogout = this.onLogout.bind(this);
+    this.onBtnClick = this.onBtnClick.bind(this);
   }
 
   onLogout() {
@@ -136,37 +139,36 @@ class Navbar extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i className="fa fa-user-o fa-lg ml-1" /> {this.props.name}
+                    <i className="fa fa-user-o fa-lg ml-1" /> {this.state.name}
                   </a>
                   <div
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a href="./profile" className="dropdown-item">
+                    <Link to={PROFILE} className="dropdown-item">
                       Profile
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Settings
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Bookmarks
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Network
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Submissions
-                    </a>
-                    <a href="./home" className="dropdown-item">
+                    </Link>
+                    <Link to={PROFILE} className="dropdown-item">
                       Administration
-                    </a>
-                    <a
-                      href="."
+                    </Link>
+                    <div
                       className="dropdown-item"
                       onClick={this.onLogout}
                     >
                       Logout
-                    </a>
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -177,4 +179,9 @@ class Navbar extends Component {
     }
   }
 }
-export default withRouter(Navbar);
+const mapStateToProps = state => {
+  return {
+    user: state.user.user
+  };
+};
+export default withRouter(connect(mapStateToProps)(Navbar));

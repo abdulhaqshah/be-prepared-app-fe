@@ -17,8 +17,7 @@ class Login extends Component {
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       email: "",
-      password: "",
-      status: ""
+      password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
