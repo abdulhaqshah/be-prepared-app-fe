@@ -46,9 +46,14 @@ class Login extends Component {
       nextProps.status === "403" ||
       nextProps.status === "500"
     ) {
-      addNotification(this.notificationRef, "Error", "danger", nextProps.message);
+      addNotification(
+        this.notificationRef,
+        "Error",
+        "danger",
+        nextProps.message
+      );
     } else {
-      let error = API.getErrorMessage(nextProps.message)
+      let error = API.getErrorMessage(nextProps.message);
       addNotification(this.notificationRef, "Error", "danger", error);
     }
   }
@@ -117,12 +122,7 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button
-                  className="login-button"
-                  name="loginBtn"
-                  type="submit"
-                  onClick={this._changeState}
-                >
+                <button className="login-button" name="loginBtn" type="submit">
                   LOGIN
                 </button>
               </div>
