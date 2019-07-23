@@ -18,13 +18,16 @@
     }
     .name-field {
       border: solid 1px;
-      width: 100%;
+      width: 25rem;
       height: 40px;
       border-radius: 4px;
       position: relative;
       &:hover {
         color: grey;
       }
+    }
+    .custom-select{
+      width: 25rem;
     }
     .tag-field {
       border: solid 1px;
@@ -66,14 +69,12 @@
       margin: 0;
       margin-left: 10px;
       margin-top: 10px;
-      width : auto;
       font-size: 16px;
       border-radius: 4px;
     }
     .tagholder input {
       margin: 0;
       margin-top: 10px;
-      width: auto;
     }
     .tag-button button {
       margin: 0;
@@ -81,7 +82,7 @@
     }
     .content-field {
       .form-control {
-        resize : none;
+        width : 13rem;
       }
     }
     textarea {
@@ -108,4 +109,14 @@
   margin-right: -15px;
   margin-left: -15px;
   padding: 10px;
+}
+.ck.ck-editor__editable_inline {
+  height: 250px;
+}
+
+.content-field {
+  .ck.ck-editor {
+    position: relative;
+    width: 25rem;
+  }
 }

@@ -5,6 +5,8 @@ import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities";
 import API from "../../../api/index";
 import "./TutorialForm.scss";
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class TutorialForm extends Component {
   constructor(props) {
@@ -123,9 +125,11 @@ class TutorialForm extends Component {
                 ref={ref => (this.formRef = ref)}
               >
                 <div>
+                  <div>
                   <label className="labels">
                     Name
                   </label>
+                  </div>
                   <input
                     className="name-field"
                     name="name"
@@ -142,9 +146,11 @@ class TutorialForm extends Component {
                   </div>
                 </div>
                 <div>
+                  <div>
                   <label className="labels">
                     Course
                   </label>
+                  </div>
                   <select className="browser-default custom-select custom-select-lg mb-2"
                     name="courseId"
                     type="text"
@@ -220,11 +226,22 @@ class TutorialForm extends Component {
                   <label className="labels">
                     Content
                   </label>
-                  <textarea className="form-control"
+                  {/* <textarea className="form-control"
                     rows="4"
                     name="content"
                     onChange={this.handleUserInput}
-                  />
+                  /> */}
+                  <CKEditor
+                    className="form-control"
+                    editor={ ClassicEditor }
+                    onInit={ editor => {
+                        // You can store the "editor" and use when it is needed.
+                        console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event, editor ) => {
+                      this.setState({ content : editor.getData() });
+                    } }
+                />
                 </div>
                 <div className="form-error-msg">
                 {this.validator.message(
