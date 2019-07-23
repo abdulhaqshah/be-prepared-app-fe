@@ -163,7 +163,11 @@ class Navbar extends Component {
                     <Link to={PROFILE} className="dropdown-item">
                       Administration
                     </Link>
-                    <Link to={HOME} className="dropdown-item">
+                    <Link
+                      to={HOME}
+                      className="dropdown-item"
+                      onClick={this.onLogout}
+                    >
                       logout
                     </Link>
                   </div>
