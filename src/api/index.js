@@ -16,7 +16,8 @@ import {
   GET_TUTORIALS_BY_COURSE_ID,
   GET_QUIZES_BY_COURSE_ID,
   GET_TUTORIAL_BY_ID,
-  GET_QUIZ_BY_ID
+  GET_QUIZ_BY_ID,
+  EMAIL_CONFIRMATION
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -121,6 +122,11 @@ const getTutorialById = (tutorialId, resolve, reject) => {
 
 const getQuizById = (quizId, resolve, reject) => {
   return GlobalAPISvc(GET_QUIZ_BY_ID(quizId), METHODS.GET)
+  .then(res => resolve(res))
+  .catch(err => reject(err));
+};
+const emailConfirmation = (resolve, reject) => {
+  return GlobalAPISvc(EMAIL_CONFIRMATION, METHODS.GET)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -151,5 +157,6 @@ export default {
   getTutorialByCourseId,
   getQuizByCourseId,
   getTutorialById,
-  getQuizById
+  getQuizById,
+  emailConfirmation
 };
