@@ -1,21 +1,17 @@
 .content-container {
   margin-top: 80px;
-  .container{
+  .container {
     padding: 0%;
   }
   .card,
   .btn-outline-success,
   .btn-success {
-    border-radius: 0% ;
-  }
-  .prac,
-  p {
-    font-family: "sans-serif";
-    color: #738f93;
+    border-radius: 0%;
   }
   .heading {
     font-size: 26px;
     font-weight: 700;
+    padding-bottom: 20px;
   }
   .main-container {
     background-color: #f3f7f7;
@@ -24,7 +20,7 @@
   .bookmark {
     color: #50aa52;
     padding-right: 45px;
-    &:hover{
+    &:hover {
       text-decoration: none;
       color: green;
     }
