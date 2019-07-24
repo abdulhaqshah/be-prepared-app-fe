@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
-import { FORGET_PASSWORD } from "../../constants/index";
+import { addNotification } from "../../utilities";
 import "./ForgetPassword.scss";
-// import API from "../../api/index";
+import API from "../../api/index";
 
 class ForgetPassword extends Component {
   constructor(props) {
@@ -28,18 +27,44 @@ class ForgetPassword extends Component {
     this.setState({ [name]: value.trim() });
   }
 
-  submitForm(e) {
+  submitForm = e => {
+    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { email } = this.state;
+      let { email } = this.state;
       const data = {
         email
+      };
+      API.emailConfirmation(data, result => {
+        debugger;
+        if (result.status === "200") {
+          addNotification(
+            this.notificationDOMRef,
+            "Success",
+            "success",
+            result.message
+          );
+          this.formRef.reset();
+        } else if (result.status === "400" || result.status === "404") {
+          console.log("error 404");
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "danger",
+            result.message
+          );
+        } else {
+          let error = API.getErrorMessage(result.message);
+          addNotification(this.notificationDOMRef, "Error", "danger", error);
+        }
+      }).catch = error => {
+        addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
       this.forceUpdate();
     }
-  } 
+  };
 
   render() {
     return (
