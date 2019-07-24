@@ -26,8 +26,10 @@ import {
   QUIZ_FORM,
   QUIZ_CONTENT_FORM,
   TUTORIAL_UPDATION_FORM,
-  COURSE_UPDATION_FORM
+  COURSE_UPDATION_FORM,
+  COURSE_PAGE
 } from "../constants";
+import CoursePage from "../containers/Pages/CoursePage";
 
 class Routes extends Component {
   constructor(props) {
@@ -101,6 +103,11 @@ class Routes extends Component {
           component={CourseUpdationForm}
           notificationRef={this.notificationDOMRef} 
          />
+        <ProtectedRoute
+          path={COURSE_PAGE}
+          component={CoursePage}
+          notificationRef={this.notificationDOMRef}
+        />
       </Router>
     );
   }
