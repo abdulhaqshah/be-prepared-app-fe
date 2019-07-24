@@ -1,26 +1,45 @@
 import React, { Component } from "react";
-import ReactNotification from "react-notifications-component";
+import { Link } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
+import { FORGET_PASSWORD } from "../../constants/index";
 import "./ForgetPassword.scss";
+// import API from "../../api/index";
 
 class ForgetPassword extends Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
+      email: "",
       newPassword: "",
       confirmPassword: ""
     };
+    this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
 
-  handleUserInput = e => {
+  handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
-  };
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+    if (this.validator.allValid()) {
+      var { email } = this.state;
+      const data = {
+        email
+      };
+    } else {
+      this.validator.showMessages();
+      this.forceUpdate();
+    }
+  } 
 
   render() {
     return (
@@ -28,69 +47,41 @@ class ForgetPassword extends Component {
         <div>
           <ReactNotification ref={this.notificationDOMRef} />
         </div>
-        <div className="d-flex justify-content-center container">
-          <div className="row">
-            <div className="form-inner-container">
-              <h1 className="heading" align="center">
-                Forget Password
-              </h1>
-              <form
-                onSubmit={this.submitForm}
-                ref={ref => (this.formRef = ref)}
-              >
-                <div>
-                  <label className="labels vertical-spacing">
-                    New Password
-                    <span className="login-required-indicator">*</span>
-                  </label>
-                  <br />
-                  <input
-                    className="login-field"
-                    name="password"
-                    type="password"
-                    onChange={this.handleUserInput}
-                  />
-                  <div className="login-error-msg">
-                    {this.validator.message(
-                      "newPassword",
-                      this.state.newPassword,
-                      "required"
-                    )}
-                  </div>
+        <div className="forgetPassword-container">
+          <div className="forgetPassword-inner-container">
+            <h1 className="heading" align="center">
+              Forget Password
+            </h1>
+            <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
+              <div>
+                <label className="labels">
+                  Email
+                  <span className="forgetPassword-required-indicator">*</span>
+                </label>
+                <br />
+                <input
+                  className="forgetPassword-field"
+                  name="email"
+                  onChange={this.handleUserInput}
+                />
+                <div className="forgetPassword-error-msg">
+                  {this.validator.message(
+                    "email",
+                    this.state.email,
+                    "required"
+                  )}
                 </div>
-
-                <div>
-                  <label className="labels vertical-spacing">
-                    Confirm Password
-                    <span className="login-required-indicator">*</span>
-                  </label>
-                  <br />
-                  <input
-                    autoComplete="off"
-                    className="login-field"
-                    name="password"
-                    type="password"
-                    onChange={this.handleUserInput}
-                  />
-                  <div className="login-error-msg">
-                    {this.validator.message(
-                      "confirmPassword",
-                      this.state.confirmPassword,
-                      "required"
-                    )}
-                  </div>
-                </div>
-                <div>
-                  <button
-                    className="login-button"
-                    name="loginBtn"
-                    type="submit"
-                  >
-                    SUBMIT
-                  </button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div>
+                <button
+                  className="forgetPassword-button"
+                  name="forgetPasswordBtn"
+                  type="submit"
+                >
+                  Confirm Email
+                </button>
+              </div>
+            </form>
           </div>
         </div>
         <Footer />
@@ -98,5 +89,4 @@ class ForgetPassword extends Component {
     );
   }
 }
-
 export default ForgetPassword;
