@@ -97,9 +97,7 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto ml-3">
                 <li className="nav-item active">
-                  <a className="nav-link active" href={HOME}>
-                    Dashboard
-                  </a>
+                  <Link className="nav-link active">Dashboard</Link>
                 </li>
               </ul>
               <ul className="navbar-nav mr-3 ml-3">
