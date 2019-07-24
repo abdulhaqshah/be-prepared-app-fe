@@ -98,7 +98,7 @@ class Navbar extends Component {
               <ul className="navbar-nav mr-auto ml-3">
                 <li className="nav-item active">
                   <a className="nav-link active" href={HOME}>
-                    PRACTICE
+                    Dashboard
                   </a>
                 </li>
               </ul>
