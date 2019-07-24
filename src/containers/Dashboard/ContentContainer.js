@@ -10,11 +10,6 @@ class ContentContainer extends Component {
   render() {
     return (
       <div className="content-container">
-        <header className="container">
-          <div className="ml-5">
-            <h1 className="heading">Dashboard</h1>
-          </div>
-        </header>
         <div className="main-container">
           <div className="container">
             <Skills />
