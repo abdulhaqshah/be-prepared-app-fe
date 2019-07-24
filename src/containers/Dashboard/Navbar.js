@@ -103,17 +103,6 @@ class Navbar extends Component {
                 </li>
               </ul>
               <ul className="navbar-nav mr-3 ml-3">
-                <li className="nav-item">
-                  <form className="form-inline md-form form-sm mt-0">
-                    <i className="fa fa-search" />
-                    <input
-                      className=" form-control-sm ml-3 w-75"
-                      type="text"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                  </form>
-                </li>
                 <li className="nav-item dropdown mr-5">
                   <a
                     href="."
