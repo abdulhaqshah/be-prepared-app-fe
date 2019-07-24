@@ -1,15 +1,10 @@
 .skill-label {
   font-size: 20px;
 }
-.interview-prep,
-.email,
 .prob-sol {
   .card {
     width: 30rem;
     height: 15rem;
-    .email-p {
-      color: black;
-    }
     .card-title,
     p {
       font-size: 13px;
@@ -18,9 +13,6 @@
     .card-heading {
       color: #0d1525;
       font-weight: bold;
-      .email-add {
-        color: rgb(27, 169, 76);
-      }
     }
 
     .btn-div {
@@ -33,19 +25,8 @@
       border-radius: 0%;
       border: 2ch;
     }
-    .email-verficitaion-card-content {
-      .card-email-btn.btn-success {
-        background: #ffffff;
-        color: black;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 0%;
-        border: 2ch;
-      }
-    }
   }
 }
-
 .prob-sol {
   .progress {
     height: 5px;
@@ -54,19 +35,4 @@
       background: rgb(27, 169, 76);
     }
   }
-}
-.email .card-icon,
-.email .email-verficitaion-card-content {
-  display: inline;
-}
-.email .card-icon {
-  padding-top: 11px;
-  float: left;
-}
-.email .email-verficitaion-card-content {
-  width: 380px;
-  float: right;
-}
-.card.bg-color {
-  background-color: #e7eeef;
 }
