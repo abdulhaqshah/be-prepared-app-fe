@@ -108,6 +108,9 @@ class CourseForm extends Component {
                   <label className="labels">Description</label>
                   <CKEditor
                     className="form-control"
+                    config ={{
+                      removePlugins: ['MediaEmbed', 'ImageUpload']
+                    }}
                     editor={ ClassicEditor }
                     onChange={ ( event, editor ) => {
                       this.setState({ description : editor.getData() });
@@ -123,11 +126,11 @@ class CourseForm extends Component {
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
-                    className="btn btn-secondary col-lg-4 mt-1"
+                    className="btn btn-secondary col-lg-2 mt-1"
                     name="addBtn"
                     type="submit"
                   >
-                    Add Course
+                    Save
                   </button>
                 </div>
               </form>

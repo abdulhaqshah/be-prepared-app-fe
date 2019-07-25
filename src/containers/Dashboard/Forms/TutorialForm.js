@@ -247,12 +247,12 @@ class TutorialForm extends Component {
                 </div>
                 <div className="row d-flex flex-row-reverse mt-4">
                   <button
-                    className="btn btn-secondary col-lg-4 mt-1 mr-1 ml-1"
+                    className="btn btn-secondary col-lg-2 mt-1 mr-1 ml-1"
                     name="saveBtn"
                     type="button"
                     onClick={this.submitForm}
                   >
-                    Add Tutorial
+                    Save
                   </button>
                 </div>
               </form>
