@@ -12,7 +12,6 @@ class Container extends Component {
   }
 
   setResetPassword = () => {
-    debugger;
     this.setState({
       resetPassword: true
     });
@@ -20,7 +19,6 @@ class Container extends Component {
   };
 
   setEmailConfirmation = () => {
-    debugger;
     this.setState({
       emailConfirmation: false
     });

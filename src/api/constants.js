@@ -48,6 +48,7 @@ export const TUTORIAL_UPDATE_CONTENT = tutorialId => {
 export const COURSE_UPDATE_DESCRIPTION = courseId => {
   return `/course/update/${courseId}`;
 };
+export const UPDATE_PASSWORD = "user/updatePassword";
 export const EMAIL_CONFIRMATION = email => {
   return `/user/emailExist/${email}`;
 };

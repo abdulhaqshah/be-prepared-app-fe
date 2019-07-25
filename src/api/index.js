@@ -17,7 +17,8 @@ import {
   GET_QUIZES_BY_COURSE_ID,
   GET_TUTORIAL_BY_ID,
   GET_QUIZ_BY_ID,
-  EMAIL_CONFIRMATION
+  EMAIL_CONFIRMATION,
+  UPDATE_PASSWORD
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -134,6 +135,12 @@ const emailConfirmation = (data, resolve, reject) => {
     .catch(err => reject(err));
 };
 
+const updatePassword = (data, resolve, reject) => {
+  return GlobalAPISvc(UPDATE_PASSWORD, METHODS.PATCH, data)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+
 const getErrorMessage = error => {
   if (error === "Failed to fetch") {
     return "Something went wrong. Try again later";
@@ -161,5 +168,6 @@ export default {
   getQuizByCourseId,
   getTutorialById,
   getQuizById,
-  emailConfirmation
+  emailConfirmation,
+  updatePassword
 };
