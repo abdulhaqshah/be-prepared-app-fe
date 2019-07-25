@@ -55,12 +55,14 @@ class UpdatePassword extends Component {
         if (result.status === "200") {
           this.formRef.reset();
           this.props.history.push(LOGIN);
-          // addNotification(
-          //   this.notificationDOMRef,
-          //   "Success",
-          //   "success",
-          //   result.message
-          // );
+          console.log(this);
+          debugger
+          addNotification(
+            this.notificationDOMRef,
+            "Success",
+            "success",
+            result.message
+          );
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
             this.notificationDOMRef,

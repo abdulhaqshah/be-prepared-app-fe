@@ -1,4 +1,5 @@
 export const addNotification = (notificationDOMRef, title, type, message) => {
+  debugger
   notificationDOMRef.current.addNotification({
     title,
     message,
