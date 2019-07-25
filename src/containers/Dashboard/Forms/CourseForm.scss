@@ -1,11 +1,16 @@
 .container {
+  width : 100%;
+  padding: 0px;
+  .row{ 
+    width : 100%;
+  }
   .form-inner-container {
     background: #fffdfd;
     padding-top: 4px;
     border: 2px solid black;
     border-radius: 15px;
     height: auto;
-    width: auto;
+    width: 100%;
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 80px;
@@ -22,7 +27,7 @@
     }
     .form-field {
       border: solid 1px;
-      width: 25rem;
+      width: 35%;
       height: 40px;
       border-radius: 4px;
     }
@@ -36,6 +41,6 @@
   }
   .ck.ck-editor {
     position: relative;
-    width: 25rem;
+    width: 100%;
   }
 }

@@ -1,4 +1,9 @@
 .container {
+  width : 100%;
+  padding: 0px;
+  .row{
+    width : 100%;
+  }
   .form-inner-container {
     background: #fffdfd;
     padding-top: 4px;
@@ -6,8 +11,8 @@
     border-radius: 15px;
     height: auto;
     width: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    //padding-left: 10px;
+    //padding-right: 10px;
     margin-top: 80px;
     .row.d-flex {
       margin-left: 2px;
@@ -18,7 +23,7 @@
     }
     .name-field {
       border: solid 1px;
-      width: 25rem;
+      width: 35%;
       height: 40px;
       border-radius: 4px;
       position: relative;
@@ -27,7 +32,7 @@
       }
     }
     .custom-select{
-      width: 25rem;
+      width: 35%;
     }
     .tag-field {
       border: solid 1px;
@@ -46,6 +51,10 @@
       width: 225px;
       border-radius: 4px;
       position: relative;
+    }
+    .ck.ck-editor {
+      position: relative;
+      width: 100%;
     }
     .tagholder{
       .row {
@@ -111,12 +120,13 @@
   padding: 10px;
 }
 .ck.ck-editor__editable_inline {
-  height: 250px;
+  height: 500px;
 }
 
 .content-field {
+  width : 100%;
   .ck.ck-editor {
     position: relative;
-    width: 25rem;
+    width: 100%;
   }
 }
