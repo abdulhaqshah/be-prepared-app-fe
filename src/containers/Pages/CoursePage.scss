@@ -1,7 +1,18 @@
-.main-container {
+.main-course-container {
   background-image: url("https://lmstheme.wpengine.com/wp-content/themes/lms/framework/theme_options/images/patterns/pattern1.jpg");
   .container {
     padding: 0%;
+    // .zoom {
+    //   padding: 50px;
+    //   transition: transform 0.2s;
+    //   margin: 0 auto;
+    // }
+
+    // .zoom:hover {
+    //   -ms-transform: scale(1.5); /* IE 9 */
+    //   -webkit-transform: scale(1.5); /* Safari 3-8 */
+    //   transform: scale(1.5);
+    // }
     .image {
       width: 100%;
       height: 500px;

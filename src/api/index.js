@@ -11,7 +11,8 @@ import {
   COURSE_DATA,
   QUIZ_DATA,
   TUTORIAL_UPDATE_CONTENT,
-  COURSE_UPDATE_DESCRIPTION
+  COURSE_UPDATE_DESCRIPTION,
+  GET_COURSE_BY_ID
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -23,11 +24,13 @@ const userRegister = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const userLogin = (data, resolve, reject) => {
   return GlobalAPISvc(USER_LOGIN_URL, METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const updateData = (data, resolve, reject) => {
   return GlobalAPISvc(UPDATE_DATA, METHODS.PATCH, data)
     .then(res => resolve(res))
@@ -35,6 +38,7 @@ const updateData = (data, resolve, reject) => {
       return reject(err);
     });
 };
+
 const getCourses = (resolve, reject) => {
   return GlobalAPISvc(GET_COURSES, METHODS.GET)
     .then(res => resolve(res))
@@ -58,16 +62,19 @@ const courseData = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const quizData = (data, resolve, reject) => {
   return GlobalAPISvc(QUIZ_DATA, METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const tutorialData = (data, resolve, reject) => {
   return GlobalAPISvc(TUTORIAL_DATA, METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const userAboutInfo = (data, resolve, reject) => {
   return GlobalAPISvc(USER_ABOUT_INFO(uuid), METHODS.PATCH, data)
     .then(res => resolve(res))
@@ -76,6 +83,11 @@ const userAboutInfo = (data, resolve, reject) => {
 
 const tutorialUpdateContent = (tutorialId, data, resolve, reject) => {
   return GlobalAPISvc(TUTORIAL_UPDATE_CONTENT(tutorialId), METHODS.PATCH, data)
+  .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+const getCourseById = (courseId, resolve, reject) => {
+  return GlobalAPISvc(GET_COURSE_BY_ID(courseId), METHODS.GET)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -86,13 +98,14 @@ const courseUpdateDescription = (courseId, data, resolve, reject) => {
     .catch(err => reject(err));
 };
 
-const getErrorMessage = (error) => {
-  if (error === 'Failed to fetch') {
-    return 'Something went wrong. Try again later'
+const getErrorMessage = error => {
+  if (error === "Failed to fetch") {
+    return "Something went wrong. Try again later";
   } else {
     return error;
   }
-}
+};
+
 export default {
   userRegister,
   userLogin,
@@ -106,5 +119,6 @@ export default {
   quizData,
   getErrorMessage,
   tutorialUpdateContent,
-  courseUpdateDescription
+  courseUpdateDescription,
+  getCourseById
 };

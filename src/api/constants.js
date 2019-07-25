@@ -1,8 +1,8 @@
-let API = '';
+let API = "";
 
-if(process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   API = "http://localhost:8000";
-} else if (process.env.NODE_ENV === 'production') {
+} else if (process.env.NODE_ENV === "production") {
   API = "https://be-prepared-app-bk.herokuapp.com";
 }
 
@@ -21,9 +21,12 @@ export const UPDATE_DATA = "/user/userUpdate";
 export const GET_COURSES = "/course/allInActive";
 export const GET_TUTORIALS = "/tutorial/allInActive";
 export const GET_QUIZZES = "/quiz/allInActive";
-export const TUTORIAL_DATA = '/tutorial/new'
-export const COURSE_DATA = '/course/new'
-export const QUIZ_DATA = '/quiz/new'
+export const TUTORIAL_DATA = "/tutorial/new";
+export const COURSE_DATA = "/course/new";
+export const QUIZ_DATA = "/quiz/new";
+export const GET_COURSE_BY_ID = courseId => {
+  return `/course/${courseId}/courseById`;
+};
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
