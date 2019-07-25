@@ -4,15 +4,28 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
-import "./ForgetPassword.scss";
+import "./EmailConfirmation.scss";
 import API from "../../api/index";
 
-class ForgetPassword extends Component {
+class ResetPassword extends Component {
   constructor(props) {
     super(props);
+    this.validator = new SimpleReactValidator(
+      { autoForceUpdate: this },
+      {
+        validators: {
+          cp: {
+            message: "The :attribute does not match.",
+            rule: (val, params, validator) => {
+              return Boolean(val) ? val === params[0] : null;
+            },
+            required: true
+          }
+        }
+      }
+    );
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
-      email: "",
       newPassword: "",
       confirmPassword: ""
     };
@@ -28,15 +41,14 @@ class ForgetPassword extends Component {
   }
 
   submitForm = e => {
-    debugger;
     e.preventDefault();
     if (this.validator.allValid()) {
-      let { email } = this.state;
+      let { newPassword, confirmPassword } = this.state;
       const data = {
-        email
+        newPassword,
+        confirmPassword
       };
       API.emailConfirmation(data, result => {
-        debugger;
         if (result.status === "200") {
           addNotification(
             this.notificationDOMRef,
@@ -46,7 +58,6 @@ class ForgetPassword extends Component {
           );
           this.formRef.reset();
         } else if (result.status === "400" || result.status === "404") {
-          console.log("error 404");
           addNotification(
             this.notificationDOMRef,
             "Error",
@@ -75,35 +86,57 @@ class ForgetPassword extends Component {
         <div className="forgetPassword-container">
           <div className="forgetPassword-inner-container">
             <h1 className="heading" align="center">
-              Forget Password
+              Reset Password
             </h1>
             <form onSubmit={this.submitForm} ref={ref => (this.formRef = ref)}>
               <div>
-                <label className="labels">
-                  Email
-                  <span className="forgetPassword-required-indicator">*</span>
-                </label>
-                <br />
-                <input
-                  className="forgetPassword-field"
-                  name="email"
-                  onChange={this.handleUserInput}
-                />
-                <div className="forgetPassword-error-msg">
-                  {this.validator.message(
-                    "email",
-                    this.state.email,
-                    "required"
-                  )}
+                <div>
+                  <label className="labels vertical-spacing">
+                    New Password <span className="required-indicator">*</span>
+                  </label>
+                  <br />
+                  <input
+                    autoComplete="off"
+                    className="field"
+                    name="password"
+                    type="password"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="error-msg">
+                    {this.validator.message(
+                      "password",
+                      this.state.password,
+                      "required|min:6|max:20"
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div>
+                <div>
+                  <label className="labels vertical-spacing">
+                    Confirm Password
+                    <span className="required-indicator">*</span>
+                  </label>
+                  <br />
+                  <input
+                    autoComplete="off"
+                    className="field"
+                    name="confirmPassword"
+                    type="password"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="error-msg">
+                    {this.validator.message(
+                      "confirmPassword",
+                      this.state.confirmPassword,
+                      "required|cp:" + this.state.password
+                    )}
+                  </div>
+                </div>
                 <button
                   className="forgetPassword-button"
                   name="forgetPasswordBtn"
                   type="submit"
                 >
-                  Confirm Email
+                  Reset
                 </button>
               </div>
             </form>
@@ -114,4 +147,4 @@ class ForgetPassword extends Component {
     );
   }
 }
-export default ForgetPassword;
+export default ResetPassword;
