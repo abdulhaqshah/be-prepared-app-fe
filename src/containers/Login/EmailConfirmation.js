@@ -28,11 +28,7 @@ class EmailConfirmation extends Component {
   submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
-      let { email } = this.state;
-      const data = {
-        email
-      };
-      API.emailConfirmation(data, result => {
+      API.emailConfirmation(this.state.email, result => {
         if (result.status === "200") {
           this.props.resetPassword();
         } else if (result.status === "400" || result.status === "404") {

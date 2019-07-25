@@ -24,8 +24,6 @@ export const GET_QUIZZES = "/quiz/allInActive";
 export const TUTORIAL_DATA = "/tutorial/new";
 export const COURSE_DATA = "/course/new";
 export const QUIZ_DATA = "/quiz/new";
-export const EMAIL_CONFIRMATION = "/user/emailExist";
-export const QUIZ_DATA = "/quiz/new";
 export const GET_COURSE_BY_ID = courseId => {
   return `/course/courseById/${courseId}`;
 };
@@ -41,16 +39,17 @@ export const GET_TUTORIAL_BY_ID = tutorialId => {
 export const GET_QUIZ_BY_ID = quizId => {
   return `/quiz/quizById/${quizId}`;
 };
-
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
 export const TUTORIAL_UPDATE_CONTENT = tutorialId => {
   return `/tutorial/update/${tutorialId}`;
 };
-
 export const COURSE_UPDATE_DESCRIPTION = courseId => {
   return `/course/update/${courseId}`;
+};
+export const EMAIL_CONFIRMATION = email => {
+  return `/user/emailExist/${email}`;
 };
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;

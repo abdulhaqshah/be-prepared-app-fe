@@ -88,9 +88,10 @@ const userAboutInfo = (data, resolve, reject) => {
 
 const tutorialUpdateContent = (tutorialId, data, resolve, reject) => {
   return GlobalAPISvc(TUTORIAL_UPDATE_CONTENT(tutorialId), METHODS.PATCH, data)
-  .then(res => resolve(res))
+    .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const getCourseById = (courseId, resolve, reject) => {
   return GlobalAPISvc(GET_COURSE_BY_ID(courseId), METHODS.GET)
     .then(res => resolve(res))
@@ -99,9 +100,10 @@ const getCourseById = (courseId, resolve, reject) => {
 
 const courseUpdateDescription = (courseId, data, resolve, reject) => {
   return GlobalAPISvc(COURSE_UPDATE_DESCRIPTION(courseId), METHODS.PATCH, data)
-  .then(res => resolve(res))
+    .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const getTutorialByCourseId = (courseId, resolve, reject) => {
   return GlobalAPISvc(GET_TUTORIALS_BY_COURSE_ID(courseId), METHODS.GET)
     .then(res => resolve(res))
@@ -122,11 +124,12 @@ const getTutorialById = (tutorialId, resolve, reject) => {
 
 const getQuizById = (quizId, resolve, reject) => {
   return GlobalAPISvc(GET_QUIZ_BY_ID(quizId), METHODS.GET)
-  .then(res => resolve(res))
-  .catch(err => reject(err));
+    .then(res => resolve(res))
+    .catch(err => reject(err));
 };
-const emailConfirmation = (resolve, reject) => {
-  return GlobalAPISvc(EMAIL_CONFIRMATION, METHODS.GET)
+
+const emailConfirmation = (data, resolve, reject) => {
+  return GlobalAPISvc(EMAIL_CONFIRMATION(data), METHODS.GET)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
