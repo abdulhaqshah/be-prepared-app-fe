@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import EmailConfirmation from "./EmailConfirmation";
-import UpdatePassword from "./updatePassword";
+import UpdatePassword from "./UpdatePassword";
+import { LOGIN } from "../../constants";
 
-class Container extends Component {
+class Password extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +31,7 @@ class Container extends Component {
     });
   };
   render() {
+    // this.props.history.push(LOGIN);
     return (
       <div>
         {this.state.emailConfirmation ? (
@@ -45,4 +47,4 @@ class Container extends Component {
     );
   }
 }
-export default Container;
+export default Password;

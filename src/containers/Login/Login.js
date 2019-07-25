@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
 import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
-import { DASHBOARD } from "../../constants";
+import { DASHBOARD, PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
 import API from "../../api/index";
@@ -126,8 +127,8 @@ class Login extends Component {
                   LOGIN
                 </button>
               </div>
-              <div align="center">
-                <a href="/forgetPassword">Forget Password</a>
+              <div className="forgotPassword" align="center">
+                <Link to={PASSWORD}>Forgot Password</Link>
               </div>
             </form>
           </div>

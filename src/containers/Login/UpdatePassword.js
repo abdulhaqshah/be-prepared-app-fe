@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
-import "./EmailConfirmation.scss";
 import API from "../../api/index";
 import { LOGIN } from "../../constants";
+import "./EmailConfirmation.scss";
 
-class updatePassword extends Component {
+class UpdatePassword extends Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator(
@@ -28,7 +29,7 @@ class updatePassword extends Component {
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
       email: this.props.email,
-      newPassword: "",
+      password: "",
       confirmPassword: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -45,21 +46,21 @@ class updatePassword extends Component {
   submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
-      let { email, newPassword } = this.state;
+      let { email, password } = this.state;
       const data = {
         email,
-        newPassword
+        password
       };
       API.updatePassword(data, result => {
         if (result.status === "200") {
-          this.props.history.push(LOGIN);
-          addNotification(
-            this.notificationDOMRef,
-            "Success",
-            "success",
-            result.message
-          );
           this.formRef.reset();
+          this.props.history.push(LOGIN);
+          // addNotification(
+          //   this.notificationDOMRef,
+          //   "Success",
+          //   "success",
+          //   result.message
+          // );
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
             this.notificationDOMRef,
@@ -150,4 +151,4 @@ class updatePassword extends Component {
     );
   }
 }
-export default updatePassword;
+export default withRouter(UpdatePassword);
