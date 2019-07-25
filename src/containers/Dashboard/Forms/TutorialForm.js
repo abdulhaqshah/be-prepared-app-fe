@@ -5,9 +5,60 @@ import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities";
 import API from "../../../api/index";
 import "./TutorialForm.scss";
+import ClassicEditor from './editor'
 import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// //import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+// import Enter from '@ckeditor/ckeditor5-enter/src/enter';
+// import Typing from '@ckeditor/ckeditor5-typing/src/typing';
+// import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+// import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+// //import Image from '@ckeditor/ckeditor5-image/src/image';
+// import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+// import Undo from '@ckeditor/ckeditor5-undo/src/undo';
+// import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
+// import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+// import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+// import List from '@ckeditor/ckeditor5-list/src/list';
+// import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+// import CKFinderUploadAdapter from '../../../uploadadapter';
+// import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 
+// const editorConfiguration = {
+//   plugins: [
+//     Essentials, Heading, Enter, Typing, Paragraph, Undo, Bold, Italic, Clipboard, List, ImageCaption, ImageToolbar,
+//     ImageStyle, ImageUpload, CKFinderUploadAdapter
+//   ],
+//   toolbar: [ 'heading', '|', 'undo', 'redo', 'bold', 'italic', 'bulletedList', 'numberedList', 'imageUpload']
+// };
+
+
+// ClassicEditor
+// 	.create( document.querySelector( '#editor1' ), {
+// 		ckfinder: {
+// 			uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+// 		},
+// 		toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+// 	} )
+// 	.catch( error => {
+// 		console.error( error );
+// 	} );
+// ClassicEditor
+//     .create( document.querySelector( '#editor' ), {
+//         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+//         Heading: {
+//             options: [
+//                 { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+//                 { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+//                 { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+//             ]
+//         }
+//     } )
+//     .catch( error => {
+//         console.log( error );
+//     } );
 class TutorialForm extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +76,22 @@ class TutorialForm extends Component {
     this.submitForm = this.submitForm.bind(this);
     this.resetState = this.resetState.bind(this);
     this.formRef = null;
+    ClassicEditor
+	.create( document.querySelector( '#editor' ), {
+		ckfinder: {
+			uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+		},
+		toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+	} )
+	.catch( error => {
+		console.error( error );
+  } );
+  ClassicEditor.defaultConfig = {
+    toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
+
+    // This value must be kept in sync with the language defined in webpack.config.js.
+    language: 'en'
+};
     API.getCourses(result => {
       if (result.status === "200") {
         this.setState({
@@ -227,7 +294,7 @@ class TutorialForm extends Component {
                     Content
                   </label>
                   <CKEditor
-                    className="form-control"
+                    className="editor1"
                     editor={ ClassicEditor }
                     onChange={ ( event, editor ) => {
                       this.setState({ content : editor.getData() });
