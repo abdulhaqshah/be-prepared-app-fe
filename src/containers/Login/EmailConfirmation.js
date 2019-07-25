@@ -12,9 +12,7 @@ class EmailConfirmation extends Component {
     super(props);
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
-      email: "",
-      newPassword: "",
-      confirmPassword: ""
+      email: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationDOMRef = React.createRef();
@@ -36,15 +34,7 @@ class EmailConfirmation extends Component {
       };
       API.emailConfirmation(data, result => {
         if (result.status === "200") {
-          debugger;
-          this.showForm();
-          addNotification(
-            this.notificationDOMRef,
-            "Success",
-            "success",
-            result.message
-          );
-          this.formRef.reset();
+          this.props.resetPassword();
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
             this.notificationDOMRef,
@@ -65,53 +55,6 @@ class EmailConfirmation extends Component {
     }
   };
 
-  showForm = () => {
-    debugger;
-    return (
-      <div>
-        <div>
-          <label className="labels vertical-spacing">
-            Password <span className="required-indicator">*</span>
-          </label>
-          <br />
-          <input
-            autoComplete="off"
-            className="field"
-            name="password"
-            type="password"
-            onChange={this.handleUserInput}
-          />
-          <div className="error-msg">
-            {this.validator.message(
-              "password",
-              this.state.password,
-              "required|min:6|max:20"
-            )}
-          </div>
-        </div>
-        <div>
-          <label className="labels vertical-spacing">
-            Confirm Password <span className="required-indicator">*</span>
-          </label>
-          <br />
-          <input
-            autoComplete="off"
-            className="field"
-            name="confirmPassword"
-            type="password"
-            onChange={this.handleUserInput}
-          />
-          <div className="error-msg">
-            {this.validator.message(
-              "confirmPassword",
-              this.state.confirmPassword,
-              "required|cp:" + this.state.password
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  };
   render() {
     return (
       <div>
