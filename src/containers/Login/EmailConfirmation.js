@@ -30,6 +30,7 @@ class EmailConfirmation extends Component {
     if (this.validator.allValid()) {
       API.emailConfirmation(this.state.email, result => {
         if (result.status === "200") {
+          this.props.getEmail(this.state.email);
           this.props.resetPassword();
         } else if (result.status === "400" || result.status === "404") {
           addNotification(

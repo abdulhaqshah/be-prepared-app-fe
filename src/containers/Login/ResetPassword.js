@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import "./EmailConfirmation.scss";
 import API from "../../api/index";
+import { LOGIN } from "../../constants";
 
 class ResetPassword extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ResetPassword extends Component {
     );
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
     this.state = {
+      email: this.props.email,
       newPassword: "",
       confirmPassword: ""
     };
@@ -43,13 +45,14 @@ class ResetPassword extends Component {
   submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
-      let { newPassword, confirmPassword } = this.state;
+      let { email, newPassword } = this.state;
       const data = {
-        newPassword,
-        confirmPassword
+        email,
+        newPassword
       };
-      API.emailConfirmation(data, result => {
+      API.updatePassword(data, result => {
         if (result.status === "200") {
+          this.props.history.push(LOGIN);
           addNotification(
             this.notificationDOMRef,
             "Success",
