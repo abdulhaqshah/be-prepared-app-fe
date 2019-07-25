@@ -31,7 +31,7 @@ class EmailConfirmation extends Component {
       API.emailConfirmation(this.state.email, result => {
         if (result.status === "200") {
           this.props.getEmail(this.state.email);
-          this.props.resetPassword();
+          this.props.updatePassword();
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
             this.notificationDOMRef,

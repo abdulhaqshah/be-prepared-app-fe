@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import EmailConfirmation from "./EmailConfirmation";
-import ResetPassword from "./ResetPassword";
+import UpdatePassword from "./updatePassword";
 
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      resetPassword: false,
+      updatePassword: false,
       emailConfirmation: true
     };
   }
@@ -17,9 +17,9 @@ class Container extends Component {
       email: email
     });
   };
-  setResetPassword = () => {
+  setUpdatePassword = () => {
     this.setState({
-      resetPassword: true
+      updatePassword: true
     });
     this.setEmailConfirmation();
   };
@@ -34,12 +34,12 @@ class Container extends Component {
       <div>
         {this.state.emailConfirmation ? (
           <EmailConfirmation
-            resetPassword={this.setResetPassword}
+            updatePassword={this.setUpdatePassword}
             getEmail={this.getEmail}
           />
         ) : null}
-        {this.state.resetPassword ? (
-          <ResetPassword email={this.state.email} />
+        {this.state.updatePassword ? (
+          <UpdatePassword email={this.state.email} />
         ) : null}
       </div>
     );

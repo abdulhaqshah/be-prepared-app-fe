@@ -8,7 +8,7 @@ import "./EmailConfirmation.scss";
 import API from "../../api/index";
 import { LOGIN } from "../../constants";
 
-class ResetPassword extends Component {
+class updatePassword extends Component {
   constructor(props) {
     super(props);
     this.validator = new SimpleReactValidator(
@@ -150,4 +150,4 @@ class ResetPassword extends Component {
     );
   }
 }
-export default ResetPassword;
+export default updatePassword;
