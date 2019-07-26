@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
-import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
