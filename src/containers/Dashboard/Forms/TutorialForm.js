@@ -252,6 +252,7 @@ class TutorialForm extends Component {
                   </label>
                   <CKEditor
                     className="form-control"
+                    data={this.state.content}
                     config ={{
                       removePlugins: ['MediaEmbed', 'ImageUpload']
                     }}

@@ -9,6 +9,7 @@ import TutorialForm from "../containers/Dashboard/Forms/TutorialForm";
 import CourseForm from "../containers/Dashboard/Forms/CourseForm";
 import QuizContentForm from "../containers/Dashboard/Forms/QuizContentForm";
 import QuizForm from "../containers/Dashboard/Forms/QuizForm";
+import TutorialUpdationForm from '../containers/Dashboard/Forms/TutorialUpdationForm'
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
@@ -22,7 +23,8 @@ import {
   TUTORIAL_FORM,
   COURSE_FORM,
   QUIZ_FORM,
-  QUIZ_CONTENT_FORM
+  QUIZ_CONTENT_FORM,
+  TUTORIAL_UPDATION_FORM
 } from "../constants";
 
 class Routes extends Component {
@@ -86,6 +88,11 @@ class Routes extends Component {
           path={QUIZ_CONTENT_FORM}
           component={QuizContentForm}
           notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute 
+          path={TUTORIAL_UPDATION_FORM} 
+          component={TutorialUpdationForm}
+          notificationRef={this.notificationDOMRef} 
         />
       </Router>
     );
