@@ -18,7 +18,7 @@ class Courses extends Component {
     API.getCourses(result => {
       if (result.status === "200") {
         let course = result.data.map(obj => {
-          console.log(result.data)
+          // console.log(result.data)
           return obj;
         });
         course = course.slice(0, 6);
@@ -31,7 +31,7 @@ class Courses extends Component {
     };
   }
   render() {
-    console.log(this.state.courses)
+    // console.log(this.state.courses)
     let cards;
     if(this.state.courses.length > 0) {
       cards = this.state.cards.map((card, index) => (

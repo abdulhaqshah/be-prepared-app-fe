@@ -10,22 +10,14 @@ class Card extends Component {
     };
   }
 
-  getCourseId = courseId => {
-    this.setState({
-      courseId: courseId
-    });
+  getCourseId = e => {
+    console.log("courseId", e.target.value);
+    // this.setState({
+    //   courseId: courseId
+    // });
   };
 
   render() {
-    console.log("CourseID", this.state.courseId);
-    const courses = this.props.data;
-    const courseList = courses.map((course, index) => {
-      return (
-        <div className="course-name" key={index}>
-          <div onClick={this.getCourseId(course.courseId)}>{course.name}</div>
-        </div>
-      );
-    });
     return (
       <div className="courses-card">
         <div className="card shadow-lg">
@@ -33,7 +25,20 @@ class Card extends Component {
             <div className="header">
               <h5 className="card-title">{this.props.title}</h5>
             </div>
-            <div className="card-content">{courseList}</div>
+            <div className="card-content">
+              <a >
+                {this.props.data.map((course, index) => (
+                  <div
+                    className="course-name"
+                    key={index}
+                    value={course.courseId}
+                    onClick={this.getCourseId}
+                  >
+                    {course.name}
+                  </div>
+                ))}
+              </a>
+            </div>
           </div>
         </div>
       </div>
