@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../utilities/index";
 import * as auth from "../../services/Session";
 import API from "../../api/index";
@@ -11,6 +9,7 @@ class AboutUser extends Component {
     super(props);
     this.state = { about: this.props.about };
     this.validator = new SimpleReactValidator();
+    this.notificationRef = this.props.notificationRef;
     this.formRef = null;
   }
 
@@ -30,6 +29,7 @@ class AboutUser extends Component {
       element[0].remove();
     }
   };
+
   submitForm = e => {
     e.preventDefault();
     if (this.validator.allValid()) {
@@ -49,7 +49,7 @@ class AboutUser extends Component {
           result.status === "400"
         ) {
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "Error",
             "danger",
             result.message
@@ -59,7 +59,7 @@ class AboutUser extends Component {
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -82,9 +82,6 @@ class AboutUser extends Component {
               >
                 <span>&times;</span>
               </button>
-            </div>
-            <div>
-              <ReactNotification ref={this.notificationDOMRef} />
             </div>
             <div className="container">
               <form

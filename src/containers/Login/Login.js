@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
@@ -20,7 +18,7 @@ class Login extends Component {
       password: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
@@ -48,10 +46,10 @@ class Login extends Component {
       nextProps.status === "403" ||
       nextProps.status === "500"
     ) {
-      addNotification(this.notificationDOMRef, "Error", "danger", nextProps.message);
+      addNotification(this.notificationRef, "Error", "danger", nextProps.message);
     } else {
       let error = API.getErrorMessage(nextProps.message)
-      addNotification(this.notificationDOMRef, "Error", "danger", error);
+      addNotification(this.notificationRef, "Error", "danger", error);
     }
   }
 
@@ -73,9 +71,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="login-container">
           <div className="login-inner-container">
             <h1 className="heading" align="center">

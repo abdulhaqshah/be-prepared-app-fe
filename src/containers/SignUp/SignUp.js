@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
@@ -33,7 +31,7 @@ class SignUp extends Component {
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.formRef = null;
   }
 
@@ -56,6 +54,12 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
+          addNotification(
+            this.notificationRef,
+            "Success",
+            "success",
+            result.message
+          );
           this.props.history.push(LOGIN);
         } else if (
           result.status === "400" ||
@@ -63,7 +67,7 @@ class SignUp extends Component {
           result.status === "500"
         ) {
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "Error",
             "danger",
             result.message
@@ -73,7 +77,7 @@ class SignUp extends Component {
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -84,9 +88,6 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="signup-container">
           <div className="inner-container">
             <h1 className="heading" align="center">

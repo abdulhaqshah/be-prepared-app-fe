@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities/index";
 import API from "../../../api/index";
 import "./CourseForm.scss";
@@ -18,7 +16,7 @@ class CourseForm extends Component {
       description: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.formRef = null;
   }
@@ -41,7 +39,7 @@ class CourseForm extends Component {
           this.formRef.reset();
           this.validator.hideMessages();
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "success",
             "success",
             result.message
@@ -55,13 +53,13 @@ class CourseForm extends Component {
           result.status === "400" ||
           result.status === "500"
         ) {
-          addNotification(this.notificationDOMRef, "Error", "danger", result.message);
+          addNotification(this.notificationRef, "Error", "danger", result.message);
         } else {
           let error = API.getErrorMessage(result.message);
-          addNotification(this.notificationDOMRef, "Error", "danger", error);
+          addNotification(this.notificationRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -72,9 +70,6 @@ class CourseForm extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="d-flex justify-content-center container">
           <div className="row">
             <div className="form-inner-container">
