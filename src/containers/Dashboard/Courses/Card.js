@@ -1,21 +1,31 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { addNotification } from "../../../utilities/index";
+import API from "../../../api/index";
+import { getCourseById } from "../../../store/actions/Actions";
 import "./Card.scss";
 
 class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courseId: ""
+      courseId: "",
+      courseName: ""
     };
   }
 
   getCourseId(courseId) {
-    this.setState({
-      courseId: courseId
-    });
+    this.props.getCourseid(courseId);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.status === "200") {
+      console.log("courseId", nextProps.courseId);
+      console.log("status", nextProps.status);
+    } else {
+      alert("error");
+    }
+  }
   render() {
     return (
       <div className="courses-card">
@@ -41,4 +51,21 @@ class Card extends Component {
     );
   }
 }
-export default Card;
+const mapStateToProps = state => {
+  return {
+    status: state.course.status,
+    courseId: state.course.courseId
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCourseid: id => {
+      dispatch(getCourseById(id));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Card);

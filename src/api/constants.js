@@ -25,7 +25,7 @@ export const TUTORIAL_DATA = "/tutorial/new";
 export const COURSE_DATA = "/course/new";
 export const QUIZ_DATA = "/quiz/new";
 export const GET_COURSE_BY_ID = courseId => {
-  return `/course/${courseId}/courseById`;
+  return `/course/courseById/${courseId}`;
 };
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;

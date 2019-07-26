@@ -13,3 +13,15 @@ export const getUserData = data => dispatch => {
     console.log(error);
   });
 };
+
+export const getCourseById = data => dispatch => {
+  API.getCourseById(data, result => {
+    dispatch({
+      type: types.GET_COURSE_ID,
+      courseId: result.data,
+      status: result.status
+    });
+  }).catch(error => {
+    console.log(error);
+  });
+};

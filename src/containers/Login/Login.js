@@ -7,7 +7,7 @@ import { addNotification } from "../../utilities";
 import { DASHBOARD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
-import API from '../../api/index'
+import API from "../../api/index";
 
 class Login extends Component {
   constructor(props) {
@@ -31,13 +31,13 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === "200") {
-      const { uuid, name, email, about, img } = nextProps.user.user;
+      const { uuid, name, email, about, img } = nextProps.userData.user;
       auth.setItem("uuid", uuid);
       auth.setItem("name", name);
       auth.setItem("email", email);
       auth.setItem("about", about ? about : "");
       auth.setItem("img", img);
-      auth.setItem("token", nextProps.user.token);
+      auth.setItem("token", nextProps.userData.token);
       this.formRef.reset();
       this.validator.hideMessages();
       this.props.history.push(DASHBOARD);
@@ -139,9 +139,9 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
-    status: state.user.status,
-    message: state.user.message
+    userData: state.userData.user,
+    status: state.userData.status,
+    message: state.userData.message
   };
 };
 
