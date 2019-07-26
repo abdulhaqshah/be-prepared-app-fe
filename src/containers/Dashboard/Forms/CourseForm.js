@@ -103,6 +103,7 @@ class CourseForm extends Component {
                   <label className="labels">Description</label>
                   <CKEditor
                     className="form-control"
+                    data={this.state.description}
                     config ={{
                       removePlugins: ['MediaEmbed', 'ImageUpload']
                     }}
