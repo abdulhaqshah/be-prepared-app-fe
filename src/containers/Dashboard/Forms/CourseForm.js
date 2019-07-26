@@ -53,10 +53,10 @@ class CourseForm extends Component {
           result.status === "400" ||
           result.status === "500"
         ) {
-          addNotification(this.notificationDOMRef, "Error", "danger", result.message);
+          addNotification(this.notificationRef, "Error", "danger", result.message);
         } else {
           let error = API.getErrorMessage(result.message);
-          addNotification(this.notificationDOMRef, "Error", "danger", error);
+          addNotification(this.notificationRef, "Error", "danger", error);
         }
       }).catch = error => {
         addNotification(this.notificationRef, "Error", "warning", error);

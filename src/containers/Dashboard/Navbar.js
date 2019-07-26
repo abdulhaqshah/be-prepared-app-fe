@@ -9,7 +9,6 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       btnName:
         window.location.pathname === "/login"
           ? this.props.signupBtn
@@ -39,6 +38,7 @@ class Navbar extends Component {
   };
 
   render() {
+    const name = auth.getItem("name");
     const token = auth.getItem("token");
     if (token === null) {
       return (
@@ -113,7 +113,7 @@ class Navbar extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i className="fa fa-user-o fa-lg ml-1" /> {this.state.name}
+                    <i className="fa fa-user-o fa-lg ml-1" /> {name}
                   </a>
                   <div
                     className="dropdown-menu"
@@ -136,9 +136,4 @@ class Navbar extends Component {
     }
   }
 }
-const mapStateToProps = state => {
-  return {
-    user: state.user.user
-  };
-};
-export default withRouter(connect(mapStateToProps)(Navbar));
+export default withRouter(Navbar);

@@ -33,9 +33,6 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <GuestRoute exact path={HOME} component={Home} />
-        <GuestRoute path={SINGUP} component={SignUp} />
-        <GuestRoute path={LOGIN} component={Login} />
         <ReactNotification ref={this.notificationDOMRef} />
         <Navbar
           loginBtn="LOGIN"

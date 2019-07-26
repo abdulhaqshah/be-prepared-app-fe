@@ -46,10 +46,10 @@ class Login extends Component {
       nextProps.status === "403" ||
       nextProps.status === "500"
     ) {
-      addNotification(this.notificationDOMRef, "Error", "danger", nextProps.message);
+      addNotification(this.notificationRef, "Error", "danger", nextProps.message);
     } else {
       let error = API.getErrorMessage(nextProps.message)
-      addNotification(this.notificationDOMRef, "Error", "danger", error);
+      addNotification(this.notificationRef, "Error", "danger", error);
     }
   }
 
