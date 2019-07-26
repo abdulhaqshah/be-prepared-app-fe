@@ -18,7 +18,6 @@ class Courses extends Component {
     API.getCourses(result => {
       if (result.status === "200") {
         let course = result.data.map(obj => {
-          // console.log(result.data)
           return obj;
         });
         course = course.slice(0, 6);
@@ -31,9 +30,8 @@ class Courses extends Component {
     };
   }
   render() {
-    // console.log(this.state.courses)
     let cards;
-    if(this.state.courses.length > 0) {
+    if (this.state.courses.length > 0) {
       cards = this.state.cards.map((card, index) => (
         <div className="courses shadow-lg ml-5 mr-4 mb-5" key={index}>
           <Card data={this.state.courses} key={index} title={card} />
@@ -44,9 +42,9 @@ class Courses extends Component {
         <div className="courseShow">
           <p>There is no course available</p>
         </div>
-      )
+      );
     }
-    
+
     return (
       <Fragment>
         <div>

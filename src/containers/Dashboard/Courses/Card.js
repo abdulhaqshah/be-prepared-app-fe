@@ -10,12 +10,11 @@ class Card extends Component {
     };
   }
 
-  getCourseId = e => {
-    console.log("courseId", e.target.value);
-    // this.setState({
-    //   courseId: courseId
-    // });
-  };
+  getCourseId(courseId) {
+    this.setState({
+      courseId: courseId
+    });
+  }
 
   render() {
     return (
@@ -26,18 +25,15 @@ class Card extends Component {
               <h5 className="card-title">{this.props.title}</h5>
             </div>
             <div className="card-content">
-              <a >
-                {this.props.data.map((course, index) => (
-                  <div
-                    className="course-name"
-                    key={index}
-                    value={course.courseId}
-                    onClick={this.getCourseId}
-                  >
-                    {course.name}
-                  </div>
-                ))}
-              </a>
+              {this.props.data.map((course, index) => (
+                <div
+                  className="course-name"
+                  key={index}
+                  onClick={() => this.getCourseId(course.courseId)}
+                >
+                  {course.name}
+                </div>
+              ))}
             </div>
           </div>
         </div>
