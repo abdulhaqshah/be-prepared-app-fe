@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import EmailConfirmation from "./EmailConfirmation";
 import UpdatePassword from "./UpdatePassword";
-import { LOGIN } from "../../constants";
 
 class Password extends Component {
   constructor(props) {

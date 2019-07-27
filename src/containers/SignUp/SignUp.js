@@ -19,6 +19,17 @@ class SignUp extends Component {
               return Boolean(val) ? val === params[0] : null;
             },
             required: true
+          },
+          password: {
+            message:
+              "The :attribute must have minimum 8 characters with 1 uppercase letter, 1 special character and 1 numeric",
+            rule: (val, params, validator) => {
+              return validator.helpers.testRegex(
+                val,
+                /^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#$%^&*])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/
+              );
+            },
+            required: true
           }
         }
       }
@@ -73,7 +84,7 @@ class SignUp extends Component {
             result.message
           );
         } else {
-          let error = API.getErrorMessage(result.message)
+          let error = API.getErrorMessage(result.message);
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
@@ -145,7 +156,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "password",
                     this.state.password,
-                    "required|min:6|max:20"
+                    "required|password"
                   )}
                 </div>
               </div>
