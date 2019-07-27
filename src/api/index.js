@@ -10,7 +10,8 @@ import {
   TUTORIAL_DATA,
   COURSE_DATA,
   QUIZ_DATA,
-  TUTORIAL_UPDATE_CONTENT
+  TUTORIAL_UPDATE_CONTENT,
+  COURSE_UPDATE_DESCRIPTION
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -79,6 +80,12 @@ const tutorialUpdateContent = (tutorialId, data, resolve, reject) => {
     .catch(err => reject(err));
 };
 
+const courseUpdateDescription = (courseId, data, resolve, reject) => {
+  return GlobalAPISvc(COURSE_UPDATE_DESCRIPTION(courseId), METHODS.PATCH, data)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+
 const getErrorMessage = (error) => {
   if (error === 'Failed to fetch') {
     return 'Something went wrong. Try again later'
@@ -98,5 +105,6 @@ export default {
   courseData,
   quizData,
   getErrorMessage,
-  tutorialUpdateContent
+  tutorialUpdateContent,
+  courseUpdateDescription
 };

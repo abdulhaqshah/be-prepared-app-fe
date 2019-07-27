@@ -31,4 +31,7 @@ export const TUTORIAL_UPDATE_CONTENT = tutorialId => {
   return `/tutorial/update/${tutorialId}`;
 };
 
+export const COURSE_UPDATE_DESCRIPTION = courseId => {
+  return `/course/update/${courseId}`;
+};
 
