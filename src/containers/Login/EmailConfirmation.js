@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import "./EmailConfirmation.scss";
@@ -15,7 +13,7 @@ class EmailConfirmation extends Component {
       email: ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.formRef = null;
   }
 
@@ -31,20 +29,26 @@ class EmailConfirmation extends Component {
       API.emailConfirmation(this.state.email, result => {
         if (result.status === "200") {
           this.props.getEmail(this.state.email);
+          addNotification(
+            this.notificationRef,
+            "Success",
+            "success",
+            result.message
+          );
           this.props.updatePassword();
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "Error",
             "danger",
             result.message
           );
         } else {
           let error = API.getErrorMessage(result.message);
-          addNotification(this.notificationDOMRef, "Error", "danger", error);
+          addNotification(this.notificationRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -55,9 +59,6 @@ class EmailConfirmation extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="forgetPassword-container">
           <div className="forgetPassword-inner-container">
             <h1 className="heading" align="center">

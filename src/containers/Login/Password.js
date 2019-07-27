@@ -11,6 +11,7 @@ class Password extends Component {
       updatePassword: false,
       emailConfirmation: true
     };
+    this.notificationRef = this.props.notificationRef;
   }
 
   getEmail = email => {
@@ -37,10 +38,14 @@ class Password extends Component {
           <EmailConfirmation
             updatePassword={this.setUpdatePassword}
             getEmail={this.getEmail}
+            notificationRef={this.notificationRef}
           />
         ) : null}
         {this.state.updatePassword ? (
-          <UpdatePassword email={this.state.email} />
+          <UpdatePassword
+            email={this.state.email}
+            notificationRef={this.notificationRef}
+          />
         ) : null}
       </div>
     );
