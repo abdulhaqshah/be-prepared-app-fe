@@ -31,7 +31,6 @@ class Password extends Component {
     });
   };
   render() {
-    // this.props.history.push(LOGIN);
     return (
       <div>
         {this.state.emailConfirmation ? (

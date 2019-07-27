@@ -64,6 +64,11 @@ class Routes extends Component {
           component={Login}
           notificationRef={this.notificationDOMRef}
         />
+        <GuestRoute
+          path={PASSWORD}
+          component={Password}
+          notificationRef={this.notificationDOMRef}
+        />
         <Navbar
           loginBtn="LOGIN"
           signupBtn="SIGNUP"
