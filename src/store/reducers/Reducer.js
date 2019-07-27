@@ -3,7 +3,7 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   user: {},
-  courseId: ""
+  course: ""
 };
 
 const userData = (state = initialState, action) => {
@@ -18,12 +18,12 @@ const userData = (state = initialState, action) => {
   }
   return newState;
 };
-const course = (state = initialState, action) => {
+const courseData = (state = initialState, action) => {
   const newState = { ...state };
-  if (action.type === types.GET_COURSE_ID) {
+  if (action.type === types.GET_COURSE_DATA) {
     return {
       ...state,
-      courseId: action.courseId,
+      course: action.course,
       status: action.status
     };
   }
@@ -32,5 +32,5 @@ const course = (state = initialState, action) => {
 
 export default combineReducers({
   userData,
-  course
+  courseData
 });

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import image from "../../online-courses.jpeg";
 import "./CoursePage.scss";
 import Footer from "../../components/Footer";
-import API from "../../api/index";
 
 class CoursePage extends Component {
-  getCourseById = () => {
-    // API.getCourseById
-  };
   render() {
     return (
       <div className="main-course-container">
@@ -16,7 +13,7 @@ class CoursePage extends Component {
             <img src={image} className="image" alt="logo" />
           </div>
           <div className="course-content-container">
-            <h3>Course Name</h3>
+            <h3>{this.props.course[0].name}</h3>
           </div>
           <Footer />
         </div>
@@ -24,4 +21,12 @@ class CoursePage extends Component {
     );
   }
 }
-export default CoursePage;
+const mapStateToProps = state => {
+  return {
+    status: state.courseData.status,
+    course: state.courseData.course
+  };
+};
+export default connect(
+  mapStateToProps
+)(CoursePage);

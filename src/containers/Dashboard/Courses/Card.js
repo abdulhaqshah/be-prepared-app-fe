@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addNotification } from "../../../utilities/index";
-import API from "../../../api/index";
+import { withRouter } from "react-router-dom";
 import { getCourseById } from "../../../store/actions/Actions";
 import "./Card.scss";
 
@@ -14,18 +13,20 @@ class Card extends Component {
     };
   }
 
-  getCourseId(courseId) {
-    this.props.getCourseid(courseId);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.status === "200") {
-      console.log("courseId", nextProps.courseId);
+      console.log("courseId", nextProps.course[0].name);
       console.log("status", nextProps.status);
+      this.props.history.push("/course-page");
     } else {
       alert("error");
     }
   }
+
+  getCourseId(courseId) {
+    this.props.getCourseid(courseId);
+  }
+
   render() {
     return (
       <div className="courses-card">
@@ -53,8 +54,8 @@ class Card extends Component {
 }
 const mapStateToProps = state => {
   return {
-    status: state.course.status,
-    courseId: state.course.courseId
+    status: state.courseData.status,
+    course: state.courseData.course
   };
 };
 
@@ -65,7 +66,9 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Card);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Card)
+);

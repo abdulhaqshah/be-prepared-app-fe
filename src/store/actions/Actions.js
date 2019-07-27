@@ -17,8 +17,8 @@ export const getUserData = data => dispatch => {
 export const getCourseById = data => dispatch => {
   API.getCourseById(data, result => {
     dispatch({
-      type: types.GET_COURSE_ID,
-      courseId: result.data,
+      type: types.GET_COURSE_DATA,
+      course: result.data,
       status: result.status
     });
   }).catch(error => {
