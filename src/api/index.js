@@ -12,7 +12,8 @@ import {
   QUIZ_DATA,
   TUTORIAL_UPDATE_CONTENT,
   COURSE_UPDATE_DESCRIPTION,
-  GET_COURSE_BY_ID
+  GET_COURSE_BY_ID,
+  GET_TUTORIALS_BY_COURSE_ID
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -94,6 +95,11 @@ const getCourseById = (courseId, resolve, reject) => {
 
 const courseUpdateDescription = (courseId, data, resolve, reject) => {
   return GlobalAPISvc(COURSE_UPDATE_DESCRIPTION(courseId), METHODS.PATCH, data)
+  .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+const getTutorialByCourseId = (courseId, resolve, reject) => {
+  return GlobalAPISvc(GET_TUTORIALS_BY_COURSE_ID(courseId), METHODS.GET)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -120,5 +126,6 @@ export default {
   getErrorMessage,
   tutorialUpdateContent,
   courseUpdateDescription,
-  getCourseById
+  getCourseById,
+  getTutorialByCourseId
 };
