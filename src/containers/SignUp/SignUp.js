@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
@@ -9,40 +11,38 @@ import "./SignUp.css";
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.validator = new SimpleReactValidator(
-      { autoForceUpdate: this },
-      {
-        validators: {
-          cp: {
-            message: "The :attribute does not match.",
-            rule: (val, params, validator) => {
-              return Boolean(val) ? val === params[0] : null;
-            },
-            required: true
+    this.validator = new SimpleReactValidator({
+      validators: {
+        cp: {
+          message: "The :attribute does not match.",
+          rule: (val, params, validator) => {
+            return Boolean(val) ? val === params[0] : null;
           },
-          password: {
-            message:
-              "The :attribute must have minimum 8 characters with 1 uppercase letter, 1 special character and 1 numeric",
-            rule: (val, params, validator) => {
-              return validator.helpers.testRegex(
-                val,
-                /^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#$%^&*])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/
-              );
-            },
-            required: true
-          }
+          required: true
+        },
+        password: {
+          message:
+            "The :attribute must have minimum 8 characters with 1 uppercase letter, 1 special character and 1 numeric",
+          rule: (val, params, validator) => {
+            return validator.helpers.testRegex(
+              val,
+              /^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#$%^&*])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/
+            );
+          },
+          required: true
         }
       }
-    );
+    });
     this.state = {
       name: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      param: true
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.notificationRef = this.props.notificationRef;
+    this.notificationDOMRef = React.createRef();
     this.formRef = null;
   }
 
@@ -65,30 +65,28 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
-          addNotification(
-            this.notificationRef,
-            "Success",
-            "success",
-            result.message
-          );
-          this.props.history.push(LOGIN);
+          this.props.history.push(LOGIN, this.state.param);
         } else if (
           result.status === "400" ||
           result.status === "403" ||
           result.status === "500"
         ) {
           addNotification(
-            this.notificationRef,
+            this.notificationDOMRef,
             "Error",
             "danger",
             result.message
           );
         } else {
-          let error = API.getErrorMessage(result.message);
-          addNotification(this.notificationDOMRef, "Error", "danger", error);
+          addNotification(
+            this.notificationDOMRef,
+            "Error",
+            "warning",
+            result.message
+          );
         }
       }).catch = error => {
-        addNotification(this.notificationRef, "Error", "warning", error);
+        addNotification(this.notificationDOMRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -99,6 +97,9 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <div>
+          <ReactNotification ref={this.notificationDOMRef} />
+        </div>
         <div className="signup-container">
           <div className="inner-container">
             <h1 className="heading" align="center">
