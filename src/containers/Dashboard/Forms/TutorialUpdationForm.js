@@ -19,12 +19,15 @@ class TutorialUpdationForm extends Component {
             tutorials: []
         };
         this.handleUserInput = this.handleUserInput.bind(this);
+        this.getAllTutorials = this.getAllTutorials.bind(this);
         this.notificationDOMRef = React.createRef();
         this.submitForm = this.submitForm.bind(this);
         this.resetState = this.resetState.bind(this);
         this.formRef = null;
+        this.getAllTutorials();
+    }
 
-
+    getAllTutorials() {
         API.getTutorials(result => {
             if (result.status === "200") {
                 this.setState({
@@ -75,6 +78,7 @@ class TutorialUpdationForm extends Component {
                     self.formRef.reset();
                     self.validator.hideMessages();
                     addNotification(this.notificationDOMRef, "success", "success", result.message);
+                    self.getAllTutorials();
                 } else if (
                     result.status === "400" ||
                     result.status === "404" ||
@@ -168,7 +172,7 @@ class TutorialUpdationForm extends Component {
                                         type="button"
                                         onClick={this.submitForm}
                                     >
-                                        Save
+                                        Update
                   </button>
                                 </div>
                             </form>
