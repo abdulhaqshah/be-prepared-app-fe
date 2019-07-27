@@ -1,30 +1,29 @@
 .main-course-container {
-  background-image: url("https://lmstheme.wpengine.com/wp-content/themes/lms/framework/theme_options/images/patterns/pattern1.jpg");
-  .container {
-    padding: 0%;
-    // .zoom {
-    //   padding: 50px;
-    //   transition: transform 0.2s;
-    //   margin: 0 auto;
-    // }
-
-    // .zoom:hover {
-    //   -ms-transform: scale(1.5); /* IE 9 */
-    //   -webkit-transform: scale(1.5); /* Safari 3-8 */
-    //   transform: scale(1.5);
-    // }
-    .image {
-      width: 100%;
-      height: 500px;
-      margin-top: 65px;
+  // background-image: url("https://lmstheme.wpengine.com/wp-content/themes/lms/framework/theme_options/images/patterns/pattern1.jpg");
+  // .container {
+  //   margin-top:65px;
+  //   padding: 0%;
+  //   .image {
+  //     width: 100%;
+  //     height: 500px;
+  //     margin-top: 65px;
+  //   }
+  // }
+  .header {
+    margin-top: 60px;
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    h1 {
+      padding-top: 20px;
+      padding-left: 20px;
     }
   }
   .course-content-container {
-    height: 1000px;
-    background-color: white;
-    h3 {
-      padding-top: 20px;
-      padding-left: 20px;
+    background-color: #f3f7f7 !important;
+    padding: 40px;
+    p {
+      text-align: justify;
     }
   }
 }
