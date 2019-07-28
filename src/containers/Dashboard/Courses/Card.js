@@ -24,7 +24,9 @@ class Card extends Component {
   }
 
   getCourseId(courseId) {
-    this.props.getCourseid(courseId);
+    this.props.getCourses(courseId);
+    this.props.getTutorials(courseId);
+    this.props.getQuizes(courseId);
   }
 
   render() {
@@ -61,8 +63,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCourseid: id => {
+    getCourses: id => {
       dispatch(getCourseById(id));
+    },
+    getTutorials: id => {
+      dispatch(getTutorialsByCourseId(id));
+    },
+    getQuizes: id => {
+      dispatch(getQuizesByCourseId(id));
     }
   };
 };
