@@ -20,7 +20,17 @@ const userData = (state = initialState, action) => {
   }
   return newState;
 };
-
+const courseData = (state = initialState, action) => {
+  const newState = { ...state };
+  if (action.type === types.GET_COURSE_DATA) {
+    return {
+      ...state,
+      course: action.course,
+      status: action.status
+    };
+  }
+  return newState;
+};
 const tutorialData = (state = initialState, action) => {
   const newState = { ...state };
   if (action.type === types.GET_TUTORIAL_DATA) {

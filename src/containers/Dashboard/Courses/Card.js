@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getCourseById } from "../../../store/actions/Actions";
+import {
+  getCourseById,
+  getTutorialsByCourseId,
+  getQuizesByCourseId
+} from "../../../store/actions/Actions";
 import "./Card.scss";
 
 class Card extends Component {
@@ -57,7 +61,11 @@ class Card extends Component {
 const mapStateToProps = state => {
   return {
     status: state.courseData.status,
-    course: state.courseData.course
+    course: state.courseData.course,
+    status: state.tutorialData.status,
+    tutorials: state.tutorialData.tutorials,
+    status: state.quizData.status,
+    quizes: state.quizData.quizes
   };
 };
 
