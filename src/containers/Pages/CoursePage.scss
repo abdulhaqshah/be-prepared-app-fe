@@ -26,4 +26,17 @@
       text-align: justify;
     }
   }
+  .displayTutorials {
+    h3 {
+      padding-top: 30px;
+      padding-left: 45px;
+    }
+    .tutorial-name {
+      font-size: 20px;
+      &:hover {
+        color: rgb(27, 169, 76);
+        text-decoration: none;
+      }
+    }
+  }
 }

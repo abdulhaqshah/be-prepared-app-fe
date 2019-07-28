@@ -19,14 +19,39 @@ class CoursePage extends Component {
           <div className="courses-detail-card">
             <div className="card shadow-lg">
               <div className="card-body">
-                <p>{this.props.course[0].description}</p>
-                <div className="tutorials">
-                  {/* <p>{this.props.tutorials[0]}</p> */}
+                <p>
+                  {this.props.course[0] && this.props.course[0].description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="displayTutorials">
+          <h3>Tutorials</h3>
+          <div className="course-content-container">
+            <div className="courses-detail-card">
+              <div className="card shadow-lg">
+                <div className="card-body">
+                  <div className="tutorials">
+                    {this.props.tutorials &&
+                      this.props.tutorials.map((tutorial, index) => (
+                        <div
+                          className="tutorial-name"
+                          key={index}
+                          onClick={() => this.getCourseId(tutorial.courseId)}
+                        >
+                          <ul>
+                            <li> {tutorial.name}</li>
+                          </ul>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <Footer />
       </div>
     );
