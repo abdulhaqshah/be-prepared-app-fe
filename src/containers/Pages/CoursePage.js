@@ -5,11 +5,15 @@ import "./CoursePage.scss";
 import Footer from "../../components/Footer";
 
 class CoursePage extends Component {
-  render() {
-    console.log("Courses", this.props.course);
-    console.log("Tutorials", this.props.tutorials);
-    console.log("quizes", this.props.quizes);
+  getTutorialId = tutorialId => {
+    console.log("Tutorial Id", tutorialId);
+  };
 
+  getQuizId = quizId => {
+    console.log("Quiz id", quizId);
+  };
+
+  render() {
     return (
       <div className="main-course-container">
         <div className="header">
@@ -35,7 +39,13 @@ class CoursePage extends Component {
                   <div className="tutorials">
                     {this.props.tutorials &&
                       this.props.tutorials.map((tutorial, index) => (
-                        <div className="tutorial-name" key={index}>
+                        <div
+                          className="tutorial-name"
+                          key={index}
+                          onClick={() =>
+                            this.getTutorialId(tutorial.tutorialId)
+                          }
+                        >
                           <ul>
                             <li> {tutorial.name}</li>
                           </ul>
@@ -56,7 +66,11 @@ class CoursePage extends Component {
                   <div className="quizes">
                     {this.props.quizes &&
                       this.props.quizes.map((quiz, index) => (
-                        <div className="tutorial-name" key={index}>
+                        <div
+                          className="tutorial-name"
+                          key={index}
+                          onClick={() => this.getQuizId(quiz.quizId)}
+                        >
                           <ul>
                             <li> {quiz.name}</li>
                           </ul>
@@ -68,7 +82,6 @@ class CoursePage extends Component {
             </div>
           </div>
         </div>
-
         <Footer />
       </div>
     );
