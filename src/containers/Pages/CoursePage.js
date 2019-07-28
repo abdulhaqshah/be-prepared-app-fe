@@ -14,6 +14,50 @@ class CoursePage extends Component {
   };
 
   render() {
+    let tutorials, quizes;
+    if (this.props.tutorials === undefined) {
+      tutorials = (
+        <div className="TutorialShow">
+          <p>There is no tutorial available</p>
+        </div>
+      );
+    } else {
+      tutorials =
+        this.props.tutorials &&
+        this.props.tutorials.map((tutorial, index) => (
+          <div
+            className="tutorial-name"
+            key={index}
+            onClick={() => this.getTutorialId(tutorial.tutorialId)}
+          >
+            <ul>
+              <li> {tutorial.name}</li>
+            </ul>
+          </div>
+        ));
+    }
+    if (this.props.quizes === undefined) {
+      debugger;
+      quizes = (
+        <div className="quizShow">
+          <p>There is no quiz available</p>
+        </div>
+      );
+    } else {
+      quizes =
+        this.props.quizes &&
+        this.props.quizes.map((quiz, index) => (
+          <div
+            className="tutorial-name"
+            key={index}
+            onClick={() => this.getQuizId(quiz.quizId)}
+          >
+            <ul>
+              <li> {quiz.name}</li>
+            </ul>
+          </div>
+        ));
+    }
     return (
       <div className="main-course-container">
         <div className="header">
@@ -36,22 +80,7 @@ class CoursePage extends Component {
             <div className="courses-detail-card">
               <div className="card shadow-lg">
                 <div className="card-body">
-                  <div className="tutorials">
-                    {this.props.tutorials &&
-                      this.props.tutorials.map((tutorial, index) => (
-                        <div
-                          className="tutorial-name"
-                          key={index}
-                          onClick={() =>
-                            this.getTutorialId(tutorial.tutorialId)
-                          }
-                        >
-                          <ul>
-                            <li> {tutorial.name}</li>
-                          </ul>
-                        </div>
-                      ))}
-                  </div>
+                  <div className="tutorials">{tutorials}</div>
                 </div>
               </div>
             </div>
@@ -63,20 +92,7 @@ class CoursePage extends Component {
             <div className="courses-detail-card">
               <div className="card shadow-lg">
                 <div className="card-body">
-                  <div className="quizes">
-                    {this.props.quizes &&
-                      this.props.quizes.map((quiz, index) => (
-                        <div
-                          className="tutorial-name"
-                          key={index}
-                          onClick={() => this.getQuizId(quiz.quizId)}
-                        >
-                          <ul>
-                            <li> {quiz.name}</li>
-                          </ul>
-                        </div>
-                      ))}
-                  </div>
+                  <div className="quizes">{quizes}</div>
                 </div>
               </div>
             </div>
