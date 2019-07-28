@@ -14,7 +14,9 @@ import {
   COURSE_UPDATE_DESCRIPTION,
   GET_COURSE_BY_ID,
   GET_TUTORIALS_BY_COURSE_ID,
-  GET_QUIZES_BY_COURSE_ID
+  GET_QUIZES_BY_COURSE_ID,
+  GET_TUTORIAL_BY_ID,
+  GET_QUIZ_BY_ID
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -111,6 +113,18 @@ const getQuizByCourseId = (courseId, resolve, reject) => {
     .catch(err => reject(err));
 };
 
+const getTutorialById = (tutorialId, resolve, reject) => {
+  return GlobalAPISvc(GET_TUTORIAL_BY_ID(tutorialId), METHODS.GET)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+
+const getQuizById = (quizId, resolve, reject) => {
+  return GlobalAPISvc(GET_QUIZ_BY_ID(quizId), METHODS.GET)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+
 const getErrorMessage = error => {
   if (error === "Failed to fetch") {
     return "Something went wrong. Try again later";
@@ -135,5 +149,7 @@ export default {
   courseUpdateDescription,
   getCourseById,
   getTutorialByCourseId,
-  getQuizByCourseId
+  getQuizByCourseId,
+  getTutorialById,
+  getQuizById
 };

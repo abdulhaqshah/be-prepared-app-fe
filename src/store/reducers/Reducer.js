@@ -5,7 +5,9 @@ const initialState = {
   user: {},
   course: "",
   tutorials: "",
-  quizes: ""
+  quizes: "",
+  tutorialById: "",
+  quizById: ""
 };
 
 const userData = (state = initialState, action) => {
@@ -54,9 +56,35 @@ const quizData = (state = initialState, action) => {
   return newState;
 };
 
+const getTutorialDataById = (state = initialState, action) => {
+  debugger;
+  const newState = { ...state };
+  if (action.type === types.GET_TUTORIAL_BY_ID) {
+    return {
+      ...state,
+      tutorialById: action.tutorialById
+    };
+  }
+  return newState;
+};
+
+const getQuizDataById = (state = initialState, action) => {
+  debugger;
+  const newState = { ...state };
+  if (action.type === types.GET_QUIZ_BY_ID) {
+    return {
+      ...state,
+      quizById: action.quizById
+    };
+  }
+  return newState;
+};
+
 export default combineReducers({
   userData,
   courseData,
   tutorialData,
-  quizData
+  quizData,
+  getTutorialDataById,
+  getQuizDataById
 });

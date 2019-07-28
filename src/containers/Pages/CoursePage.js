@@ -3,15 +3,31 @@ import { connect } from "react-redux";
 import image from "../../online-courses.jpeg";
 import "./CoursePage.scss";
 import Footer from "../../components/Footer";
+import { getTutorialById, getQuizById } from "../../store/actions/Actions";
 
 class CoursePage extends Component {
   getTutorialId = tutorialId => {
     console.log("Tutorial Id", tutorialId);
+    this.props.getTutorials(tutorialId);
   };
 
   getQuizId = quizId => {
     console.log("Quiz id", quizId);
+    this.props.getQuizes(quizId);
+
   };
+
+  componentWillReceiveProps(nextProps) {
+    debugger;
+    console.log(
+      "tutorials Data",
+      this.props.tutorialById[0] && this.props.tutorialById[0]
+    );
+    console.log(
+      "Quizes Data",
+      this.props.quizById[0] && this.props.quizById[0]
+    );
+  }
 
   render() {
     let tutorials, quizes;
@@ -107,7 +123,23 @@ const mapStateToProps = state => {
   return {
     course: state.courseData.course,
     tutorials: state.tutorialData.tutorials,
-    quizes: state.quizData.quizes
+    quizes: state.quizData.quizes,
+    tutorialById: state.getTutorialDataById.tutorialById,
+    quizById: state.getQuizDataById.quizById
   };
 };
-export default connect(mapStateToProps)(CoursePage);
+const mapDispatchToProps = dispatch => {
+  debugger;
+  return {
+    getTutorials: id => {
+      dispatch(getTutorialById(id));
+    },
+    getQuizes: id => {
+      dispatch(getQuizById(id));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoursePage);

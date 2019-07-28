@@ -46,3 +46,27 @@ export const getQuizesByCourseId = data => dispatch => {
     console.log(error);
   });
 };
+
+export const getTutorialById = data => dispatch => {
+  debugger
+  API.getTutorialById(data, result => {
+    dispatch({
+      type: types.GET_TUTORIAL_BY_ID,
+      tutorialById: result.data
+    });
+  }).catch(error => {
+    console.log(error);
+  });
+};
+
+export const getQuizById = data => dispatch => {
+  debugger
+  API.getQuizById(data, result => {
+    dispatch({
+      type: types.GET_QUIZ_BY_ID,
+      quizById: result.data
+    });
+  }).catch(error => {
+    console.log(error);
+  });
+};

@@ -33,6 +33,13 @@ export const GET_TUTORIALS_BY_COURSE_ID = courseId => {
 export const GET_QUIZES_BY_COURSE_ID = courseId => {
   return `/quiz/quizByCourse/${courseId}`;
 };
+export const GET_TUTORIAL_BY_ID = tutorialId => {
+  return `/tutorial/tutorialById/${tutorialId}`;
+};
+export const GET_QUIZ_BY_ID = quizId => {
+  return `/quiz/quizById/${quizId}`;
+};
+
 export const USER_ABOUT_INFO = uuid => {
   return `/user/${uuid}/update/about`;
 };
