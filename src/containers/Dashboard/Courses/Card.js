@@ -18,13 +18,7 @@ class Card extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.status === "200") {
-      console.log("courseId", nextProps.course[0].name);
-      console.log("status", nextProps.status);
-      this.props.history.push("/course-page");
-    } else {
-      alert("error");
-    }
+    this.props.history.push("/course-page");
   }
 
   getCourseId(courseId) {
@@ -60,11 +54,8 @@ class Card extends Component {
 }
 const mapStateToProps = state => {
   return {
-    status: state.courseData.status,
     course: state.courseData.course,
-    status: state.tutorialData.status,
     tutorials: state.tutorialData.tutorials,
-    status: state.quizData.status,
     quizes: state.quizData.quizes
   };
 };

@@ -31,13 +31,13 @@ const courseData = (state = initialState, action) => {
   }
   return newState;
 };
+
 const tutorialData = (state = initialState, action) => {
   const newState = { ...state };
   if (action.type === types.GET_TUTORIAL_DATA) {
     return {
       ...state,
-      tutorials: action.tutorials,
-      status: action.status
+      tutorials: action.tutorials
     };
   }
   return newState;
@@ -48,8 +48,7 @@ const quizData = (state = initialState, action) => {
   if (action.type === types.GET_QUIZ_DATA) {
     return {
       ...state,
-      quizes: action.quizes,
-      status: action.status
+      quizes: action.quizes
     };
   }
   return newState;
