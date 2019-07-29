@@ -10,3 +10,5 @@ export const QUIZ_CONTENT_FORM = "/quiz-content-form";
 export const TUTORIAL_UPDATION_FORM = '/tutorial-update-form';
 export const COURSE_UPDATION_FORM = '/course-update-form';
 export const COURSE_PAGE = "/course-page";
+export const TUTORIAL_PAGE = "/tutorial-page";
+

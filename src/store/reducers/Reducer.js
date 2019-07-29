@@ -57,7 +57,6 @@ const quizData = (state = initialState, action) => {
 };
 
 const getTutorialDataById = (state = initialState, action) => {
-  debugger;
   const newState = { ...state };
   if (action.type === types.GET_TUTORIAL_BY_ID) {
     return {
@@ -69,7 +68,6 @@ const getTutorialDataById = (state = initialState, action) => {
 };
 
 const getQuizDataById = (state = initialState, action) => {
-  debugger;
   const newState = { ...state };
   if (action.type === types.GET_QUIZ_BY_ID) {
     return {

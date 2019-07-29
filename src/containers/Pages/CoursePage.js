@@ -1,33 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../../online-courses.jpeg";
-import "./CoursePage.scss";
-import Footer from "../../components/Footer";
 import { getTutorialById, getQuizById } from "../../store/actions/Actions";
+import Footer from "../../components/Footer";
+import "./CoursePage.scss";
 
 class CoursePage extends Component {
   getTutorialId = tutorialId => {
-    console.log("Tutorial Id", tutorialId);
     this.props.getTutorials(tutorialId);
+    this.props.history.push("/tutorial-page");
   };
 
   getQuizId = quizId => {
-    console.log("Quiz id", quizId);
     this.props.getQuizes(quizId);
-
   };
-
-  componentWillReceiveProps(nextProps) {
-    debugger;
-    console.log(
-      "tutorials Data",
-      this.props.tutorialById[0] && this.props.tutorialById[0]
-    );
-    console.log(
-      "Quizes Data",
-      this.props.quizById[0] && this.props.quizById[0]
-    );
-  }
 
   render() {
     let tutorials, quizes;
