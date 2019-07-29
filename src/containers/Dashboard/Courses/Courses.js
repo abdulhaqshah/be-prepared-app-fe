@@ -33,7 +33,7 @@ class Courses extends Component {
     let cards;
     if (this.state.courses.length > 0) {
       cards = this.state.cards.map((card, index) => (
-        <div className="courses shadow-lg ml-5 mr-4 mb-5" key={index}>
+        <div className="courses shadow-lg ml-4 mr-4 mb-5" key={index}>
           <Card data={this.state.courses} key={index} title={card} />
         </div>
       ));
@@ -52,7 +52,7 @@ class Courses extends Component {
             Explore Be Prepared Courses
           </h5>
         </div>
-        <div className="d-flex justify-content-center  row">
+        <div className="d-flex justify-content-center row">
           <div className="card-container">{cards}</div>
         </div>
       </Fragment>
