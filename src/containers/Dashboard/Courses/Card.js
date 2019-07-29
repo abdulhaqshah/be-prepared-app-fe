@@ -17,8 +17,18 @@ class Card extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props.history.push("/course-page");
+    this.loader();
+    if (this.props.course) {
+      this.props.history.push("/course-page");
+    }
   }
+  loader = () => {
+    return (
+      <div>
+        <i className="fa fa-spinner fa-spin" /> Loading...
+      </div>
+    );
+  };
 
   getCourseId(courseId) {
     this.props.getCourses(courseId);

@@ -8,11 +8,22 @@ import "./CoursePage.scss";
 class CoursePage extends Component {
   getTutorialId = tutorialId => {
     this.props.getTutorials(tutorialId);
-    this.props.history.push("/tutorial-page");
+    this.loader();
+    if (this.props.tutorials) {
+      this.props.history.push("./tutorial-page");
+    }
   };
 
   getQuizId = quizId => {
     this.props.getQuizes(quizId);
+  };
+
+  loader = () => {
+    return (
+      <div>
+        <i className="fa fa-spinner fa-spin" /> Loading...
+      </div>
+    );
   };
 
   render() {
@@ -114,7 +125,6 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
     getTutorials: id => {
       dispatch(getTutorialById(id));

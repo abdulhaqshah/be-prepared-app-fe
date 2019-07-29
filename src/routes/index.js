@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Home from "../containers/Home/Home";
 import SignUp from "../containers/SignUp/SignUp";
 import Login from "../containers/Login/Login";
@@ -32,6 +33,7 @@ import {
   COURSE_PAGE,
   TUTORIAL_PAGE
 } from "../constants";
+import { getItem } from "../services/Session";
 
 class Routes extends Component {
   constructor(props) {
@@ -40,6 +42,7 @@ class Routes extends Component {
   }
 
   render() {
+    // const name = getItem()
     return (
       <Router>
         <ReactNotification ref={this.notificationDOMRef} />
@@ -119,4 +122,12 @@ class Routes extends Component {
     );
   }
 }
-export default Routes;
+const mapStateToProps = state => {
+  return {
+    course: state.courseData.course,
+    tutorials: state.tutorialData.tutorials
+  };
+};
+export default connect(mapStateToProps)(Routes);
+
+// export default Routes;
