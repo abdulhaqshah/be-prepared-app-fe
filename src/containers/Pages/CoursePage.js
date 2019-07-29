@@ -38,8 +38,7 @@ class CoursePage extends Component {
           </div>
         ));
     }
-    if (this.props.quizes === undefined) {
-      debugger;
+    if (!this.props.quizes) {
       quizes = (
         <div className="quizShow">
           <p>There is no quiz available</p>
