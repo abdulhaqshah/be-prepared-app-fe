@@ -122,12 +122,4 @@ class Routes extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    course: state.courseData.course,
-    tutorials: state.tutorialData.tutorials
-  };
-};
-export default connect(mapStateToProps)(Routes);
-
-// export default Routes;
+export default Routes;

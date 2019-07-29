@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {
-  getCourseById,
-  getTutorialsByCourseId,
-  getQuizesByCourseId
-} from "../../../store/actions/Actions";
 import "./Card.scss";
 
 class Card extends Component {
@@ -16,24 +11,8 @@ class Card extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.loader();
-    if (this.props.course) {
-      this.props.history.push("/course-page");
-    }
-  }
-  loader = () => {
-    return (
-      <div>
-        <i className="fa fa-spinner fa-spin" /> Loading...
-      </div>
-    );
-  };
-
   getCourseId(courseId) {
-    this.props.getCourses(courseId);
-    this.props.getTutorials(courseId);
-    this.props.getQuizes(courseId);
+    this.props.history.push("/course-page", courseId);
   }
 
   render() {
@@ -68,23 +47,4 @@ const mapStateToProps = state => {
     quizes: state.quizData.quizes
   };
 };
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getCourses: id => {
-      dispatch(getCourseById(id));
-    },
-    getTutorials: id => {
-      dispatch(getTutorialsByCourseId(id));
-    },
-    getQuizes: id => {
-      dispatch(getQuizesByCourseId(id));
-    }
-  };
-};
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Card)
-);
+export default withRouter(connect(mapStateToProps)(Card));

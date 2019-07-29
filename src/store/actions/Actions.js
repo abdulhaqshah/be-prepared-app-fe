@@ -48,7 +48,6 @@ export const getQuizesByCourseId = data => dispatch => {
 };
 
 export const getTutorialById = data => dispatch => {
-  debugger
   API.getTutorialById(data, result => {
     dispatch({
       type: types.GET_TUTORIAL_BY_ID,
@@ -60,7 +59,6 @@ export const getTutorialById = data => dispatch => {
 };
 
 export const getQuizById = data => dispatch => {
-  debugger
   API.getQuizById(data, result => {
     dispatch({
       type: types.GET_QUIZ_BY_ID,

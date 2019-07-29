@@ -1,34 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../../online-courses.jpeg";
-import { getTutorialById, getQuizById } from "../../store/actions/Actions";
+import {
+  getTutorialsByCourseId,
+  getQuizesByCourseId,
+  getCourseById
+} from "../../store/actions/Actions";
 import Footer from "../../components/Footer";
 import "./CoursePage.scss";
 
 class CoursePage extends Component {
-  getTutorialId = tutorialId => {
-    this.props.getTutorials(tutorialId);
-    this.loader();
-    if (this.props.tutorials) {
-      this.props.history.push("./tutorial-page");
-    }
+  getTutorialId = (tutorialId, name) => {
+    this.props.history.push(`${name}`, tutorialId);
   };
 
   getQuizId = quizId => {
     this.props.getQuizes(quizId);
   };
 
-  loader = () => {
-    return (
-      <div>
-        <i className="fa fa-spinner fa-spin" /> Loading...
-      </div>
-    );
-  };
+  componentDidMount() {
+    this.props.getCourses(this.props.history.location.state);
+    this.props.getTutorials(this.props.history.location.state);
+    this.props.getQuizes(this.props.history.location.state);
+  }
 
   render() {
     let tutorials, quizes;
-    if (this.props.tutorials === undefined) {
+    if (!this.props.tutorials) {
+      debugger;
       tutorials = (
         <div className="TutorialShow">
           <p>There is no tutorial available</p>
@@ -41,7 +40,9 @@ class CoursePage extends Component {
           <div
             className="tutorial-name"
             key={index}
-            onClick={() => this.getTutorialId(tutorial.tutorialId)}
+            onClick={() =>
+              this.getTutorialId(tutorial.tutorialId, tutorial.name)
+            }
           >
             <ul>
               <li> {tutorial.name}</li>
@@ -73,14 +74,14 @@ class CoursePage extends Component {
     return (
       <div className="main-course-container">
         <div className="header">
-          <h1>{this.props.course[0].name}</h1>
+          <h1>{this.props.course ? this.props.course[0].name : null}</h1>
         </div>
         <div className="course-content-container">
           <div className="courses-detail-card">
             <div className="card shadow-lg">
               <div className="card-body">
                 <p>
-                  {this.props.course[0] && this.props.course[0].description}
+                  {this.props.course ? this.props.course[0].description : null}
                 </p>
               </div>
             </div>
@@ -116,6 +117,7 @@ class CoursePage extends Component {
   }
 }
 const mapStateToProps = state => {
+  debugger;
   return {
     course: state.courseData.course,
     tutorials: state.tutorialData.tutorials,
@@ -125,12 +127,16 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
+  debugger;
   return {
+    getCourses: id => {
+      dispatch(getCourseById(id));
+    },
     getTutorials: id => {
-      dispatch(getTutorialById(id));
+      dispatch(getTutorialsByCourseId(id));
     },
     getQuizes: id => {
-      dispatch(getQuizById(id));
+      dispatch(getQuizesByCourseId(id));
     }
   };
 };
