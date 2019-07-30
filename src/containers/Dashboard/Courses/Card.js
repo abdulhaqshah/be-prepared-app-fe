@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Routes from "../../../routes/index";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./Card.scss";
