@@ -1,0 +1,143 @@
+.container {
+    width : 100%;
+    padding: 0px;
+    .row{
+      width : 100%;
+    }
+    .form-inner-container {
+      background: #fffdfd;
+      padding-top: 4px;
+      border: 2px solid black;
+      border-radius: 15px;
+      height: auto;
+      width: auto;
+      //padding-left: 10px;
+      //padding-right: 10px;
+      margin-top: 80px;
+      .row.d-flex {
+        margin-left: 2px;
+        margin-right: 2px;
+      }
+      .labels {
+        margin-top: 10px;
+      }
+      .name-field {
+        border: solid 1px;
+        width: 35%;
+        height: 40px;
+        border-radius: 4px;
+        position: relative;
+        &:hover {
+          color: grey;
+        }
+      }
+      .custom-select{
+        width: 35%;
+      }
+      .tag-field {
+        border: solid 1px;
+        width: 100%;
+        height: 80px;
+        border-radius: 4px;
+        position: relative;
+        &:hover {
+          color: grey;
+        }
+      }
+      .option-field {
+        border: solid 1px;
+        width: 100%;
+        height: 40px;
+        border-radius: 4px;
+        position: relative;
+        &:hover {
+          color: grey;
+        }
+      }
+      .browser-default {
+        border: solid 1px;
+      }
+      .checking {
+        width: 225px;
+        border-radius: 4px;
+        position: relative;
+      }
+      .ck.ck-editor {
+        position: relative;
+        width: 100%;
+      }
+      .tagholder{
+        .row {
+          .remove{
+            padding-top: 5px;
+          }
+        }
+        .tagMessage {
+          padding-left : 10px;
+          padding-top : 10px;
+          padding-right: 10px;
+          color : red;
+        }
+      }
+      .tagholder {
+        display: flex;
+        direction: row;
+        align-items: center;
+      }
+      .tagholder button {
+        margin: 0;
+        margin-left: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+      }
+      .tagholder input {
+        margin: 0;
+        margin-top: 10px;
+      }
+      .tag-button button {
+        margin: 0;
+        margin-top: 10px;
+      }
+      .content-field {
+        .form-control {
+          width : 13rem;
+        }
+      }
+      textarea {
+        color: black;
+        border: solid 1px;
+        &:hover {
+          color: grey;
+        }
+      }
+      .select{
+        height:40px;
+      }
+      .form-error-msg {
+        color: red;
+      }
+      .d-flex {
+        padding: 10px;
+      }
+    }
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 10px;
+  }
+  .ck.ck-editor__editable_inline {
+    height: 500px;
+  }
+  
+  .content-field {
+    width : 100%;
+    .ck.ck-editor {
+      position: relative;
+      width: 100%;
+    }
+  }
+  

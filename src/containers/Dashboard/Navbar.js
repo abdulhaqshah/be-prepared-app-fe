@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
 import * as auth from "../../services/Session";
 import { HOME, PROFILE } from "../../constants";
 import { Link, withRouter } from "react-router-dom";

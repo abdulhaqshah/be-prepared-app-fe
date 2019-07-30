@@ -7,12 +7,12 @@ import Profile from "../containers/UserProfile/UserProfile";
 import Navbar from "../containers/Dashboard/Navbar";
 import TutorialForm from "../containers/Dashboard/Forms/TutorialForm";
 import CourseForm from "../containers/Dashboard/Forms/CourseForm";
+import QuizContentForm from "../containers/Dashboard/Forms/QuizContentForm";
 import QuizForm from "../containers/Dashboard/Forms/QuizForm";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import * as auth from "../services/Session";
 import {
   HOME,
   SINGUP,
@@ -21,7 +21,8 @@ import {
   PROFILE,
   TUTORIAL_FORM,
   COURSE_FORM,
-  QUIZ_FORM
+  QUIZ_FORM,
+  QUIZ_CONTENT_FORM
 } from "../constants";
 
 class Routes extends Component {
@@ -79,6 +80,11 @@ class Routes extends Component {
         <ProtectedRoute
           path={QUIZ_FORM}
           component={QuizForm}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={QUIZ_CONTENT_FORM}
+          component={QuizContentForm}
           notificationRef={this.notificationDOMRef}
         />
       </Router>
