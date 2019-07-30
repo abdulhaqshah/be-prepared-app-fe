@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import image from "../../online-courses.jpeg";
+import queryString from "query-string";
 import {
   getTutorialsByCourseId,
   getQuizesByCourseId,
@@ -11,7 +12,7 @@ import "./CoursePage.scss";
 
 class CoursePage extends Component {
   getTutorialId = (tutorialId, name) => {
-    this.props.history.push(`${name}`, tutorialId);
+    this.props.history.push(`/tutorial-page/${name}`, tutorialId);
   };
 
   getQuizId = quizId => {
@@ -117,7 +118,6 @@ class CoursePage extends Component {
   }
 }
 const mapStateToProps = state => {
-  debugger;
   return {
     course: state.courseData.course,
     tutorials: state.tutorialData.tutorials,
@@ -127,7 +127,6 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
     getCourses: id => {
       dispatch(getCourseById(id));

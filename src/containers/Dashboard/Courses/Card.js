@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Routes from "../../../routes/index";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./Card.scss";
@@ -11,8 +12,8 @@ class Card extends Component {
     };
   }
 
-  getCourseId(courseId) {
-    this.props.history.push("/course-page", courseId);
+  getCourseId(courseId, name) {
+    this.props.history.push(`course-page/${name}`, courseId);
   }
 
   render() {
@@ -28,7 +29,7 @@ class Card extends Component {
                 <div
                   className="course-name"
                   key={index}
-                  onClick={() => this.getCourseId(course.courseId)}
+                  onClick={() => this.getCourseId(course.courseId, course.name)}
                 >
                   {course.name}
                 </div>
