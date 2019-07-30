@@ -12,7 +12,8 @@ class QuizForm extends Component {
     this.state = {
       name: "",
       courseId: "",
-      courses: []
+      courses: [],
+      description : ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationRef =this.props.notificationRef
@@ -31,10 +32,11 @@ class QuizForm extends Component {
   submitForm(e) {
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { name, courseId } = this.state;
+      var { name, courseId, description } = this.state;
       const data = {
         name,
-        courseId
+        courseId,
+        description
       };
       API.quizData(data, result => {
         if (result.status === "201") {
@@ -48,7 +50,8 @@ class QuizForm extends Component {
           );
           this.setState({
             name: "",
-            courseId: ""
+            courseId: "",
+            description : ""
           });
         } else if (
           result.status === "404" ||
@@ -120,8 +123,9 @@ class QuizForm extends Component {
                   </div>
                 </div>
                 <div>
+                  <div>
                   <label className="labels">Course</label>
-
+                  </div>
                   <select
                     className="custom-select"
                     name="courseId"
@@ -140,6 +144,23 @@ class QuizForm extends Component {
                       "course",
                       this.state.courseId,
                       "required"
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <label className="labels">Description</label>
+                  <br />
+                  <textarea
+                    className="description-field"
+                    name="description"
+                    type="text"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="form-error-msg">
+                    {this.validator.message(
+                      "description",
+                      this.state.name,
+                      "required|min:3|max:200"
                     )}
                   </div>
                 </div>
