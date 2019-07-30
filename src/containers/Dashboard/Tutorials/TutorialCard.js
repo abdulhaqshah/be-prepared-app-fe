@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LinesEllipsis from 'react-lines-ellipsis'
 import "./Tutorial.scss";
 
 class TutorialCard extends Component {
@@ -13,7 +14,15 @@ class TutorialCard extends Component {
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
           </h2>
-          <p className="truncate-overflow">{this.props.para}</p>
+          <div className="truncate-lines">
+          <LinesEllipsis
+            text={this.props.description}
+            maxLine='2'
+            ellipsis='...'
+            trimRight
+            basedOn='letters'
+          />
+          </div>
           <div className="tutorial-link">
             <a href={this.props.href} className="font-weight-bold">
               View Tutorial

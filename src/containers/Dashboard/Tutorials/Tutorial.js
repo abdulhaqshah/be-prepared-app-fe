@@ -32,7 +32,7 @@ class Card extends Component {
       cards = this.state.tutorials.map((tutorial, index) => (
         <div className="interview-prep-tutorial" key={index}>
           <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-            <TutorialCard heading={tutorial.name} para={tutorial.content} value={tutorial.tutorialId}/>
+            <TutorialCard heading={tutorial.name} description={tutorial.description} value={tutorial.tutorialId}/>
           </div>
         </div>
       ));
