@@ -23,7 +23,6 @@ const userData = (state = initialState, action) => {
   return newState;
 };
 const courseData = (state = initialState, action) => {
-  debugger;
 
   const newState = { ...state };
   if (action.type === types.GET_COURSE_DATA) {
@@ -37,8 +36,7 @@ const courseData = (state = initialState, action) => {
 };
 
 const tutorialData = (state = initialState, action) => {
-  debugger;
-  const newState = { ...state };
+   const newState = { ...state };
   if (action.type === types.GET_TUTORIAL_DATA) {
     return {
       ...state,
@@ -49,7 +47,6 @@ const tutorialData = (state = initialState, action) => {
 };
 
 const quizData = (state = initialState, action) => {
-  debugger;
   const newState = { ...state };
   if (action.type === types.GET_QUIZ_DATA) {
     return {
@@ -61,7 +58,6 @@ const quizData = (state = initialState, action) => {
 };
 
 const getTutorialDataById = (state = initialState, action) => {
-  debugger;
   const newState = { ...state };
   if (action.type === types.GET_TUTORIAL_BY_ID) {
     return {

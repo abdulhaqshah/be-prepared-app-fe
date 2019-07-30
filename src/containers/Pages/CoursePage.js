@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import image from "../../online-courses.jpeg";
-import queryString from "query-string";
+import { withRouter } from "react-router-dom";
 import {
   getTutorialsByCourseId,
   getQuizesByCourseId,
@@ -12,7 +11,7 @@ import "./CoursePage.scss";
 
 class CoursePage extends Component {
   getTutorialId = (tutorialId, name) => {
-    this.props.history.push(`/tutorial-page/${name}`, tutorialId);
+    this.props.history.push(`/tutorial-page/${name}/${tutorialId}`);
   };
 
   getQuizId = quizId => {
@@ -20,15 +19,16 @@ class CoursePage extends Component {
   };
 
   componentDidMount() {
-    this.props.getCourses(this.props.history.location.state);
-    this.props.getTutorials(this.props.history.location.state);
-    this.props.getQuizes(this.props.history.location.state);
+    const pathname = this.props.history.location.pathname;
+    var id = pathname.split("/");
+    this.props.getCourses(id[3]);
+    this.props.getTutorials(id[3]);
+    this.props.getQuizes(id[3]);
   }
 
   render() {
     let tutorials, quizes;
     if (!this.props.tutorials) {
-      debugger;
       tutorials = (
         <div className="TutorialShow">
           <p>There is no tutorial available</p>
@@ -139,7 +139,9 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursePage);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CoursePage)
+);

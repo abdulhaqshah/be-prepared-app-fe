@@ -6,8 +6,12 @@ import { getTutorialById } from "../../store/actions/Actions";
 import "./CoursePage.scss";
 
 class TutorialPage extends Component {
+  
   componentDidMount() {
-    this.props.getTutorials(this.props.history.location.state);
+    const pathname =this.props.history.location.pathname
+    var id = pathname.split("/");
+    console.log(id);
+    this.props.getTutorials(id[3]);
   }
 
   render() {

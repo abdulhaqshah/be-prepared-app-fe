@@ -13,7 +13,7 @@ class Card extends Component {
   }
 
   getCourseId(courseId, name) {
-    this.props.history.push(`course-page/${name}`, courseId);
+    this.props.history.push(`course-page/${name}/${courseId}`);
   }
 
   render() {
