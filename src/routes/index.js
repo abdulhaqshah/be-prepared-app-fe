@@ -13,8 +13,7 @@ import TutorialUpdationForm from '../containers/Dashboard/Forms/TutorialUpdation
 import CourseUpdationForm from '../containers/Dashboard/Forms/CourseUpdationForm'
 import CoursePage from "../containers/Pages/CoursePage";
 import TutorialPage from "../containers/Pages/TutorialPage";
-import ForgetPassword from "../containers/Login/ForgetPassword";
-import Password from "../containers/Login/Password";
+import ForgotPassword from "../containers/Login/ForgotPassword";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
@@ -33,8 +32,7 @@ import {
   COURSE_UPDATION_FORM,
   COURSE_PAGE,
   TUTORIAL_PAGE,
-  FORGET_PASSWORD,
-  PASSWORD
+  FORGOT_PASSWORD
 } from "../constants";
 
 class Routes extends Component {
@@ -65,8 +63,8 @@ class Routes extends Component {
           notificationRef={this.notificationDOMRef}
         />
         <GuestRoute
-          path={PASSWORD}
-          component={Password}
+          path={FORGOT_PASSWORD}
+          component={ForgotPassword}
           notificationRef={this.notificationDOMRef}
         />
         <Navbar

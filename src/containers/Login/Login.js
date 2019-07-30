@@ -5,7 +5,7 @@ import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
 import { getUserData } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
-import { DASHBOARD, PASSWORD } from "../../constants";
+import { DASHBOARD, FORGOT_PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
 import API from "../../api/index";
@@ -128,7 +128,7 @@ class Login extends Component {
                 </button>
               </div>
               <div className="forgotPassword" align="center">
-                <Link to={PASSWORD}>Forgot Password</Link>
+                <Link to={FORGOT_PASSWORD}>Forgot Password</Link>
               </div>
             </form>
           </div>

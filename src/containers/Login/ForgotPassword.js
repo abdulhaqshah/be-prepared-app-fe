@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import EmailConfirmation from "./EmailConfirmation";
 import UpdatePassword from "./UpdatePassword";
 
-class Password extends Component {
+class ForgotPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class Password extends Component {
     );
   }
 }
-export default Password;
+export default ForgotPassword;
