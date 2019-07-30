@@ -29,12 +29,6 @@ class EmailConfirmation extends Component {
       API.emailConfirmation(this.state.email, result => {
         if (result.status === "200") {
           this.props.getEmail(this.state.email);
-          addNotification(
-            this.notificationRef,
-            "Success",
-            "success",
-            result.message
-          );
           this.props.updatePassword();
         } else if (result.status === "400" || result.status === "404") {
           addNotification(
@@ -80,7 +74,7 @@ class EmailConfirmation extends Component {
                   {this.validator.message(
                     "email",
                     this.state.email,
-                    "required"
+                    "required|email|max:30"
                   )}
                 </div>
               </div>
