@@ -159,7 +159,7 @@ class QuizForm extends Component {
                   <div className="form-error-msg">
                     {this.validator.message(
                       "description",
-                      this.state.name,
+                      this.state.description,
                       "required|min:3|max:200"
                     )}
                   </div>

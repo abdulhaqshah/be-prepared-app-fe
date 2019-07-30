@@ -15,14 +15,15 @@ class QuizCard extends Component {
           <h2 className="card-heading font-weight-bold">
             {this.props.heading}
           </h2>
+          <div className="truncate-lines">
           <LinesEllipsis
-            text='challenges based on learnings from 1000+ companies to help you prepare'
+            text={this.props.description}
             maxLine='2'
             ellipsis='...'
             trimRight
             basedOn='letters'
           />
-          {/* <p className="truncate-overflow">"challenges based on learnings from 1000+ companies to help you prepare"</p> */}
+          </div>
           <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">
               View Quiz

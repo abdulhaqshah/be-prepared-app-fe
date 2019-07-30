@@ -15,6 +15,7 @@ class TutorialForm extends Component {
       name: "",
       content: "",
       courseId: "",
+      description : "",
       tags: [],
       courses: []
     };
@@ -64,7 +65,8 @@ class TutorialForm extends Component {
       name: "",
       content: "",
       courseId: "",
-      tags: []
+      tags: [],
+      description : ""
     });
   }
 
@@ -72,12 +74,13 @@ class TutorialForm extends Component {
     let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { name, content, courseId, tags } = this.state;
+      var { name, content, courseId, tags, description } = this.state;
       const data = {
         name,
         content,
         courseId,
-        tags
+        tags,
+        description
       };
 
       API.tutorialData(data, result => {
@@ -177,6 +180,23 @@ class TutorialForm extends Component {
                   </div>
                 </div>
                 <div>
+                  <label className="labels">Description</label>
+                  <br />
+                  <textarea
+                    className="description-field"
+                    name="description"
+                    type="text"
+                    onChange={this.handleUserInput}
+                  />
+                  <div className="form-error-msg">
+                    {this.validator.message(
+                      "description",
+                      this.state.description,
+                      "required|min:3|max:200"
+                    )}
+                  </div>
+                </div>
+                <div>
                   <label className="labels">Tags</label>
                 </div>
                 {this.state.tags.map((tag, index) => (
@@ -185,7 +205,7 @@ class TutorialForm extends Component {
                       <div className="col-xs-8 col-sm-8">
                         <div>
                           <input
-                            className="tag-field"
+                            className="tags-field"
                             name="tags"
                             type="text"
                             value={tag}
