@@ -5,7 +5,7 @@ import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
-import { user } from "../../store/actions/Actions";
+import { getPathname } from "../../store/actions/Actions";
 import API from "../../api";
 import "./SignUp.css";
 
@@ -203,7 +203,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(user(path));
+      dispatch(getPathname(path));
     }
   };
 };

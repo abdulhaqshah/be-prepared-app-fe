@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { user } from "../../store/actions/Actions";
+import { getPathname } from "../../store/actions/Actions";
 import Section from "./Section";
 import Footer from "../../components/Footer";
 
@@ -28,7 +28,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(user(path));
+      dispatch(getPathname(path));
     }
   };
 };

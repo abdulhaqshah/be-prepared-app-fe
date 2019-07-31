@@ -3,7 +3,7 @@ import * as auth from "../../services/Session";
 import { connect } from "react-redux";
 import { HOME, PROFILE, LOGIN, SINGUP } from "../../constants";
 import { Link, withRouter } from "react-router-dom";
-import { user, logout } from "../../store/actions/Actions";
+import { getPathname, logout } from "../../store/actions/Actions";
 import "./Navbar.scss";
 
 class Navbar extends Component {
@@ -139,7 +139,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(logout());
     },
     setPathname: path => {
-      dispatch(user(path));
+      dispatch(getPathname(path));
     }
   };
 };

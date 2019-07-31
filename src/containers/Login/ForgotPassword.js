@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { user } from "../../store/actions/Actions";
+import { getPathname } from "../../store/actions/Actions";
 import EmailConfirmation from "./EmailConfirmation";
 import UpdatePassword from "./UpdatePassword";
 
@@ -63,7 +63,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(user(path));
+      dispatch(getPathname(path));
     }
   };
 };

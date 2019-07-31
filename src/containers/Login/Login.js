@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
-import { getUserData, user } from "../../store/actions/Actions";
+import { getUserData, getPathname } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
 import { DASHBOARD, FORGOT_PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
@@ -150,7 +150,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(getUserData(data));
     },
     setPathname: path => {
-      dispatch(user(path));
+      dispatch(getPathname(path));
     }
   };
 };
