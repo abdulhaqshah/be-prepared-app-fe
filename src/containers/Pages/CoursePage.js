@@ -27,8 +27,6 @@ class CoursePage extends Component {
   }
 
   render() {
-    // console.log(this.props.course)
-    // let description = JSON.parse(this.props.course[0].description)
     let tutorials, quizes;
     if (!this.props.tutorials) {
       tutorials = (
@@ -53,7 +51,7 @@ class CoursePage extends Component {
           </div>
         ));
     }
-    if (!this.props.quizes) {
+    if (this.props.quizes.length === 0) {
       quizes = (
         <div className="quizShow">
           <p>There is no quiz available</p>
