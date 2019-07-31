@@ -67,12 +67,7 @@ class Routes extends Component {
           component={ForgotPassword}
           notificationRef={this.notificationDOMRef}
         />
-        <Navbar
-          loginBtn="LOGIN"
-          signupBtn="SIGNUP"
-          signupRoute={SINGUP}
-          loginRoute={LOGIN}
-        />
+        <Navbar loginBtn="LOGIN" signupBtn="SIGNUP" />
         <ProtectedRoute
           path={DASHBOARD}
           component={Dashboard}

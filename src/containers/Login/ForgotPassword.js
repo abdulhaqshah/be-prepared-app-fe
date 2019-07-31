@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { getPathname } from "../../store/actions/Actions";
 import EmailConfirmation from "./EmailConfirmation";
 import UpdatePassword from "./UpdatePassword";
 
@@ -11,6 +14,7 @@ class ForgotPassword extends Component {
       emailConfirmation: true
     };
     this.notificationRef = this.props.notificationRef;
+    this.props.setPathname(this.props.location.pathname);
   }
 
   getEmail = email => {
@@ -50,4 +54,22 @@ class ForgotPassword extends Component {
     );
   }
 }
-export default ForgotPassword;
+const mapStateToProps = state => {
+  return {
+    pathname: state.getPathname.pathname
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setPathname: path => {
+      dispatch(getPathname(path));
+    }
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ForgotPassword)
+);

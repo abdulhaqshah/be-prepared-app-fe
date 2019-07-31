@@ -68,3 +68,9 @@ export const getQuizById = data => dispatch => {
     console.log(error);
   });
 };
+export const getPathname = path => dispatch => {
+  dispatch({
+    type: types.GET_PATHNAME,
+    pathname: path
+  });
+};

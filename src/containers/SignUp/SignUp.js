@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
+import { getPathname } from "../../store/actions/Actions";
 import API from "../../api";
 import "./SignUp.css";
 
@@ -40,9 +41,10 @@ class SignUp extends Component {
       confirmPassword: "",
       param: true
     };
+    this.props.setPathname(this.props.location.pathname);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.notificationDOMRef = React.createRef();
+    this.notificationRef = this.props.notificationRef;
     this.formRef = null;
   }
 
@@ -72,21 +74,17 @@ class SignUp extends Component {
           result.status === "500"
         ) {
           addNotification(
-            this.notificationDOMRef,
+            this.notificationRef,
             "Error",
             "danger",
             result.message
           );
         } else {
-          addNotification(
-            this.notificationDOMRef,
-            "Error",
-            "warning",
-            result.message
-          );
+          let error = API.getErrorMessage(result.message);
+          addNotification(this.notificationRef, "Error", "danger", error);
         }
       }).catch = error => {
-        addNotification(this.notificationDOMRef, "Error", "warning", error);
+        addNotification(this.notificationRef, "Error", "warning", error);
       };
     } else {
       this.validator.showMessages();
@@ -97,9 +95,6 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <div>
-          <ReactNotification ref={this.notificationDOMRef} />
-        </div>
         <div className="signup-container">
           <div className="inner-container">
             <h1 className="heading" align="center">
@@ -199,4 +194,22 @@ class SignUp extends Component {
     );
   }
 }
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    pathname: state.getPathname.pathname
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setPathname: path => {
+      dispatch(getPathname(path));
+    }
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SignUp)
+);

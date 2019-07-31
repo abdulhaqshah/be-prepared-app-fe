@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
-import { getUserData } from "../../store/actions/Actions";
+import { getUserData, getPathname } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
 import { DASHBOARD, FORGOT_PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
@@ -18,6 +18,7 @@ class Login extends Component {
       email: "",
       password: ""
     };
+    this.props.setPathname(this.props.location.pathname);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
@@ -53,9 +54,6 @@ class Login extends Component {
         "danger",
         nextProps.message
       );
-    } else {
-      let error = API.getErrorMessage(nextProps.message);
-      addNotification(this.notificationRef, "Error", "danger", error);
     }
   }
 
@@ -138,11 +136,13 @@ class Login extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     userData: state.userData.user,
     status: state.userData.status,
-    message: state.userData.message
+    message: state.userData.message,
+    pathname: state.getPathname.pathname
   };
 };
 
@@ -150,10 +150,16 @@ const mapDispatchToProps = dispatch => {
   return {
     getData: data => {
       dispatch(getUserData(data));
+    },
+    setPathname: path => {
+      dispatch(getPathname(path));
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
