@@ -21,7 +21,8 @@ import {
   EMAIL_CONFIRMATION,
   USER_BY_ID,
   ADDING_TUTORIAL_TO_USER,
-  UPDATE_USER_TUTORIAL_PROGRESS
+  UPDATE_USER_TUTORIAL_PROGRESS,
+  QUIZ_QUESTIONS_ADD
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -103,6 +104,11 @@ const getUserById = (resolve, reject) => {
 
 const getCourseById = (courseId, resolve, reject) => {
   return GlobalAPISvc(GET_COURSE_BY_ID(courseId), METHODS.GET)
+  .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+const quizContentAdd = (quizId, data, resolve, reject) => {
+  return GlobalAPISvc(QUIZ_QUESTIONS_ADD(quizId), METHODS.POST, data)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -191,5 +197,6 @@ export default {
   updatePassword,
   getUserById,
   addingTutorialProgressToUser,
-  updatingUserTutorialProgress
+  updatingUserTutorialProgress,
+  quizContentAdd
 };
