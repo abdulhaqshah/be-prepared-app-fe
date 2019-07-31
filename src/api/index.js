@@ -22,7 +22,8 @@ import {
   USER_BY_ID,
   ADDING_TUTORIAL_TO_USER,
   UPDATE_USER_TUTORIAL_PROGRESS,
-  QUIZ_QUESTIONS_ADD
+  QUIZ_QUESTIONS_ADD,
+  GET_QUIZES_BY_COURSE_ID
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -166,6 +167,7 @@ const updatingUserTutorialProgress = (tutorialId, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
 const getErrorMessage = (error) => {
   if (error === 'Failed to fetch') {
     return 'Something went wrong. Try again later'
@@ -198,5 +200,6 @@ export default {
   getUserById,
   addingTutorialProgressToUser,
   updatingUserTutorialProgress,
-  quizContentAdd
+  quizContentAdd,
+  getQuizByCourseId
 };

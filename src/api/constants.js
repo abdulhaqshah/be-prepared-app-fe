@@ -64,5 +64,7 @@ export const UPDATE_USER_TUTORIAL_PROGRESS = (uuid , tutorialId) => {
 export const QUIZ_QUESTIONS_ADD = quizId => {
   return `/quiz/${quizId}/question/add` ;
 }
-
+export const GET_QUIZES_BY_COURSE_ID = courseId => {
+  return `/quiz/course/${courseId}`;
+ };
 

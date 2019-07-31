@@ -17,6 +17,7 @@ class TutorialForm extends Component {
       quizId : ""
     };
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleCourseInput = this.handleCourseInput.bind(this);
     this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
     this.resetState = this.resetState.bind(this);
@@ -40,6 +41,28 @@ class TutorialForm extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value.trim() });
+  }
+
+  handleCourseInput(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value.trim() });
+    this.getQuizzes(e.target.value);
+  }
+
+  getQuizzes(courseId){
+    API.getQuizByCourseId(courseId, result => {
+      if (result.status === "200") {
+        this.setState({
+          quizzes: result.data
+        });
+      } else {
+        let error = API.getErrorMessage(result.message)
+        addNotification(this.notificationRef, "Error", "danger", error);
+      }
+    }).catch = error => {
+      addNotification(this.notificationRef, "Error", "warning", error);
+    };
   }
 
   addClick() {
@@ -193,7 +216,7 @@ class TutorialForm extends Component {
                   <select className="browser-default custom-select custom-select-lg mb-2"
                     name="courseId"
                     type="text"
-                    onChange={this.handleUserInput}
+                    onChange={this.handleCourseInput}
                   >
                     <option value="">Select</option>
                     {this.state.courses.map((course, index) => (
@@ -222,9 +245,9 @@ class TutorialForm extends Component {
                     onChange={this.handleUserInput}
                   >
                     <option value="">Select</option>
-                    {this.state.courses.map((course, index) => (
-                      <option key={index} value={course.courseId}>
-                        {course.name}
+                    {this.state.quizzes.map((quiz, index) => (
+                      <option key={index} value={quiz.quizId}>
+                        {quiz.name}
                       </option>
                     ))}
                   </select>
