@@ -8,7 +8,6 @@ import { addNotification } from "../../utilities";
 import { DASHBOARD, FORGOT_PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
-import API from "../../api/index";
 
 class Login extends Component {
   constructor(props) {
