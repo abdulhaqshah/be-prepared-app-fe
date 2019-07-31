@@ -12,12 +12,6 @@ class TutorialForm extends Component {
     this.state = {
       courseId: "",
       questions : [],
-      quest : {
-          question : "",
-          options : [],
-          answer : [],
-          selection : ""
-      },
       courses: [],
       quizzes : [],
       quizId : ""
@@ -51,7 +45,7 @@ class TutorialForm extends Component {
   addClick() {
     let quest = {
         question : "",
-        options : [],
+        options : ["", "", "", ""],
         answer : [],
         selection : ""
     };
@@ -72,23 +66,53 @@ class TutorialForm extends Component {
     this.setState({ questions });
   }
 
+  handleSelection(i,event) {
+    let questions = [...this.state.questions];
+    questions[i].selection = event.target.value;
+    if(event.target.value === 'single') {
+      questions[i].answer = [];
+      questions[i].answer.push("")
+    } else {
+      if(questions[i].answer.length===0) {
+        questions[i].answer.push("");
+        questions[i].answer.push("");
+      } else if (questions[i].answer.length===1) {
+        questions[i].answer.push("");
+      }
+    }
+    this.setState({ questions });
+  }
+
   addOption(index){
       let questions = [...this.state.questions];
       questions[index].options.push("");
       this.setState({ questions });
   }
+  addAnswer(index){
+    let questions = [...this.state.questions];
+    if(questions[index].selection === 'multi') {
+      questions[index].answer.push("");
+      this.setState({ questions });
+    } else {
+      alert('Selection Type is Single')
+    }
+}
 
   removeOption(i, index) {
-    debugger
     let questions = [...this.state.questions];
     questions[index].options.splice(i, 1);
-    console.log(questions[0].options)
     this.setState({ questions });
   }
 
   handleChangeOptions(i, index,  event) {
     let questions = [...this.state.questions];
     questions[index].options[i] = event.target.value;
+    this.setState({ questions });
+  }
+
+  handleChangeAnswer(i, index,  event) {
+    let questions = [...this.state.questions];
+    questions[index].answer[i] = event.target.value;
     this.setState({ questions });
   }
 
@@ -195,7 +219,7 @@ class TutorialForm extends Component {
                   </label>
                   </div>
                   <select className="browser-default custom-select custom-select-lg mb-2"
-                    name="courseId"
+                    name="quizId"
                     type="text"
                     onChange={this.handleUserInput}
                   >
@@ -234,7 +258,7 @@ class TutorialForm extends Component {
                         <div className="tagMessage">
                           {this.validator.message(
                             "question",
-                            this.state.questions[index].question,
+                            this.state.questions[index].question.trim(),
                             "required"
                           )}
                         </div>
@@ -253,38 +277,66 @@ class TutorialForm extends Component {
                             />
                           </div>
                         </div>
-                        <div className="col-xs-4 col-sm-4">
-                        <div className="remove">
-                          <button
-                            type="button"
-                            key={ind}
-                            onClick={this.removeOption.bind(this, ind, index)}
-                            className="small"
-                          >
-                            Remove Option
-                          </button>
-                        </div>
-
                         <div className="tagMessage">
                             {this.validator.message(
                               "option",
-                              this.state.questions[index].options[ind],
+                              this.state.questions[index].options[ind].trim(),
                               "required"
                             )}
                           </div>
                         </div>
-                        </div>
                       ))}
                       <div className="col-xs-12 col-sm-12">
+                        <div>
+                        <div className="col-xs-4 col-sm-4">
+                          <select className="browser-default custom-select custom-select-md mb-2"
+                          name="selection"
+                          type="text"
+                          onChange={this.handleSelection.bind(this,index)}
+                          >
+                            <option value="">Select</option>
+                            <option value="single">Single</option>
+                            <option value="multi">Multi</option>
+                          </select>
+                        </div>
+                        </div>
+                        <div>
+                        {question.answer.map((answer, inde) => (
+                          <div className = "col-lg-12 col-lg-12">
+                            <div>
+                            <label className="labels">Answer</label>
+                            </div>
+                          <div className="col-lg-8 col-lg-8">
+                          <div>
+                            <textarea
+                              className="option-field"
+                              name="options"
+                              type="text"
+                              value={answer}
+                              key={inde}
+                              onChange={this.handleChangeAnswer.bind(this, inde, index)}
+                            />
+                          </div>
+                        </div>
+                        <div className="tagMessage">
+                            {this.validator.message(
+                              "answer",
+                              this.state.questions[index].answer[inde].trim(),
+                              "required"
+                            )}
+                          </div>
+                        </div>
+                      ))}
                       <div className="col-xs-4 col-sm-4">
                         <button
                             type="button"
                             key={index}
-                            onClick={this.addOption.bind(this, index)}
+                            onClick={this.addAnswer.bind(this, index)}
                             className="small"
                         >
-                            Add Option
+                            Add Anwer
                         </button>
+                        </div>
                         </div>
                         <div className="col-xs-4 col-sm-4">
                         <div className="remove">
