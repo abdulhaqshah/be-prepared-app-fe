@@ -27,6 +27,8 @@ class CoursePage extends Component {
   }
 
   render() {
+    // console.log(this.props.course)
+    // let description = JSON.parse(this.props.course[0].description)
     let tutorials, quizes;
     if (!this.props.tutorials) {
       tutorials = (
@@ -81,9 +83,7 @@ class CoursePage extends Component {
           <div className="courses-detail-card">
             <div className="card shadow-lg">
               <div className="card-body">
-                <p>
-                  {this.props.course ? this.props.course[0].description : null}
-                </p>
+                {this.props.course ? <div dangerouslySetInnerHTML={{ __html: this.props.course[0].description }} /> : null}
               </div>
             </div>
           </div>

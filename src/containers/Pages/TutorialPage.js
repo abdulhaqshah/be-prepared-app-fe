@@ -28,7 +28,7 @@ class TutorialPage extends Component {
               <div className="card-body">
                 <p>
                   {this.props.tutorialById
-                    ? this.props.tutorialById[0].content
+                    ? <div dangerouslySetInnerHTML={{ __html: this.props.tutorialById[0].content}} />
                     : null}
                 </p>
               </div>
