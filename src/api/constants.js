@@ -28,10 +28,10 @@ export const GET_COURSE_BY_ID = courseId => {
   return `/course/courseById/${courseId}`;
 };
 export const GET_TUTORIALS_BY_COURSE_ID = courseId => {
-  return `/tutorial/tutorialByCourse/${courseId}`;
+  return `/tutorial/course/${courseId}`;
 };
 export const GET_QUIZES_BY_COURSE_ID = courseId => {
-  return `/quiz/quizByCourse/${courseId}`;
+  return `/quiz/course/${courseId}`;
 };
 export const GET_TUTORIAL_BY_ID = tutorialId => {
   return `/tutorial/tutorialById/${tutorialId}`;
