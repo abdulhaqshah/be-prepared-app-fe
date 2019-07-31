@@ -3,6 +3,7 @@ import * as auth from "../../services/Session";
 import { connect } from "react-redux";
 import { HOME, PROFILE, LOGIN, SINGUP } from "../../constants";
 import { Link, withRouter } from "react-router-dom";
+import { user, logout } from "../../store/actions/Actions";
 import "./Navbar.scss";
 
 class Navbar extends Component {
@@ -13,6 +14,7 @@ class Navbar extends Component {
 
   onLogout() {
     auth.clearSession();
+    this.props.clearStore();
     this.props.history.push(HOME);
   }
 
@@ -127,7 +129,23 @@ class Navbar extends Component {
 }
 const mapStateToProps = state => {
   return {
-    pathname: state.getPathname.pathname
+    pathname: state.user.pathname
   };
 };
-export default withRouter(connect(mapStateToProps)(Navbar));
+
+const mapDispatchToProps = dispatch => {
+  return {
+    clearStore: () => {
+      dispatch(logout());
+    },
+    setPathname: path => {
+      dispatch(user(path));
+    }
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navbar)
+);

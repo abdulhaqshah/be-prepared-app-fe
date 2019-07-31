@@ -74,3 +74,9 @@ export const getPathname = path => dispatch => {
     pathname: path
   });
 };
+
+export const logout = () => dispatch => {
+  dispatch({
+    type: types.LOGOUT
+  });
+};

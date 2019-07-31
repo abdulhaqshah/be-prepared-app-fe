@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getPathname } from "../../store/actions/Actions";
+import { user } from "../../store/actions/Actions";
 import Section from "./Section";
 import Footer from "../../components/Footer";
 
@@ -21,14 +21,14 @@ class Home extends Component {
 }
 const mapStateToProps = state => {
   return {
-    pathname: state.getPathname.pathname
+    pathname: state.user.pathname
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(getPathname(path));
+      dispatch(user(path));
     }
   };
 };

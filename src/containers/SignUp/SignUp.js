@@ -5,7 +5,7 @@ import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
-import { getPathname } from "../../store/actions/Actions";
+import { user } from "../../store/actions/Actions";
 import API from "../../api";
 import "./SignUp.css";
 
@@ -196,14 +196,14 @@ class SignUp extends Component {
 }
 const mapStateToProps = state => {
   return {
-    pathname: state.getPathname.pathname
+    pathname: state.user.pathname
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(getPathname(path));
+      dispatch(user(path));
     }
   };
 };

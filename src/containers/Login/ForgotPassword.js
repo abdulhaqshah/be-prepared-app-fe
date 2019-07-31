@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getPathname } from "../../store/actions/Actions";
+import { user } from "../../store/actions/Actions";
 import EmailConfirmation from "./EmailConfirmation";
 import UpdatePassword from "./UpdatePassword";
 
@@ -56,14 +56,14 @@ class ForgotPassword extends Component {
 }
 const mapStateToProps = state => {
   return {
-    pathname: state.getPathname.pathname
+    pathname: state.user.pathname
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setPathname: path => {
-      dispatch(getPathname(path));
+      dispatch(user(path));
     }
   };
 };
