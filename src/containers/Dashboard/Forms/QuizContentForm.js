@@ -118,10 +118,10 @@ class TutorialForm extends Component {
 
   resetState() {
     this.setState({
-      name: "",
-      content: "",
       courseId: "",
-      options: []
+      quizId : "",
+      questions : [],
+      quizzes : []
     });
   }
 
@@ -129,16 +129,14 @@ class TutorialForm extends Component {
     let self = this;
     e.preventDefault();
     if (this.validator.allValid()) {
-      var { name, content, courseId, options } = this.state;
+      var { quizId, questions } = this.state;
       const data = {
-        name,
-        content,
-        courseId,
-        options
+        quizId, 
+        questions
       };
 
-      API.tutorialData(data, result => {
-        if (result.status === "201") {
+      API.quizContentAdd(this.state.quizId, data, result => {
+        if (result.status === "200") {
           this.resetState();
           self.formRef.reset();
           self.validator.hideMessages();
