@@ -186,6 +186,7 @@ class TutorialForm extends Component {
                     className="description-field"
                     name="description"
                     type="text"
+                    maxLength = "200"
                     onChange={this.handleUserInput}
                   />
                   <div className="form-error-msg">
