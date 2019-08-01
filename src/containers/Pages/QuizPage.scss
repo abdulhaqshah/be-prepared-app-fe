@@ -14,11 +14,11 @@
   }
   .course-content-container {
     background-color: #f3f7f7 !important;
-    padding: 30px;
-    width: 400px;
+    padding: 20px;
+    width: 800px;
 
     .card-body {
-      padding: 10px;
+      padding: 30px;
     }
     p {
       padding: 15px;
@@ -37,4 +37,19 @@
       background-color: rgb(101, 119, 18);
     }
   }
+}
+.next-btn {
+  padding: 20px;
+  margin-bottom: 20px;
+  .btn-secondary {
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: rgb(18, 53, 119);
+  }
+}
+.question {
+  margin-bottom: 15px;
 }

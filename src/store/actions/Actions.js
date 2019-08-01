@@ -59,7 +59,6 @@ export const getTutorialById = data => dispatch => {
 };
 
 export const getQuizById = data => dispatch => {
-  debugger
   API.getQuizById(data, result => {
     dispatch({
       type: types.GET_QUIZ_BY_ID,
