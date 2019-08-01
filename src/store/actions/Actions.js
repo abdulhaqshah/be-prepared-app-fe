@@ -80,3 +80,10 @@ export const logout = () => dispatch => {
     type: types.LOGOUT
   });
 };
+
+export const incrementIndex = index => dispatch => {
+  dispatch({
+    type: types.INCREMENT_INDEX,
+    index: index + 1
+  });
+};
