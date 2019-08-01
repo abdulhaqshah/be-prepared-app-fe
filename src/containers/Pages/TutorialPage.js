@@ -42,7 +42,7 @@ class TutorialPage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    tutorialById: state.getTutorialDataById.tutorialById
+    tutorialById: state.getDashboardData.tutorialById
   };
 };
 const mapDispatchToProps = dispatch => {

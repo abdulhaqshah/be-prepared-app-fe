@@ -11,7 +11,7 @@ class Card extends Component {
     };
   }
 
-  getCourseId(courseId, name) {
+  getCourseById(courseId, name) {
     this.props.history.push(`course-page/${name}/${courseId}`);
   }
 
@@ -28,7 +28,7 @@ class Card extends Component {
                 <div
                   className="course-name"
                   key={index}
-                  onClick={() => this.getCourseId(course.courseId, course.name)}
+                  onClick={() => this.getCourseById(course.courseId, course.name)}
                 >
                   {course.name}
                 </div>
@@ -42,9 +42,9 @@ class Card extends Component {
 }
 const mapStateToProps = state => {
   return {
-    course: state.courseData.course,
-    tutorials: state.tutorialData.tutorials,
-    quizes: state.quizData.quizes
+    course: state.getDashboardData.course,
+    tutorials: state.getDashboardData.tutorials,
+    quizes: state.getDashboardData.quizes
   };
 };
 export default withRouter(connect(mapStateToProps)(Card));

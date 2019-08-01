@@ -10,11 +10,11 @@ import Footer from "../../components/Footer";
 import "./CoursePage.scss";
 
 class CoursePage extends Component {
-  getTutorialId = (tutorialId, name) => {
+  getTutorialById = (tutorialId, name) => {
     this.props.history.push(`/tutorial-page/${name}/${tutorialId}`);
   };
 
-  getQuizId = quizId => {
+  getQuizById = quizId => {
     this.props.getQuizes(quizId);
   };
 
@@ -42,7 +42,7 @@ class CoursePage extends Component {
             className="tutorial-name"
             key={index}
             onClick={() =>
-              this.getTutorialId(tutorial.tutorialId, tutorial.name)
+              this.getTutorialById(tutorial.tutorialId, tutorial.name)
             }
           >
             <ul>
@@ -64,7 +64,7 @@ class CoursePage extends Component {
           <div
             className="tutorial-name"
             key={index}
-            onClick={() => this.getQuizId(quiz.quizId)}
+            onClick={() => this.getQuizById(quiz.quizId)}
           >
             <ul>
               <li> {quiz.name}</li>
@@ -117,11 +117,11 @@ class CoursePage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    course: state.courseData.course,
-    tutorials: state.tutorialData.tutorials,
-    quizes: state.quizData.quizes,
-    tutorialById: state.getTutorialDataById.tutorialById,
-    quizById: state.getQuizDataById.quizById
+    course: state.getDashboardData.course,
+    tutorials: state.getDashboardData.tutorials,
+    quizes: state.getDashboardData.quizes,
+    tutorialById: state.getDashboardData.tutorialById,
+    quizById: state.getDashboardData.quizById
   };
 };
 const mapDispatchToProps = dispatch => {
