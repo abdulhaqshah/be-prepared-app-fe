@@ -18,7 +18,8 @@ import {
   GET_TUTORIAL_BY_ID,
   GET_QUIZ_BY_ID,
   UPDATE_PASSWORD,
-  EMAIL_CONFIRMATION
+  EMAIL_CONFIRMATION,
+  USER_BY_ID
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -89,6 +90,11 @@ const userAboutInfo = (data, resolve, reject) => {
 
 const tutorialUpdateContent = (tutorialId, data, resolve, reject) => {
   return GlobalAPISvc(TUTORIAL_UPDATE_CONTENT(tutorialId), METHODS.PATCH, data)
+  .then(res => resolve(res))
+    .catch(err => reject(err));
+};
+const getUserById = (resolve, reject) => {
+  return GlobalAPISvc(USER_BY_ID(uuid), METHODS.GET)
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
@@ -140,10 +146,9 @@ const updatePassword = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
-
-const getErrorMessage = error => {
-  if (error === "Failed to fetch") {
-    return "Something went wrong. Try again later";
+const getErrorMessage = (error) => {
+  if (error === 'Failed to fetch') {
+    return 'Something went wrong. Try again later'
   } else {
     return error;
   }
@@ -169,5 +174,6 @@ export default {
   getTutorialById,
   getQuizById,
   emailConfirmation,
-  updatePassword
+  updatePassword,
+  getUserById
 };

@@ -52,3 +52,7 @@ export const COURSE_UPDATE_DESCRIPTION = courseId => {
 export const EMAIL_CONFIRMATION = email => {
   return `/user/emailExist/${email}`;
 };
+export const USER_BY_ID = uuid => {
+  return `/user/userById/${uuid}`
+}
+
