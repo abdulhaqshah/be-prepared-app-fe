@@ -25,7 +25,7 @@ class TutorialCard extends Component {
           </div>
           <div className="tutorial-link">
             <a href={this.props.href} className="font-weight-bold">
-              View Tutorial
+              {this.props.linkName}
             </a>
           </div>
         </div>

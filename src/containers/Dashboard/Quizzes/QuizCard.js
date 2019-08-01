@@ -26,7 +26,7 @@ class QuizCard extends Component {
           </div>
           <div className="quiz-link">
             <a href={this.props.href} className="font-weight-bold">
-              View Quiz
+              {this.props.linkName}
             </a>
           </div>
         </div>
