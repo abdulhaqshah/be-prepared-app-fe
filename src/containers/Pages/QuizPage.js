@@ -6,27 +6,36 @@ import { getQuizById } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizPage extends Component {
+
   componentDidMount() {
     const pathname = this.props.history.location.pathname;
     var id = pathname.split("/");
-    console.log(id);
     this.props.getQuizes(id[3]);
   }
 
+  quizQuestion=()=>{
+this.props.history.push("/quiz-questions")
+  }
+
   render() {
+    console.log(
+      this.props.quizById ? this.props.quizById[0].questions[0].options : null
+    );
+    debugger;
     return (
-      <div className="main-course-container">
+      <div className="main-quiz-container">
         <div className="header">
-          <h1>
-            {/* {this.props.quizById ? this.props.quizById[0].name : null} */}
-          </h1>
+          <h4>{this.props.quizById ? this.props.quizById[0].name : null}</h4>
         </div>
-        <div className="course-content-container">
-          <div className="courses-detail-card">
-            <div className="card shadow-lg">
-              <div className="card-body" />
-            </div>
-          </div>
+        <div align="center" className="description">
+          <p>
+            {this.props.quizById ? this.props.quizById[0].description : null}
+          </p>
+        </div>
+        <div align="center" className="quiz-btn">
+          <button className="btn btn-secondary" onClick={this.quizQuestion}>
+            Start Quiz
+          </button>
         </div>
         <Footer />
       </div>
@@ -34,11 +43,13 @@ class QuizPage extends Component {
   }
 }
 const mapStateToProps = state => {
+  debugger;
   return {
     quizById: state.getQuizDataById.quizById
   };
 };
 const mapDispatchToProps = dispatch => {
+  debugger;
   return {
     getQuizes: id => {
       dispatch(getQuizById(id));

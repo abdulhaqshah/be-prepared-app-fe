@@ -9,8 +9,8 @@ import TutorialForm from "../containers/Dashboard/Forms/TutorialForm";
 import CourseForm from "../containers/Dashboard/Forms/CourseForm";
 import QuizContentForm from "../containers/Dashboard/Forms/QuizContentForm";
 import QuizForm from "../containers/Dashboard/Forms/QuizForm";
-import TutorialUpdationForm from '../containers/Dashboard/Forms/TutorialUpdationForm'
-import CourseUpdationForm from '../containers/Dashboard/Forms/CourseUpdationForm'
+import TutorialUpdationForm from "../containers/Dashboard/Forms/TutorialUpdationForm";
+import CourseUpdationForm from "../containers/Dashboard/Forms/CourseUpdationForm";
 import CoursePage from "../containers/Pages/CoursePage";
 import TutorialPage from "../containers/Pages/TutorialPage";
 import ForgotPassword from "../containers/Login/ForgotPassword";
@@ -32,8 +32,12 @@ import {
   COURSE_UPDATION_FORM,
   COURSE_PAGE,
   TUTORIAL_PAGE,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
+  QUIZ_PAGE,
+  QUIZ_QUESTIONS
 } from "../constants";
+import QuizPage from "../containers/Pages/QuizPage";
+import QuizQuestions from "../containers/Pages/QuizQuestions";
 
 class Routes extends Component {
   constructor(props) {
@@ -98,16 +102,16 @@ class Routes extends Component {
           component={QuizContentForm}
           notificationRef={this.notificationDOMRef}
         />
-        <ProtectedRoute 
-          path={TUTORIAL_UPDATION_FORM} 
+        <ProtectedRoute
+          path={TUTORIAL_UPDATION_FORM}
           component={TutorialUpdationForm}
-          notificationRef={this.notificationDOMRef} 
+          notificationRef={this.notificationDOMRef}
         />
         <ProtectedRoute
           path={COURSE_UPDATION_FORM}
           component={CourseUpdationForm}
-          notificationRef={this.notificationDOMRef} 
-         />
+          notificationRef={this.notificationDOMRef}
+        />
         <ProtectedRoute
           path={COURSE_PAGE}
           component={CoursePage}
@@ -116,6 +120,16 @@ class Routes extends Component {
         <ProtectedRoute
           path={TUTORIAL_PAGE}
           component={TutorialPage}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={QUIZ_PAGE}
+          component={QuizPage}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={QUIZ_QUESTIONS}
+          component={QuizQuestions}
           notificationRef={this.notificationDOMRef}
         />
       </Router>

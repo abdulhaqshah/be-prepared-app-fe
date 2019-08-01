@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import LinesEllipsis from 'react-lines-ellipsis'
-import {Link} from "react-router-dom"
+import LinesEllipsis from "react-lines-ellipsis";
+import { Link, withRouter } from "react-router-dom";
 import "./Quiz.scss";
 
 class QuizCard extends Component {
-  
+  getQuizById = () => {
+    this.props.history.push(
+      `quiz-page/${this.props.heading}/${this.props.value}`
+    );
+  };
+
   render() {
     return (
       <div className="card">
@@ -17,16 +22,16 @@ class QuizCard extends Component {
             {this.props.heading}
           </h2>
           <div className="truncate-lines">
-          <LinesEllipsis
-            text={this.props.description}
-            maxLine='2'
-            ellipsis='...'
-            trimRight
-            basedOn='letters'
-          />
+            <LinesEllipsis
+              text={this.props.description}
+              maxLine="2"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
           </div>
           <div className="quiz-link">
-            <Link href={this.props.href} className="font-weight-bold">
+            <Link className="font-weight-bold" onClick={this.getQuizById}>
               {this.props.linkName}
             </Link>
           </div>
@@ -36,4 +41,4 @@ class QuizCard extends Component {
   }
 }
 
-export default QuizCard;
+export default withRouter(QuizCard);
