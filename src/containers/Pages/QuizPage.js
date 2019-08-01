@@ -18,11 +18,10 @@ class QuizPage extends Component {
   }
 
   quizQuestion = () => {
-    this.props.history.push("/quiz-questions", this.state.pathname);
+    this.props.history.push(`/quiz-questions${this.state.pathname}`);
   };
 
   render() {
-    debugger;
     return (
       <div className="main-quiz-container">
         <div className="header">
@@ -44,13 +43,11 @@ class QuizPage extends Component {
   }
 }
 const mapStateToProps = state => {
-  debugger;
   return {
     quizById: state.getQuizDataById.quizById
   };
 };
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
     getQuizes: id => {
       dispatch(getQuizById(id));
