@@ -17,8 +17,8 @@ import {
   GET_QUIZES_BY_COURSE_ID,
   GET_TUTORIAL_BY_ID,
   GET_QUIZ_BY_ID,
-  EMAIL_CONFIRMATION,
-  UPDATE_PASSWORD
+  UPDATE_PASSWORD,
+  EMAIL_CONFIRMATION
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";

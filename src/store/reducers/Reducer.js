@@ -8,8 +8,8 @@ const initialState = {
   tutorialById: "",
   quizById: "",
   pathname: "",
-  status: null,
-  message: null
+  status: "",
+  message: ""
 };
 const userData = (state = initialState, action) => {
   const newState = { ...state };
@@ -20,6 +20,13 @@ const userData = (state = initialState, action) => {
       user: action.user,
       status: action.status,
       message: action.message
+    };
+  } else if (action.type === types.LOGOUT) {
+    return {
+      ...state,
+      user: {},
+      status: null,
+      message: null
     };
   }
   return newState;
@@ -57,30 +64,17 @@ const getDashboardData = (state = initialState, action) => {
       ...state,
       quizById: action.quizById
     };
-  } else if (action.type === types.LOGOUT) {
+  } else if (action.type === types.GET_PATHNAME) {
     return {
       ...state,
-      user: {},
-      status: null,
-      message: null
+      pathname: action.pathname
     };
   } else {
     return newState;
   }
 };
-const getPathname = (state = initialState, action) => {
-  const newState = { ...state };
-  if (action.type === types.GET_PATHNAME) {
-    return {
-      ...state,
-      pathname: action.pathname
-    };
-  }
 
-  return newState;
-};
 export default combineReducers({
   userData,
-  getDashboardData,
-  getPathname
+  getDashboardData
 });

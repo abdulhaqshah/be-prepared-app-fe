@@ -140,7 +140,7 @@ const mapStateToProps = state => {
     userData: state.userData.user,
     status: state.userData.status,
     message: state.userData.message,
-    pathname: state.getPathname.pathname
+    pathname: state.getDashboardData.pathname
   };
 };
 

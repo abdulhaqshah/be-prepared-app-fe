@@ -129,7 +129,7 @@ class Navbar extends Component {
 }
 const mapStateToProps = state => {
   return {
-    pathname: state.user.pathname
+    pathname: state.getDashboardData.pathname
   };
 };
 
