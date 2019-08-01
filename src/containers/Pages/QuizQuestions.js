@@ -1,29 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { getQuizById } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizQuestions extends Component {
   componentDidMount() {
-    const pathname = this.props.history.location.pathname;
+    const pathname = this.props.history.location.state;
     var id = pathname.split("/");
     this.props.getQuizes(id[3]);
   }
   render() {
-    // const question = this.props.question[0];
-    // const options = question.map((option, index) => {
-    //   return (
-    //     <div className="course-name" key={index}>
-    //       <li>{option.option}</li>
-    //     </div>
-    //   );
-    // });
-    // console.log(this.props.question[0]);
-    debugger;
     return (
       <div className="course-content-container">
         <div className="courses-detail-card">
           <div className="card shadow-lg">
             <div className="card-body" />
-            <p>{this.props.questions[0].question} </p>
+            <h1>Quiz Questions</h1>
+            <p>
+              {this.props.quizById ? this.props.quizById[0].description : null}
+            </p>
           </div>
           <div className="options">{/* <ul>{options}</ul> */}</div>
         </div>
@@ -31,5 +27,21 @@ class QuizQuestions extends Component {
     );
   }
 }
-
-export default QuizQuestions;
+const mapStateToProps = state => {
+  return {
+    quizById: state.getQuizDataById.quizById
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    getQuizes: id => {
+      dispatch(getQuizById(id));
+    }
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(QuizQuestions)
+);
