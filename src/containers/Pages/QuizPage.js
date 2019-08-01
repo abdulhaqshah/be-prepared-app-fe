@@ -6,21 +6,22 @@ import { getQuizById } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizPage extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      pathname: this.props.history.location.pathname
+    };
+  }
   componentDidMount() {
-    const pathname = this.props.history.location.pathname;
-    var id = pathname.split("/");
+    var id = this.state.pathname.split("/");
     this.props.getQuizes(id[3]);
   }
 
-  quizQuestion=()=>{
-this.props.history.push("/quiz-questions")
-  }
+  quizQuestion = () => {
+    this.props.history.push("/quiz-questions", this.state.pathname);
+  };
 
   render() {
-    console.log(
-      this.props.quizById ? this.props.quizById[0].questions[0].options : null
-    );
     debugger;
     return (
       <div className="main-quiz-container">
