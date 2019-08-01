@@ -11,6 +11,8 @@ import QuizContentForm from "../containers/Dashboard/Forms/QuizContentForm";
 import QuizForm from "../containers/Dashboard/Forms/QuizForm";
 import TutorialUpdationForm from '../containers/Dashboard/Forms/TutorialUpdationForm'
 import CourseUpdationForm from '../containers/Dashboard/Forms/CourseUpdationForm'
+import CoursePage from "../containers/Pages/CoursePage";
+import TutorialPage from "../containers/Pages/TutorialPage";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
@@ -26,7 +28,9 @@ import {
   QUIZ_FORM,
   QUIZ_CONTENT_FORM,
   TUTORIAL_UPDATION_FORM,
-  COURSE_UPDATION_FORM
+  COURSE_UPDATION_FORM,
+  COURSE_PAGE,
+  TUTORIAL_PAGE
 } from "../constants";
 
 class Routes extends Component {
@@ -101,8 +105,19 @@ class Routes extends Component {
           component={CourseUpdationForm}
           notificationRef={this.notificationDOMRef} 
          />
+        <ProtectedRoute
+          path={COURSE_PAGE}
+          component={CoursePage}
+          notificationRef={this.notificationDOMRef}
+        />
+        <ProtectedRoute
+          path={TUTORIAL_PAGE}
+          component={TutorialPage}
+          notificationRef={this.notificationDOMRef}
+        />
       </Router>
     );
   }
 }
+
 export default Routes;
