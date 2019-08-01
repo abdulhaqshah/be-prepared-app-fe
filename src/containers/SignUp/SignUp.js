@@ -1,34 +1,47 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
 import { addNotification } from "../../utilities";
 import { LOGIN } from "../../constants";
+import { getPathname } from "../../store/actions/Actions";
 import API from "../../api";
 import "./SignUp.css";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.validator = new SimpleReactValidator(
-      { autoForceUpdate: this },
-      {
-        validators: {
-          cp: {
-            message: "The :attribute does not match.",
-            rule: (val, params, validator) => {
-              return Boolean(val) ? val === params[0] : null;
-            },
-            required: true
-          }
+    this.validator = new SimpleReactValidator({
+      validators: {
+        cp: {
+          message: "The :attribute does not match.",
+          rule: (val, params, validator) => {
+            return Boolean(val) ? val === params[0] : null;
+          },
+          required: true
+        },
+        password: {
+          message:
+            "The :attribute must have minimum 8 characters with 1 uppercase letter, 1 special character and 1 numeric",
+          rule: (val, params, validator) => {
+            return validator.helpers.testRegex(
+              val,
+              /^(?=.*[0-9])(?=.*[a-z])*(?=.*[!@#$%^&*])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}$/
+            );
+          },
+          required: true
         }
       }
-    );
+    });
     this.state = {
       name: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      param: true
     };
+    this.props.setPathname(this.props.location.pathname);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.notificationRef = this.props.notificationRef;
@@ -54,13 +67,7 @@ class SignUp extends Component {
         if (result.status === "201") {
           this.formRef.reset();
           this.validator.hideMessages();
-          addNotification(
-            this.notificationRef,
-            "Success",
-            "success",
-            result.message
-          );
-          this.props.history.push(LOGIN);
+          this.props.history.push(LOGIN, this.state.param);
         } else if (
           result.status === "400" ||
           result.status === "403" ||
@@ -73,8 +80,8 @@ class SignUp extends Component {
             result.message
           );
         } else {
-          let error = API.getErrorMessage(result.message)
-          addNotification(this.notificationDOMRef, "Error", "danger", error);
+          let error = API.getErrorMessage(result.message);
+          addNotification(this.notificationRef, "Error", "danger", error);
         }
       }).catch = error => {
         addNotification(this.notificationRef, "Error", "warning", error);
@@ -145,7 +152,7 @@ class SignUp extends Component {
                   {this.validator.message(
                     "password",
                     this.state.password,
-                    "required|min:6|max:20"
+                    "required|password"
                   )}
                 </div>
               </div>
@@ -187,4 +194,22 @@ class SignUp extends Component {
     );
   }
 }
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    pathname: state.getDashboardData.pathname
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setPathname: path => {
+      dispatch(getPathname(path));
+    }
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SignUp)
+);

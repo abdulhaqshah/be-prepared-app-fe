@@ -13,6 +13,7 @@ import TutorialUpdationForm from '../containers/Dashboard/Forms/TutorialUpdation
 import CourseUpdationForm from '../containers/Dashboard/Forms/CourseUpdationForm'
 import CoursePage from "../containers/Pages/CoursePage";
 import TutorialPage from "../containers/Pages/TutorialPage";
+import ForgotPassword from "../containers/Login/ForgotPassword";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
@@ -30,7 +31,8 @@ import {
   TUTORIAL_UPDATION_FORM,
   COURSE_UPDATION_FORM,
   COURSE_PAGE,
-  TUTORIAL_PAGE
+  TUTORIAL_PAGE,
+  FORGOT_PASSWORD
 } from "../constants";
 
 class Routes extends Component {
@@ -43,12 +45,7 @@ class Routes extends Component {
     return (
       <Router>
         <ReactNotification ref={this.notificationDOMRef} />
-        <Navbar
-          loginBtn="LOGIN"
-          signupBtn="SIGNUP"
-          signupRoute={SINGUP}
-          loginRoute={LOGIN}
-        />
+
         <GuestRoute
           exact
           path={HOME}
@@ -65,6 +62,12 @@ class Routes extends Component {
           component={Login}
           notificationRef={this.notificationDOMRef}
         />
+        <GuestRoute
+          path={FORGOT_PASSWORD}
+          component={ForgotPassword}
+          notificationRef={this.notificationDOMRef}
+        />
+        <Navbar loginBtn="LOGIN" signupBtn="SIGNUP" />
         <ProtectedRoute
           path={DASHBOARD}
           component={Dashboard}

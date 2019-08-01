@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 import SimpleReactValidator from "simple-react-validator";
 import Footer from "../../components/Footer";
-import { getUserData } from "../../store/actions/Actions";
+import { getUserData, getPathname } from "../../store/actions/Actions";
 import { addNotification } from "../../utilities";
-import { DASHBOARD } from "../../constants";
+import { DASHBOARD, FORGOT_PASSWORD } from "../../constants";
 import * as auth from "../../services/Session";
 import "./Login.css";
-import API from "../../api/index";
 
 class Login extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class Login extends Component {
       email: "",
       password: ""
     };
+    this.props.setPathname(this.props.location.pathname);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.notificationRef = this.props.notificationRef;
     this.submitForm = this.submitForm.bind(this);
@@ -46,10 +47,12 @@ class Login extends Component {
       nextProps.status === "403" ||
       nextProps.status === "500"
     ) {
-      addNotification(this.notificationRef, "Error", "danger", nextProps.message);
-    } else {
-      let error = API.getErrorMessage(nextProps.message)
-      addNotification(this.notificationRef, "Error", "danger", error);
+      addNotification(
+        this.notificationRef,
+        "Error",
+        "danger",
+        nextProps.message
+      );
     }
   }
 
@@ -117,17 +120,12 @@ class Login extends Component {
                 </div>
               </div>
               <div>
-                <button
-                  className="login-button"
-                  name="loginBtn"
-                  type="submit"
-                  onClick={this._changeState}
-                >
+                <button className="login-button" name="loginBtn" type="submit">
                   LOGIN
                 </button>
               </div>
-              <div align="center">
-                <a href="/forgetPassword">Forget Password</a>
+              <div className="forgotPassword" align="center">
+                <Link to={FORGOT_PASSWORD}>Forgot Password</Link>
               </div>
             </form>
           </div>
@@ -141,7 +139,8 @@ const mapStateToProps = state => {
   return {
     userData: state.userData.user,
     status: state.userData.status,
-    message: state.userData.message
+    message: state.userData.message,
+    pathname: state.getDashboardData.pathname
   };
 };
 
@@ -149,10 +148,15 @@ const mapDispatchToProps = dispatch => {
   return {
     getData: data => {
       dispatch(getUserData(data));
+    },
+    setPathname: path => {
+      dispatch(getPathname(path));
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
