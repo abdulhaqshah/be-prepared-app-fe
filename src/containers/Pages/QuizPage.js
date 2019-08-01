@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Footer from "../../components/Footer";
-import { getQuizesById } from "../../store/actions/Actions";
+import { getQuizById } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizPage extends Component {
@@ -35,13 +35,13 @@ class QuizPage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    quizById: state.getData.quizById
+    quizById: state.getQuizDataById.quizById
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     getQuizes: id => {
-      dispatch(getQuizesById(id));
+      dispatch(getQuizById(id));
     }
   };
 };
