@@ -28,9 +28,11 @@ const userData = (state = initialState, action) => {
       status: null,
       message: null
     };
+  } else {
+    return newState;
   }
-  return newState;
 };
+
 const getDashboardData = (state = initialState, action) => {
   const newState = { ...state };
   if (action.type === types.GET_COURSE_DATA) {
@@ -53,11 +55,6 @@ const getDashboardData = (state = initialState, action) => {
     return {
       ...state,
       tutorialById: action.tutorialById
-    };
-  } else if (action.type === types.GET_QUIZ_BY_ID) {
-    return {
-      ...state,
-      quizById: action.quizById
     };
   } else if (action.type === types.GET_QUIZ_BY_ID) {
     return {
