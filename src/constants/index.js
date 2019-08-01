@@ -12,3 +12,5 @@ export const COURSE_UPDATION_FORM = '/course-update-form';
 export const COURSE_PAGE = "/course-page";
 export const TUTORIAL_PAGE = "/tutorial-page";
 export const FORGOT_PASSWORD = "/forgot-Password";
+export const QUIZ_PAGE = "/quiz-page";
+export const QUIZ_QUESTIONS = "/quiz-questions";
