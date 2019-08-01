@@ -31,8 +31,8 @@ class Quizzes extends Component {
     if(this.state.quizzes.length > 0) {
       cards = this.state.quizzes.map((quiz, index) => (
         <div className="interview-prep-quiz" key={index}>
-          <div className="quiz-card shadow-lg ml-5 mr-4 mb-5">
-            <QuizCard heading={quiz.name} value={quiz.quizId} description={quiz.description}/>
+          <div className="quiz-card shadow-lg ml-4 mr-4 mb-4">
+            <QuizCard linkName = "View Quiz" heading={quiz.name} value={quiz.quizId} description={quiz.description}/>
           </div>
       </div>
       ));

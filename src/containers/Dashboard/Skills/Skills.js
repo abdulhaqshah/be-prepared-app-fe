@@ -39,15 +39,15 @@ class Skills extends Component {
     } else {
       cards1 = this.state.tutorialProgress.map((tutorial, index) => (
         <div className="interview-prep-tutorial" key={index}>
-          <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-            <TutorialCard heading={tutorial.name} description = {tutorial.description} value={tutorial.tutorialId}/>
+          <div className="tutorial-card shadow-lg ml-4 mr-4 mb-5">
+            <TutorialCard linkName = "Continue" heading={tutorial.name} description = {tutorial.description} value={tutorial.tutorialId}/>
           </div>
         </div>
       ));
       cards2 = this.state.quizProgress.map((quiz, index) => (
         <div className="interview-prep-tutorial" key={index}>
-          <div className="tutorial-card shadow-lg ml-5 mr-4 mb-5">
-            <QuizCard value={quiz.quizId}/>
+          <div className="tutorial-card shadow-lg ml-4 mr-4 mb-5">
+            <QuizCard linkName = "Continue" value={quiz.quizId} description = {quiz.description} heading={quiz.name}/>
           </div>
         </div>
       ));
