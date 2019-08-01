@@ -34,6 +34,11 @@ const userData = (state = initialState, action) => {
       ...state,
       index: action.index
     };
+  } else if (action.type === types.DECREMENT_INDEX) {
+    return {
+      ...state,
+      index: action.index
+    };
   } else {
     return newState;
   }

@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "../../components/Footer";
 import { withRouter } from "react-router-dom";
-import { getQuizById, incrementIndex } from "../../store/actions/Actions";
+import {
+  getQuizById,
+  incrementIndex,
+  decrementIndex
+} from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizQuestions extends Component {
@@ -21,7 +25,15 @@ class QuizQuestions extends Component {
 
   onClickNextBtn = () => {
     debugger;
-    this.props.addIndex(this.state.index);
+    this.props.incIndex(this.state.index);
+    this.setState({
+      index: this.props.index
+    });
+  };
+
+  onClickPrevBtn = () => {
+    debugger;
+    this.props.decIndex(this.state.index);
     this.setState({
       index: this.props.index
     });
@@ -29,10 +41,8 @@ class QuizQuestions extends Component {
 
   render() {
     console.log(this.props.index);
-    console.log(
-      this.props.quizById && this.props.quizById[0].questions[0].length
-    );
-    let options, nextBtn, prevBtn;
+    console.log(this.props.quizById && this.props.quizById[0].questions.length);
+    let options, nextBtn, prevBtn, doneBtn;
     if (this.state.index === 0) {
       nextBtn = (
         <div align="right" className="next-btn">
@@ -41,11 +51,29 @@ class QuizQuestions extends Component {
           </button>
         </div>
       );
-    } else {
+    } else if (
+      this.props.index <
+      (this.props.quizById && this.props.quizById[0].questions.length)
+    ) {
       prevBtn = (
         <div align="left" className="next-btn">
-          <button className="btn btn-secondary" onClick={this.onClickNextBtn}>
+          <button className="btn btn-secondary" onClick={this.onClickPrevBtn}>
             Previous
+          </button>
+        </div>
+      );
+      nextBtn = (
+        <div align="right" className="next-btn">
+          <button className="btn btn-secondary" onClick={this.onClickNextBtn}>
+            Next
+          </button>
+        </div>
+      );
+    } else {
+      doneBtn = (
+        <div align="left" className="next-btn">
+          <button className="btn btn-secondary" onClick={this.onClickNextBtn}>
+            Done
           </button>
         </div>
       );
@@ -113,7 +141,13 @@ class QuizQuestions extends Component {
               </div>
             </div>
           </div>
-          <div>{nextBtn}</div>
+          <div>
+            {nextBtn}
+            {prevBtn}
+            {doneBtn}
+          </div>
+          {/* <div>{prevBtn}</div>
+          <div>{doneBtn}</div> */}
         </div>
         <Footer />
       </div>
@@ -133,8 +167,11 @@ const mapDispatchToProps = dispatch => {
     getQuizes: id => {
       dispatch(getQuizById(id));
     },
-    addIndex: index => {
+    incIndex: index => {
       dispatch(incrementIndex(index));
+    },
+    decIndex: index => {
+      dispatch(decrementIndex(index));
     }
   };
 };

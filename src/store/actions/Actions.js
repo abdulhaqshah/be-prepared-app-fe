@@ -87,3 +87,11 @@ export const incrementIndex = index => dispatch => {
     index: index + 1
   });
 };
+
+export const decrementIndex = index => dispatch => {
+  debugger;
+  dispatch({
+    type: types.INCREMENT_INDEX,
+    index: index - 1
+  });
+};
