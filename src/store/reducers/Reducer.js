@@ -9,7 +9,8 @@ const initialState = {
   quizById: "",
   pathname: "",
   status: "",
-  message: ""
+  message: "",
+  index: 0
 };
 const userData = (state = initialState, action) => {
   const newState = { ...state };
@@ -27,6 +28,11 @@ const userData = (state = initialState, action) => {
       user: {},
       status: null,
       message: null
+    };
+  } else if (action.type === types.INCREMENT_INDEX) {
+    return {
+      ...state,
+      index: action.index
     };
   } else {
     return newState;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "../../components/Footer";
 import { withRouter } from "react-router-dom";
-import { getQuizById } from "../../store/actions/Actions";
+import { getQuizById, incrementIndex } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
 class QuizQuestions extends Component {
@@ -10,32 +10,28 @@ class QuizQuestions extends Component {
     super(props);
     this.state = {
       index: 0
-      // nextBtn:"",
-      // prevBtn:""
     };
   }
+
   componentDidMount() {
     const pathname = this.props.location.pathname;
     var id = pathname.split("/");
     this.props.getQuizes(id[4]);
   }
 
-  // nextBtn = () => {
-  //   return (
-  //     <div align="right" className="next-btn">
-  //       <button className="btn btn-secondary">Next</button>
-  //     </div>
-  //   );
-  // };
-
   onClickNextBtn = () => {
+    debugger;
+    this.props.addIndex(this.state.index);
     this.setState({
-      index: this.state.index++
+      index: this.props.index
     });
   };
 
   render() {
-    console.log(this.props.quizById && this.props.quizById[this.state.index]);
+    console.log(this.props.index);
+    console.log(
+      this.props.quizById && this.props.quizById[0].questions[0].length
+    );
     let options, nextBtn, prevBtn;
     if (this.state.index === 0) {
       nextBtn = (
@@ -54,7 +50,9 @@ class QuizQuestions extends Component {
         </div>
       );
     }
-    if (this.props.quizById[0].questions[this.state.index].selection) {
+    if (
+      this.props.quizById[0].questions[this.state.index].selection === "single"
+    ) {
       options =
         this.props.quizById &&
         this.props.quizById[0].questions[this.state.index].options.map(
@@ -91,17 +89,11 @@ class QuizQuestions extends Component {
       <div>
         <div className="main-quiz-container">
           <div className="header">
-            <h4>
-              {this.props.quizById
-                ? this.props.quizById[this.state.index].name
-                : null}
-            </h4>
+            <h4>{this.props.quizById ? this.props.quizById[0].name : null}</h4>
           </div>
           <div align="center" className="description">
             <p>
-              {this.props.quizById
-                ? this.props.quizById[this.state.index].description
-                : null}
+              {this.props.quizById ? this.props.quizById[0].description : null}
             </p>
           </div>
           <div className="row">
@@ -111,7 +103,8 @@ class QuizQuestions extends Component {
                   <div className="card-body">
                     <div className="question">
                       {this.props.quizById
-                        ? this.props.quizById[0].questions[0].question
+                        ? this.props.quizById[0].questions[this.state.index]
+                            .question
                         : null}
                     </div>
                     <div className="options">{options}</div>
@@ -128,14 +121,20 @@ class QuizQuestions extends Component {
   }
 }
 const mapStateToProps = state => {
+  debugger;
   return {
-    quizById: state.getQuizDataById.quizById
+    quizById: state.getQuizDataById.quizById,
+    index: state.user.index
   };
 };
 const mapDispatchToProps = dispatch => {
+  debugger;
   return {
     getQuizes: id => {
       dispatch(getQuizById(id));
+    },
+    addIndex: index => {
+      dispatch(incrementIndex(index));
     }
   };
 };
