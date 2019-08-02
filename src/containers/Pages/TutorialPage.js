@@ -34,6 +34,14 @@ class TutorialPage extends Component {
               </div>
             </div>
           </div>
+          <div align="right" className="next-btn">
+             <button
+               className="btn btn-secondary"
+               onClick={this.onClickNextBtn}
+             >
+               Done
+             </button>
+           </div>
         </div>
         <Footer />
       </div>

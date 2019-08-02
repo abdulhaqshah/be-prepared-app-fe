@@ -55,4 +55,7 @@ export const EMAIL_CONFIRMATION = email => {
 export const USER_BY_ID = uuid => {
   return `/user/userById/${uuid}`
 }
+export const ADDING_TUTORIAL_TO_USER = (uuid, tutorialId, courseId) => {
+  return `/user/${uuid}/tutorial/${tutorialId}/start/${courseId}`
+}
 

@@ -19,7 +19,8 @@ import {
   GET_QUIZ_BY_ID,
   UPDATE_PASSWORD,
   EMAIL_CONFIRMATION,
-  USER_BY_ID
+  USER_BY_ID,
+  ADDING_TUTORIAL_TO_USER
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -146,6 +147,12 @@ const updatePassword = (data, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
+const addingTutorialProgressToUser = (tutorialId, courseId, data, resolve, reject) => {
+  return GlobalAPISvc(ADDING_TUTORIAL_TO_USER(uuid,tutorialId,courseId), METHODS.POST, data)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
 const getErrorMessage = (error) => {
   if (error === 'Failed to fetch') {
     return 'Something went wrong. Try again later'
@@ -175,5 +182,6 @@ export default {
   getQuizById,
   emailConfirmation,
   updatePassword,
-  getUserById
+  getUserById,
+  addingTutorialProgressToUser
 };
