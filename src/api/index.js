@@ -20,7 +20,8 @@ import {
   UPDATE_PASSWORD,
   EMAIL_CONFIRMATION,
   USER_BY_ID,
-  ADDING_TUTORIAL_TO_USER
+  ADDING_TUTORIAL_TO_USER,
+  UPDATE_USER_TUTORIAL_PROGRESS
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -153,6 +154,12 @@ const addingTutorialProgressToUser = (tutorialId, courseId, data, resolve, rejec
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+
+const updatingUserTutorialProgress = (tutorialId, resolve, reject) => {
+  return GlobalAPISvc(UPDATE_USER_TUTORIAL_PROGRESS(uuid,tutorialId), METHODS.PATCH)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
 const getErrorMessage = (error) => {
   if (error === 'Failed to fetch') {
     return 'Something went wrong. Try again later'
@@ -183,5 +190,6 @@ export default {
   emailConfirmation,
   updatePassword,
   getUserById,
-  addingTutorialProgressToUser
+  addingTutorialProgressToUser,
+  updatingUserTutorialProgress
 };

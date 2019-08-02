@@ -58,4 +58,7 @@ export const USER_BY_ID = uuid => {
 export const ADDING_TUTORIAL_TO_USER = (uuid, tutorialId, courseId) => {
   return `/user/${uuid}/tutorial/${tutorialId}/start/${courseId}`
 }
+export const UPDATE_USER_TUTORIAL_PROGRESS = (uuid , tutorialId) => {
+  return `/user/${uuid}/tutorial/${tutorialId}/updateStatus`
+}
 
