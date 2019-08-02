@@ -13,7 +13,7 @@ class QuizQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0
+      answers: {}
     };
   }
 
@@ -22,6 +22,12 @@ class QuizQuestions extends Component {
     var id = pathname.split("/");
     this.props.getQuizes(id[4]);
   }
+
+  matchAnswers = selectedOption => {
+    this.setSate({
+      answers: selectedOption
+    });
+  };
 
   render() {
     debugger;
@@ -35,7 +41,12 @@ class QuizQuestions extends Component {
         this.props.quizById[0].questions[this.props.index].options.map(
           (option, index) => (
             <div key={index}>
-              <input type="radio" className="options-name" name="answer" />
+              <input
+                type="radio"
+                className="options-name"
+                name="answer"
+                onChange={this.matchAnswers}
+              />
               {option}
             </div>
           )
@@ -46,7 +57,12 @@ class QuizQuestions extends Component {
         this.props.quizById[0].questions[this.props.index].options.map(
           (option, index) => (
             <div key={index}>
-              <input type="checkbox" className="options-name" name={option} />
+              <input
+                type="checkbox"
+                className="options-name"
+                name={option}
+                onChange={this.matchAnswers}
+              />
               {option}
             </div>
           )
@@ -117,12 +133,7 @@ class QuizQuestions extends Component {
               >
                 Previous
               </button>
-              <button
-                className="btn btn-secondary"
-                // onClick={this.onClickNextBtn}
-              >
-                done
-              </button>
+              <button className="btn btn-secondary">done</button>
             </div>
           ) : null}
         </div>
