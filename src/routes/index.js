@@ -14,6 +14,7 @@ import CourseUpdationForm from "../containers/Dashboard/Forms/CourseUpdationForm
 import CoursePage from "../containers/Pages/CoursePage";
 import TutorialPage from "../containers/Pages/TutorialPage";
 import ForgotPassword from "../containers/Login/ForgotPassword";
+import QuizScore from "../containers/Pages/QuizScore";
 import { ProtectedRoute, GuestRoute } from "./CustomRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
@@ -34,7 +35,8 @@ import {
   TUTORIAL_PAGE,
   FORGOT_PASSWORD,
   QUIZ_PAGE,
-  QUIZ_QUESTIONS
+  QUIZ_QUESTIONS,
+  QUIZ_SCORE
 } from "../constants";
 import QuizPage from "../containers/Pages/QuizPage";
 import QuizQuestions from "../containers/Pages/QuizQuestions";
@@ -132,7 +134,13 @@ class Routes extends Component {
           component={QuizQuestions}
           notificationRef={this.notificationDOMRef}
         />
+         <ProtectedRoute
+          path={QUIZ_SCORE}
+          component={QuizScore}
+          notificationRef={this.notificationDOMRef}
+        />
       </Router>
+
     );
   }
 }
