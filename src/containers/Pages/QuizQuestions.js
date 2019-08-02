@@ -67,6 +67,7 @@ class QuizQuestions extends Component {
   onClickDoneBtn = () => {
     this.score(this.state.selectedOption);
     this.props.attempt();
+    this.props.history.push('/quiz-score')
   };
 
   render() {

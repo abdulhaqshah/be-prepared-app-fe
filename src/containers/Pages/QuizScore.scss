@@ -1,0 +1,21 @@
+.score-card {
+  margin-top: 130px;
+  .course-content-container {
+    .courses-detail-card {
+      .card {
+        height: 300px;
+        width: 600px;
+        .your-score {
+          padding: 40px;
+          padding-right: 100px;
+        }
+      }
+    }
+  }
+}
+.pass {
+  color: green;
+}
+.fail {
+  color: Red;
+}

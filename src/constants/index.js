@@ -14,3 +14,4 @@ export const TUTORIAL_PAGE = "/tutorial-page";
 export const FORGOT_PASSWORD = "/forgot-Password";
 export const QUIZ_PAGE = "/quiz-page";
 export const QUIZ_QUESTIONS = "/quiz-questions";
+export const QUIZ_SCORE = "/quiz-score";
