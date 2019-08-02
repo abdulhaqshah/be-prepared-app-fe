@@ -30,15 +30,9 @@ const userData = (state = initialState, action) => {
       message: null
     };
   } else if (action.type === types.INCREMENT_INDEX) {
-    return {
-      ...state,
-      index: action.index
-    };
+    return newState.index++;
   } else if (action.type === types.DECREMENT_INDEX) {
-    return {
-      ...state,
-      index: action.index
-    };
+    return newState.index--;
   } else {
     return newState;
   }

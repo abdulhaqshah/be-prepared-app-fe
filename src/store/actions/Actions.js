@@ -81,17 +81,14 @@ export const logout = () => dispatch => {
   });
 };
 
-export const incrementIndex = index => dispatch => {
+export const incrementIndex = () => dispatch => {
   dispatch({
-    type: types.INCREMENT_INDEX,
-    index: index + 1
+    type: types.INCREMENT_INDEX
   });
 };
 
-export const decrementIndex = index => dispatch => {
-  debugger;
+export const decrementIndex = () => dispatch => {
   dispatch({
-    type: types.INCREMENT_INDEX,
-    index: index - 1
+    type: types.DECREMENT_INDEX
   });
 };
