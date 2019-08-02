@@ -10,7 +10,9 @@ const initialState = {
   pathname: "",
   status: "",
   message: "",
-  index: 0
+  index: 0,
+  score: 0,
+  attempted: 0
 };
 const userData = (state = initialState, action) => {
   const newState = { ...state };
@@ -33,6 +35,10 @@ const userData = (state = initialState, action) => {
     return newState.index++;
   } else if (action.type === types.DECREMENT_INDEX) {
     return newState.index--;
+  } else if (action.type === types.CALCULATE_SCORE) {
+    return newState.score++;
+  } else if (action.type === types.ATTEMPTED_QUESTIONS) {
+    return newState.attempted++;
   } else {
     return newState;
   }
