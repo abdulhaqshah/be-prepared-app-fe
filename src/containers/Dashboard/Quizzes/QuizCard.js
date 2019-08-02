@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LinesEllipsis from 'react-lines-ellipsis'
+import {Link} from "react-router-dom"
 import "./Quiz.scss";
 
 class QuizCard extends Component {
@@ -25,9 +26,9 @@ class QuizCard extends Component {
           />
           </div>
           <div className="quiz-link">
-            <a href={this.props.href} className="font-weight-bold">
+            <Link href={this.props.href} className="font-weight-bold">
               {this.props.linkName}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

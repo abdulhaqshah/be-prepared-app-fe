@@ -3,8 +3,7 @@ import API from "../../../api/index";
 import "react-notifications-component/dist/theme.css";
 import { addNotification } from "../../../utilities/index";
 import "./Skills.scss";
-import TutorialCard from '../Tutorials/TutorialCard'
-import QuizCard from "../Quizzes/QuizCard";
+import SkillCard from '../Skills/SkillCard'
 class Skills extends Component {
   constructor(props) {
     super(props);
@@ -40,14 +39,14 @@ class Skills extends Component {
       cards1 = this.state.tutorialProgress.map((tutorial, index) => (
         <div className="interview-prep-tutorial" key={index}>
           <div className="tutorial-card shadow-lg ml-4 mr-4 mb-5">
-            <TutorialCard linkName = "Continue" heading={tutorial.name} description = {tutorial.description} value={tutorial.tutorialId}/>
+            <SkillCard skill = "tutorial" heading={tutorial.name} description = {tutorial.description} value={tutorial.tutorialId}/>
           </div>
         </div>
       ));
       cards2 = this.state.quizProgress.map((quiz, index) => (
         <div className="interview-prep-tutorial" key={index}>
           <div className="tutorial-card shadow-lg ml-4 mr-4 mb-5">
-            <QuizCard linkName = "Continue" value={quiz.quizId} description = {quiz.description} heading={quiz.name}/>
+            <SkillCard skill = "quiz" value={quiz.quizId} description = {quiz.description} heading={quiz.name}/>
           </div>
         </div>
       ));
