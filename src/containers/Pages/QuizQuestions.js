@@ -5,7 +5,9 @@ import { withRouter } from "react-router-dom";
 import {
   getQuizById,
   incrementIndex,
-  decrementIndex
+  decrementIndex,
+  calculateScore,
+  attemptedQuestions
 } from "../../store/actions/Actions";
 import "./QuizPage.scss";
 
@@ -13,7 +15,9 @@ class QuizQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: {}
+      selectedOption: [],
+      showQuestions: "",
+      showScore: ""
     };
   }
 
@@ -23,14 +27,49 @@ class QuizQuestions extends Component {
     this.props.getQuizes(id[4]);
   }
 
-  matchAnswers = selectedOption => {
-    this.setSate({
-      answers: selectedOption
+  matchAnswers = option => {
+    let selectedOption = [...this.state.selectedOption];
+    let found = selectedOption.find(soption => soption === option);
+    if (found) {
+      selectedOption = selectedOption.filter(soption => {
+        return soption !== option;
+      });
+    } else {
+      selectedOption.push(option);
+    }
+    this.setState({
+      selectedOption
     });
   };
 
-  render() {
+  score = selectedOption => {
     debugger;
+    if (
+      JSON.stringify(selectedOption) ===
+      JSON.stringify(
+        this.props.quizById[0] &&
+          this.props.quizById[0].questions[this.props.index].answer
+      )
+    ) {
+      this.props.addScore();
+    }
+  };
+
+  onClickNextBtn = () => {
+    this.score(this.state.selectedOption);
+    this.props.incIndex();
+    this.setState({
+      selectedOption: []
+    });
+    this.props.attempt();
+  };
+
+  onClickDoneBtn = () => {
+    this.score(this.state.selectedOption);
+    this.props.attempt();
+  };
+
+  render() {
     let options;
     if (
       this.props.quizById[0] &&
@@ -43,9 +82,11 @@ class QuizQuestions extends Component {
             <div key={index}>
               <input
                 type="radio"
+                key={this.props.index}
                 className="options-name"
+                value={option}
                 name="answer"
-                onChange={this.matchAnswers}
+                onChange={() => this.matchAnswers(option)}
               />
               {option}
             </div>
@@ -59,9 +100,11 @@ class QuizQuestions extends Component {
             <div key={index}>
               <input
                 type="checkbox"
+                key={this.props.index}
+                value={option}
                 className="options-name"
                 name={option}
-                onChange={this.matchAnswers}
+                onChange={() => this.matchAnswers(option)}
               />
               {option}
             </div>
@@ -100,7 +143,7 @@ class QuizQuestions extends Component {
             <div align="right" className="next-btn">
               <button
                 className="btn btn-secondary"
-                onClick={this.props.incIndex}
+                onClick={this.onClickNextBtn}
               >
                 Next
               </button>
@@ -118,7 +161,7 @@ class QuizQuestions extends Component {
               </button>
               <button
                 className="btn btn-secondary"
-                onClick={this.props.incIndex}
+                onClick={this.onClickNextBtn}
               >
                 Next
               </button>
@@ -133,7 +176,12 @@ class QuizQuestions extends Component {
               >
                 Previous
               </button>
-              <button className="btn btn-secondary">done</button>
+              <button
+                className="btn btn-secondary"
+                onClick={this.onClickDoneBtn}
+              >
+                done
+              </button>
             </div>
           ) : null}
         </div>
@@ -146,11 +194,12 @@ const mapStateToProps = state => {
   debugger;
   return {
     quizById: state.getQuizDataById.quizById,
-    index: state.user.index
+    index: state.user.index,
+    score: state.user.score,
+    attempted: state.user.attempted
   };
 };
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
     getQuizes: id => {
       dispatch(getQuizById(id));
@@ -160,6 +209,12 @@ const mapDispatchToProps = dispatch => {
     },
     decIndex: () => {
       dispatch(decrementIndex());
+    },
+    addScore: () => {
+      dispatch(calculateScore());
+    },
+    attempt: () => {
+      dispatch(attemptedQuestions());
     }
   };
 };

@@ -92,3 +92,17 @@ export const decrementIndex = () => dispatch => {
     type: types.DECREMENT_INDEX
   });
 };
+
+export const calculateScore = () => dispatch => {
+  debugger
+  dispatch({
+    type: types.CALCULATE_SCORE
+  });
+};
+
+export const attemptedQuestions = () => dispatch => {
+  debugger
+  dispatch({
+    type: types.ATTEMPTED_QUESTIONS
+  });
+};
