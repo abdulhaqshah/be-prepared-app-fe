@@ -15,8 +15,8 @@ const initialState = {
   attempted: 0
 };
 const userData = (state = initialState, action) => {
+  debugger;
   const newState = { ...state };
-
   if (action.type === types.GET_USER_DATA) {
     return {
       ...state,
@@ -32,16 +32,15 @@ const userData = (state = initialState, action) => {
       message: null
     };
   } else if (action.type === types.INCREMENT_INDEX) {
-    return newState.index++;
+    newState.index++;
   } else if (action.type === types.DECREMENT_INDEX) {
-    return newState.index--;
+    newState.index--;
   } else if (action.type === types.CALCULATE_SCORE) {
-    return newState.score++;
+    newState.score++;
   } else if (action.type === types.ATTEMPTED_QUESTIONS) {
-    return newState.attempted++;
-  } else {
-    return newState;
+    newState.attempted++;
   }
+  return newState;
 };
 
 const getDashboardData = (state = initialState, action) => {
