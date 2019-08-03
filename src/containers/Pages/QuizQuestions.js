@@ -43,6 +43,7 @@ class QuizQuestions extends Component {
   };
 
   score = selectedOption => {
+    debugger
     if (
       JSON.stringify(selectedOption) ===
       JSON.stringify(
@@ -55,11 +56,13 @@ class QuizQuestions extends Component {
   };
 
   resetSelectedOption = () => {
+    debugger
     this.setState({
       selectedOption: []
     });
   };
   onClickNextBtn = () => {
+    debugger
     this.score(this.state.selectedOption);
     this.props.incIndex();
     this.resetSelectedOption();
@@ -67,6 +70,7 @@ class QuizQuestions extends Component {
   };
 
   onClickDoneBtn = () => {
+    debugger
     this.score(this.state.selectedOption);
     this.props.attempt();
     this.resetSelectedOption();
@@ -74,6 +78,7 @@ class QuizQuestions extends Component {
   };
 
   render() {
+    console.log(this.props.quizById && this.props.quizById[0].questions)
     let options;
     if (
       this.props.quizById[0] &&

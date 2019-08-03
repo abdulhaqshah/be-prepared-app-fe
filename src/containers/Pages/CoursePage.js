@@ -14,8 +14,9 @@ class CoursePage extends Component {
     this.props.history.push(`/tutorial-page/${name}/${tutorialId}`);
   };
 
-  getQuizById = quizId => {
-    this.props.getQuizes(quizId);
+  getQuizById =( quizId,name) => {
+    this.props.getQuizes(quizId,name);
+    this.props.history.push(`/quiz-page/${name}/${quizId}`);
   };
 
   componentDidMount() {
@@ -64,7 +65,7 @@ class CoursePage extends Component {
           <div
             className="tutorial-name"
             key={index}
-            onClick={() => this.getQuizById(quiz.quizId)}
+            onClick={() => this.getQuizById(quiz.quizId,quiz.name)}
           >
             <ul>
               <li> {quiz.name}</li>

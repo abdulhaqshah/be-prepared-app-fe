@@ -32,11 +32,19 @@ class QuizPage extends Component {
             {this.props.quizById ? this.props.quizById[0].description : null}
           </p>
         </div>
-        <div align="center" className="quiz-btn">
-          <button className="btn btn-secondary" onClick={this.quizQuestion}>
-            Start Quiz
-          </button>
-        </div>
+        {this.props.quizById &&
+        this.props.quizById[0].questions.length === 0 ? (
+          <div align="center" className="no-quiz">
+            There is no Quiz avaliable
+          </div>
+        ) : (
+          <div align="center" className="quiz-btn">
+            <button className="btn btn-secondary" onClick={this.quizQuestion}>
+              Start Quiz
+            </button>
+          </div>
+        )}
+
         <Footer />
       </div>
     );
