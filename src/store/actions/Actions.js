@@ -94,15 +94,19 @@ export const decrementIndex = () => dispatch => {
 };
 
 export const calculateScore = () => dispatch => {
-  debugger
   dispatch({
     type: types.CALCULATE_SCORE
   });
 };
 
 export const attemptedQuestions = () => dispatch => {
-  debugger
   dispatch({
     type: types.ATTEMPTED_QUESTIONS
+  });
+};
+
+export const resetIndex = () => dispatch => {
+  dispatch({
+    type: types.RESET_INDEX
   });
 };
