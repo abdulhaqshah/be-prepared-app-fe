@@ -196,10 +196,10 @@ class QuizQuestions extends Component {
 }
 const mapStateToProps = state => {
   return {
-    quizById: state.getQuizDataById.quizById,
-    index: state.user.index,
-    score: state.user.score,
-    attempted: state.user.attempted
+    quizById: state.getDashboardData.quizById,
+    index: state.userData.index,
+    score: state.userData.score,
+    attempted: state.userData.attempted
   };
 };
 const mapDispatchToProps = dispatch => {

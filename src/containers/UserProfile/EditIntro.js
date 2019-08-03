@@ -64,7 +64,7 @@ class EditInto extends Component {
             result.message
           );
         } else {
-          let error = API.getErrorMessage(result.message)
+          let error = API.getErrorMessage(result.message);
           addNotification(this.notificationDOMRef, "Error", "danger", error);
         }
       }).catch = error => {
@@ -94,72 +94,72 @@ class EditInto extends Component {
                 <span>&times;</span>
               </button>
             </div>
-            <div className="modal-body" />
-
-            <div className="container">
-              <form
-                className="form"
-                onSubmit={this.submitForm}
-                ref={ref => (this.formRef = ref)}
-              >
-                <div className="feilds" />
-                <div className="name">
-                  <label className="labels vertical-spacing">
-                    Name <span className="edit-required-indicator">*</span>
-                  </label>
-                  <br />
-                  <input
-                    defaultValue={this.props.name}
-                    className="edit-field"
-                    name="name"
-                    onChange={this.handleUserInput}
-                  />
-                  <div className="edit-error-msg">
-                    {this.validator.message(
-                      "name",
-                      this.state.name,
-                      "required"
-                    )}
+            <div className="modal-body">
+              <div className="container">
+                <form
+                  className="form"
+                  onSubmit={this.submitForm}
+                  ref={ref => (this.formRef = ref)}
+                >
+                  <div className="feilds" />
+                  <div className="name">
+                    <label className="labels vertical-spacing">
+                      Name <span className="edit-required-indicator">*</span>
+                    </label>
+                    <br />
+                    <input
+                      defaultValue={this.props.name}
+                      className="edit-field"
+                      name="name"
+                      onChange={this.handleUserInput}
+                    />
+                    <div className="edit-error-msg">
+                      {this.validator.message(
+                        "name",
+                        this.state.name,
+                        "required"
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="email-div">
-                  <label className="labels vertical-spacing">
-                    Email <span className="edit-required-indicator">*</span>
-                  </label>
-                  <br />
-                  <input
-                    defaultValue={this.props.email}
-                    className="edit-field"
-                    name="email"
-                    onChange={this.handleUserInput}
-                  />
-                  <div className="edit-error-msg">
-                    {this.validator.message(
-                      "email",
-                      this.state.email,
-                      "required"
-                    )}
+                  <div className="email-div">
+                    <label className="labels vertical-spacing">
+                      Email <span className="edit-required-indicator">*</span>
+                    </label>
+                    <br />
+                    <input
+                      defaultValue={this.props.email}
+                      className="edit-field"
+                      name="email"
+                      onChange={this.handleUserInput}
+                    />
+                    <div className="edit-error-msg">
+                      {this.validator.message(
+                        "email",
+                        this.state.email,
+                        "required"
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="row d-flex flex-row-reverse mt-4 mb-3">
-                  <button
-                    className="btn btn-success col-lg-3 mt-1 mr-1 ml-1"
-                    name="saveBtn"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                  <button
-                    className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
-                    type="button"
-                    name="cancelBtn"
-                    onClick={this.onCancel}
-                    data-dismiss="modal"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+                  <div className="row d-flex flex-row-reverse mt-4 mb-3">
+                    <button
+                      className="btn btn-success col-lg-3 mt-1 mr-1 ml-1"
+                      name="saveBtn"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="btn btn-outline-success col-lg-3 mr-1 ml-1 mt-1"
+                      type="button"
+                      name="cancelBtn"
+                      onClick={this.onCancel}
+                      data-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
