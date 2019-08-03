@@ -15,7 +15,6 @@ const initialState = {
   attempted: 0
 };
 const userData = (state = initialState, action) => {
-  debugger;
   const newState = { ...state };
   if (action.type === types.GET_USER_DATA) {
     return {
@@ -39,6 +38,11 @@ const userData = (state = initialState, action) => {
     newState.score++;
   } else if (action.type === types.ATTEMPTED_QUESTIONS) {
     newState.attempted++;
+  } else if (action.type === types.RESET_INDEX) {
+    return {
+      ...state,
+      index: 0
+    };
   }
   return newState;
 };
