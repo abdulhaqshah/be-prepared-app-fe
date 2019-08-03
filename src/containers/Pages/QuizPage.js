@@ -44,7 +44,7 @@ class QuizPage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    quizById: state.getQuizDataById.quizById
+    quizById: state.getDashboardData.quizById
   };
 };
 const mapDispatchToProps = dispatch => {

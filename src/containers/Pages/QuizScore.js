@@ -49,8 +49,8 @@ class QuizScore extends Component {
 }
 const mapStateToProps = state => {
   return {
-    score: state.user.score,
-    attempted: state.user.attempted
+    score: state.userData.score,
+    attempted: state.userData.attempted
   };
 };
 

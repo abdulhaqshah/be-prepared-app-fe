@@ -22,8 +22,7 @@ import {
   USER_BY_ID,
   ADDING_TUTORIAL_TO_USER,
   UPDATE_USER_TUTORIAL_PROGRESS,
-  QUIZ_QUESTIONS_ADD,
-  GET_QUIZES_BY_COURSE_ID
+  QUIZ_QUESTIONS_ADD
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -94,7 +93,7 @@ const userAboutInfo = (data, resolve, reject) => {
 
 const tutorialUpdateContent = (tutorialId, data, resolve, reject) => {
   return GlobalAPISvc(TUTORIAL_UPDATE_CONTENT(tutorialId), METHODS.PATCH, data)
-  .then(res => resolve(res))
+    .then(res => resolve(res))
     .catch(err => reject(err));
 };
 const getUserById = (resolve, reject) => {
@@ -105,7 +104,7 @@ const getUserById = (resolve, reject) => {
 
 const getCourseById = (courseId, resolve, reject) => {
   return GlobalAPISvc(GET_COURSE_BY_ID(courseId), METHODS.GET)
-  .then(res => resolve(res))
+    .then(res => resolve(res))
     .catch(err => reject(err));
 };
 const quizContentAdd = (quizId, data, resolve, reject) => {
@@ -156,21 +155,34 @@ const updatePassword = (data, resolve, reject) => {
     .catch(err => reject(err));
 };
 
-const addingTutorialProgressToUser = (tutorialId, courseId, data, resolve, reject) => {
-  return GlobalAPISvc(ADDING_TUTORIAL_TO_USER(uuid,tutorialId,courseId), METHODS.POST, data)
+const addingTutorialProgressToUser = (
+  tutorialId,
+  courseId,
+  data,
+  resolve,
+  reject
+) => {
+  return GlobalAPISvc(
+    ADDING_TUTORIAL_TO_USER(uuid, tutorialId, courseId),
+    METHODS.POST,
+    data
+  )
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
 
 const updatingUserTutorialProgress = (tutorialId, resolve, reject) => {
-  return GlobalAPISvc(UPDATE_USER_TUTORIAL_PROGRESS(uuid,tutorialId), METHODS.PATCH)
+  return GlobalAPISvc(
+    UPDATE_USER_TUTORIAL_PROGRESS(uuid, tutorialId),
+    METHODS.PATCH
+  )
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
 
-const getErrorMessage = (error) => {
-  if (error === 'Failed to fetch') {
-    return 'Something went wrong. Try again later'
+const getErrorMessage = error => {
+  if (error === "Failed to fetch") {
+    return "Something went wrong. Try again later";
   } else {
     return error;
   }
