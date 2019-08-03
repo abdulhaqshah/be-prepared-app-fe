@@ -20,10 +20,10 @@ class QuizScore extends Component {
     }
   };
   render() {
-    let precentage;
-    precentage = (this.props.score / this.props.attempted) * 100;
+    let percentage;
+    percentage = (this.props.score / this.props.attempted) * 100;
 
-    console.log(precentage);
+    console.log(percentage);
     return (
       <div align="center" className="score-card">
         <div className="col-lg-12 mt-5 course-content-container">
@@ -36,9 +36,9 @@ class QuizScore extends Component {
 
                 <div className="your-score d-flex justify-content-between">
                   <h4>Your Score</h4>
-                  {`${Math.ceil(precentage)}%`} {`(${this.props.score})`}
+                  {`${Math.ceil(percentage)}%`} {`(${this.props.score})`}
                 </div>
-                <div className="message">{this.message()}</div>
+                <div className="message">{this.message(percentage)}</div>
               </div>
             </div>
           </div>

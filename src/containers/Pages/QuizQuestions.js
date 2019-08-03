@@ -43,7 +43,6 @@ class QuizQuestions extends Component {
   };
 
   score = selectedOption => {
-    debugger;
     if (
       JSON.stringify(selectedOption) ===
       JSON.stringify(
@@ -55,19 +54,23 @@ class QuizQuestions extends Component {
     }
   };
 
-  onClickNextBtn = () => {
-    this.score(this.state.selectedOption);
-    this.props.incIndex();
+  resetSelectedOption = () => {
     this.setState({
       selectedOption: []
     });
+  };
+  onClickNextBtn = () => {
+    this.score(this.state.selectedOption);
+    this.props.incIndex();
+    this.resetSelectedOption();
     this.props.attempt();
   };
 
   onClickDoneBtn = () => {
     this.score(this.state.selectedOption);
     this.props.attempt();
-    this.props.history.push('/quiz-score')
+    this.resetSelectedOption();
+    this.props.history.push("/quiz-score");
   };
 
   render() {
@@ -192,7 +195,6 @@ class QuizQuestions extends Component {
   }
 }
 const mapStateToProps = state => {
-  debugger;
   return {
     quizById: state.getQuizDataById.quizById,
     index: state.user.index,
