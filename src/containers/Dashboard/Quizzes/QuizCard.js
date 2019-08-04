@@ -1,10 +1,36 @@
 import React, { Component } from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 import { Link, withRouter } from "react-router-dom";
+import API from "../../../api/index";
+import { addNotification } from "../../../utilities/index";
 import "./Quiz.scss";
 
 class QuizCard extends Component {
+  constructor(props) {
+    super(props);
+    this.notificationRef = this.props.notificationRef;
+  }
+  addingQuizToUser = () => {
+    const data = {
+      name: this.props.heading,
+      description: this.props.description
+    };
+    API.addingQuizProgressToUser(
+      this.props.value,
+      this.props.courseId,
+      data,
+      result => {
+        if (result.status === "200") {
+          alert("Ho gaya quiz wala");
+        }
+      }
+    ).catch = error => {
+      addNotification(this.notificationRef, "Error", "warning", error);
+    };
+  };
+
   getQuizById = () => {
+    this.addingQuizToUser();
     this.props.history.push(
       `quiz-page/${this.props.heading}/${this.props.value}`
     );

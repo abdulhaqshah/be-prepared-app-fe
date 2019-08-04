@@ -10,6 +10,7 @@ import {
   attemptedQuestions,
   resetIndex
 } from "../../store/actions/Actions";
+import * as auth from "../../services/Session";
 import "./QuizPage.scss";
 
 class QuizQuestions extends Component {
@@ -22,22 +23,36 @@ class QuizQuestions extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.index);
+    auth.setItem("index", this.props.index);
+  }
+
   componentDidMount() {
     const pathname = this.props.location.pathname;
     var id = pathname.split("/");
     this.props.getQuizes(id[4]);
   }
 
-  matchAnswers = option => {
+  matchAnswers = (option, type) => {
     let selectedOption = [...this.state.selectedOption];
     let found = selectedOption.find(soption => soption === option);
-    if (found) {
-      selectedOption = selectedOption.filter(soption => {
-        return soption !== option;
-      });
+    if (type === "multi") {
+      if (found) {
+        selectedOption = selectedOption.filter(soption => {
+          return soption !== option;
+        });
+      } else {
+        selectedOption.push(option);
+      }
     } else {
-      selectedOption.push(option);
+      if (option !== null) {
+        console.log("slected array length", selectedOption.length);
+        console.log("slected array", selectedOption);
+        selectedOption[0] = option;
+      }
     }
+    console.log(selectedOption);
     this.setState({
       selectedOption
     });
@@ -76,7 +91,7 @@ class QuizQuestions extends Component {
   };
 
   render() {
-    console.log(this.props.quizById && this.props.quizById[0].questions);
+    const index = auth.getItem("index");
     let options;
     if (
       this.props.quizById[0] &&
@@ -93,7 +108,12 @@ class QuizQuestions extends Component {
                 className="options-name"
                 value={option}
                 name="answer"
-                onChange={() => this.matchAnswers(option)}
+                onChange={() =>
+                  this.matchAnswers(
+                    option,
+                    this.props.quizById[0].questions[this.props.index].selection
+                  )
+                }
               />
               {option}
             </div>
@@ -111,7 +131,12 @@ class QuizQuestions extends Component {
                 value={option}
                 className="options-name"
                 name={option}
-                onChange={() => this.matchAnswers(option)}
+                onChange={() =>
+                  this.matchAnswers(
+                    option,
+                    this.props.quizById[0].questions[this.props.index].selection
+                  )
+                }
               />
               {option}
             </div>

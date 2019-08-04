@@ -21,6 +21,7 @@ import {
   EMAIL_CONFIRMATION,
   USER_BY_ID,
   ADDING_TUTORIAL_TO_USER,
+  ADDING_QUIZ_TO_USER,
   UPDATE_USER_TUTORIAL_PROGRESS,
   QUIZ_QUESTIONS_ADD
 } from "./constants";
@@ -170,6 +171,15 @@ const addingTutorialProgressToUser = (
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+const addingQuizProgressToUser = (quizId, courseId, data, resolve, reject) => {
+  return GlobalAPISvc(
+    ADDING_QUIZ_TO_USER(uuid, quizId, courseId),
+    METHODS.POST,
+    data
+  )
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
 
 const updatingUserTutorialProgress = (tutorialId, resolve, reject) => {
   return GlobalAPISvc(
@@ -210,6 +220,7 @@ export default {
   updatePassword,
   getUserById,
   addingTutorialProgressToUser,
+  addingQuizProgressToUser,
   updatingUserTutorialProgress,
   quizContentAdd,
   getQuizByCourseId

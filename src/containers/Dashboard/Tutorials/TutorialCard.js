@@ -1,26 +1,33 @@
 import React, { Component } from "react";
-import {Link,withRouter} from "react-router-dom"
-import LinesEllipsis from 'react-lines-ellipsis'
+import { Link, withRouter } from "react-router-dom";
+import LinesEllipsis from "react-lines-ellipsis";
 import API from "../../../api/index";
 import "./Tutorial.scss";
 import { addNotification } from "../../../utilities/index";
 
 class TutorialCard extends Component {
-
-  addingTutorialToUser = () => {
-
-    const data = {
-      name : this.props.heading,
-      description : this.props.description
-    };
-    API.addingTutorialProgressToUser(this.props.value, this.props.courseId, data, result => {
-      if (result.status === "200") {
-        console.log("Ho gaya")
-      }
-    }).catch = error => {
-      addNotification(this.notificationDOMRef, "Error", "warning", error);
-    };
+  constructor(props) {
+    super(props);
+    this.notificationRef = this.props.notificationRef;
   }
+  addingTutorialToUser = () => {
+    const data = {
+      name: this.props.heading,
+      description: this.props.description
+    };
+    API.addingTutorialProgressToUser(
+      this.props.value,
+      this.props.courseId,
+      data,
+      result => {
+        if (result.status === "200") {
+          console.log("Ho gaya");
+        }
+      }
+    ).catch = error => {
+      addNotification(this.notificationRef, "Error", "warning", error);
+    };
+  };
 
   getTutorialById = (tutorialId, name) => {
     this.addingTutorialToUser();
@@ -38,17 +45,23 @@ class TutorialCard extends Component {
             {this.props.heading}
           </h2>
           <div className="truncate-lines">
-          <LinesEllipsis
-            text={this.props.description}
-            maxLine='2'
-            ellipsis='...'
-            trimRight
-            basedOn='letters'
-          />
+            <LinesEllipsis
+              text={this.props.description}
+              maxLine="2"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
           </div>
           <div className="tutorial-link">
             <Link
-            onClick={this.getTutorialById.bind(this, this.props.value, this.props.heading)} className="font-weight-bold">
+              onClick={this.getTutorialById.bind(
+                this,
+                this.props.value,
+                this.props.heading
+              )}
+              className="font-weight-bold"
+            >
               {this.props.linkName}
             </Link>
           </div>

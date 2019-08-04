@@ -53,18 +53,17 @@ export const EMAIL_CONFIRMATION = email => {
   return `/user/emailExist/${email}`;
 };
 export const USER_BY_ID = uuid => {
-  return `/user/userById/${uuid}`
-}
+  return `/user/userById/${uuid}`;
+};
 export const ADDING_TUTORIAL_TO_USER = (uuid, tutorialId, courseId) => {
-  return `/user/${uuid}/tutorial/${tutorialId}/start/${courseId}`
-}
-export const UPDATE_USER_TUTORIAL_PROGRESS = (uuid , tutorialId) => {
-  return `/user/${uuid}/tutorial/${tutorialId}/updateStatus`
-}
+  return `/user/${uuid}/tutorial/${tutorialId}/start/${courseId}`;
+};
+export const ADDING_QUIZ_TO_USER = (uuid, quizId, courseId) => {
+  return `/user/${uuid}/quiz/${quizId}/start/${courseId}`;
+};
+export const UPDATE_USER_TUTORIAL_PROGRESS = (uuid, tutorialId) => {
+  return `/user/${uuid}/tutorial/${tutorialId}/updateStatus`;
+};
 export const QUIZ_QUESTIONS_ADD = quizId => {
-  return `/quiz/${quizId}/question/add` ;
-}
-// export const GET_QUIZES_BY_COURSE_ID = courseId => {
-//   return `/quiz/course/${courseId}`;
-//  };
-
+  return `/quiz/${quizId}/question/add`;
+};
