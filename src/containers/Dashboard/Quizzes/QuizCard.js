@@ -21,7 +21,7 @@ class QuizCard extends Component {
       data,
       result => {
         if (result.status === "200") {
-          alert("Ho gaya quiz wala");
+          console.log("Ho gaya quiz wala");
         }
       }
     ).catch = error => {
