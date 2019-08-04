@@ -222,6 +222,5 @@ export default {
   addingTutorialProgressToUser,
   addingQuizProgressToUser,
   updatingUserTutorialProgress,
-  quizContentAdd,
-  getQuizByCourseId
+  quizContentAdd
 };

@@ -18,15 +18,14 @@ class QuizQuestions extends Component {
     super(props);
     this.state = {
       selectedOption: [],
-      showQuestions: "",
-      showScore: ""
+      index: 0
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.index);
-    auth.setItem("index", this.props.index);
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log(nextProps.index);
+  //   auth.setItem("index", this.props.index);
+  // }
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
@@ -91,11 +90,12 @@ class QuizQuestions extends Component {
   };
 
   render() {
+    auth.setItem("index", this.props.index);
     const index = auth.getItem("index");
     let options;
     if (
       this.props.quizById[0] &&
-      this.props.quizById[0].questions[this.props.index].selection === "single"
+      this.props.quizById[0].questions[index].selection === "single"
     ) {
       options =
         this.props.quizById &&
