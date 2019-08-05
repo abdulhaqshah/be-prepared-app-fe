@@ -98,7 +98,7 @@ class AboutUser extends Component {
                     type="text"
                     maxLength="300"
                     placeholder="Tell us about yourself...."
-                    defaultValue={this.state.about}
+                    defaultValue={this.props.about}
                     onChange={this.handleUserInput}
                   />
                   <div className="edit-error-msg">

@@ -21,7 +21,6 @@ class TutorialCard extends Component {
       data,
       result => {
         if (result.status === "200") {
-          console.log("Ho gaya");
         }
       }
     ).catch = error => {

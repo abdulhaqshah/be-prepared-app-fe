@@ -25,6 +25,7 @@ class EditInto extends Component {
   };
 
   onCancel = () => {
+    debugger;
     this.formRef.reset();
   };
 

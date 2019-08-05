@@ -23,7 +23,9 @@ import {
   ADDING_TUTORIAL_TO_USER,
   ADDING_QUIZ_TO_USER,
   UPDATE_USER_TUTORIAL_PROGRESS,
-  QUIZ_QUESTIONS_ADD
+  QUIZ_QUESTIONS_ADD,
+  QUi,
+  QUIZ_PROGRESS_UPDATE
 } from "./constants";
 
 import GlobalAPISvc from "./globalApi";
@@ -189,6 +191,11 @@ const updatingUserTutorialProgress = (tutorialId, resolve, reject) => {
     .then(res => resolve(res))
     .catch(err => reject(err));
 };
+const quizProgressUpdate = (quizId, data, resolve, reject) => {
+  return GlobalAPISvc(QUIZ_PROGRESS_UPDATE(uuid, quizId), METHODS.PATCH, data)
+    .then(res => resolve(res))
+    .catch(err => reject(err));
+};
 
 const getErrorMessage = error => {
   if (error === "Failed to fetch") {
@@ -222,5 +229,6 @@ export default {
   addingTutorialProgressToUser,
   addingQuizProgressToUser,
   updatingUserTutorialProgress,
-  quizContentAdd
+  quizContentAdd,
+  quizProgressUpdate
 };

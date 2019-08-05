@@ -3,7 +3,7 @@ import * as auth from "../../services/Session";
 import { connect } from "react-redux";
 import { HOME, PROFILE, LOGIN, SINGUP } from "../../constants";
 import { Link, withRouter } from "react-router-dom";
-import { getPathname, logout } from "../../store/actions/Actions";
+import { getPathname, logout ,resetData} from "../../store/actions/Actions";
 import "./Navbar.scss";
 
 class Navbar extends Component {
@@ -18,6 +18,9 @@ class Navbar extends Component {
     this.props.history.push(HOME);
   }
 
+  resetData = () => {
+    this.resetData();
+  };
   getBtnName = path => {
     if (path === LOGIN) return this.props.signupBtn;
     else return this.props.loginBtn;
@@ -88,7 +91,11 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto ml-3">
                 <li className="nav-item active">
-                  <Link to={HOME} className="nav-link active">
+                  <Link
+                    to={HOME}
+                    className="nav-link active"
+                    onClick={this.resetData}
+                  >
                     Dashboard
                   </Link>
                 </li>
@@ -140,6 +147,9 @@ const mapDispatchToProps = dispatch => {
     },
     setPathname: path => {
       dispatch(getPathname(path));
+    },
+    resetData: () => {
+      dispatch(resetData());
     }
   };
 };
