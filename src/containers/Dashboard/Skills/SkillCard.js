@@ -8,6 +8,11 @@ class SkillCard extends Component {
   getTutorialById = (tutorialId, name) => {
     this.props.history.push(`/tutorial-page/${name}/${tutorialId}`);
   };
+  getQuizById = () => {
+    this.props.history.push(
+      `quiz-page/${this.props.heading}/${this.props.value}`
+    );
+  };
   render() {
     let link;
     if(this.props.skill === "tutorial") {
@@ -22,7 +27,7 @@ class SkillCard extends Component {
     } else {
         link = (
             <div className="tutorial-link">
-                <Link>
+                <Link  onClick={this.getQuizById}>
                 Continue
                 </Link>
             </div>

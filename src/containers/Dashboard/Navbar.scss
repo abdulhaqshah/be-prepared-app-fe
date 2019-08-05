@@ -13,7 +13,6 @@
       font-family: "sans-serif";
     }
   }
-
   .form-inline .form-control-sm {
     background-color: #252e38 !important;
     color: #ffffff;
@@ -26,7 +25,6 @@
     padding-bottom: 3px;
     width: 145px;
     .btn-login {
-      font-size:15px;
       border-radius: 0%;
       padding-bottom: 10px;
       padding-top: 10px;
@@ -96,5 +94,11 @@
         font-weight: bold;
       }
     }
+  }
+}
+.login-btn {
+  .btn-secondary {
+    margin: 0% !important;
+    font-size: 15px;
   }
 }

@@ -8,21 +8,19 @@ import API from "../../api/index";
 import { DASHBOARD } from "../../constants";
 
 class TutorialPage extends Component {
-
-  updateTutorialProgress = (tutorialId) => {
+  updateTutorialProgress = tutorialId => {
     API.updatingUserTutorialProgress(tutorialId, result => {
       if (result.status === "200") {
-        this.props.history.push(DASHBOARD)
+        this.props.history.push(DASHBOARD);
       }
     }).catch = error => {
-      console.log(error)
+      console.log(error);
     };
-  }
+  };
 
   componentDidMount() {
-    const pathname = this.props.history.location.pathname
+    const pathname = this.props.history.location.pathname;
     var id = pathname.split("/");
-    console.log(id);
     this.props.getTutorials(id[3]);
   }
 
@@ -38,7 +36,7 @@ class TutorialPage extends Component {
           <div className="courses-detail-card">
             <div className="card shadow-lg">
               <div className="card-body">
-                <p>
+                <p id="123">
                   {this.props.tutorialById
                     ? <div dangerouslySetInnerHTML={{ __html: this.props.tutorialById[0].content }} />
                     : null}
@@ -49,10 +47,13 @@ class TutorialPage extends Component {
           <div align="right" className="next-btn">
             <button
               className="btn btn-secondary"
-              onClick={this.updateTutorialProgress.bind(this, this.props.tutorialById && this.props.tutorialById[0].tutorialId)}
+              onClick={this.updateTutorialProgress.bind(
+                this,
+                this.props.tutorialById && this.props.tutorialById[0].tutorialId
+              )}
             >
               Done
-             </button>
+            </button>
           </div>
         </div>
         <Footer />
