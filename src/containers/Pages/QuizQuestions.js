@@ -6,8 +6,6 @@ import { addNotification } from "../../utilities/index";
 import { withRouter } from "react-router-dom";
 import {
   getQuizById,
-  incrementIndex,
-  decrementIndex,
   calculateScore,
   attemptedQuestions,
   resetIndex
@@ -15,12 +13,12 @@ import {
 import * as auth from "../../services/Session";
 import "./QuizPage.scss";
 
-
 class QuizQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: []
+      selectedOption: [],
+      index: auth.getItem("index")
     };
   }
 
@@ -43,12 +41,9 @@ class QuizQuestions extends Component {
       }
     } else {
       if (option !== null) {
-        console.log("slected array length", selectedOption.length);
-        console.log("slected array", selectedOption);
         selectedOption[0] = option;
       }
     }
-    console.log(selectedOption);
     this.setState({
       selectedOption
     });
@@ -59,7 +54,7 @@ class QuizQuestions extends Component {
       JSON.stringify(selectedOption) ===
       JSON.stringify(
         this.props.quizById[0] &&
-          this.props.quizById[0].questions[this.props.index].answer
+          this.props.quizById[0].questions[auth.getItem("index")].answer
       )
     ) {
       this.props.addScore();
@@ -73,12 +68,20 @@ class QuizQuestions extends Component {
   };
   onClickNextBtn = () => {
     let index = auth.getItem("index");
-    index = index + 1;
-    auth.setItem("index", index);
+    auth.setItem("index", ++index);
+    this.setState({
+      index: ++index
+    });
     this.score(this.state.selectedOption);
-    this.props.incIndex();
     this.resetSelectedOption();
     this.props.attempt();
+  };
+  onClickPrevBtn = () => {
+    let index = auth.getItem("index");
+    auth.setItem("index", --index);
+    this.setState({
+      index: --index
+    });
   };
   quizProgressUpdate = (attempt, correct) => {
     const data = {
@@ -107,28 +110,28 @@ class QuizQuestions extends Component {
   };
 
   render() {
-    auth.setItem("index", this.props.index);
-    const index = auth.getItem("index");
     let options;
+    let questionIndex = auth.getItem("index");
+
     if (
       this.props.quizById[0] &&
-      this.props.quizById[0].questions[index].selection === "single"
+      this.props.quizById[0].questions[questionIndex].selection === "single"
     ) {
       options =
         this.props.quizById &&
-        this.props.quizById[0].questions[this.props.index].options.map(
+        this.props.quizById[0].questions[questionIndex].options.map(
           (option, index) => (
             <div key={index}>
               <input
                 type="radio"
-                key={this.props.index}
+                key={questionIndex}
                 className="options-name"
                 value={option}
                 name="answer"
                 onChange={() =>
                   this.matchAnswers(
                     option,
-                    this.props.quizById[0].questions[this.props.index].selection
+                    this.props.quizById[0].questions[questionIndex].selection
                   )
                 }
               />
@@ -139,19 +142,19 @@ class QuizQuestions extends Component {
     } else {
       options =
         this.props.quizById &&
-        this.props.quizById[0].questions[this.props.index].options.map(
+        this.props.quizById[0].questions[questionIndex].options.map(
           (option, index) => (
             <div key={index}>
               <input
                 type="checkbox"
-                key={this.props.index}
+                key={questionIndex}
                 value={option}
                 className="options-name"
                 name={option}
                 onChange={() =>
                   this.matchAnswers(
                     option,
-                    this.props.quizById[0].questions[this.props.index].selection
+                    this.props.quizById[0].questions[questionIndex].selection
                   )
                 }
               />
@@ -177,8 +180,7 @@ class QuizQuestions extends Component {
                 <div className="card-body">
                   <div className="question">
                     {this.props.quizById
-                      ? this.props.quizById[0].questions[this.props.index]
-                          .question
+                      ? this.props.quizById[0].questions[questionIndex].question
                       : null}
                   </div>
                   <div className="options">{options}</div>
@@ -188,7 +190,7 @@ class QuizQuestions extends Component {
           </div>
         </div>
         <div>
-          {this.props.index === 0 ? (
+          {questionIndex === "0" ? (
             <div align="right" className="next-btn">
               <button
                 className="btn btn-secondary"
@@ -197,14 +199,14 @@ class QuizQuestions extends Component {
                 Next
               </button>
             </div>
-          ) : this.props.index <
+          ) : questionIndex <
               (this.props.quizById &&
                 this.props.quizById[0].questions.length - 1) &&
-            this.props.index > 0 ? (
+            questionIndex > 0 ? (
             <div className="d-flex justify-content-between">
               <button
                 className="btn btn-secondary"
-                onClick={this.props.decIndex}
+                onClick={this.onClickPrevBtn}
               >
                 Previous
               </button>
@@ -215,13 +217,13 @@ class QuizQuestions extends Component {
                 Next
               </button>
             </div>
-          ) : this.props.index ===
+          ) : questionIndex ===
             (this.props.quizById &&
-              this.props.quizById[0].questions.length - 1) ? (
+              JSON.stringify(this.props.quizById[0].questions.length - 1)) ? (
             <div className="d-flex justify-content-between">
               <button
                 className="btn btn-secondary"
-                onClick={this.props.decIndex}
+                onClick={this.onClickPrevBtn}
               >
                 Previous
               </button>
@@ -242,7 +244,7 @@ class QuizQuestions extends Component {
 const mapStateToProps = state => {
   return {
     quizById: state.getDashboardData.quizById,
-    index: state.userData.index,
+    // index: state.userData.index,
     score: state.userData.score,
     attempted: state.userData.attempted
   };
@@ -251,12 +253,6 @@ const mapDispatchToProps = dispatch => {
   return {
     getQuizes: id => {
       dispatch(getQuizById(id));
-    },
-    incIndex: () => {
-      dispatch(incrementIndex());
-    },
-    decIndex: () => {
-      dispatch(decrementIndex());
     },
     addScore: () => {
       dispatch(calculateScore());

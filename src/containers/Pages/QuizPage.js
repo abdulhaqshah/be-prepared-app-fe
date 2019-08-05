@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Footer from "../../components/Footer";
-import * as auth from "../../services/Session";
 import { getQuizById } from "../../store/actions/Actions";
 import API from "../../api/index";
 import { addNotification } from "../../utilities/index";
@@ -21,8 +20,12 @@ class QuizPage extends Component {
     var id = this.state.pathname.split("/");
     this.props.getQuizes(id[3]);
   }
+  setIndex=()=>{
+    this.setState({
+      index:this.prop.index
+    })
+  }
   addingQuizToUser = () => {
-    debugger
     const data = {
       name: this.props.quizById[0].name && this.props.quizById[0].name,
       description:
@@ -41,18 +44,11 @@ class QuizPage extends Component {
     };
   };
   quizQuestion = () => {
+    localStorage.setItem("index",0)
     this.addingQuizToUser();
-
-    let index = auth.getItem("index");
-    this.props.history.push(`/quiz-questions${this.state.pathname}/${index}`);
+    this.props.history.push(`/quiz-questions${this.state.pathname}/${this.props.index}`);
   };
 
-  onClickNextBtn = () => {
-    debugger;
-    this.setState({
-      index: this.state.index++
-    });
-  };
   render() {
     return (
       <div className="main-quiz-container">
@@ -84,7 +80,8 @@ class QuizPage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    quizById: state.getDashboardData.quizById
+    quizById: state.getDashboardData.quizById,
+    index: state.userData.index
   };
 };
 const mapDispatchToProps = dispatch => {
