@@ -43,6 +43,12 @@ const userData = (state = initialState, action) => {
       ...state,
       index: 0
     };
+  } else if (action.type === types.RESET_DATA) {
+    return {
+      ...state,
+      attempted: 0,
+      score: 0
+    };
   }
   return newState;
 };

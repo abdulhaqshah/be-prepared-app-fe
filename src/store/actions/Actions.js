@@ -110,3 +110,9 @@ export const resetIndex = () => dispatch => {
     type: types.RESET_INDEX
   });
 };
+
+export const resetData = () => dispatch => {
+  dispatch({
+    type: types.RESET_DATA
+  });
+};

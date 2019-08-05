@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "../../components/Footer";
+import API from "../../api/index";
+import { addNotification } from "../../utilities/index";
 import { withRouter } from "react-router-dom";
 import {
   getQuizById,
@@ -13,19 +15,14 @@ import {
 import * as auth from "../../services/Session";
 import "./QuizPage.scss";
 
+
 class QuizQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: [],
-      index: 0
+      selectedOption: []
     };
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   console.log(nextProps.index);
-  //   auth.setItem("index", this.props.index);
-  // }
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
@@ -75,10 +72,29 @@ class QuizQuestions extends Component {
     });
   };
   onClickNextBtn = () => {
+    let index = auth.getItem("index");
+    index = index + 1;
+    auth.setItem("index", index);
     this.score(this.state.selectedOption);
     this.props.incIndex();
     this.resetSelectedOption();
     this.props.attempt();
+  };
+  quizProgressUpdate = (attempt, correct) => {
+    const data = {
+      attempted: attempt,
+      correct: correct
+    };
+    API.quizProgressUpdate(
+      this.props.quizById[0].quizId && this.props.quizById[0].quizId,
+      data,
+      result => {
+        if (result.status === "200") {
+        }
+      }
+    ).catch = error => {
+      addNotification(this.notificationRef, "Error", "warning", error);
+    };
   };
 
   onClickDoneBtn = () => {
@@ -86,6 +102,7 @@ class QuizQuestions extends Component {
     this.props.attempt();
     this.resetSelectedOption();
     this.props.resetIndex();
+    this.quizProgressUpdate(this.props.attempted, this.props.score);
     this.props.history.push("/quiz-score");
   };
 
