@@ -6,7 +6,7 @@ class Footer extends Component {
       <div className="container text-center">
         Made with&nbsp;
         <i className="fa fa-heart pulse" />
-        <span className="gainlo">&nbsp;by Gsquad Team</span>
+        <span className="gainlo">&nbsp;by Team Gorillas</span>
       </div>
     );
   }
